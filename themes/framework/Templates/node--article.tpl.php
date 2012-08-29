@@ -1,6 +1,6 @@
 
 <?php if ($page): ?>
-  <iframe width="700" height="200" src="http://mws.all4senses.com/mws/catalog" frameborder="1"></iframe>
+  <iframe width="700" height="200" src="http://mws.all4senses.com/mws/catalog" frameborder="0"></iframe>
 <?php endif; ?>
 
 
