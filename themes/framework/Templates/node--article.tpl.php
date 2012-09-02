@@ -1,6 +1,7 @@
 
 <?php if ($page): ?>
   <iframe width="700" height="200" src="http://mws.all4senses.com/mws/catalog" frameborder="0"></iframe>
+  <script type="text/javascript" src="http://mws.all4senses.com/mws.js"></script>
 <?php endif; ?>
 
 
