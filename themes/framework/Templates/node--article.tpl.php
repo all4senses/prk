@@ -1,8 +1,8 @@
 
 <?php if ($page): ?>
-  <iframe width="700" height="200" src="http://mws.all4senses.com/mws/catalog" frameborder="0"></iframe>
-  <!--<div id="mws"></div>
-  <script type="text/javascript" src="http://mws.all4senses.com/mws.js"></script> -->
+  <!--<iframe width="700" height="200" src="http://mws.all4senses.com/mws/catalog" frameborder="0"></iframe> -->
+  <div id="mws"></div>
+  <script type="text/javascript" src="http://mws.all4senses.com/mws.js"></script>
 <?php endif; ?>
 
 
