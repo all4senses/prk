@@ -1,0 +1,11 @@
+name = Google News sitemap
+description = Generates Google News sitemap
+core = 7.x
+configure = admin/config/services/googlenews
+
+; Information added by drupal.org packaging script on 2011-05-03
+version = "7.x-1.4"
+core = "7.x"
+project = "googlenews"
+datestamp = "1304455615"
+

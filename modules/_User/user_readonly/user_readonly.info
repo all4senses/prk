@@ -1,0 +1,11 @@
+name = User ReadOnly
+description = "Set user profile fields to read-only in the user/#/edit screens."
+core = 7.x
+configure = admin/config/people/user_readonly
+files[] = user_readonly.module
+; Information added by drupal.org packaging script on 2011-06-01
+version = "7.x-1.3"
+core = "7.x"
+project = "user_readonly"
+datestamp = "1306948017"
+
