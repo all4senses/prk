@@ -1,3 +1,5 @@
+<div id="container" class="clearfix">
+  
   <div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
     <?php if ($main_menu): ?>
@@ -73,3 +75,4 @@
     <div class="c">© 2012 Park.all4senses.com | All Rights Reserved</div>
   </footer>
   
+</div> <!-- /#container -->  
