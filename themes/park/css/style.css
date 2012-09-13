@@ -73,7 +73,7 @@ th {padding-right: 1em;}
 
 /*** 2.LAYOUT */
 
-#container {margin: 0 auto; padding: 0 10px; width: 940px;}
+#container {margin: 0 auto; padding: 0 10px; width: 1120px;}
 
 /*** 3.MAIN */
 
@@ -113,7 +113,7 @@ body.sidebar-second #sidebar-second {float: right; margin: 0; padding: 0; width:
 
 /*** 5.HEADER */
 
-#header {margin: 0; padding: 2.5em 0 0; position: relative;}
+#header {margin: 0; padding: 5px; position: relative;}
 #header #logo {float: left; margin: 0 1em 1.5em 0;}
 #header #site-name-slogan {float: left; margin: 0 0 1.5em;}
 #header #site-name {font-family: Arial, Helvetica, sans-serif; font-size: 2.5em; font-weight: 700; line-height: 1.2; margin: 0;}
