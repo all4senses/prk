@@ -1,0 +1,145 @@
+<?php
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function park_user_menu() {
+    
+  $items = array();
+ /* 
+  $items['user/%user/blog'] = array( 
+      'title' => t('User blog'),
+      //'title callback' => '_guestbook_info',
+      //'title arguments' => array(1, 'title'),
+      'page callback' => 'park_user_getUserContent', //'wdg_user_blog_page',
+      'page arguments' => array(1, 'blog_post', 'blog post', 'blog posts'),
+      //'access callback' => 'guestbook_menu_access_user_guestbook',
+      //'access arguments' => array(1, 'access user guestbooks'),
+      'access arguments' => array('access content'),
+      'type' => MENU_LOCAL_TASK,
+    );
+*/
+
+  return $items;
+  
+}
+
+
+
+
+
+
+
+/**
+ * Implements hook_user_view().
+ */
+function park_user_user_view($account, $view_mode, $langcode) {
+/*    
+  $park_user_mode = variable_get('park_user_mode', park_user_SITE_park_user | park_user_USER_park_userS);
+  if ($park_user_mode & park_user_USER_park_userS) {
+    if (user_access('access user park_users') && empty($account->data['park_user_status'])) {
+      $title = t("Read @username's park_user.", array('@username' => $account->name));
+      $link  = l(t('View recent park_user entries'), "user/$account->uid/park_user", array('attributes' => array('title' => $title)));
+  */    
+
+    
+    
+// Append guestbook on user profile page    
+    
+    
+// TODO: makeown guestbook for each user (on demand?) on user create or by link
+$gbook = node_load(4);
+$gbook_comments = comment_node_page_additions($gbook); 
+////dpm($gbook_comments); //dpm($gbook);
+
+$gbook = node_view($gbook);
+unset($gbook['links']['comment']); // remove link "add new comment as we have a form below"
+      $account->content['park_guestbook'] = array(
+        '#type' => 'user_profile_item',
+        '#title' => t('The Wall'),
+        '#markup' => render($gbook) . render($gbook_comments['comment_form']) . render($gbook_comments['comments']),
+        //'#attributes' => array('class' => 'park_user'),
+        '#weight' => 10,
+      );
+
+}
+
+
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function park_user_form_user_register_form_alter(&$form, &$form_state) {
+    
+  // Set up the right nickname (username) for user registered via loginza
+  // !!!!!!!!!!!!!!!!!!!!!  MUST have weight bigger then loginza in a system table
+    
+  if (isset($_SESSION['loginza']['data'])) 
+  {
+    $data = $_SESSION['loginza']['data'];
+
+    //if($data['email'])
+    //   $form['account']['name']['#default_value'] = $data['email'];
+    //else
+        $form['account']['name']['#default_value'] = strtolower(str_replace(' ', '.', $data['name']['full_name'])); //_loginza_username($data);
+        //
+    //if (!empty($data['email'])) $form['account']['mail']['#default_value'] = $data['email'];
+ }
+
+}
+
+
+/**
+ * Implements hook_user_presave().
+ */
+/*
+function park_user_user_presave(&$edit, $account, $category) {
+  foreach (array('park_user_status', 'park_user_send_email', 'park_user_intro') as $key) {
+    if (isset($edit[$key])) {
+      $edit['data'][$key] = $edit[$key];
+    }
+  }
+}
+*/
+
+/**
+ * Implements hook_user_delete().
+ */
+/*
+function park_user_user_delete($account) {
+  db_delete('park_user')
+    ->condition('recipient', $account->uid)
+    ->execute();
+}
+*/
+
+
+/**
+ * Implementation of hook_permission().
+ */
+/*
+function park_user_permission() {
+  return array(
+    'moderate all park_users' => array(
+      'title' => t('Moderate all park_users'),
+    ),
+    'moderate own park_user' => array(
+      'title' => t('Moderate own park_user'),
+    ),
+    'access site park_user' => array(
+      'title' => t('View site park_user'),
+    ),
+    'access user park_users' => array(
+      'title' => t('View user park_users'),
+    ),
+    'post in site park_user' => array(
+      'title' => t('Post in site park_user'),
+    ),
+    'post in user park_users' => array(
+      'title' => t('Post in user park_users'),
+    ),
+  );
+}
+*/

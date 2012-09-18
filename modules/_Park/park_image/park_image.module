@@ -1,0 +1,168 @@
+<?php
+
+/**
+ * Implementation of hook_menu().
+ */
+/*
+function park_image_menu() {
+    
+  $items = array();
+  // ...
+  return $items;
+  
+}
+*/
+
+
+function park_image_form_alter(&$form, &$form_state, $form_id) {
+  
+  //dpm($form_id); dpm($form);
+
+  switch($form_id)
+  {
+      case 'album_node_form':
+      case 'master_class_node_form':
+          
+          $form['field_body_to_gallery']['#type'] = 'hidden'; // don't show field on edit form
+          $form['field_main_image']['#type'] = 'hidden'; // don't show field on edit form
+          break;
+  }
+
+}
+
+
+function park_image_node_presave($node) {
+    
+    // if this is a new node, yet without nid, let's find out supposed its id
+    if(!$nid = $node->nid) {
+      $nid = db_next_id(db_query('SELECT MAX(nid) FROM {node}')->fetchField());
+    }
+    
+    if($gallery = park_image_findImages($node->body['und'][0]['value'], $nid)) {
+      $node->field_main_image['und'][0]['value'] = serialize($gallery[0]);
+      $node->field_body_to_gallery['und'][0]['value'] = park_image_prepareBodyToGallery($nid, $gallery);
+    }
+}
+
+
+function park_image_findImages($body, $nid, $amount = null){ 
+    // $amount - how many images to include in the result array
+    
+    /* // in template
+     preg_match_all("/<img[^']*?src=\"([^']*?)\"[^']*?>/", $content['body']['#items'][0]['value'], $matches, PREG_SET_ORDER);
+    */
+    preg_match_all("/<img[^']*?src=\"([^']*?)\"[^']*?>/", $body, $matches, PREG_SET_ORDER);
+    
+    // find the rest img data
+    
+    $gallery = null;
+    
+    if(is_array($matches))
+        foreach($matches as $key=>$match)
+        {
+            $cur_img = array();
+
+            preg_match_all('/(alt|title|class)="([^"]*)"/i',$match[0], $matches2, PREG_SET_ORDER);
+            foreach($matches2 as $match2)
+                $cur_img[$match2[1]] = $match2[2];
+            $cur_img['src'] = $match[1];
+            
+            // just in case, save themed img tag
+            // with default preset - redefine it if needed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            $cur_img['style_name'] = 'gallery_thumb_w-75';
+            $default_file_path = variable_get('file_public_path', conf_path() . '/files');
+            $cur_img['path'] = str_replace('/' .$default_file_path . '/', 'public://', $cur_img['src']);
+            $cur_img['thumb'] = theme('image_style', $cur_img);
+            $cur_img['class'] = 'group_' . $nid;
+            $gallery[] = $cur_img;
+
+            if($amount AND $key + 1 == $amount)
+                break;
+        }  
+    
+    return $gallery;
+}
+
+
+
+
+function park_image_prepareBodyToGallery($nid, $gallery) {
+    
+    
+    $links_collection_for_colobox = '';
+    $body_to_slideshow =  ''
+        //. '<fieldset class="collapsible collapsed form-wrapper"><legend>test</legend>'
+        . '<div id="gallery_wrapper_' . $nid . '">'
+                //.'<div id="gallery_' . $key . '" class="ad-gallery">'
+                .'<div id="adg'. $nid . '" class="ad-gallery">'
+                    .'<div class="ad-image-wrapper" style="width:600px;height:400px;"></div>'
+                    .'<div class="ad-controls"></div>'
+            
+                    // my button for full screen in ColorBox
+                    // set up in park_image_gallery_ad.js
+                    . '<div class="full_screen_btn"><a class="full group_' . $nid . '" href="">Full screen</a></div>'
+            
+                    .'<div class="ad-nav">'
+                        .'<div class="ad-thumbs">'
+                            .'<ul class="ad-thumb-list">';
+    
+                                $default_file_path = variable_get('file_public_path', conf_path() . '/files');
+                                foreach($gallery as $key2 => $image)
+                                {
+                                    $attributes = array();
+                                    $image_data = array();
+                                    
+                                    if(isset($image['longdesc']))
+                                            $attributes['longdesc'] = $image['longdesc'];
+                                    //if(isset($image['class']))
+                                    //        $attributes['class'] = $image['class'];
+                                    
+                                    //$image_data['path'] = str_replace('/sites/default/files/', 'public://', $image['thumb']);
+                                    $image_data['path'] = str_replace('/' .$default_file_path . '/', 'public://', $image['src']);
+                                    
+                                    $image_data['style_name'] = 'gallery_thumb_w-75';
+                                    
+                                    if(isset($image['alt']))
+                                            $image_data['alt'] = $image['alt'];
+                                    if(isset($image['title']))
+                                            $image_data['title'] = $image['title'];
+                                    
+                                    $image_data['attributes'] = $attributes;
+                                    //$links_collection_for_colobox .= '<a style="display:none;" class="' . $image['class'] . '" href="' . $image['src'] . '">Full screen</a>';
+                                    $body_to_slideshow .= '<li>'
+                                            //.'<a href="' . $image['src'] . '">'
+                                            .'<a class="' . $image['class'] . '" href="http://park.all4senses.com' . $image['src'] . '">'
+                                                //.'<img src="' . $image['thumb'] . '"' . (isset($image['title'])?' title="' . $image['title'] . '"':'') . (isset($image['alt'])?' alt="' . $image['alt'] . '"':'') . (isset($image['longdesc'])?' longdesc="' . $image['longdesc'] . '"':'') . ' class="image' . $key2 . '">'
+                                                . theme('image_style', $image_data)
+                                           .'</a>'
+                                        .'</li>';
+                                }
+                        $body_to_slideshow .= '</ul>'
+                        .'</div>'
+                    .'</div>'
+                .'</div>'
+ 
+                .'<div id="descriptions"></div>'
+                                
+                .'<p>'
+                    .'Examples of how you can alter the behaviour on the fly;'
+                    .'Effect: <select class="switch-effect">'
+                                .'<option value="slide-hori">Slide horizontal</option>'
+                                .'<option value="slide-vert">Slide vertical</option>'
+                                .'<option value="resize">Shrink/grow</option>'
+                                .'<option value="fade">Fade</option>'
+                                //.'<option value="">None</option>'
+                            .'</select><br>'
+
+                    .'<a href="#" class="toggle-slideshow">Toggle slideshow</a> |'
+                    .'<a href="#" class="toggle-description">Toggle having description outside of image</a>'
+                .'</p>'
+                                
+        .'</div>' // end of echo '<div id="gallery_wrapper_' . $key . '">'
+        //.'</fieldset>'
+        ; 
+                        
+   //$body_to_slideshow .= $links_collection_for_colobox;
+   return $body_to_slideshow;
+
+}

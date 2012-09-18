@@ -1,0 +1,8 @@
+name = Park Social
+description = Provides functions and hooks connecting to social networks
+core = 7.x
+version = "7.x"
+core = "7.x"
+project = "Park Social"
+package = "Park"
+

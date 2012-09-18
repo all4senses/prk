@@ -1,0 +1,177 @@
+<?php
+
+/**
+ * Implementation of hook_menu().
+ */
+
+function park_pages_menu() {
+    
+  $items = array();
+  
+  $items['user/%user/blog'] = array( 
+      'title' => t('User blog'),
+      //'title callback' => '_guestbook_info',
+      //'title arguments' => array(1, 'title'),
+      'page callback' => 'park_pages_getUserContent',
+      'page arguments' => array(1, 'blog_post', 'blog post', 'blog posts'),
+      //'access callback' => 'guestbook_menu_access_user_guestbook',
+      //'access arguments' => array(1, 'access user guestbooks'),
+      'access arguments' => array('access content'),
+      'type' => MENU_LOCAL_TASK,
+    );
+
+  $items['user/%user/issues'] = array( 
+      'title' => t('Issues'),
+      'page callback' => 'park_pages_getUserContent',
+      'page arguments' => array(1, 'issue', 'issues', 'issues'),
+      'access arguments' => array('access content'),
+      'type' => MENU_LOCAL_TASK,
+    );   
+  
+  $items['user/%user/mclasses'] = array( 
+      'title' => t('Master-classes'),
+      'page callback' => 'park_pages_getUserContent',
+      'page arguments' => array(1, 'master_class', 'master-classes', 'master-classes', array('t','mini'), 'park_pages_buildMiniTeasersSet'),
+      'access arguments' => array('access content'),
+      'type' => MENU_LOCAL_TASK,
+    );      
+      
+    $items['user/%user/gallery'] = array( 
+      'title' => t('Gallery'),
+      'page callback' => 'park_pages_getUserContent',
+      'page arguments' => array(1, 'album', 'album', 'albums', array('t','mini'), 'park_pages_buildMiniTeasersSet'),
+      'access arguments' => array('access content'),
+      'type' => MENU_LOCAL_TASK,
+    );  
+
+  return $items;
+  
+}
+
+
+
+function park_pages_buildMiniTeasersSet($nids){
+    
+    $build = null;
+    if(is_array($nids))
+        foreach($nids as $nid)
+        {
+            if($node = db_query("SELECT u.name, n.nid, n.title, n.created AS date, i.field_main_image_value AS main_image, a.alias AS node_url
+                                FROM {node} n 
+                                LEFT JOIN {users} u ON u.uid = n.uid
+                                LEFT JOIN {field_data_field_main_image} i ON i.entity_type = 'node' AND i.entity_id = n.nid 
+                                LEFT JOIN {url_alias} a ON a.source = 'node/" . $nid . "' 
+                                WHERE n.nid = :nid", 
+                        array(':nid' => $nid)
+                    )->fetchObject())
+            {
+            
+                $build['nodes'][] = array(
+                            '#theme' => 'park_pages_ImageMiniTeaser',
+                            '#node' => $node,
+                            );
+            }
+            /*
+            $build['nodes'] = array(
+                        0 => array(
+                          '#theme' => 'park_pages_ImageMiniTeaser',
+                          //'#weight' => -10,
+                          '#node' => array(
+                                    0 => '11111',
+                                    1 => '22222',
+                                    '#markup' => '<div>yyy</div>',
+                                ),
+                        ),
+                        1 => array(
+                          '#theme' => 'park_pages_ImageMiniTeaser',
+                          //'#weight' => -10,
+                          '#node' => array(
+                                    0 => '3333',
+                                    1 => '4444',
+                                ),
+                          '#weight' => -5,
+                        ),
+                        '#weight' => -5,
+            );
+            */
+        }
+    
+    return $build;    
+}
+
+
+function park_pages_getUserContent($account, $type, $singular_title, $plural_title, $build_condition = array(), $build_function = null){
+    
+  global $user;  
+  
+  drupal_set_title($title = t("@name's " . $plural_title, array('@name' => format_username($account))), PASS_THROUGH);
+
+  $build = array();
+
+  $query = db_select('node', 'n')->extend('PagerDefault');
+  $nids = $query
+    ->fields('n', array('nid', 'sticky', 'created'))
+    ->condition('type', $type)
+    ->condition('uid', $account->uid)
+    ->condition('status', 1)
+    ->orderBy('sticky', 'DESC')
+    ->orderBy('created', 'DESC')
+    ->limit(variable_get('default_nodes_main', 10))
+    ->addTag('node_access')
+    ->execute()
+    ->fetchCol();
+
+  if (!empty($nids)) {
+    if($build_function 
+            AND isset($_GET[$build_condition[0]]) 
+            AND $_GET[$build_condition[0]] == $build_condition[1]
+            AND is_array($nodes = $build_function($nids))
+      )
+    {
+        $build += $nodes;;
+        //$build_function($nids);
+    }
+    else
+    {
+        $nodes = node_load_multiple($nids);
+        $build += node_view_multiple($nodes);
+    }
+    $build['pager'] = array(
+      '#theme' => 'pager',
+      '#weight' => 5,
+    );
+  }
+  else {
+    if ($account->uid == $user->uid) {
+      drupal_set_message(t('You have not yet created any ' . $singular_title . ' entries.'));
+    }
+    else {
+      drupal_set_message(t('!author has not yet created any ' . $singular_title . ' entries.', array('!author' => theme('username', array('account' => $account)))));
+    }
+  }
+  /////drupal_add_feed('blog/' . $account->uid . '/feed', t('RSS - !title', array('!title' => $title)));
+  
+
+
+
+//$build += $temp;
+//$build['my'][0] = '<div>yyy</div>';
+//dpm($build);
+//dpm($_GET);
+  //return $build;
+  return $build;
+}
+
+
+
+
+function park_pages_theme($existing, $type, $theme, $path) {
+  return array(
+    'park_pages_ImageMiniTeaser' => array(
+      'variables' => array('node' => array()),
+      //'path' => path_to_theme(),
+      'template' => 'park_pages_ImageMiniTeaser',
+    ),  
+            
+  );
+}

@@ -1,0 +1,9 @@
+<?php
+
+function park_misc_getCurrentUrl()
+{
+    $my_url = explode('?', $_SERVER['REQUEST_URI']);
+    $my_url = $my_url[0];
+    $my_url = "http://".$_SERVER['SERVER_NAME'].$my_url;
+    return $my_url;
+}
