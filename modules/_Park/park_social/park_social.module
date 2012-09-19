@@ -1965,7 +1965,6 @@ class SocialConnectGoogle extends SocialConnect
             SocialConnectGoogle::gdata_init_ZendGdata_library($developerKey, $service);
             
             $next = "http://".$_SERVER['SERVER_NAME'] . '/authsub?';
-            //$next = "http://all4senses.com/authsub?";
             /*
             switch($app)
             {

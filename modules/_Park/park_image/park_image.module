@@ -69,7 +69,7 @@ function park_image_findImages($body, $nid, $amount = null){
             
             // just in case, save themed img tag
             // with default preset - redefine it if needed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            $cur_img['style_name'] = 'gallery_thumb_w-75';
+            $cur_img['style_name'] = 'album_thumb';
             $default_file_path = variable_get('file_public_path', conf_path() . '/files');
             $cur_img['path'] = str_replace('/' .$default_file_path . '/', 'public://', $cur_img['src']);
             $cur_img['thumb'] = theme('image_style', $cur_img);
@@ -120,7 +120,7 @@ function park_image_prepareBodyToGallery($nid, $gallery) {
                                     //$image_data['path'] = str_replace('/sites/default/files/', 'public://', $image['thumb']);
                                     $image_data['path'] = str_replace('/' .$default_file_path . '/', 'public://', $image['src']);
                                     
-                                    $image_data['style_name'] = 'gallery_thumb_w-75';
+                                    $image_data['style_name'] = 'album_thumb';
                                     
                                     if(isset($image['alt']))
                                             $image_data['alt'] = $image['alt'];
@@ -131,7 +131,7 @@ function park_image_prepareBodyToGallery($nid, $gallery) {
                                     //$links_collection_for_colobox .= '<a style="display:none;" class="' . $image['class'] . '" href="' . $image['src'] . '">Full screen</a>';
                                     $body_to_slideshow .= '<li>'
                                             //.'<a href="' . $image['src'] . '">'
-                                            .'<a class="' . $image['class'] . '" href="http://park.all4senses.com' . $image['src'] . '">'
+                                            .'<a class="' . $image['class'] . '" href="http://' . $_SERVER['SERVER_NAME'] . $image['src'] . '">'
                                                 //.'<img src="' . $image['thumb'] . '"' . (isset($image['title'])?' title="' . $image['title'] . '"':'') . (isset($image['alt'])?' alt="' . $image['alt'] . '"':'') . (isset($image['longdesc'])?' longdesc="' . $image['longdesc'] . '"':'') . ' class="image' . $key2 . '">'
                                                 . theme('image_style', $image_data)
                                            .'</a>'
