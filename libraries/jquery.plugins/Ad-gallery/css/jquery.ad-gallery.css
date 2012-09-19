@@ -41,10 +41,10 @@
     }
     .ad-gallery .ad-image-wrapper .ad-prev, .ad-gallery .ad-image-wrapper .ad-next {
       /* Or else IE will hide it */
-      background: url(/sites/all/modules/_A4s/a4s_image/css/ad/non-existing.jpg)\9
+      background: url(sites/all/libraries/jquery.plugins/Ad-gallery/css/non-existing.jpg)\9
     }
       .ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image, .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
-        background: url(/sites/all/modules/_A4s/a4s_image/css/ad/ad_prev.png);
+        background: url(sites/all/libraries/jquery.plugins/Ad-gallery/css/ad_prev.png);
         width: 30px;
         height: 30px;
         display: none;
@@ -54,7 +54,7 @@
         z-index: 101;
       }
       .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
-        background: url(/sites/all/modules/_A4s/a4s_image/css/ad/ad_next.png);
+        background: url(sites/all/libraries/jquery.plugins/Ad-gallery/css/ad_next.png);
         width: 30px;
         height: 30px;
         right: 0;
@@ -78,12 +78,12 @@
         text-align: left;
         width: 100%;
         z-index: 2;
-        background: url(/sites/all/modules/_A4s/a4s_image/css/ad/opa75.png);
+        background: url(sites/all/libraries/jquery.plugins/Ad-gallery/css/opa75.png);
         color: #000;
       }
       * html .ad-gallery .ad-image-wrapper .ad-image .ad-image-description {
         background: none;
-        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (enabled=true, sizingMethod=scale, src='/sites/all/modules/_A4s/a4s_image/css/ad/opa75.png');
+        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (enabled=true, sizingMethod=scale, src='sites/all/libraries/jquery.plugins/Ad-gallery/css/opa75.png');
       }
         .ad-gallery .ad-image-wrapper .ad-image .ad-image-description .ad-description-title {
           display: block;
@@ -128,14 +128,14 @@
       left: -20px;
       width: 13px;
       display: block;
-      background: url(/sites/all/modules/_A4s/a4s_image/css/ad/ad_scroll_back.png) 0px 22px no-repeat;
+      background: url(sites/all/libraries/jquery.plugins/Ad-gallery/css/ad_scroll_back.png) 0px 22px no-repeat;
     }
     .ad-gallery .ad-forward {
       cursor: pointer;
       display: block;
       right: -20px;
       width: 13px;
-      background: url(/sites/all/modules/_A4s/a4s_image/css/ad/ad_scroll_forward.png) 0px 22px no-repeat;
+      background: url(sites/all/libraries/jquery.plugins/Ad-gallery/css/ad_scroll_forward.png) 0px 22px no-repeat;
     }
     .ad-gallery .ad-nav .ad-thumbs {
       overflow: hidden;

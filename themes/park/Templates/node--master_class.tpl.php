@@ -40,13 +40,13 @@ echo '<div class="content"' , $content_attributes. '>';
         hide($content['body']);
         echo $node->field_body_to_gallery['und'][0]['value'];
         
-        //drupal_add_css("sites/all/modules/_A4s/a4s_image/css/ad/jquery.ad-gallery.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-        //drupal_add_css("sites/all/modules/_A4s/a4s_image/css/ad/jquery.ad-gallery_custom.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+        //drupal_add_css("sites/all/modules/_Park/park_image/css/ad/jquery.ad-gallery.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+        //drupal_add_css("sites/all/modules/_Park/park_image/css/ad/jquery.ad-gallery_custom.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
         drupal_add_css("sites/all/libraries/jquery.plugins/Ad-gallery/css/jquery.ad-gallery.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
         drupal_add_css("sites/all/libraries/jquery.plugins/Ad-gallery/css/jquery.ad-gallery_custom.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
 
-        //drupal_add_js('sites/all/modules/_A4s/a4s_image/js/ad/a4s_image_gallery_ad.js');
-        //drupal_add_js('sites/all/modules/_A4s/a4s_image/js/ad/jquery.ad-gallery.js');
+        //drupal_add_js('sites/all/modules/_Park/park_image/js/ad/a4s_image_gallery_ad.js');
+        //drupal_add_js('sites/all/modules/_Park/park_image/js/ad/jquery.ad-gallery.js');
         drupal_add_js('sites/all/libraries/jquery.plugins/Ad-gallery/a4s_image_gallery_ad.js');
         drupal_add_js('sites/all/libraries/jquery.plugins/Ad-gallery/jquery.ad-gallery.js');
         
