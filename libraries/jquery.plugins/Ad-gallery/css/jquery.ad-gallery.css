@@ -12,7 +12,7 @@
     position: relative;
     overflow: hidden;
   }
-    .ad-gallery .ad-image-wrapper .ad-loader {ad-controls
+    .ad-gallery .ad-image-wrapper .ad-loader {
       position: absolute;
       z-index: 10;
       top: 48%;
