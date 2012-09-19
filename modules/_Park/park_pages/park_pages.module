@@ -8,6 +8,7 @@ function park_pages_menu() {
     
   $items = array();
   
+  /*
   $items['user/%user/blog'] = array( 
       'title' => t('User blog'),
       //'title callback' => '_guestbook_info',
@@ -26,7 +27,7 @@ function park_pages_menu() {
       'page arguments' => array(1, 'issue', 'issues', 'issues'),
       'access arguments' => array('access content'),
       'type' => MENU_LOCAL_TASK,
-    );   
+    );
   
   $items['user/%user/mclasses'] = array( 
       'title' => t('Master-classes'),
@@ -42,7 +43,8 @@ function park_pages_menu() {
       'page arguments' => array(1, 'album', 'album', 'albums', array('t','mini'), 'park_pages_buildMiniTeasersSet'),
       'access arguments' => array('access content'),
       'type' => MENU_LOCAL_TASK,
-    );  
+    ); 
+    */
 
   return $items;
   
