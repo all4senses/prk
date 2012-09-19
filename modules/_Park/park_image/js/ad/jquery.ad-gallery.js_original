@@ -9,7 +9,7 @@
  */
 (function($) {
   $.fn.adGallery = function(options) {
-    var defaults = { loader_image: '/sites/all/modules/_A4s/a4s_image/css/ad/loader.gif',
+    var defaults = { loader_image: '/sites/all/modules/_Park/park_image/css/ad/loader.gif',
                      start_at_index: 0,
                      description_wrapper: false,
                      thumb_opacity: 0.7,
