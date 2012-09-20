@@ -74,8 +74,8 @@ function park_pages_getSectionBlocks($node) {
 
   dpm($view);
   
-  //$node->sectionBlocks[$display] = $view->preview($display);
-  $node->sectionBlocks[$display] = $view->render($display);
+  $node->sectionBlocks[$display] = $view->preview($display);
+  //$node->sectionBlocks[$display] = $view->render($display);
   
   dpm($view);
   
