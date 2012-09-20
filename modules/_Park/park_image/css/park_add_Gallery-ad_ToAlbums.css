@@ -1,0 +1,43 @@
+  ul {
+    /*list-style-image:url(list-style.gif);*/
+  }
+
+  #gallery {
+    padding: 30px;
+    background: #e1eef5;
+  }
+  #descriptions {
+    position: relative;
+    height: 50px;
+    background: #EEE;
+    margin-top: 10px;
+    width: 640px;
+    padding: 10px;
+    overflow: hidden;
+  }
+    #descriptions .ad-image-description {
+      position: absolute;
+    }
+      #descriptions .ad-image-description .ad-description-title {
+        display: block;
+      }
+      
+.ad-gallery .ad-controls {
+    /*height: 20px;*/
+    float: left;
+  }  
+  
+.ad-gallery .ad-slideshow-controls {
+      /*float: right;*/
+      float: left;
+      margin-left: 220px;
+    }      
+    
+.ad-gallery .ad-nav {
+   clear: both;
+  }    
+  
+  .full_screen_btn{
+      display: block;
+      float: right;
+  }
