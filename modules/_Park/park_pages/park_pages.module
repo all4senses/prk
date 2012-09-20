@@ -79,6 +79,8 @@ function park_pages_getSectionBlocks($node) {
   
   dpm($view);
   
+  dpm($view->get_title());
+          
 }
 
 
