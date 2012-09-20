@@ -54,16 +54,13 @@ function park_pages_menu() {
  */
 function park_pages_getSectionBlocks($node) {
   
-//$tids = NULL;
-//foreach($term_children as $term_child) {
-//  $tids[$term_child->tid] = $term_child->tid;
-//}
-
-  dpm($node);
-  return;
+  $tids = NULL;
+  foreach($node->field_tags['und'] as $term) {
+    $tids[$term['tid']] = $term['tid'];
+  }
   
-  $display = 'article_titles';
-  $view = views_get_view('section_parts');
+  $display = 'articles_titles';
+  $view = views_get_view('section_blocks');
   $options = array(
     'id' => 'tid',
     'value' => $tids, 
@@ -75,7 +72,7 @@ function park_pages_getSectionBlocks($node) {
   );
   $view->add_item($display, 'filter', 'taxonomy_index', 'tid', $options);
 
-  $node->sectionBlocks['articles'] = $view->preview($display);
+  $node->sectionBlocks[$display] = $view->preview($display);
   
 }
 
