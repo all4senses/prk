@@ -1,6 +1,6 @@
 (function ($) {
 
-  Drupal.behaviors.park_addColorboxToAlbums = {
+  Drupal.behaviors.park_add_GalleryAd_ToAlbums = {
     attach: function (context, settings) {
           
           /*
