@@ -174,7 +174,7 @@ function park_image_prepareBodyToGallery($nid, $gallery) {
  * Override or insert variables into the page template.
  */
 function park_image_preprocess_page(&$vars) {
-  dpm($vars);
+  dpm($vars['node']);
   if(isset($vars['node'])) {
     //$vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
   }
@@ -186,7 +186,7 @@ function park_image_preprocess_page(&$vars) {
  * Override or insert variables into the page template.
  */
 function park_image_process_page(&$vars) {
-  dpm($vars);
+  dpm($vars['node']);
   if(isset($vars['node'])) {
     //$vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
   }
