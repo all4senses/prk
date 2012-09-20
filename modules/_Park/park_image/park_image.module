@@ -179,3 +179,15 @@ function park_image_preprocess_page(&$vars) {
     //$vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
   }
 }
+
+
+
+/**
+ * Override or insert variables into the page template.
+ */
+function park_image_process_page(&$vars) {
+  dpm($vars);
+  if(isset($vars['node'])) {
+    //$vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
+  }
+}
