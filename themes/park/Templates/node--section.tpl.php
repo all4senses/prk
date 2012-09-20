@@ -51,4 +51,8 @@
 <?php endif; ?>
 
   
-<?php echo $node->sectionBlocks['articles_titles_block']; ?>
+<?php 
+  foreach ($node->sectionBlocks as $sectionBlock) {
+    echo $sectionBlock;
+  }
+?>

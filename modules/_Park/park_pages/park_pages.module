@@ -54,33 +54,24 @@ function park_pages_menu() {
  */
 function park_pages_getSectionBlocks($node) {
   
+  $node->sectionBlocks = array();
   $tids = NULL;
+  
   foreach($node->field_tags['und'] as $term) {
     $tids[$term['tid']] = $term['tid'];
   }
   
   $display = 'articles_titles_block';
   $view = views_get_view('section_blocks');
-  $options = array(
-    'id' => 'tid',
-    'value' => $tids, 
-    'type' => 'select',
-    'vid' =>  'tags',
-    'hierarchy' => 1,
-    'reduce_duplicates' => 1,
-    'group' => 0,
-  );
+  $options = array('id' => 'tid', 'value' => $tids, 'type' => 'select', 'vid' =>  'tags', 'hierarchy' => 1, 'reduce_duplicates' => 1, 'group' => 0);
   $view->add_item($display, 'filter', 'taxonomy_index', 'tid', $options);
 
-  dpm($view);
+  $results = $view->preview($display);
+  if ($view->total_rows) {
+    $node->sectionBlocks[$display] = '<h3>' . $view->get_title() . '</h3>' . $view->preview($display);
+    //$node->sectionBlocks[$display] = $view->render($display);
+  }
   
-  $node->sectionBlocks[$display] = $view->preview($display);
-  //$node->sectionBlocks[$display] = $view->render($display);
-  
-  dpm($view);
-  
-  dpm($view->get_title());
-          
 }
 
 
