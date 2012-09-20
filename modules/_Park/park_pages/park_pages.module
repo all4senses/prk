@@ -59,7 +59,7 @@ function park_pages_getSectionBlocks($node) {
     $tids[$term['tid']] = $term['tid'];
   }
   
-  $display = 'articles_titles';
+  $display = 'articles_titles_block';
   $view = views_get_view('section_blocks');
   $options = array(
     'id' => 'tid',
