@@ -72,7 +72,10 @@ function park_pages_getSectionBlocks($node) {
   );
   $view->add_item($display, 'filter', 'taxonomy_index', 'tid', $options);
 
-  $node->sectionBlocks[$display] = $view->preview($display);
+  dpm($view);
+  
+  //$node->sectionBlocks[$display] = $view->preview($display);
+  $node->sectionBlocks[$display] = $view->render($display);
   
 }
 
