@@ -32,7 +32,8 @@
       hide($content['comments']);
       hide($content['links']);
       hide($content['field_tags']);
-      print render($content);
+      echo render($content);
+      echo $node->sectionBlocks['articles_titles_block'];
     ?>
   </div>
 
