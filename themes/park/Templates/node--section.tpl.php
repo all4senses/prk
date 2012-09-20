@@ -1,10 +1,9 @@
-<?php dpm($node); ?>
 
 <?php if (!$page): ?>
   <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 <?php endif; ?>
 
-  <?php if ($user_picture || $display_submitted || !$page): ?>
+
     <?php if (!$page): ?>
       <header>
 	<?php endif; ?>
@@ -36,7 +35,7 @@
     <?php if (!$page): ?>
       </header>
 	<?php endif; ?>
-  <?php endif; ?>
+
 
   <div class="content"<?php print $content_attributes; ?>>
     <?php
