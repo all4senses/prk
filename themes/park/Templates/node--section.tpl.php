@@ -33,7 +33,7 @@
       hide($content['links']);
       hide($content['field_tags']);
       echo render($content);
-      echo $node->sectionBlocks['articles_titles_block'];
+      
     ?>
   </div>
 
@@ -49,3 +49,6 @@
 <?php if (!$page): ?>
   </article> <!-- /.node -->
 <?php endif; ?>
+
+  
+<?php echo $node->sectionBlocks['articles_titles_block']; ?>
