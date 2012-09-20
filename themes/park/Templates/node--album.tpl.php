@@ -40,27 +40,19 @@ echo '<div class="content"' , $content_attributes. '>';
         hide($content['body']);
         echo $node->field_body_to_gallery['und'][0]['value'];
 
-        drupal_add_css("sites/all/libraries/jquery.plugins/Ad-gallery/css/jquery.ad-gallery.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-        //drupal_add_css("sites/all/libraries/jquery.plugins/Ad-gallery/css/jquery.ad-gallery_custom.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-
-        //drupal_add_js('sites/all/libraries/jquery.plugins/Ad-gallery/a4s_image_gallery_ad.js');
         drupal_add_js('sites/all/libraries/jquery.plugins/Ad-gallery/jquery.ad-gallery.js');
+        drupal_add_css('sites/all/libraries/jquery.plugins/Ad-gallery/css/jquery.ad-gallery.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
         
         //1, 3, 4, 
-        drupal_add_css("sites/all/libraries/jquery.plugins/Colorbox/css4/colorbox.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
         drupal_add_js('sites/all/libraries/jquery.plugins/Colorbox/jquery.colorbox.js');
-        
-        drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
+        drupal_add_css('sites/all/libraries/jquery.plugins/Colorbox/css4/colorbox.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
         
         $path_to_module = drupal_get_path('module', 'park_image');
         drupal_add_js($path_to_module . '/js/park_add_Colorbox_ToAlbums.js');
         drupal_add_js($path_to_module . '/js/park_add_Gallery-ad_ToAlbums.js');
         drupal_add_css($path_to_module . '/css/park_add_Gallery-ad_ToAlbums.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-
-  
-
         
-        
+        drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
     }
 
     // in teaser somehow direct render($content) doesn't show body

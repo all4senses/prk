@@ -167,3 +167,15 @@ function park_image_prepareBodyToGallery($nid, $gallery) {
    return $body_to_slideshow;
 
 }
+
+
+
+/**
+ * Override or insert variables into the page template.
+ */
+function park_image_preprocess_page(&$vars) {
+  dpm($vars);
+  if(isset($vars['node'])) {
+    //$vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
+  }
+}
