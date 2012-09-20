@@ -3,7 +3,6 @@
 /**
  * Implementation of hook_menu().
  */
-
 function park_pages_menu() {
     
   $items = array();
@@ -47,11 +46,56 @@ function park_pages_menu() {
     */
 
   return $items;
+}
+
+
+/**
+ * Returns section's parts.
+ */
+function park_pages_getSectionParts($node) {
+  
+//$tids = NULL;
+//foreach($term_children as $term_child) {
+//  $tids[$term_child->tid] = $term_child->tid;
+//}
+
+  dpm($node);
+  return;
+  
+  $display = 'article_titles';
+  $view = views_get_view('section_parts');
+  $options = array(
+    'id' => 'tid',
+    'value' => $tids, 
+    'type' => 'select',
+    'vid' =>  'tags',
+    'hierarchy' => 1,
+    'reduce_duplicates' => 1,
+    'group' => 0,
+  );
+  $view->add_item($display, 'filter', 'taxonomy_index', 'tid', $options);
+
+  $node->sectionParts['articles'] = $view->preview($display);
   
 }
 
 
+/**
+ * Implements hook node_view.
+ */
+function park_pages_node_view($node) {
+  switch ($node->type) {
+    case 'section':
+      park_pages_getSectionBlocks($node);
+      break;
+  }
+  
+}
 
+
+/**
+ * Returns miniteasers.
+ */
 function park_pages_buildMiniTeasersSet($nids){
     
     $build = null;
@@ -102,6 +146,9 @@ function park_pages_buildMiniTeasersSet($nids){
 }
 
 
+/**
+ * Returns user's content.
+ */
 function park_pages_getUserContent($account, $type, $singular_title, $plural_title, $build_condition = array(), $build_function = null){
     
   global $user;  
@@ -152,21 +199,17 @@ function park_pages_getUserContent($account, $type, $singular_title, $plural_tit
     }
   }
   /////drupal_add_feed('blog/' . $account->uid . '/feed', t('RSS - !title', array('!title' => $title)));
-  
-
 
 
 //$build += $temp;
 //$build['my'][0] = '<div>yyy</div>';
-//dpm($build);
-//dpm($_GET);
-  //return $build;
   return $build;
 }
 
 
-
-
+/**
+ * Implements hook theme.
+ */
 function park_pages_theme($existing, $type, $theme, $path) {
   return array(
     'park_pages_ImageMiniTeaser' => array(

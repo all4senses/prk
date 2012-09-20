@@ -14,26 +14,31 @@ function park_image_menu() {
 */
 
 
+/**
+ * Implements hook form_alter.
+ */
 function park_image_form_alter(&$form, &$form_state, $form_id) {
   
   //dpm($form_id); dpm($form);
 
-  switch($form_id)
-  {
-      case 'album_node_form':
-      case 'master_class_node_form':
-          
-          $form['field_body_to_gallery']['#type'] = 'hidden'; // don't show field on edit form
-          $form['field_main_image']['#type'] = 'hidden'; // don't show field on edit form
-          break;
+  switch($form_id) {
+    case 'album_node_form':
+    case 'master_class_node_form':
+        // Hide placeholder fields on the edit form.
+        $form['field_body_to_gallery']['#type'] = 'hidden';
+        $form['field_main_image']['#type'] = 'hidden';
+        break;
   }
 
 }
 
 
+/**
+ * Implements hook node_presave.
+ */
 function park_image_node_presave($node) {
     
-    // if this is a new node, yet without nid, let's find out supposed its id
+    // If this is a new node, yet without nid, let's find out supposed its id
     if(!$nid = $node->nid) {
       $nid = db_next_id(db_query('SELECT MAX(nid) FROM {node}')->fetchField());
     }
@@ -45,6 +50,9 @@ function park_image_node_presave($node) {
 }
 
 
+/**
+ * Finds images in a body html.
+ */
 function park_image_findImages($body, $nid, $amount = null){ 
     // $amount - how many images to include in the result array
     
@@ -84,10 +92,10 @@ function park_image_findImages($body, $nid, $amount = null){
 }
 
 
-
-
+/**
+ * Returns themed slideshow html to keep in in the placeholder body_to_gallery.
+ */
 function park_image_prepareBodyToGallery($nid, $gallery) {
-    
     
     $links_collection_for_colobox = '';
     $body_to_slideshow =  ''
@@ -165,16 +173,14 @@ function park_image_prepareBodyToGallery($nid, $gallery) {
                         
    //$body_to_slideshow .= $links_collection_for_colobox;
    return $body_to_slideshow;
-
 }
-
 
 
 /**
  * Override or insert variables into the page template.
  */
 function park_image_preprocess_page(&$vars) {
-  //dpm($vars['node']);
+
   if(isset($vars['node']) && in_array($vars['node']->type, array('album', 'master_class'))) {
     drupal_add_js('sites/all/libraries/jquery.plugins/Ad-gallery/jquery.ad-gallery.js');
     drupal_add_css('sites/all/libraries/jquery.plugins/Ad-gallery/css/jquery.ad-gallery.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
@@ -188,20 +194,5 @@ function park_image_preprocess_page(&$vars) {
     drupal_add_js($path_to_module . '/js/park_add_Gallery-ad_ToAlbums.js');
     drupal_add_css($path_to_module . '/css/park_add_Gallery-ad_ToAlbums.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
         
-    //$vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
   }
 }
-
-
-
-/**
- * Override or insert variables into the page template.
- */
-/*
-function park_image_process_page(&$vars) {
-  dpm($vars['node']);
-  if(isset($vars['node'])) {
-    //$vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
-  }
-}
-*/
