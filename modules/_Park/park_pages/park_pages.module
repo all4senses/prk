@@ -63,9 +63,9 @@ function park_pages_getSectionBlocks($node) {
 
   $display = 'section_titles_block';
   $viewsFilterOptions_tid = array('id' => 'tid', 'value' => $tids, 'type' => 'select', 'vid' =>  'tags', 'hierarchy' => 1, 'reduce_duplicates' => 1, 'group' => 0);
-  $nodeTypesToShow = array('article', 'album');
+  $nodeTypesToShow = array('article' => 'Статьи', 'album' => 'Альбомы');
   
-  foreach ($nodeTypesToShow as $type) {
+  foreach ($nodeTypesToShow as $type => $title) {
     $view = views_get_view('section_blocks');
     
     $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
@@ -75,7 +75,7 @@ function park_pages_getSectionBlocks($node) {
   
     $results = $view->preview($display);
     if ($view->total_rows) {
-      $node->sectionBlocks[$type] = '<h3>' . $view->get_title() . '</h3>' . $results;
+      $node->sectionBlocks[$type] = '<h3>' . $title . '</h3>' . $results;
       //$node->sectionBlocks[$display] = $view->render($display);
     }
   }
