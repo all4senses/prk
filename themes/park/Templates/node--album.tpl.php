@@ -51,23 +51,23 @@ echo '<div class="content"' , $content_attributes. '>';
         drupal_add_js('sites/all/libraries/jquery.plugins/Colorbox/jquery.colorbox.js');
         
         drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
-        drupal_add_js(array('park_image' => array('group_' . 3 => 1)), 'setting');
+        //drupal_add_js(array('park_image' => array('group_' . 3 => 1)), 'setting');
         
         $path_to_custom_js = drupal_get_path('module', 'park_image') . '/js/';
         drupal_add_js($path_to_custom_js . 'park_addColorboxToAlbums.js');
   
-        drupal_add_js('
-            
-                    jQuery(document).ready(function(){
-                            //Examples of how to assign the ColorBox event to elements
-                            jQuery(".group_' . $node->nid .'").colorbox({transition:"fade", slideshow:true, slideshowAuto: false, rel:"group_' . $node->nid . '", width:"95%", height:"95%"});
-
-                            //$(".group2").colorbox({rel:"group2", transition:"fade"});
-                            //$(".group3").colorbox({rel:"group3", transition:"none", width:"75%", height:"75%"});
-                            //$(".group4").colorbox({rel:"group4", slideshow:true});
-                    });
-
-                ', 'inline');
+//        drupal_add_js('
+//            
+//                    jQuery(document).ready(function(){
+//                            //Examples of how to assign the ColorBox event to elements
+//                            jQuery(".group_' . $node->nid .'").colorbox({transition:"fade", slideshow:true, slideshowAuto: false, rel:"group_' . $node->nid . '", width:"95%", height:"95%"});
+//
+//                            //$(".group2").colorbox({rel:"group2", transition:"fade"});
+//                            //$(".group3").colorbox({rel:"group3", transition:"none", width:"75%", height:"75%"});
+//                            //$(".group4").colorbox({rel:"group4", slideshow:true});
+//                    });
+//
+//                ', 'inline');
         
         
     }
