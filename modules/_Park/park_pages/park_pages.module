@@ -68,14 +68,14 @@ function park_pages_getSectionBlocks($node) {
   foreach ($nodeTypesToShow as $type) {
     $view = views_get_view('section_blocks');
     
-    $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => $type);
+    $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
     $view->add_item($display, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
 
     $view->add_item($display, 'filter', 'taxonomy_index', 'tid', $viewsFilterOptions_tid);
   
     $results = $view->preview($display);
     if ($view->total_rows) {
-      $node->sectionBlocks[$type] = '<h3>' . $view->get_title() . '</h3>' . $view->preview($display);
+      $node->sectionBlocks[$type] = '<h3>' . $view->get_title() . '</h3>' . $results;
       //$node->sectionBlocks[$display] = $view->render($display);
     }
   }
