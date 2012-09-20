@@ -129,7 +129,8 @@ function park_image_prepareBodyToGallery($nid, $gallery) {
                                     
                                     $image_data['attributes'] = $attributes;
                                     //$links_collection_for_colobox .= '<a style="display:none;" class="' . $image['class'] . '" href="' . $image['src'] . '">Full screen</a>';
-                                    $body_to_slideshow .= '<li>'
+                                    $body_to_slideshow .= 
+                                          '<li>'
                                             //.'<a href="' . $image['src'] . '">'
                                             .'<a class="' . $image['class'] . '" href="http://' . $_SERVER['SERVER_NAME'] . $image['src'] . '">'
                                                 //.'<img src="' . $image['thumb'] . '"' . (isset($image['title'])?' title="' . $image['title'] . '"':'') . (isset($image['alt'])?' alt="' . $image['alt'] . '"':'') . (isset($image['longdesc'])?' longdesc="' . $image['longdesc'] . '"':'') . ' class="image' . $key2 . '">'

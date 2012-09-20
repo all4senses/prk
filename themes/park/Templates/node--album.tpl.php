@@ -50,6 +50,12 @@ echo '<div class="content"' , $content_attributes. '>';
         drupal_add_css("sites/all/libraries/jquery.plugins/Colorbox/css4/colorbox.css", array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
         drupal_add_js('sites/all/libraries/jquery.plugins/Colorbox/jquery.colorbox.js');
         
+        drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
+        
+        
+        $path_to_custom_js = drupal_get_path('module', 'park_image') . '/js/';
+        drupal_add_js($path_to_custom_js . 'park_addColorboxToAlbums.js');
+  
         drupal_add_js('
             
                     jQuery(document).ready(function(){
