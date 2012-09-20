@@ -50,9 +50,9 @@ function park_pages_menu() {
 
 
 /**
- * Returns section's parts.
+ * Returns section's blocks.
  */
-function park_pages_getSectionParts($node) {
+function park_pages_getSectionBlocks($node) {
   
 //$tids = NULL;
 //foreach($term_children as $term_child) {
@@ -75,7 +75,7 @@ function park_pages_getSectionParts($node) {
   );
   $view->add_item($display, 'filter', 'taxonomy_index', 'tid', $options);
 
-  $node->sectionParts['articles'] = $view->preview($display);
+  $node->sectionBlocks['articles'] = $view->preview($display);
   
 }
 
