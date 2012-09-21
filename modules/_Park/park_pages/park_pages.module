@@ -54,6 +54,10 @@ function park_pages_menu() {
  */
 function park_pages_getSectionBlocks($node) {
   
+  if (!isset($node->field_tags['und']) || empty($node->field_tags['und'])) {
+    return;
+  }
+  
   $node->sectionBlocks = array();
   $tids = NULL;
   
