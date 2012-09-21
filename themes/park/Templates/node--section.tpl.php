@@ -63,7 +63,9 @@
 
   
 <?php 
-  foreach ($node->sectionBlocks as $sectionBlock) {
-    echo $sectionBlock;
+  if (isset($node->sectionBlocks)) {
+    foreach ($node->sectionBlocks as $sectionBlock) {
+      echo $sectionBlock;
+    }
   }
 ?>
