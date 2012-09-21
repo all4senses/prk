@@ -132,6 +132,26 @@ function realname_user_operations_realname_update(array $uids) {
 }
 
 /**
+ * Implements hook_action_info().
+ */
+function realname_action_info() {
+  $info['realname_action_realname_update'] = array(
+    'type' => 'user',
+    'label' => t('Update real name'),
+    'configurable' => FALSE,
+  );
+
+  return $info;
+}
+
+/**
+ * Action callback to update a user's realname.
+ */
+function realname_action_realname_update($account, $context = array()) {
+  realname_delete($account->uid);
+}
+
+/**
  * Implements hook_views_api().
  */
 function realname_views_api() {
@@ -248,6 +268,7 @@ function realname_delete($uid) {
 function realname_delete_multiple(array $uids) {
   db_delete('realname')->condition('uid', $uids, 'IN')->execute();
   drupal_static_reset('realname_load_multiple');
+  entity_get_controller('user')->resetCache($uids);
 }
 
 /**
@@ -256,6 +277,7 @@ function realname_delete_multiple(array $uids) {
 function realname_delete_all() {
   db_delete('realname')->execute();
   drupal_static_reset('realname_load_multiple');
+  entity_get_controller('user')->resetCache();
 }
 
 /**
