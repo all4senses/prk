@@ -19,27 +19,28 @@ echo '</div>';
 
 echo '<div class="content"' , $content_attributes. '>';
 
-    $show_slideshow = false;
-    if(isset($_GET['t']) AND $_GET['t'] == 'full')
-    {
+    
+    if(!isset($_GET['t']) || $_GET['t'] == 'full') {
+        $show_slideshow = false;
         //echo render($content['body']);
         echo '<div class="mode"><a href="' , $node_url, '" title="' , t('View as slideshow') , '">View as slideshow</a></div>';
     }
-    elseif(isset($node->field_body_to_gallery['und']) AND $node->field_body_to_gallery['und'][0]['value'])
-    {
+    elseif(isset($node->field_body_to_gallery['und']) AND $node->field_body_to_gallery['und'][0]['value']) {
         $show_slideshow = true;
         echo '<div class="mode"><a href="' , $node_url, '?t=full" title="' , t('View in full') , '">View in full</a></div>';
-        hide($content['body']);
         echo $node->field_body_to_gallery['und'][0]['value'];
         drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
+        
+        hide($content['body']);
     }
 
     // in teaser somehow direct render($content) doesn't show body
     // so show it another way
-    if(!$show_slideshow AND $view_mode == 'teaser')
-        echo $content['body']['#items'][0]['value']; 
+    if(!$show_slideshow AND $view_mode == 'teaser') {
+      echo $content['body']['#items'][0]['value']; 
+    }
     
-    print render($content);
+    echo render($content);
 
 echo '</div>';
 
