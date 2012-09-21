@@ -102,7 +102,7 @@ function park_pages_getSectionBlocks($node) {
 
   $results = $view->preview($display_name);
   if ($view->total_rows) {
-    $node->sectionBlocks[$type] = '<h3>' . $title . '</h3>' . $results;
+    $node->sectionBlocks['authors'] = '<h3>' . $title . '</h3>' . $results;
     //$node->sectionBlocks[$display] = $view->render($display);
   }
 }
