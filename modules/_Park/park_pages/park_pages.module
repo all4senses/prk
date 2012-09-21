@@ -61,25 +61,50 @@ function park_pages_getSectionBlocks($node) {
     $tids[$term['tid']] = $term['tid'];
   }
 
-  $display = 'section_titles_block';
+  
+  // Add content blocks.
+  
+  $view_name = 'section_blocks';
+  $display_name = 'section_titles_block';
   $viewsFilterOptions_tid = array('id' => 'tid', 'value' => $tids, 'type' => 'select', 'vid' =>  'tags', 'hierarchy' => 1, 'reduce_duplicates' => 1, 'group' => 0);
   $nodeTypesToShow = array('article' => 'Статьи', 'album' => 'Альбомы');
   
   foreach ($nodeTypesToShow as $type => $title) {
-    $view = views_get_view('section_blocks');
-    
+    $view = views_get_view($view_name);
+    $view->add_item($display_name, 'filter', 'taxonomy_index', 'tid', $viewsFilterOptions_tid);
     $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
-    $view->add_item($display, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
+    $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
 
-    $view->add_item($display, 'filter', 'taxonomy_index', 'tid', $viewsFilterOptions_tid);
-  
-    $results = $view->preview($display);
+    $results = $view->preview($display_name);
     if ($view->total_rows) {
       $node->sectionBlocks[$type] = '<h3>' . $title . '</h3>' . $results;
       //$node->sectionBlocks[$display] = $view->render($display);
     }
-  }
+  } // End of foreach ($nodeTypesToShow as $type => $title) {
   
+  
+  // Add authors blocks.
+  
+  $view_name = 'section_users_blocks';
+  $display_name = 'section_users_titles_block';
+  
+  $viewsFilterOptions_authors = array(
+    'id' => 'tid', 
+    'value' => $tids,
+    'relationship' => 'uid',
+    'type' => 'select',
+    'reduce_duplicates' => 1,
+    'vocabulary' => 'tags',
+    'hierarchy' => 1,
+  );
+  
+  $view->add_item($display_name, 'filter', 'taxonomy_index', 'tid', $viewsFilterOptions_authors);
+
+  $results = $view->preview($display_name);
+  if ($view->total_rows) {
+    $node->sectionBlocks[$type] = '<h3>' . $title . '</h3>' . $results;
+    //$node->sectionBlocks[$display] = $view->render($display);
+  }
 }
 
 
