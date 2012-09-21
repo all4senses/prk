@@ -67,7 +67,7 @@ function park_pages_getSectionBlocks($node) {
   $view_name = 'section_blocks';
   $display_name = 'section_titles_block';
   $viewsFilterOptions_tid = array('id' => 'tid', 'value' => $tids, 'type' => 'select', 'vid' =>  'tags', 'hierarchy' => 1, 'reduce_duplicates' => 1, 'group' => 0);
-  $nodeTypesToShow = array('article' => 'Статьи', 'album' => 'Альбомы');
+  $nodeTypesToShow = array('article' => 'Статьи', 'album' => 'Альбомы', 'master_class' => 'Мастер-классы', 'blog_post' => 'Посты в Блогах');
   
   foreach ($nodeTypesToShow as $type => $title) {
     $view = views_get_view($view_name);
