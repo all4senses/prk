@@ -23,11 +23,11 @@ echo '<div class="content"' , $content_attributes. '>';
     if(!isset($_GET['t']) || $_GET['t'] == 'full') {
         $show_slideshow = false;
         //echo render($content['body']);
-        echo '<div class="mode"><a href="' , $node_url, '" title="' , t('View as slideshow') , '">View as slideshow</a></div>';
+        echo '<div class="mode"><a href="' , $node_url, '?t=slideshow" title="' , t('View as slideshow') , '">View as slideshow</a></div>';
     }
     elseif(isset($node->field_body_to_gallery['und']) AND $node->field_body_to_gallery['und'][0]['value']) {
         $show_slideshow = true;
-        echo '<div class="mode"><a href="' , $node_url, '?t=full" title="' , t('View in full') , '">View in full</a></div>';
+        echo '<div class="mode"><a href="' , $node_url, '" title="' , t('View in full') , '">View in full</a></div>';
         echo $node->field_body_to_gallery['und'][0]['value'];
         drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
         
