@@ -143,7 +143,7 @@ function park_pages_node_view($node) {
     case 'preface':
       switch($_SERVER['REDIRECT_URL']) {
         case '/master-classes':
-          $type = 'master-class';
+          $type = 'master_class';
           break;
         case '/articles':
           $type = 'article';
