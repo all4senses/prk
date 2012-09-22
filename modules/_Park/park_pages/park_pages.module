@@ -117,18 +117,21 @@ function park_pages_getSectionBlocks($node) {
  */
 function park_pages_getContentFeedWithControls($node, $type) {
   
+  $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers' : 'titles';
+  $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
+
   $view_name = 'content_feeds';
-  $display_name = 'content_feed_titles_block';
+  $display_name = ($currentViewStyle == 'teasers') ? 'content_feed_teasers_block' : 'content_feed_titles_block';
   $view = views_get_view($view_name);
   $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
   $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
   
   $results = $view->preview($display_name);
   if ($view->total_rows) {
-    $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
+    
     $get = $_GET;
     unset($get['q']);
-    if (isset($_GET['view']) && $_GET['view'] == 'teasers') {
+    if ($currentViewStyle == 'teasers') {
       $get['view'] = 'titles';
       $controlBlock = l(t('View Titles'), $currentUrl, array('query' => $get));
     }
