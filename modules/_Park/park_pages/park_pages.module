@@ -125,7 +125,18 @@ function park_pages_getContentFeedWithControls($node, $type) {
   
   $results = $view->preview($display_name);
   if ($view->total_rows) {
-    $node->contentFeed = $results;
+    $get = $_GET;
+    unset($get['q']);
+    if (isset($_GET['view']) && $_GET['view'] == 'teasers') {
+      $get['view'] = 'titles';
+      $controlBlock = l(t('View Titles'), $_SERVER['REDIRECT_URL'], array('query' => $get));
+    }
+    else {
+      $get['view'] = 'teasers';
+      $controlBlock = l(t('View Teasers'), $_SERVER['REDIRECT_URL'], array('query' => $get));
+    }
+    $controlBlock = '<div class="feed-control">' . $controlBlock . '</div>';
+    $node->contentFeed = $controlBlock . $results;
   }
   
 }
