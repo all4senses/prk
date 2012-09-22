@@ -130,6 +130,20 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     $viewsFilterOptions_user = array('id' => 'uid', 'value' => array(0 => $uid));
     $view->add_item($display_name, 'filter', 'node', 'uid', $viewsFilterOptions_user);
   }
+  else {
+    $query = db_select('node', 'n');
+    $uids = $query
+    ->fields('n', array('uid'))
+    ->condition('type', $type)
+    ->condition('status', 1)
+    ->distinct()
+    //->addTag('node_access')
+    ->execute();
+  }
+  
+  foreach ($uids as $uid) {
+    dpm($uid);
+  }
   
   $results = $view->preview($display_name);
   if ($view->total_rows) {
