@@ -119,7 +119,7 @@ function park_pages_getContentFeedWithControls($type) {
   
   $view_name = 'content_feeds';
   $display_name = 'content_feed_titles_block';
-  
+  $view = views_get_view($view_name);
   $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
   $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
   
@@ -139,8 +139,8 @@ function park_pages_node_view($node) {
     case 'section':
       park_pages_getSectionBlocks($node);
       break;
+    
     case 'preface':
-      dpm($_SERVER['REDIRECT_URL']);
       switch($_SERVER['REDIRECT_URL']) {
         case '/master-classes':
           $type = 'master-class';
