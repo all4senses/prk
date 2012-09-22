@@ -153,6 +153,7 @@ function park_pages_node_view($node) {
           break;
       }
       if (@$type) {
+        dpm($type);
         park_pages_getContentFeedWithControls($type);
       }
       break;
