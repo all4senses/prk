@@ -120,10 +120,12 @@ function park_pages_getContentFeedWithControls($type) {
   $view_name = 'content_feeds';
   $display_name = 'content_feed_titles_block';
   $view = views_get_view($view_name);
+  dpm($view);
   $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
   $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
   
   $results = $view->preview($display_name);
+  dpm($view);
   if ($view->total_rows) {
     $node->contentFeed = $results;
   }
