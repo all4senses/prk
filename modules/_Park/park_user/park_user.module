@@ -21,7 +21,7 @@ function park_user_menu() {
     );
 */
 
-  $user_pages = array('blog' => 'blog_post', 'articles' => 'article', 'master-classes' => 'master-class', 'albums' => 'album');
+  $user_pages = array('blog' => 'blog_post', 'articles' => 'article', 'master-classes' => 'master_class', 'albums' => 'album');
   foreach ($user_pages as $url_part => $content_type) {
     $items['user/%user/' . $url_part] = array( 
       'title' => t("User's $url_part"),
