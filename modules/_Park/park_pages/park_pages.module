@@ -125,7 +125,7 @@ function park_pages_getContentFeedWithControls($node, $type) {
   
   $results = $view->preview($display_name);
   if ($view->total_rows) {
-    $currentUrl = ltim($_SERVER['REDIRECT_URL'], '/');
+    $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
     $get = $_GET;
     unset($get['q']);
     if (isset($_GET['view']) && $_GET['view'] == 'teasers') {
