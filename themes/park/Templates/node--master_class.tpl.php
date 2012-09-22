@@ -19,7 +19,7 @@ echo '</div>';
 
 echo '<div class="content"' , $content_attributes. '>';
 
-    $currentUrl = ltrim($_SERVER['REDIRECT_URL']);
+    $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
     $get = $_GET;
     unset($get['q']);
     if(!isset($_GET['t']) || $_GET['t'] == 'full') {
