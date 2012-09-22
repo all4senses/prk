@@ -25,8 +25,8 @@ function park_user_menu() {
   foreach ($user_pages as $url_part => $content_type) {
     $items['user/%user/' . $url_part] = array( 
       'title' => t("User's $url_part"),
-      //'title callback' => '_guestbook_info',
-      //'title arguments' => array(1, 'title'),
+      'title callback' => 'park_user_getUserTabTitle',
+      'title arguments' => array(1, $url_part),
       'page callback' => 'park_user_getUserContent',
       'page arguments' => array(1, $url_part, $content_type),
       //'access callback' => 'guestbook_menu_access_user_guestbook',
@@ -38,6 +38,14 @@ function park_user_menu() {
     
   return $items;
   
+}
+
+
+/**
+ * Returns user's content.
+ */
+function park_user_getUserTabTitle($account, $content_title){
+  return t("@name's " . $content_title, array('@name' => format_username($account)));
 }
 
 
