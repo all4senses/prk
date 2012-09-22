@@ -140,9 +140,8 @@ function park_pages_node_view($node) {
       park_pages_getSectionBlocks($node);
       break;
     case 'preface':
-      dpm($_SERVER);
-      dpm($_SERVER['REQUEST_URL']);
-      switch($_SERVER['REQUEST_URL']) {
+      dpm($_SERVER['REDIRECT_URL']);
+      switch($_SERVER['REDIRECT_URL']) {
         case '/master-classes':
           $type = 'master-class';
           break;
