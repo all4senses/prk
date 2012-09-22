@@ -28,7 +28,7 @@ function park_user_menu() {
       //'title callback' => '_guestbook_info',
       //'title arguments' => array(1, 'title'),
       'page callback' => 'park_user_getUserContent',
-      'page arguments' => array(1, $content_type),
+      'page arguments' => array(1, $url_part, $content_type),
       //'access callback' => 'guestbook_menu_access_user_guestbook',
       //'access arguments' => array(1, 'access user guestbooks'),
       'access arguments' => array('access content'),
