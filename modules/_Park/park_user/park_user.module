@@ -21,12 +21,33 @@ function park_user_menu() {
     );
 */
 
+  $user_pages = array('blog' => 'blog_post', 'articles' => 'article', 'master-classes' => 'master-class', 'albums' => 'album');
+  foreach ($user_pages as $url_part => $content_type) {
+    $items['user/%user/' . $url_part] = array( 
+      'title' => t("User's $url_part"),
+      //'title callback' => '_guestbook_info',
+      //'title arguments' => array(1, 'title'),
+      'page callback' => 'park_pages_getUserContent',
+      'page arguments' => array(1, $content_type),
+      //'access callback' => 'guestbook_menu_access_user_guestbook',
+      //'access arguments' => array(1, 'access user guestbooks'),
+      'access arguments' => array('access content'),
+      'type' => MENU_LOCAL_TASK,
+    );
+  }
+    
   return $items;
   
 }
 
 
-
+/**
+ * Returns user's content.
+ */
+function park_user_getUserContent($account, $type){
+  $user_content = park_pages_getContentFeedWithControls($type, $account->uid);
+  return 'test' . $user_content;
+}
 
 
 
@@ -34,14 +55,15 @@ function park_user_menu() {
 /**
  * Implements hook_user_view().
  */
+/*
 function park_user_user_view($account, $view_mode, $langcode) {
-/*    
-  $park_user_mode = variable_get('park_user_mode', park_user_SITE_park_user | park_user_USER_park_userS);
-  if ($park_user_mode & park_user_USER_park_userS) {
-    if (user_access('access user park_users') && empty($account->data['park_user_status'])) {
-      $title = t("Read @username's park_user.", array('@username' => $account->name));
-      $link  = l(t('View recent park_user entries'), "user/$account->uid/park_user", array('attributes' => array('title' => $title)));
-  */    
+    
+//  $park_user_mode = variable_get('park_user_mode', park_user_SITE_park_user | park_user_USER_park_userS);
+//  if ($park_user_mode & park_user_USER_park_userS) {
+//    if (user_access('access user park_users') && empty($account->data['park_user_status'])) {
+//      $title = t("Read @username's park_user.", array('@username' => $account->name));
+//      $link  = l(t('View recent park_user entries'), "user/$account->uid/park_user", array('attributes' => array('title' => $title)));
+   
 
     
     
@@ -64,6 +86,7 @@ unset($gbook['links']['comment']); // remove link "add new comment as we have a 
       );
 
 }
+*/
 
 
 
@@ -71,6 +94,7 @@ unset($gbook['links']['comment']); // remove link "add new comment as we have a 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+/*
 function park_user_form_user_register_form_alter(&$form, &$form_state) {
     
   // Set up the right nickname (username) for user registered via loginza
@@ -89,6 +113,7 @@ function park_user_form_user_register_form_alter(&$form, &$form_state) {
  }
 
 }
+*/
 
 
 /**

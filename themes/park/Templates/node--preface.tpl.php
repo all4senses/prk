@@ -63,7 +63,7 @@
 
   
 <?php 
-  if (isset($node->contentFeed)) {
+  if (@$node->contentFeed) {
     echo $node->contentFeed;
   }
 ?>

@@ -115,7 +115,7 @@ function park_pages_getSectionBlocks($node) {
 /**
  * Returns content feed for a specific content type.
  */
-function park_pages_getContentFeedWithControls($node, $type) {
+function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers' : 'titles';
   $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
@@ -125,6 +125,11 @@ function park_pages_getContentFeedWithControls($node, $type) {
   $view = views_get_view($view_name);
   $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
   $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
+  
+  if ($uid) {
+    $viewsFilterOptions_user = array('id' => 'uid', 'value' => array(0 => $uid));
+    $view->add_item($display_name, 'filter', 'node', 'uid', $viewsFilterOptions_user);
+  }
   
   $results = $view->preview($display_name);
   if ($view->total_rows) {
@@ -143,9 +148,10 @@ function park_pages_getContentFeedWithControls($node, $type) {
       
     }
     $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>';
-    $node->contentFeed = $controlBlock . $results;
+    return $controlBlock . $results;
   }
   
+  return NULL;
 }
 
 
@@ -171,7 +177,7 @@ function park_pages_node_view($node) {
           break;
       }
       if (@$type) {
-        park_pages_getContentFeedWithControls($node, $type);
+        $node->contentFeed = park_pages_getContentFeedWithControls($type);
       }
       break; // End of 'preface'
   } // End of switch ($node->type) {
