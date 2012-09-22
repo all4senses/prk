@@ -126,6 +126,7 @@ function park_pages_getContentFeedWithControls($type) {
   
   $results = $view->preview($display_name);
   dpm($view);
+  dpm($results);
   if ($view->total_rows) {
     $node->contentFeed = $results;
   }
