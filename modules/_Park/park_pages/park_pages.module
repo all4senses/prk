@@ -115,18 +115,15 @@ function park_pages_getSectionBlocks($node) {
 /**
  * Returns content feed for a specific content type.
  */
-function park_pages_getContentFeedWithControls($type) {
+function park_pages_getContentFeedWithControls($node, $type) {
   
   $view_name = 'content_feeds';
   $display_name = 'content_feed_titles_block';
   $view = views_get_view($view_name);
-  dpm($view);
   $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
   $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
   
   $results = $view->preview($display_name);
-  dpm($view);
-  dpm($results);
   if ($view->total_rows) {
     $node->contentFeed = $results;
   }
@@ -156,11 +153,10 @@ function park_pages_node_view($node) {
           break;
       }
       if (@$type) {
-        dpm($type);
-        park_pages_getContentFeedWithControls($type);
+        park_pages_getContentFeedWithControls($node, $type);
       }
-      break;
-  }
+      break; // End of 'preface'
+  } // End of switch ($node->type) {
   
 }
 
