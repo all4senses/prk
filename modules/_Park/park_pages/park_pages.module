@@ -133,13 +133,16 @@ function park_pages_getContentFeedWithControls($node, $type) {
     unset($get['q']);
     if ($currentViewStyle == 'teasers') {
       $get['view'] = 'titles';
-      $controlBlock = l(t('View Titles'), $currentUrl, array('query' => $get));
+      $newViewStyleTitle = t('View Titles');
+      $currentViewStyleTitle = t('View Teasers');
     }
     else {
       $get['view'] = 'teasers';
-      $controlBlock = l(t('View Teasers'), $currentUrl, array('query' => $get));
+      $newViewStyleTitle = t('View Teasers');
+      $currentViewStyleTitle = t('View Titles');
+      
     }
-    $controlBlock = '<div class="feed-control">' . $controlBlock . '</div>';
+    $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>';
     $node->contentFeed = $controlBlock . $results;
   }
   
