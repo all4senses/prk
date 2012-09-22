@@ -44,9 +44,10 @@ function park_user_menu() {
 /**
  * Returns user's content.
  */
-function park_user_getUserContent($account, $type){
-  $user_content = park_pages_getContentFeedWithControls($type, $account->uid);
-  return 'test' . $user_content;
+function park_user_getUserContent($account, $content_title, $content_type){
+  drupal_set_title($title = t("@name's " . $content_title, array('@name' => format_username($account))), PASS_THROUGH);
+  $user_content = park_pages_getContentFeedWithControls($content_type, $account->uid);
+  return '<h1>' . $title . '</h1>' . $user_content;
 }
 
 
