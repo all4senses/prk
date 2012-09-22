@@ -181,18 +181,30 @@ function park_image_prepareBodyToGallery($nid, $gallery) {
  */
 function park_image_preprocess_page(&$vars) {
 
-  if(isset($vars['node']) && in_array($vars['node']->type, array('album', 'master_class', 'preface'))) {
-    drupal_add_js('sites/all/libraries/jquery.plugins/Ad-gallery/jquery.ad-gallery.js');
-    drupal_add_css('sites/all/libraries/jquery.plugins/Ad-gallery/css/jquery.ad-gallery.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-
-    //1, 3, 4, 
-    drupal_add_js('sites/all/libraries/jquery.plugins/Colorbox/jquery.colorbox.js');
-    drupal_add_css('sites/all/libraries/jquery.plugins/Colorbox/css4/colorbox.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-
-    $path_to_module = drupal_get_path('module', 'park_image');
-    drupal_add_js($path_to_module . '/js/park_add_Colorbox_ToAlbums.js');
-    drupal_add_js($path_to_module . '/js/park_add_Gallery-ad_ToAlbums.js');
-    drupal_add_css($path_to_module . '/css/park_add_Gallery-ad_ToAlbums.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-        
+  if(
+       (isset($vars['node']) && in_array($vars['node']->type, array('album', 'master_class', 'preface')))
+          OR
+       (arg(0) == 'user' && in_array(arg(2), array('albums', 'master-classes')))
+          
+    ) {
+    park_image_addSlideShowJs();
   }
+}
+
+
+/**
+ * Adds slideshow js and css to a page.
+ */
+function park_image_addSlideShowJs() {
+  drupal_add_js('sites/all/libraries/jquery.plugins/Ad-gallery/jquery.ad-gallery.js');
+  drupal_add_css('sites/all/libraries/jquery.plugins/Ad-gallery/css/jquery.ad-gallery.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+
+  //1, 3, 4, 
+  drupal_add_js('sites/all/libraries/jquery.plugins/Colorbox/jquery.colorbox.js');
+  drupal_add_css('sites/all/libraries/jquery.plugins/Colorbox/css4/colorbox.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+
+  $path_to_module = drupal_get_path('module', 'park_image');
+  drupal_add_js($path_to_module . '/js/park_add_Colorbox_ToAlbums.js');
+  drupal_add_js($path_to_module . '/js/park_add_Gallery-ad_ToAlbums.js');
+  drupal_add_css($path_to_module . '/css/park_add_Gallery-ad_ToAlbums.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
 }
