@@ -113,12 +113,48 @@ function park_pages_getSectionBlocks($node) {
 
 
 /**
+ * Returns content feed for a specific content type.
+ */
+function park_pages_getContentFeedWithControls($type) {
+  
+  $view_name = 'content_feeds';
+  $display_name = 'content_feed_titles_block';
+  
+  $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
+  $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
+  
+  $results = $view->preview($display_name);
+  if ($view->total_rows) {
+    $node->contentFeed = $results;
+  }
+  
+}
+
+
+/**
  * Implements hook node_view.
  */
 function park_pages_node_view($node) {
   switch ($node->type) {
     case 'section':
       park_pages_getSectionBlocks($node);
+      break;
+    case 'preface':
+      dpm($_REQUEST['URI']);
+      switch($_REQUEST['URI']) {
+        case '/master-classes':
+          $type = 'master-class';
+          break;
+        case '/articles':
+          $type = 'article';
+          break;
+        case '/albums':
+          $type = 'album';
+          break;
+      }
+      if (@$type) {
+        park_pages_getContentFeedWithControls($type);
+      }
       break;
   }
   
