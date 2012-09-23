@@ -197,7 +197,8 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
           '#default_value' => $options[1],
           '#value' => $options[1],
         );
-        $users_select = render($form);
+        dpm($form);
+        $users_select = drupal_render($form);
       }
     }
 
