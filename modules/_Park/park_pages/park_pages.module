@@ -131,26 +131,6 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     $view->add_item($display_name, 'filter', 'node', 'uid', $viewsFilterOptions_user);
   }
   else {
-
-    
-    $terms = array('бисер', 'дизайн');
-    
-    $query = db_select('taxonomy_term_data', 'td');
-    $query->fields('td', array('tid'))
-          ->condition('td.name', $terms, 'IN');
-    
-    $tids = $query->distinct()
-    //->addTag('node_access')
-    ->execute()->fetchCol();
-    
-    //dpm($results);
-    
-//    foreach ($results as $tid) {
-//      $tids[] = $tid;
-//    }
-//    dpm($tids);
-    
-    //$tids = array(2);
     
     $query = db_select('node', 'n');
     $query->leftJoin('users', 'u', 'u.uid = n.uid');
@@ -161,19 +141,29 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
           ->fields('rn', array('realname'))
           ->condition('n.type', $type)
           ->condition('n.status', 1);
-    $or = db_or();
-//    foreach ($tids as $count => $tid) {
-//      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-//    }
-    foreach ($tids as $count => $tid) {
-      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-      $or->condition("ti_$count.tid", $tid);
-      
+    
+    if (@$_GET['tags']) {
+      $terms = explode('+', $_GET['tags']); //array('бисер', 'дизайн');
+    
+      $query2 = db_select('taxonomy_term_data', 'td');
+      $query2->fields('td', array('tid'))
+            ->condition('td.name', $terms, 'IN');
+      $tids = $query2->distinct()
+      ->execute()->fetchCol();
+      dpm($tids);
+      $or = db_or();
+  //    foreach ($tids as $count => $tid) {
+  //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+  //    }
+      foreach ($tids as $count => $tid) {
+        $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+        $or->condition("ti_$count.tid", $tid);
+      }
+
+      $query->condition($or);
     }
     
-    $query->condition($or);
     $uids = $query->distinct()
-    //->addTag('node_access')
     ->execute();
   }
   
