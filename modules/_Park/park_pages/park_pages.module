@@ -194,8 +194,8 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
           '#type' => 'select',
           '#title' => t('Authors'),
           '#options' => $options,
-          //'#default_value' => $options[1],
-          '#value' => $options[1],
+          '#default_value' => $options[1],
+          //'#value' => $options[1],
         );
         dpm($form);
         $users_select = drupal_render($form);
