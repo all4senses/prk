@@ -174,7 +174,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     $query->condition($or);
     $uids = $query->distinct()
     //->addTag('node_access')
-    ->execute()->fetch;
+    ->execute();
   }
   
   foreach ($uids as $uid) {
