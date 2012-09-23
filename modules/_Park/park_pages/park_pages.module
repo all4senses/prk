@@ -133,7 +133,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   else {
 
     
-    $terms = array('бисер'/*, 'дизайн'*/);
+    $terms = array('бисер', 'дизайн');
     
     $query = db_select('taxonomy_term_data', 'td');
     $query->fields('td', array('tid', 'name'))
