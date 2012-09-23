@@ -183,7 +183,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       ->execute();
 
       foreach ($users as $user) {
-        $options[$users->uid] = $user->realname;
+        $options[$user->uid] = $user->realname;
       }
 
       $users_select = array(
