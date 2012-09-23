@@ -189,12 +189,12 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       }
       
       if ($options) {
-        $options[0] = t('- Choose an author -');
+        $options[''] = t('- Choose an author -');
         $users_select = array(
           '#type' => 'select',
           '#title' => t('Authors'),
           '#options' => $options,
-          '#default_value' => 0,
+          '#default_value' => $options[''],
         );
         $users_select = render($users_select);
       }
