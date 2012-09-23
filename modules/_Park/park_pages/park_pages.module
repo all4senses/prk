@@ -129,15 +129,16 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
   
   if (@$_GET['tags']) {
-    dpm($_GET['tags']);
     $terms = explode(',', $_GET['tags']); //array('бисер', 'дизайн');
-    dpm($terms);
     $query = db_select('taxonomy_term_data', 'td');
     $query->fields('td', array('tid'))
           ->condition('td.name', $terms, 'IN');
     $tids = $query->distinct()
     ->execute()->fetchCol();
+    
+    dpm($terms);
     dpm($tids);
+    
     if ($tids) {
       foreach ($tids as $tid) {
         $options[$tid] = $tid;
@@ -197,7 +198,6 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
           '#default_value' => $options[1],
           //'#value' => $options[1],
         );
-        dpm($form);
         $users_select = drupal_render($form);
       }
     }
