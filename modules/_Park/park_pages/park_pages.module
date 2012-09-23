@@ -186,6 +186,8 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
         $options[$user->uid] = $user->realname;
       }
 
+      dpm($options);
+      
       $users_select = array(
         'type' => 'select',
         'title' => t('Authors'),
