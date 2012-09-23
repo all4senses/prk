@@ -166,8 +166,9 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
 //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
 //    }
     foreach ($tids as $count => $tid) {
-      $or->condition("ti_$count.tid", $tid);
       $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+      $or->condition("ti_$count.tid", $tid);
+      
     }
     
     $query->condition($or);
