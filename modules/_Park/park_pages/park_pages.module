@@ -186,12 +186,12 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
         $options[$users->uid] = $user->realname;
       }
 
-      $users_select = render(array(
+      $users_select = array(
         'type' => 'select',
         'title' => t('Authors'),
         'options' => $options,
-      ));
-
+      );
+      $users_select = render($users_select);
     }
 
 
