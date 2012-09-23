@@ -195,6 +195,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
           '#title' => t('Authors'),
           '#options' => $options,
           '#default_value' => $options[0],
+          '#value' => $options[0],
         );
         $users_select = render($users_select);
       }
