@@ -139,13 +139,16 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     $query->fields('td', array('tid', 'name'))
           ->condition('td.name', $terms, 'IN');
     
-    $tids = $query->distinct()
+    $results = $query->distinct()
     //->addTag('node_access')
-    ->execute();
+    ->execute()->fetchCol();
     
-    foreach ($tids as $tid) {
-      dpm($tid);
-    }
+    dpm($results);
+    
+//    foreach ($results as $tid) {
+//      $tids[] = $tid;
+//    }
+//    dpm($tids);
     
     $tids = array(2);
     
