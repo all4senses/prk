@@ -132,8 +132,9 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   }
   else {
     $query = db_select('node', 'n');
+    $query->leftJoin('users', 'u', 'u.uid = n.uid');
     $uids = $query
-    ->fields('n', array('uid'))
+    ->fields('u', array('uid', 'name'))
     ->condition('type', $type)
     ->condition('status', 1)
     ->distinct()
