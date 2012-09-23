@@ -117,6 +117,8 @@ function park_pages_getSectionBlocks($node) {
  */
 function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
+  $terms = NULL;
+  
   $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers' : 'titles';
   $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
 
@@ -126,57 +128,73 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
   $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
   
+  if (@$_GET['tags']) {
+    dpm($_GET['tags']);
+    $terms = explode(',', $_GET['tags']); //array('бисер', 'дизайн');
+    dpm($terms);
+    $query = db_select('taxonomy_term_data', 'td');
+    $query->fields('td', array('tid'))
+          ->condition('td.name', $terms, 'IN');
+    $tids = $query->distinct()
+    ->execute()->fetchCol();
+    dpm($tids);
+    if ($tids) {
+      foreach ($tids as $tid) {
+        $options[$tid] = $tid;
+      }
+      $viewsFilterOptions_tids = array('id' => 'tid', 'reduce_duplicates' => 1, 'type' => 'select', 'vocabulary' => 'tags', 'value' => $options);
+      $view->add_item($display_name, 'filter', 'taxonomy_index', 'tid', $viewsFilterOptions_tids);
+    }
+  }
+  
   if ($uid) {
     $viewsFilterOptions_user = array('id' => 'uid', 'value' => array(0 => $uid));
     $view->add_item($display_name, 'filter', 'node', 'uid', $viewsFilterOptions_user);
   }
-  else {
-    
-    $query = db_select('node', 'n');
-    $query->leftJoin('users', 'u', 'u.uid = n.uid');
-    $query->leftJoin('realname', 'rn', 'rn.uid = n.uid');
-    
-    
-    $query->fields('u', array('uid', 'name'))
-          ->fields('rn', array('realname'))
-          ->condition('n.type', $type)
-          ->condition('n.status', 1);
-    
-    if (@$_GET['tags']) {
-      dpm($_GET['tags']);
-      $terms = explode(',', $_GET['tags']); //array('бисер', 'дизайн');
-      dpm($terms);
-      $query2 = db_select('taxonomy_term_data', 'td');
-      $query2->fields('td', array('tid'))
-            ->condition('td.name', $terms, 'IN');
-      $tids = $query2->distinct()
-      ->execute()->fetchCol();
-      dpm($tids);
-      if (!empty($tids)) {
-        $or = db_or();
-    //    foreach ($tids as $count => $tid) {
-    //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-    //    }
-        foreach ($tids as $count => $tid) {
-          $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-          $or->condition("ti_$count.tid", $tid);
-        }
-
-        $query->condition($or);
-      }
-    }
-    
-    $uids = $query->distinct()
-    ->execute();
-  }
   
-  foreach ($uids as $uid) {
-    dpm($uid);
-  }
+  
   
   $results = $view->preview($display_name);
   if ($view->total_rows) {
     
+    if(!$uid) {
+      $query = db_select('node', 'n');
+      $query->leftJoin('users', 'u', 'u.uid = n.uid');
+      $query->leftJoin('realname', 'rn', 'rn.uid = n.uid');
+
+      $query->fields('u', array('uid', 'name'))
+            ->fields('rn', array('realname'))
+            ->condition('n.type', $type)
+            ->condition('n.status', 1);
+
+      if ($tids) {
+        $or = db_or();
+  //    foreach ($tids as $count => $tid) {
+  //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+  //    }
+        foreach ($tids as $count => $tid) {
+          $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+          $or->condition("ti_$count.tid", $tid);
+        }
+        $query->condition($or);
+      }
+
+      $users = $query->distinct()
+      ->execute();
+
+      foreach ($users as $user) {
+        $options[$users->uid] = $user->realname;
+      }
+
+      $users_select = render(array(
+        'type' => 'select',
+        'title' => t('Authors'),
+        'options' => $options,
+      ));
+
+    }
+
+
     $get = $_GET;
     unset($get['q']);
     if ($currentViewStyle == 'teasers') {
@@ -190,7 +208,8 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       $currentViewStyleTitle = t('View Titles');
       
     }
-    $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>';
+    $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>' 
+                  . $users_select;
     return $controlBlock . $results;
   }
   
