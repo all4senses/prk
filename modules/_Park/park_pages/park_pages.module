@@ -144,7 +144,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     
     if (@$_GET['tags']) {
       dpm($_GET['tags']);
-      $terms = explode('+', $_GET['tags']); //array('бисер', 'дизайн');
+      $terms = explode(',', $_GET['tags']); //array('бисер', 'дизайн');
       dpm($terms);
       $query2 = db_select('taxonomy_term_data', 'td');
       $query2->fields('td', array('tid'))
