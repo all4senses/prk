@@ -189,9 +189,10 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       dpm($options);
       
       $users_select = array(
-        'type' => 'select',
-        'title' => t('Authors'),
-        'options' => $options,
+        '#type' => 'select',
+        '#title' => t('Authors'),
+        '#options' => $options,
+        '#default_value' => NULL,
       );
       $users_select = render($users_select);
     }
@@ -208,7 +209,6 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       $get['view'] = 'teasers';
       $newViewStyleTitle = t('View Teasers');
       $currentViewStyleTitle = t('View Titles');
-      
     }
     $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>' 
                   . $users_select;
