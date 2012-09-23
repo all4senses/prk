@@ -189,7 +189,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       }
       
       if ($options) {
-        $options = array('' => t('- Choose an author -')) + $options;
+        $options = array(0 => t('- Choose an author -')) + $options;
         $form['user_select'] = array(
           '#type' => 'select',
           '#title' => t('Authors'),
