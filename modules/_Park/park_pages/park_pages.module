@@ -135,8 +135,8 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     $query->leftJoin('users', 'u', 'u.uid = n.uid');
     $uids = $query
     ->fields('u', array('uid', 'name'))
-    ->condition('type', $type)
-    ->condition('status', 1)
+    ->condition('n.type', $type)
+    ->condition('n.status', 1)
     ->distinct()
     //->addTag('node_access')
     ->execute();
