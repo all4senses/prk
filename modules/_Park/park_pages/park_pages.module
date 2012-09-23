@@ -134,7 +134,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
 
     
     $terms = array('бисер'/*, 'дизайн'*/);
-    $tids = array(1, 2);
+    $tids = array(1);
     
     $query = db_select('node', 'n');
     $query->leftJoin('users', 'u', 'u.uid = n.uid');
