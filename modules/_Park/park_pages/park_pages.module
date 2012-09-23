@@ -144,7 +144,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     ->execute();
     
     foreach ($tids as $tid) {
-      dpm($tids);
+      dpm($tid);
     }
     
     $tids = array(2);
