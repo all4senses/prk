@@ -136,21 +136,21 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     $terms = array('бисер', 'дизайн');
     
     $query = db_select('taxonomy_term_data', 'td');
-    $query->fields('td', array('tid', 'name'))
+    $query->fields('td', array('tid'))
           ->condition('td.name', $terms, 'IN');
     
-    $results = $query->distinct()
+    $tids = $query->distinct()
     //->addTag('node_access')
     ->execute()->fetchCol();
     
-    dpm($results);
+    //dpm($results);
     
 //    foreach ($results as $tid) {
 //      $tids[] = $tid;
 //    }
 //    dpm($tids);
     
-    $tids = array(2);
+    //$tids = array(2);
     
     $query = db_select('node', 'n');
     $query->leftJoin('users', 'u', 'u.uid = n.uid');
