@@ -134,6 +134,19 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
 
     
     $terms = array('бисер'/*, 'дизайн'*/);
+    
+    $query = db_select('taxonomy_term_data', 'td');
+    $query->fields('td', array('tid', 'name'))
+          ->condition('td.name', $terms, 'IN');
+    
+    $tids = $query->distinct()
+    //->addTag('node_access')
+    ->execute();
+    
+    foreach ($tids as $tid) {
+      dpm($tids);
+    }
+    
     $tids = array(2);
     
     $query = db_select('node', 'n');
@@ -145,13 +158,14 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
 //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.tid = td_$count.tid AND ti_$count.nid = n.nid");
 //    }
     
-//    foreach ($tids as $count => $tid) {
-//      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-//    }
-    foreach ($terms as $count => $term) {
-      $query->leftJoin('taxonomy_term_data', "td_$count", "td_$count.name = $term");
-      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = td_$count.tid");
+    foreach ($tids as $count => $tid) {
+      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
     }
+    
+//    foreach ($terms as $count => $term) {
+//      $query->leftJoin('taxonomy_term_data', "td_$count", "td_$count.name = $term");
+//      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = td_$count.tid");
+//    }
     $query->fields('u', array('uid', 'name'))
           ->fields('rn', array('realname'))
           ->condition('n.type', $type)
@@ -161,12 +175,14 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
 //      $or->condition("ti_$count.tid", "td_$count.tid");
 //    }
     
-//    foreach ($tids as $count => $tid) {
-//      $or->condition("ti_$count.tid", $tid);
-//    }
-    foreach ($terms as $count => $term) {
-      $or->condition("ti_$count.tid", "td_$count.tid");
+    foreach ($tids as $count => $tid) {
+      $or->condition("ti_$count.tid", $tid);
     }
+    
+//    foreach ($terms as $count => $term) {
+//      $or->condition("ti_$count.tid", "td_$count.tid");
+//    }
+    
     $query->condition($or);
     $uids = $query->distinct()
     //->addTag('node_access')
