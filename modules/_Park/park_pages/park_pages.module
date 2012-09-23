@@ -181,20 +181,23 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
 
       $users = $query->distinct()
       ->execute();
-
+      
+      $options = NULL;
+      $users_select = NULL;
       foreach ($users as $user) {
         $options[$user->uid] = $user->realname;
       }
-
-      dpm($options);
       
-      $users_select = array(
-        '#type' => 'select',
-        '#title' => t('Authors'),
-        '#options' => $options,
-        '#default_value' => NULL,
-      );
-      $users_select = render($users_select);
+      if ($options) {
+        $options[0] = t('- Choose an author -');
+        $users_select = array(
+          '#type' => 'select',
+          '#title' => t('Authors'),
+          '#options' => $options,
+          '#default_value' => 0,
+        );
+        $users_select = render($users_select);
+      }
     }
 
 
