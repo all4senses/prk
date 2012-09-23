@@ -149,7 +149,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
 //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
 //    }
     foreach ($terms as $count => $term) {
-      $query->leftJoin('taxonomy_term_data', "td_$count", "td_$count.name = '$term'");
+      $query->leftJoin('taxonomy_term_data', "td_$count", "td_$count.name = $term");
       $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = td_$count.tid");
     }
     $query->fields('u', array('uid', 'name'))
