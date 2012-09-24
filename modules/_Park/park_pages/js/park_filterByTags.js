@@ -12,6 +12,8 @@
          
          tags = jQuery('.chzn-select').val().toString();
          console.log('tags = ' + tags);
+         
+         //str = ''; jQuery('.chzn-select [selected][disabled]').each(function(){str = str + (str ? ',' : '') + jQuery(this).val()}); console.log(str);
          tagsDisabled = ''; 
          jQuery('.chzn-select [selected][disabled]').each(
           function(){tagsDisabled = tagsDisabled + (tagsDisabled ? ',' : '') + jQuery(this).val()
