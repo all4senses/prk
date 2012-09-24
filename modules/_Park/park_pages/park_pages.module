@@ -119,6 +119,27 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   $terms = NULL;
   
+  // Build a tags block.
+  $selectTags = '<select data-placeholder="Your Favorite Types of Bear" style="width:350px;" multiple class="chzn-select" tabindex="8">
+          <option value=""></option>
+          <option>American Black Bear</option>
+          <option>Asiatic Black Bear</option>
+          <option>Brown Bear</option>
+          <option>Giant Panda</option>
+          <option selected>Sloth Bear</option>
+          <option disabled>Sun Bear</option>
+          <option selected>Polar Bear</option>
+          <option disabled>Spectacled Bear</option>
+        </select>';
+  
+  drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
+  drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+
+  $path_to_module = drupal_get_path('module', 'park_page');
+  drupal_add_js($path_to_module . '/js/park_filterByTags.js');
+  
+  
+  
   $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers' : 'titles';
   $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
 
@@ -216,7 +237,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       $currentViewStyleTitle = t('View Titles');
     }
     $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>' 
-                  . $users_select;
+                  . $users_select . $selectTags;
     return $controlBlock . $results;
   }
   
