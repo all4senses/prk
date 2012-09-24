@@ -5,16 +5,31 @@
        
        //console.log(Drupal.settings.park_image);
        $(".chzn-select").chosen();
+       
        $("#doFilterByTag").click(function(){
          console.log($("#contentUrl").val());
          console.log($("#contentOpened_query").val());
-         var tags = jQuery('.chzn-select').val().toString();
+         
+         tags = jQuery('.chzn-select').val().toString();
+         console.log('tags = ' + tags);
+         tagsDisabled = ''; 
+         jQuery('.chzn-select [selected][disabled]').each(
+          function(){tagsDisabled = tagsDisabled + (tagsDisabled ? ',' : '') + jQuery(this).val()
+         }); 
+         console.log('tagsDisabled = ' + tagsDisabled);
+         
+         tags = (tags ? ',' : '') + tagsDisabled;
+         
+         console.log('tagsAll = ' + tags);
+         
          if (tags) {
           if ($("#contentOpened_query").val()) {
-            top.location.href = $("#contentUrl").val() + '&tags=' + tags;
+            //top.location.href = $("#contentUrl").val() + '&tags=' + tags;
+            console.log('Url 1 = ' + $("#contentUrl").val() + '&tags=' + tags);
           }
           else {
-            top.location.href = $("#contentUrl").val() + '?tags=' + tags;
+            //top.location.href = $("#contentUrl").val() + '?tags=' + tags;
+            console.log('Url 2 = ' + $("#contentUrl").val() + '?tags=' + tags);
           }
          }
          
