@@ -189,7 +189,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
             ->condition('n.type', $type)
             ->condition('n.status', 1);
 
-      if ($tids) {
+      if (@$tids) {
         $or = db_or();
   //    foreach ($tids as $count => $tid) {
   //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
