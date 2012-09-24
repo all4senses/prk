@@ -127,9 +127,9 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
           <option>Brown Bear</option>
           <option>Giant Panda</option>
           <option selected>Sloth Bear</option>
-          <option disabled>Sun Bear</option>
+          <option selected disabled>Sun Bear</option>
           <option selected>Polar Bear</option>
-          <option disabled>Spectacled Bear</option>
+          <option selected disabled>Spectacled Bear</option>
         </select>';
   
   drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
