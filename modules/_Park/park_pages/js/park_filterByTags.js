@@ -25,6 +25,7 @@
          console.log('tagsAll = ' + tags);
          
          if (tags) {
+          // 'onChange' => "top.location.href='http://getvoip.com/" . $_GET['q'] . "?provider=' + encodeURIComponent(document.getElementById('select_provider').options[document.getElementById('select_provider').selectedIndex].value) + '$url'"),
           if ($("#contentOpened_query").val()) {
             //top.location.href = $("#contentUrl").val() + '&tags=' + tags;
             console.log('Url 1 = ' + $("#contentUrl").val() + '&tags=' + tags);

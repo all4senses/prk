@@ -119,6 +119,23 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   $terms = NULL;
   
+  $query = db_select('taxonomy_term_data', 'td')
+        ->fields('td', array('name', 'tid'));
+  $query->leftJoin('taxonomy_index', 'ti', 'ti.tid = td.tid');
+  $query->leftJoin('node', 'n', 'n.nid = ti.nid');
+  $query->where('n.nid = ti.nid AND n.type = :type', array(':type' => $type))
+        ->addExpression('COUNT(n.nid)', 'count');
+  $query->groupBy('td.name');
+  $query->condition('td.vid', 1);
+  $results = $query->execute();
+  foreach($results as $result) {
+    $allTags[$result->tid] = /*(array)*/ $result;
+  }
+  
+  dpm($allTags);
+
+
+  
   // Build a tags block.
   $selectTags = '<select data-placeholder="Your Favorite Types of Bear" style="width:350px;" multiple class="chzn-select" tabindex="8">
           <option value=""></option>
