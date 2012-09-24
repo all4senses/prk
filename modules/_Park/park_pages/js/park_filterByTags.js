@@ -20,7 +20,7 @@
          }); 
          console.log('tagsDisabled = ' + tagsDisabled);
          
-         tags = (tags ? ',' : '') + tagsDisabled;
+         tags = (tags ? (tags + ',') : '') + tagsDisabled;
          
          console.log('tagsAll = ' + tags);
          
