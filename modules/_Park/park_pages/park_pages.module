@@ -135,7 +135,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
   drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
 
-  $path_to_module = drupal_get_path('module', 'park_page');
+  $path_to_module = drupal_get_path('module', 'park_pages');
   drupal_add_js($path_to_module . '/js/park_filterByTags.js');
   
   
