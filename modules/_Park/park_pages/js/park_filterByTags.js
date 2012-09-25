@@ -50,6 +50,7 @@
       
       $("#doFilterByTag").click(function(){
         
+        final_param_string = source_param_string;
         tagsQueryPart = getTagsQueryPart();
         authorQueryPart = getAuthorQueryPart();
         
