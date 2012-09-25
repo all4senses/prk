@@ -121,13 +121,34 @@ function park_pages_themeTagsSelect($tags = NULL, $selected_terms = array(), $di
   
   dpm($tags);
   
-  $selectTags = '<select data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
+  $selectTags = '<select id="tags" data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
           <option value=""></option>';
   foreach ($tags as $tag) {
     $selectTags .= '<option value="' . $tag->name . '"' . (in_array($tag->name, $selected_terms) ? ' selected': '') . (in_array($tag->name, $disabled_terms) ? ' disabled': '') . '>' . $tag->name . '</option>';
   }
   $selectTags .= '</select>
         <div id="doFilter">Filter</div>';
+  return $selectTags;
+}
+
+
+function park_pages_themeAuthorsSelect($selected_username = NULL, $all_authors = array(), $eligible_authors = array()) {
+  
+  if (empty($all_authors)) {
+    return NULL;
+  }
+  
+  dpm($all_authors);
+  
+  $selectTags = '<select id="authors" data-placeholder="' . t('Select author') . '" style="width:350px;" class="chzn-select" tabindex="8">
+          <option value=""></option>';
+  
+  foreach ($all_authors as $username => $realname) {
+    $selectTags .= '<option value="' . $username . '"' . ($username == $selected_username ? ' selected': '') . (!in_array($realname, $eligible_authors) ? ' disabled': '') . '>' . $realname . '</option>';
+  }
+  $selectTags .= '</select>
+        <div id="goToAuthorPage">Filter</div>';
+  
   return $selectTags;
 }
 
@@ -203,54 +224,57 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   
   
+
+  // Get all users that have content of a specific type
+
+  $query = db_select('node', 'n');
+  $query->leftJoin('users', 'u', 'u.uid = n.uid');
+  $query->leftJoin('realname', 'rn', 'rn.uid = n.uid');
+
+  $query->fields('u', array('uid', 'name'))
+        ->fields('rn', array('realname'))
+        ->condition('n.type', $type)
+        ->condition('n.status', 1);
+
+  $users = $query->distinct()
+  ->execute();
+
+  $all_authors = NULL;
+  foreach ($users as $user) {
+    $all_authors[$user->uid] = $user->realname;
+  }
+
+
+  // Refine conditions and get only users that have specific tag in their content (of a specific type)
+  if (@$tids) {
+    $or = db_or();
+//    foreach ($tids as $count => $tid) {
+//      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+//    }
+    foreach ($tids as $count => $tid) {
+      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+      $or->condition("ti_$count.tid", $tid);
+    }
+    $query->condition($or);
+  }
+
+  $users = $query->distinct()
+  ->execute();
+
+  $eligible_authors = NULL;
+
+  foreach ($users as $user) {
+    $eligible_authors[$user->uid] = $user->realname;
+  }
+
+  $users_select = park_pages_themeAuthorsSelect(@$_GET['author'], $all_authors, $eligible_authors);
+
+      
+      
+      
   $results = $view->preview($display_name);
   if ($view->total_rows) {
     
-    if(!$uid) {
-      $query = db_select('node', 'n');
-      $query->leftJoin('users', 'u', 'u.uid = n.uid');
-      $query->leftJoin('realname', 'rn', 'rn.uid = n.uid');
-
-      $query->fields('u', array('uid', 'name'))
-            ->fields('rn', array('realname'))
-            ->condition('n.type', $type)
-            ->condition('n.status', 1);
-
-      if (@$tids) {
-        $or = db_or();
-  //    foreach ($tids as $count => $tid) {
-  //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-  //    }
-        foreach ($tids as $count => $tid) {
-          $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-          $or->condition("ti_$count.tid", $tid);
-        }
-        $query->condition($or);
-      }
-
-      $users = $query->distinct()
-      ->execute();
-      
-      $options = NULL;
-      $users_select = NULL;
-      foreach ($users as $user) {
-        $options[$user->uid] = $user->realname;
-      }
-      
-      if ($options) {
-        $options = array(0 => '- ' . t('All authors') . ' -') + $options;
-        $form['user_select'] = array(
-          '#type' => 'select',
-          '#title' => t('Authors'),
-          '#options' => $options,
-          '#default_value' => $options[1],
-          //'#value' => $options[1],
-        );
-        $users_select = drupal_render($form);
-      }
-    }
-
-
     $get = $_GET;
     unset($get['q']);
     if ($currentViewStyle == 'teasers') {
@@ -263,12 +287,13 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       $newViewStyleTitle = t('View Teasers');
       $currentViewStyleTitle = t('View Titles');
     }
-    $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>' 
-                  . $users_select . $selectTags;
-    return $controlBlock . $results;
+    
   }
   
-  return NULL;
+  $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>' 
+                  . $users_select . $selectTags;
+  
+  return $controlBlock . $results;
 }
 
 

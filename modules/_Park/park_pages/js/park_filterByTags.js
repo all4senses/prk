@@ -38,17 +38,13 @@
       }
 
       //console.log(params);
-      console.log('source param string (without "tags" and "author" params) = ' + source_param_string);
+      console.log('source query (without "tags" and "author" params) = ' + source_param_string);
 
        
       
       
       
-      
-      
-      
-      
-      $("#doFilter").click(function(){
+      function doFilter() {
         
         var final_param_string = source_param_string;
         
@@ -56,15 +52,34 @@
         final_param_string = addParamToQuery(final_param_string, getAuthorQueryPart());
 
         final_url = location.origin + location.pathname + final_param_string;
-
+        
         console.log('final url with selected tags (if selected) and author (if selected) = ' + final_url);
         
         ////top.location.href = new_url;
-
+      }
+      
+      
+      
+      $("#doFilter").click(function(){
+        doFilter();
       });
       
       
+      $("#authors").change(function(){
+        doFilter();
+      });
       
+      
+      $("#goToAuthorPage").click(function(){
+        var author = $("#authors").val();
+        console.log('author = ' + author);
+        if (author) {
+          //top.location.href = location.origin;
+        }
+      });
+      
+
+
       
       function addParamToQuery(currentQuery, newParam) {
         if (newParam) {
@@ -79,7 +94,13 @@
       
       
       function getAuthorQueryPart() {
-        authorQueryPart = 'author=aaaaaaa';
+        
+        authorQueryPart = '';
+        var author = $("#authors").val();
+        
+        if (author) {
+          authorQueryPart = 'author=' + author;
+        }
         console.log('authorQueryPart = ' + authorQueryPart);
         return authorQueryPart;
       }
