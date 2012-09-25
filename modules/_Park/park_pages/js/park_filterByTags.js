@@ -23,7 +23,8 @@
          //console.log('top.location.href = ' + decodeURIComponent(top.location.href));
          
          var params = {};
-         current_url = decodeURIComponent(location.search);
+         //current_url = decodeURIComponent(location.search);
+         current_url = location.search;
          
          if (current_url) {
               var parts = current_url.substring(1).split('&');
@@ -49,6 +50,7 @@
          console.log('original param_string = ' + param_string);
          
          // 'onChange' => "top.location.href='http://getvoip.com/" . $_GET['q'] . "?provider=' + encodeURIComponent(document.getElementById('select_provider').options[document.getElementById('select_provider').selectedIndex].value) + '$url'"),
+         tags = encodeURIComponent(tags);
          if (tags) {
           if (query_opened) {
             param_string = param_string + '&tags=' + tags;
