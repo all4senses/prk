@@ -241,7 +241,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
 
   $all_authors = NULL;
   foreach ($users as $user) {
-    $all_authors[$user->uid] = $user->realname;
+    $all_authors[$user->name] = $user->realname;
   }
 
 
