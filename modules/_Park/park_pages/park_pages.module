@@ -171,7 +171,8 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
         <div id="doFilterByTag">Filter</div>
 ';
   
-  $selectTags = park_pages_themeTagsSelect($allTags);
+  $url_tags = explode(',', @$_GET['tags']);
+  $selectTags = park_pages_themeTagsSelect($allTags, $url_tags);
   
   drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
   drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
@@ -190,15 +191,16 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   $viewsFilterOptions_nodeType = array('id' => 'type', 'value' => array($type => $type));
   $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
   
-  if (@$_GET['tags']) {
-    $terms = explode(',', $_GET['tags']); //array('бисер', 'дизайн');
+  
+  if ($url_tags) {
+    //$url_tags = explode(',', $_GET['tags']); //array('бисер', 'дизайн');
     $query = db_select('taxonomy_term_data', 'td');
     $query->fields('td', array('tid'))
-          ->condition('td.name', $terms, 'IN');
+          ->condition('td.name', $url_tags, 'IN');
     $tids = $query->distinct()
     ->execute()->fetchCol();
     
-    dpm($terms);
+    dpm($url_tags);
     dpm($tids);
     
     if ($tids) {
