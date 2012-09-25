@@ -120,11 +120,12 @@ function park_pages_themeTagsSelect($tags = NULL, $selected_terms = array(), $di
   }
   
   dpm($tags);
+  dpm($selected_terms);
   
   $selectTags = '<select data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
           <option value=""></option>';
   foreach ($tags as $tag) {
-    $selectTags .= '<option value="' . $tag->name . (in_array($tag->name, $selected_terms) ? ' selected': '') . (in_array($tag->name, $disabled_terms) ? ' disabled': '') . '">' . $tag->name . '</option>';
+    $selectTags .= '<option value="' . $tag->name . '"' . (in_array($tag->name, $selected_terms) ? ' selected': '') . (in_array($tag->name, $disabled_terms) ? ' disabled': '') . '>' . $tag->name . '</option>';
   }
   $selectTags .= '</select>
         <div id="doFilterByTag">Filter</div>';
@@ -151,9 +152,6 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   foreach($results as $result) {
     $allTags[$result->tid] = /*(array)*/ $result;
   }
-  
-  dpm($allTags);
-
   
   
   // Build a tags block.
