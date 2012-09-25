@@ -4,8 +4,11 @@
     attach: function (context, settings) {
        
        $(".chzn-select").chosen();
+       aaa = 'xxx';
        
        $("#doFilterByTag").click(function(){
+         
+         console.log('aaa =' + aaa);
          
          tags = '';
          if (jQuery('.chzn-select').val()) {
