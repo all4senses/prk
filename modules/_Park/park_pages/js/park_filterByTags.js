@@ -24,6 +24,33 @@
          
          console.log('tagsAll = ' + tags);
          console.log('top.location.href = ' + decodeURIComponent(top.location.href));
+         
+         new_url = location.origin + location.pathname;
+         
+         var params = {};
+         current_url = decodeURIComponent(location.search);
+         
+         if (current_url) {
+              var parts = current_url.substring(1).split('&');
+
+              for (var i = 0; i < parts.length; i++) {
+                  var nv = parts[i].split('=');
+                  if (!nv[0]) continue;
+                  params[nv[0]] = nv[1] || true;
+              }
+         }
+
+         
+         //console.log(params);
+         
+         param_string = '';
+         for (p in params) {
+           if (p != 'tags') {
+            param_string = param_string + (param_string ? '&' : '?') + p + '=' + params[p];
+           }
+         }
+         console.log(param_string);
+         
          if (tags) {
            tags = encodeURIComponent(tags);
           // 'onChange' => "top.location.href='http://getvoip.com/" . $_GET['q'] . "?provider=' + encodeURIComponent(document.getElementById('select_provider').options[document.getElementById('select_provider').selectedIndex].value) + '$url'"),
