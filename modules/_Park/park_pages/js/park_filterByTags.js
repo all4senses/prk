@@ -7,7 +7,9 @@
        
        $("#doFilterByTag").click(function(){
          
-         tags = jQuery('.chzn-select').val().toString();
+         if (jQuery('.chzn-select').val()) {
+          tags = jQuery('.chzn-select').val().toString();
+         }
          console.log('tags = ' + tags);
          
          //str = ''; jQuery('.chzn-select [selected][disabled]').each(function(){str = str + (str ? ',' : '') + jQuery(this).val()}); console.log(str);
