@@ -12,7 +12,7 @@
       var params = {};
       
       current_url = location.search;
-      //console.log('current_url = ' + current_url);
+      console.log('current_url = ' + current_url);
       
       if (current_url) {
           var parts = current_url.substring(1).split('&');
@@ -33,7 +33,7 @@
       }
 
       //console.log(params);
-      console.log('original param_string = ' + source_param_string);
+      console.log('source param_string = ' + source_param_string);
 
        
        
