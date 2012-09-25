@@ -16,7 +16,7 @@
             function(){tagsDisabled = tagsDisabled + (tagsDisabled ? ',' : '') + jQuery(this).val()
          }); 
          
-         tags = (tags ? (tags + ',') : '') + tagsDisabled;
+         tags = (tags ? (tags + (tagsDisabled ? ',' : '')) : '') + tagsDisabled;
          
          console.log('tagsDisabled = ' + tagsDisabled);
          console.log('tagsAll = ' + tags);
