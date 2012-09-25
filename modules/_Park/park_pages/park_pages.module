@@ -113,7 +113,7 @@ function park_pages_getSectionBlocks($node) {
 
 
 
-function park_pages_themeTagsSelect($tags = NULL) {
+function park_pages_themeTagsSelect($tags = NULL, $selected_terms = array(), $disabled_terms = array()) {
   
   if (empty($tags)) {
     return;
@@ -121,17 +121,16 @@ function park_pages_themeTagsSelect($tags = NULL) {
   
   dpm($tags);
   
-  return;
-  
   $selectTags = '<select data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
           <option value=""></option>';
   foreach ($tags as $tag) {
-    $selectTags .= '<option>' . $tag->name . '</option>';
+    $selectTags .= '<option value="' . $tag->name . (in_array($tag->name, $selected_terms) ? ' selected': '') . (in_array($tag->name, $disabled_terms) ? ' disabled': '') . '">' . $tag->name . '</option>';
   }
   $selectTags .= '</select>
         <div id="doFilterByTag">Filter</div>';
   return $selectTags;
 }
+
 
 /**
  * Returns content feed for a specific content type.
@@ -155,7 +154,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   dpm($allTags);
 
-  park_pages_themeTagsSelect($allTags);
+  
   
   // Build a tags block.
   $selectTags = '<select data-placeholder="Your Favorite Types of Bear" style="width:350px;" multiple class="chzn-select" tabindex="8">
@@ -169,10 +168,10 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
           <option selected>Polar Bear</option>
           <option selected disabled>Spectacled Bear</option>
         </select>
-        <input type="hidden" id="contentUrl" value="http://park.all4senses.com/master-classes?a=bbb" />
-        <input type="hidden" id="contentOpened_query" value="1" />
         <div id="doFilterByTag">Filter</div>
 ';
+  
+  $selectTags = park_pages_themeTagsSelect($allTags);
   
   drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
   drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
