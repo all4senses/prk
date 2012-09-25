@@ -65,13 +65,13 @@
       });
       
       
-      $("#authors").change(function(){
+      $("#select-authors").change(function(){
         doFilter();
       });
       
       
       $("#goToAuthorPage").click(function(){
-        var author = $("#authors").val();
+        var author = $("#select-authors").val();
         console.log('author = ' + author);
         if (author) {
           //top.location.href = location.origin;
@@ -96,7 +96,7 @@
       function getAuthorQueryPart() {
         
         authorQueryPart = '';
-        var author = $("#authors").val();
+        var author = $("#select-authors").val();
         
         if (author) {
           authorQueryPart = 'author=' + author;
@@ -114,11 +114,11 @@
         tags = '';
         tagsDisabled = ''; 
         
-        if (jQuery('.chzn-select').val()) {
-          tags = jQuery('.chzn-select').val().toString();
+        if (jQuery('#select-tags.chzn-select').val()) {
+          tags = jQuery('#select-tags.chzn-select').val().toString();
         }
 
-        jQuery('.chzn-select [selected][disabled]').each(
+        jQuery('#select-tags.chzn-select [selected][disabled]').each(
           function(){tagsDisabled = tagsDisabled + (tagsDisabled ? ',' : '') + jQuery(this).val()
         }); 
 

@@ -121,7 +121,7 @@ function park_pages_themeTagsSelect($tags = NULL, $selected_terms = array(), $di
   
   dpm($tags);
   
-  $selectTags = '<select id="tags" data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
+  $selectTags = '<select id="select-tags" data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
           <option value=""></option>';
   foreach ($tags as $tag) {
     $selectTags .= '<option value="' . $tag->name . '"' . (in_array($tag->name, $selected_terms) ? ' selected': '') . (in_array($tag->name, $disabled_terms) ? ' disabled': '') . '>' . $tag->name . '</option>';
