@@ -140,7 +140,7 @@ function park_pages_themeAuthorsSelect($selected_username = NULL, $all_authors =
   
   dpm($all_authors);
   
-  $selectTags = '<select id="authors" data-placeholder="' . t('Select author') . '" style="width:350px;" class="chzn-select" tabindex="8">
+  $selectTags = '<select id="select-authors" data-placeholder="' . t('Select author') . '" style="width:350px;" class="chzn-select" tabindex="8">
           <option value=""></option>';
   
   foreach ($all_authors as $username => $realname) {
