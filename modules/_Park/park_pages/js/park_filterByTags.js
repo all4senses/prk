@@ -50,19 +50,26 @@
       
       $("#doFilterByTag").click(function(){
         
-        final_param_string = source_param_string;
-        tagsQueryPart = getTagsQueryPart();
-        authorQueryPart = getAuthorQueryPart();
+        var final_param_string = source_param_string;
+        //tagsQueryPart = getTagsQueryPart();
+        //authorQueryPart = getAuthorQueryPart();
         
-        console.log('tagsQueryPart = ' + tagsQueryPart);
+        //
         
-        if (tagsQueryPart) {
-          final_param_string = final_param_string + (final_param_string ? '&' : '?') + tagsQueryPart;
-        }
-        if (authorQueryPart) {
-          final_param_string = final_param_string + (final_param_string ? '&' : '?') + authorQueryPart;
-        }
+        //final_param_string = addParamToQuery(final_param_string, tagsQueryPart);
+        //final_param_string = addParamToQuery(final_param_string, authorQueryPart);
         
+        
+        final_param_string = addParamToQuery(final_param_string, getTagsQueryPart());
+        final_param_string = addParamToQuery(final_param_string, getAuthorQueryPart());
+        
+//        if (tagsQueryPart) {
+//          final_param_string = final_param_string + (final_param_string ? '&' : '?') + tagsQueryPart;
+//        }
+//        if (authorQueryPart) {
+//          final_param_string = final_param_string + (final_param_string ? '&' : '?') + authorQueryPart;
+//        }
+
         final_url = location.origin + location.pathname + final_param_string;
 
         console.log('final url with selected tags' + final_url);
@@ -73,6 +80,15 @@
       
       
       
+      
+      function addParamToQuery(currentQuery, newParam) {
+        if (newParam) {
+          return currentQuery + (currentQuery ? '&' : '?') + newParam;
+        }
+        else {
+          return currentQuery;
+        }
+      }
       
       
       function getAuthorQueryPart() {
@@ -104,9 +120,12 @@
         console.log('tagsAll = ' + tags);
         
         if (tags) {
-          return 'tags=' + encodeURIComponent(tags);
+          tagsQueryPart = 'tags=' + encodeURIComponent(tags);
+          console.log('tagsQueryPart = ' + tagsQueryPart);
+          return tagsQueryPart;
         }
         
+        console.log('tagsQueryPart = -----');
         return false;
       }
       
