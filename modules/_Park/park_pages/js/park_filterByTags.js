@@ -23,7 +23,7 @@
          tags = (tags ? (tags + ',') : '') + tagsDisabled;
          
          console.log('tagsAll = ' + tags);
-         console.log('top.location.href = ' + encodeURIComponent(top.location.href));
+         console.log('top.location.href = ' + decodeURIComponent(top.location.href));
          if (tags) {
            tags = encodeURIComponent(tags);
           // 'onChange' => "top.location.href='http://getvoip.com/" . $_GET['q'] . "?provider=' + encodeURIComponent(document.getElementById('select_provider').options[document.getElementById('select_provider').selectedIndex].value) + '$url'"),
