@@ -127,7 +127,7 @@ function park_pages_themeTagsSelect($tags = NULL, $selected_terms = array(), $di
     $selectTags .= '<option value="' . $tag->name . '"' . (in_array($tag->name, $selected_terms) ? ' selected': '') . (in_array($tag->name, $disabled_terms) ? ' disabled': '') . '>' . $tag->name . '</option>';
   }
   $selectTags .= '</select>
-        <div id="doFilterByTag">Filter</div>';
+        <div id="doFilter">Filter</div>';
   return $selectTags;
 }
 
@@ -154,20 +154,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   
   // Build a tags block.
-  $selectTags = '<select data-placeholder="Your Favorite Types of Bear" style="width:350px;" multiple class="chzn-select" tabindex="8">
-          <option value=""></option>
-          <option>American Black Bear</option>
-          <option>Asiatic Black Bear</option>
-          <option>Brown Bear</option>
-          <option>Giant Panda</option>
-          <option selected>Sloth Bear</option>
-          <option selected disabled>Sun Bear</option>
-          <option selected>Polar Bear</option>
-          <option selected disabled>Spectacled Bear</option>
-        </select>
-        <div id="doFilterByTag">Filter</div>
-';
-  
+ 
   $url_tags = explode(',', @$_GET['tags']);
   $selectTags = park_pages_themeTagsSelect($allTags, $url_tags);
   

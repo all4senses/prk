@@ -38,7 +38,7 @@
       }
 
       //console.log(params);
-      console.log('source param_string = ' + source_param_string);
+      console.log('source param string (without "tags" and "author" params) = ' + source_param_string);
 
        
       
@@ -48,31 +48,16 @@
       
       
       
-      $("#doFilterByTag").click(function(){
+      $("#doFilter").click(function(){
         
         var final_param_string = source_param_string;
-        //tagsQueryPart = getTagsQueryPart();
-        //authorQueryPart = getAuthorQueryPart();
-        
-        //
-        
-        //final_param_string = addParamToQuery(final_param_string, tagsQueryPart);
-        //final_param_string = addParamToQuery(final_param_string, authorQueryPart);
-        
         
         final_param_string = addParamToQuery(final_param_string, getTagsQueryPart());
         final_param_string = addParamToQuery(final_param_string, getAuthorQueryPart());
-        
-//        if (tagsQueryPart) {
-//          final_param_string = final_param_string + (final_param_string ? '&' : '?') + tagsQueryPart;
-//        }
-//        if (authorQueryPart) {
-//          final_param_string = final_param_string + (final_param_string ? '&' : '?') + authorQueryPart;
-//        }
 
         final_url = location.origin + location.pathname + final_param_string;
 
-        console.log('final url with selected tags' + final_url);
+        console.log('final url with selected tags (if selected) and author (if selected) = ' + final_url);
         
         ////top.location.href = new_url;
 
@@ -91,8 +76,11 @@
       }
       
       
+      
+      
       function getAuthorQueryPart() {
         authorQueryPart = 'author=aaaaaaa';
+        console.log('authorQueryPart = ' + authorQueryPart);
         return authorQueryPart;
       }
 
@@ -108,7 +96,6 @@
         if (jQuery('.chzn-select').val()) {
           tags = jQuery('.chzn-select').val().toString();
         }
-        console.log('tags = ' + tags);
 
         jQuery('.chzn-select [selected][disabled]').each(
           function(){tagsDisabled = tagsDisabled + (tagsDisabled ? ',' : '') + jQuery(this).val()
@@ -116,8 +103,8 @@
 
         tags = (tags ? (tags + (tagsDisabled ? ',' : '')) : '') + tagsDisabled;
 
-        console.log('tagsDisabled = ' + tagsDisabled);
-        console.log('tagsAll = ' + tags);
+        console.log('current selected tags (with disabled) = ' + tags);
+        console.log('among them -> tagsDisabled = ' + tagsDisabled);
         
         if (tags) {
           tagsQueryPart = 'tags=' + encodeURIComponent(tags);
