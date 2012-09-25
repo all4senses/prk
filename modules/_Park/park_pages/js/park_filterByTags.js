@@ -26,8 +26,9 @@
 
       
       for (p in params) {
-        if (p != 'tags') {
-        source_param_string = source_param_string + (source_param_string ? '&' : '?') + p + '=' + params[p];
+        // Take out 'tags' and 'author' params from a query.
+        if (p != 'tags' && p != 'author') {
+          source_param_string = source_param_string + (source_param_string ? '&' : '?') + p + '=' + params[p];
         }
         query_opened = true;
       }
@@ -36,9 +37,21 @@
       console.log('source param_string = ' + source_param_string);
 
        
-       
+      
+      
+      
+      
+      
+      function getTagsQueryPart() {
+        return 'tags=xxx';
+      }
+      
+      
       $("#doFilterByTag").click(function(){
         
+        test_tag = 'zzzzzz ' + getTagsQueryPart();
+        console.log('test_tag = ' + test_tag);
+          
         param_string = source_param_string;
         tags = '';
         tagsDisabled = ''; 
