@@ -14,7 +14,7 @@
       current_query = location.search;
       console.log('current_query = ' + current_query);
       
-      if (current_url) {
+      if (current_query) {
           var parts = current_query.substring(1).split('&');
 
           for (var i = 0; i < parts.length; i++) {
@@ -70,6 +70,7 @@
           else {
             param_string = param_string + '?tags=' + tags;
           }
+          query_opened = true;
         }
 
         new_url = location.origin + location.pathname + param_string;
