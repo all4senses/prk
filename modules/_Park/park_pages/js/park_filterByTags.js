@@ -11,11 +11,11 @@
       source_param_string = '';
       var params = {};
       
-      current_url = location.search;
-      console.log('current_url = ' + current_url);
+      current_query = location.search;
+      console.log('current_query = ' + current_query);
       
       if (current_url) {
-          var parts = current_url.substring(1).split('&');
+          var parts = current_query.substring(1).split('&');
 
           for (var i = 0; i < parts.length; i++) {
               var nv = parts[i].split('=');
@@ -74,7 +74,7 @@
 
         new_url = location.origin + location.pathname + param_string;
 
-        console.log(new_url);
+        console.log('final url with selected tags' + new_url);
         
         ////top.location.href = new_url;
 
