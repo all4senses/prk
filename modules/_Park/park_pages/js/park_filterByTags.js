@@ -3,7 +3,7 @@
   Drupal.behaviors.park_filterByTags = {
     attach: function (context, settings) {
        
-      $(".chzn-select").chosen();
+      $(".chzn-select").chosen({allow_single_deselect:true});
        
        
        
