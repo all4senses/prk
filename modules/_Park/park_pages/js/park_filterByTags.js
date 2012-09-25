@@ -70,7 +70,8 @@
          
          console.log(new_url);
          //console.log('current_url = ' + current_url);
-         top.location.href = new_url;
+         
+         ////top.location.href = new_url;
          
        });
        
