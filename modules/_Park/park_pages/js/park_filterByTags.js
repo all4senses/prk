@@ -30,6 +30,8 @@
          var params = {};
          current_url = decodeURIComponent(location.search);
          
+         console.log('current_url = ' + current_url);
+         
          if (current_url) {
               var parts = current_url.substring(1).split('&');
 
@@ -41,7 +43,7 @@
          }
 
          
-         //console.log(params);
+         console.log(params);
          
          param_string = '';
          for (p in params) {
@@ -49,7 +51,7 @@
             param_string = param_string + (param_string ? '&' : '?') + p + '=' + params[p];
            }
          }
-         console.log(param_string);
+         console.log('param_string = ' + param_string);
          
          if (tags) {
            tags = encodeURIComponent(tags);
