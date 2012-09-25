@@ -120,7 +120,6 @@ function park_pages_themeTagsSelect($tags = NULL, $selected_terms = array(), $di
   }
   
   dpm($tags);
-  dpm($selected_terms);
   
   $selectTags = '<select data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
           <option value=""></option>';
