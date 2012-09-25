@@ -25,7 +25,7 @@
          console.log('tagsAll = ' + tags);
          console.log('top.location.href = ' + decodeURIComponent(top.location.href));
          
-         new_url = location.origin + location.pathname;
+         
          
          var params = {};
          current_url = decodeURIComponent(location.search);
@@ -43,28 +43,35 @@
          }
 
          
-         console.log(params);
-         
+         //console.log(params);
+         query_opened = false;
          param_string = '';
          for (p in params) {
            if (p != 'tags') {
             param_string = param_string + (param_string ? '&' : '?') + p + '=' + params[p];
            }
+           query_opened = true;
          }
          console.log('param_string = ' + param_string);
          
          if (tags) {
-           tags = encodeURIComponent(tags);
+           //tags = encodeURIComponent(tags);
           // 'onChange' => "top.location.href='http://getvoip.com/" . $_GET['q'] . "?provider=' + encodeURIComponent(document.getElementById('select_provider').options[document.getElementById('select_provider').selectedIndex].value) + '$url'"),
-          if ($("#contentOpened_query").val()) {
+          if (query_opened) {
             //top.location.href = $("#contentUrl").val() + '&tags=' + tags;
             console.log('Url 1 = ' + $("#contentUrl").val() + '&tags=' + tags);
+            param_string = param_string + '&tags=' + tags;
           }
           else {
             //top.location.href = $("#contentUrl").val() + '?tags=' + tags;
             console.log('Url 2 = ' + $("#contentUrl").val() + '?tags=' + tags);
+            param_string = param_string + '?tags=' + tags;
           }
          }
+         
+         new_url = location.origin + location.pathname + encodeURIComponent(param_string);
+         
+         console.log(new_url);
          
        });
        
