@@ -60,7 +60,7 @@
           }
          }
          
-         new_url = location.origin + location.pathname + encodeURIComponent(param_string);
+         new_url = location.origin + location.pathname + param_string;
          
          console.log(new_url);
          //console.log('current_url = ' + current_url);
