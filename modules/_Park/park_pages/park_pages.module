@@ -112,6 +112,27 @@ function park_pages_getSectionBlocks($node) {
 }
 
 
+
+function park_pages_themeTagsSelect($tags = NULL) {
+  
+  if (empty($tags)) {
+    return;
+  }
+  
+  dpm($tags);
+  
+  return;
+  
+  $selectTags = '<select data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
+          <option value=""></option>';
+  foreach ($tags as $tag) {
+    $selectTags .= '<option>' . $tag->name . '</option>';
+  }
+  $selectTags .= '</select>
+        <div id="doFilterByTag">Filter</div>';
+  return $selectTags;
+}
+
 /**
  * Returns content feed for a specific content type.
  */
@@ -134,7 +155,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   dpm($allTags);
 
-
+  park_pages_themeTagsSelect($allTags);
   
   // Build a tags block.
   $selectTags = '<select data-placeholder="Your Favorite Types of Bear" style="width:350px;" multiple class="chzn-select" tabindex="8">
