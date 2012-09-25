@@ -264,7 +264,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   $eligible_authors = NULL;
 
   foreach ($users as $user) {
-    $eligible_authors[$user->uid] = $user->realname;
+    $eligible_authors[$user->name] = $user->realname;
   }
 
   $users_select = park_pages_themeAuthorsSelect(@$_GET['author'], $all_authors, $eligible_authors);
