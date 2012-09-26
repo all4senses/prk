@@ -218,57 +218,65 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   }
   
   if ($uid) {
+    
+    // Call from a user page.
+    
     $viewsFilterOptions_user = array('id' => 'uid', 'value' => array(0 => $uid));
     $view->add_item($display_name, 'filter', 'node', 'uid', $viewsFilterOptions_user);
   }
-  
-  
-  
-
-  // Get all users that have content of a specific type
-
-  $query = db_select('node', 'n');
-  $query->leftJoin('users', 'u', 'u.uid = n.uid');
-  $query->leftJoin('realname', 'rn', 'rn.uid = n.uid');
-
-  $query->fields('u', array('uid', 'name'))
-        ->fields('rn', array('realname'))
-        ->condition('n.type', $type)
-        ->condition('n.status', 1);
-
-  $users = $query->distinct()
-  ->execute();
-
-  $all_authors = NULL;
-  foreach ($users as $user) {
-    $all_authors[$user->name] = $user->realname;
-  }
-
-
-  // Refine conditions and get only users that have specific tag in their content (of a specific type)
-  if (@$tids) {
-    $or = db_or();
-//    foreach ($tids as $count => $tid) {
-//      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-//    }
-    foreach ($tids as $count => $tid) {
-      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
-      $or->condition("ti_$count.tid", $tid);
+  else {
+    
+    // Call from a content page.
+    
+    $url_uid = @$_GET['author'];
+    if ($url_uid) {
+      $viewsFilterOptions_user = array('id' => 'uid', 'value' => array(0 => $url_uid));
+      $view->add_item($display_name, 'filter', 'node', 'uid', $viewsFilterOptions_user);
     }
-    $query->condition($or);
+    // Get all users that have content of a specific type
+
+    $query = db_select('node', 'n');
+    $query->leftJoin('users', 'u', 'u.uid = n.uid');
+    $query->leftJoin('realname', 'rn', 'rn.uid = n.uid');
+
+    $query->fields('u', array('uid', 'name'))
+          ->fields('rn', array('realname'))
+          ->condition('n.type', $type)
+          ->condition('n.status', 1);
+
+    $users = $query->distinct()
+    ->execute();
+
+    $all_authors = NULL;
+    foreach ($users as $user) {
+      $all_authors[$user->name] = $user->realname;
+    }
+
+
+    // Refine conditions and get only users that have specific tag in their content (of a specific type)
+    if (@$tids) {
+      $or = db_or();
+  //    foreach ($tids as $count => $tid) {
+  //      $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+  //    }
+      foreach ($tids as $count => $tid) {
+        $query->leftJoin('taxonomy_index', "ti_$count", "ti_$count.nid = n.nid AND ti_$count.tid = $tid");
+        $or->condition("ti_$count.tid", $tid);
+      }
+      $query->condition($or);
+    }
+
+    $users = $query->distinct()
+    ->execute();
+
+    $eligible_authors = NULL;
+
+    foreach ($users as $user) {
+      $eligible_authors[$user->name] = $user->realname;
+    }
+
+    $users_select = park_pages_themeAuthorsSelect($url_uid, $all_authors, $eligible_authors);
   }
-
-  $users = $query->distinct()
-  ->execute();
-
-  $eligible_authors = NULL;
-
-  foreach ($users as $user) {
-    $eligible_authors[$user->name] = $user->realname;
-  }
-
-  $users_select = park_pages_themeAuthorsSelect(@$_GET['author'], $all_authors, $eligible_authors);
-
       
       
       
