@@ -85,7 +85,7 @@
         var author = $("#select-authors").val();
         console.log('author = ' + author);
         if (author) {
-          top.location.href = location.origin + '/u/' . encodeURIComponent(author);
+          top.location.href = location.origin + '/u/' + encodeURIComponent(author);
         }
       });
       
