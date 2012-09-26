@@ -60,7 +60,7 @@
         
         console.log('final url with selected tags (if selected) and author (if selected) = ' + final_url);
         
-        ////top.location.href = new_url;
+        top.location.href = new_url;
       }
       
       
@@ -85,7 +85,7 @@
         var author = $("#select-authors").val();
         console.log('author = ' + author);
         if (author) {
-          //top.location.href = location.origin;
+          top.location.href = location.origin + '/u/' . encodeURIComponent(author);
         }
       });
       
@@ -110,7 +110,7 @@
         var author = $("#select-authors").val();
         
         if (author) {
-          authorQueryPart = 'author=' + author;
+          authorQueryPart = 'author=' + encodeURIComponent(author);
         }
         console.log('authorQueryPart = ' + authorQueryPart);
         return authorQueryPart;
