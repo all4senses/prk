@@ -60,7 +60,7 @@
         
         console.log('final url with selected tags (if selected) and author (if selected) = ' + final_url);
         
-        top.location.href = new_url;
+        top.location.href = final_url;
       }
       
       
