@@ -217,6 +217,10 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     }
   }
   
+  
+  
+  $users_select = NULL;
+  
   if ($uid) {
     
     // Call from a user page.
