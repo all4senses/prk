@@ -147,7 +147,7 @@ function park_pages_themeAuthorsSelect($selected_username = NULL, $all_authors =
     $selectTags .= '<option value="' . $username . '"' . ($username == $selected_username ? ' selected': '') . (!in_array($realname, $eligible_authors) ? ' disabled': '') . '>' . $realname . '</option>';
   }
   $selectTags .= '</select>
-        <div id="goToAuthorPage">Filter</div>';
+        <div id="goToAuthorPage">' . t("Visit this author's profile") . '</div>';
   
   return $selectTags;
 }

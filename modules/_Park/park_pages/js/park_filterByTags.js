@@ -5,7 +5,12 @@
        
       $(".chzn-select").chosen({allow_single_deselect:true});
        
-       
+      if (!$("#select-authors").val()) {
+        $("#goToAuthorPage ").hide();
+      }
+      else {
+        $("#goToAuthorPage ").show();
+      }
        
       query_opened = false;
       source_param_string = '';
@@ -66,6 +71,12 @@
       
       
       $("#select-authors").change(function(){
+        if (!$("#select-authors").val()) {
+          $("#goToAuthorPage ").hide();
+        }
+        else {
+          $("#goToAuthorPage ").show();
+        }
         doFilter();
       });
       
