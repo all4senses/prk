@@ -50,7 +50,7 @@
         
         console.log('final url with selected tags-exclude (if selected) = ' + final_url);
         
-        top.location.href = final_url;
+        //top.location.href = final_url;
       }
       
       
@@ -77,6 +77,17 @@
         tags = '';
         tagsDisabled = ''; 
         
+        if (jQuery(".chzn-select").find(':not(:selected)[value!=""]')) {
+          //tags_object = jQuery(".chzn-select").find(':not(:selected)[value!=""]');
+          
+          
+          jQuery(".chzn-select").find(':not(:selected)[value!=""]').each(function(){
+            //console.log(jQuery(this).val())
+            tags = tags + (tags ? ',' : '') + jQuery(this).val();
+          })
+        }
+        console.log(tags);
+        /*
         if (jQuery('#select-tags.chzn-select').val()) {
           tags = jQuery('#select-tags.chzn-select').val().toString();
         }
@@ -86,7 +97,7 @@
         }); 
 
         tags = (tags ? (tags + (tagsDisabled ? ',' : '')) : '') + tagsDisabled;
-
+        */
         console.log('current selected tags (with disabled) = ' + tags);
         console.log('among them -> tagsDisabled = ' + tagsDisabled);
         
