@@ -1,32 +1,28 @@
-
 <?php if (!$page): ?>
-  <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-<?php endif; ?>
+
+    <?php if (in_array('administrator', $user->roles)): ?>
+      <div class="tabs-wrapper clearfix"><h3 class="element-invisible">Primary tabs</h3>
+        <ul class="tabs primary clearfix">
+          <li class="active"><a class="active" href="/<?php echo $_GET['q']; ?>">View<span class="element-invisible">(active tab)</span></a></li>
+          <li><a href="<?php echo url('node/' . $node->nid . '/edit', array('query' => array('destination' => $_GET['q']))); ?>">Edit</a></li>
+          <!--<li><a href="<?php //echo url('node/' . $node->nid . '/devel', array('query' => array('destination' => $_GET['q']))); ?>">Devel</a></li>-->
+        </ul>
+      </div>
+    <?php endif; ?> <!-- if (in_array('administrator', $user->roles))-->
+  
+<?php endif; ?> <!-- if (!$page) -->
+    
+
+  <?php //print $user_picture; ?>
 
 
-    <?php if (!$page): ?>
-      <header>
-	<?php endif; ?>
+  <?php print render($title_prefix); ?>
 
-      <?php if ($page): ?>
-        <h1 <?php print ' ' . /*$title_attributes*/ /*preg_replace('/datatype=".*"/', '', $title_attributes);*/ preg_replace('/datatype=""/', '', $title_attributes); ?>>
-        <?php else: ?>
-        <h2 <?php print ' ' . /*$title_attributes*/ /*preg_replace('/datatype=".*"/', '', $title_attributes);*/ preg_replace('/datatype=""/', '', $title_attributes); ?>>
-      <?php endif; ?>
-     
-            <?php if (!isset($node->title_no_link) && !$page): ?>
-              <a href="<?php print $node_url; ?>">
-                <?php print $title; ?>
-              </a>
-            <?php else: ?>
-              <?php print $title; ?>
-            <?php endif; ?>
+    <h1 class="preface" <?php print /*$title_attributes*/preg_replace('/datatype=""/', '', $title_attributes); ?>>
+        <?php print $title; ?>
+    </h1>
 
-      <?php if ($page): ?>
-      </h1>
-      <?php else: ?>
-      </h2>
-      <?php endif; ?> 
+  <?php print render($title_suffix); ?>
   
       <?php if ($display_submitted): ?>
         <span class="submitted"><?php print $submitted; ?></span>
@@ -56,10 +52,6 @@
   <?php endif; ?>
 
 <?php //hide($content['links']); //print render($content['comments']); ?>
-
-<?php if (!$page): ?>
-  </article> <!-- /.node -->
-<?php endif; ?>
 
   
 <?php 
