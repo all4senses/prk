@@ -100,6 +100,9 @@ function park_pages_getSectionBlocks($node) {
     if (!in_array($tag_name, $url_tags)) {
       $selectedTags[$tag_data->tid] = $tag_name;
     }
+    else {
+      unset($tids[$tag_data->tid]);
+    }
   }
   
   dpm($allTags);
