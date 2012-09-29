@@ -1,6 +1,6 @@
 (function ($) {
 
-  Drupal.behaviors.park_filterByTags = {
+  Drupal.behaviors.park_sectionFilter = {
     attach: function (context, settings) {
        
       $(".chzn-select").chosen();
