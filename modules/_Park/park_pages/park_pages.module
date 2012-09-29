@@ -89,7 +89,7 @@ function park_pages_getSectionBlocks($node) {
     $allTags[$term['tid']] = $term['taxonomy_term']->name;
   }
 
-  
+  dpm($allTags);
   
   
   
