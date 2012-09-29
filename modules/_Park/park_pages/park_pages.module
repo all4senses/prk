@@ -86,7 +86,7 @@ function park_pages_getSectionBlocks($node) {
   dpm($node->field_tags['und']);
   foreach($node->field_tags['und'] as $term) {
     $tids[$term['tid']] = $term['tid'];
-    $allTags[$term['tid']] = $term['taxonomy_term'];
+    $allTags[$term['taxonomy_term']->name] = $term['taxonomy_term'];
   }
 
   dpm($allTags);
@@ -95,8 +95,12 @@ function park_pages_getSectionBlocks($node) {
   
   // Add tags filter block.
 
+  $selectedTags = $allTags;
   $url_tags = explode(',', @$_GET['tags-exclude']);
-  $selectTags = park_pages_themeTagsSelect($allTags, $url_tags);
+  foreach ($url_tags as $tag_name) {
+    unset($selectedTags[$tag_name]);
+  }
+  $selectTags = park_pages_themeTagsSelect($allTags, $selectedTags);
   
   $node->sectionBlocks['selectTags'] = $selectTags;
           
