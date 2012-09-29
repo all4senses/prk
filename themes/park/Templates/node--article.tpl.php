@@ -1,5 +1,5 @@
 <?php if ($page): ?>
-  <div id="mws"></div><script type="text/javascript" src="http://mws.all4senses.com/mws.js"></script>
+  <!--<div id="mws"></div><script type="text/javascript" src="http://mws.all4senses.com/mws.js"></script>-->
 <?php endif; ?>
 
 
