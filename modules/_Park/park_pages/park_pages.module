@@ -88,6 +88,31 @@ function park_pages_getSectionBlocks($node) {
   }
 
   
+  
+  
+  
+  
+  
+  // Add tags filter block.
+
+  $url_tags = explode(',', @$_GET['tags-exclude']);
+  $selectTags = park_pages_themeTagsSelect($allTags, $url_tags);
+  
+  $node->sectionBlocks['selectTags'] = $selectTags;
+          
+  drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
+  drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+
+  $path_to_module = drupal_get_path('module', 'park_pages');
+  drupal_add_js($path_to_module . '/js/park_sectionFilter.js');
+  
+ 
+  
+  
+  
+  
+  
+  
   // Add content blocks.
   
   $view_name = 'section_blocks';
@@ -131,6 +156,10 @@ function park_pages_getSectionBlocks($node) {
     $node->sectionBlocks['authors'] = '<h3>' . 'Авторы' . '</h3>' . $results;
     //$node->sectionBlocks[$display] = $view->render($display);
   }
+  
+
+  
+  
 }
 
 
@@ -205,7 +234,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
 
   $path_to_module = drupal_get_path('module', 'park_pages');
-  drupal_add_js($path_to_module . '/js/park_filterByTags.js');
+  drupal_add_js($path_to_module . '/js/park_contentFilter.js');
   
   
   
