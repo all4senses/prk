@@ -95,10 +95,10 @@ function park_pages_getSectionBlocks($node) {
   
   // Add tags filter block.
 
-  $selectedTags = $allTags;
   $url_tags = explode(',', @$_GET['tags-exclude']);
-  foreach ($url_tags as $tag_name) {
-    unset($selectedTags[$tag_name]);
+  foreach ($allTags as $tag_name => $tag_data) {
+    if (!in_array($url_tags, $url_tags))
+    $selectedTags[$tag_data->tid] = $tag_name;
   }
   
   dpm($allTags);
