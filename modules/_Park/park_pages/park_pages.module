@@ -97,8 +97,9 @@ function park_pages_getSectionBlocks($node) {
 
   $url_tags = explode(',', @$_GET['tags-exclude']);
   foreach ($allTags as $tag_name => $tag_data) {
-    if (!in_array($url_tags, $url_tags))
-    $selectedTags[$tag_data->tid] = $tag_name;
+    if (!in_array($tag_name, $url_tags)) {
+      $selectedTags[$tag_data->tid] = $tag_name;
+    }
   }
   
   dpm($allTags);
