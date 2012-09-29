@@ -26,7 +26,7 @@ function park_pages_getHomePage() {
   
   $out = '';
   
-  $front_preface_node = gcb_misc_getPrefaceByKey('front');
+  $front_preface_node = park_pages_getPrefaceByKey('front');
   $front_preface_node->title_no_link = TRUE;
   $front_preface_node_view = node_view($front_preface_node, 'full');
 
@@ -41,6 +41,28 @@ function park_pages_getHomePage() {
   $out .= render($front_preface_node_view['field_preface_bottom']);
  
   return $out;
+}
+
+
+
+/**
+ * Returns preface node by key.
+ */
+function park_pages_getPrefaceByKey($key) {
+    
+    $preface_node = NULL;
+    
+    $query = db_select('node', 'n');
+    $query->join('field_data_field_preface_key', 'pk', "pk.entity_id = n.nid"); 
+    $query->fields('n', array('nid'))  
+          //->fields('pn', array('field_preface_key_value')) 
+          ->condition('n.type', 'preface')
+          ->condition('pk.field_preface_key_value', $key); 
+    $preface_nid = $query->execute()->fetchField(); 
+    if ($preface_nid) {
+      $preface_node = node_load($preface_nid);
+    }
+    return $preface_node;
 }
 
 
