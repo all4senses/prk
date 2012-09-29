@@ -39,6 +39,10 @@
       hide($content['comments']);
       hide($content['links']);
       hide($content['field_tags']);
+      
+      if (@$node->field_display_type['und'][0]['value'] != 1) {
+        hide($content['field_preface_bottom']);
+      }
       echo render($content);
       
     ?>
