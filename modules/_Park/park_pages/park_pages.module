@@ -83,6 +83,7 @@ function park_pages_getSectionBlocks($node) {
   $node->sectionBlocks = array();
   $tids = NULL;
   
+  dpm($node->field_tags['und']);
   foreach($node->field_tags['und'] as $term) {
     $tids[$term['tid']] = $term['tid'];
   }
@@ -92,7 +93,7 @@ function park_pages_getSectionBlocks($node) {
   
   
   
-  
+  $allTags = array();
   // Add tags filter block.
 
   $url_tags = explode(',', @$_GET['tags-exclude']);
