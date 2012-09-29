@@ -105,6 +105,7 @@ function park_pages_getSectionBlocks($node) {
   dpm($selectedTags);
   
   $selectTags = park_pages_themeTagsSelect($allTags, $selectedTags);
+  dpm($selectTags);
   
   $node->sectionBlocks['selectTags'] = $selectTags;
           
