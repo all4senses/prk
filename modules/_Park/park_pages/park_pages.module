@@ -7,45 +7,40 @@ function park_pages_menu() {
     
   $items = array();
   
-  /*
-  $items['user/%user/blog'] = array( 
-      'title' => t('User blog'),
-      //'title callback' => '_guestbook_info',
-      //'title arguments' => array(1, 'title'),
-      'page callback' => 'park_pages_getUserContent',
-      'page arguments' => array(1, 'blog_post', 'blog post', 'blog posts'),
-      //'access callback' => 'guestbook_menu_access_user_guestbook',
-      //'access arguments' => array(1, 'access user guestbooks'),
+  $items['home'] = array( 
+      //'title' => t('Home'),
+      'page callback' => 'park_pages_getHomePage',
+      //'page arguments' => array(1, 'blog_post', 'blog post', 'blog posts'),
       'access arguments' => array('access content'),
-      'type' => MENU_LOCAL_TASK,
+      'type' => MENU_CALLBACK,
     );
-
-  $items['user/%user/issues'] = array( 
-      'title' => t('Issues'),
-      'page callback' => 'park_pages_getUserContent',
-      'page arguments' => array(1, 'issue', 'issues', 'issues'),
-      'access arguments' => array('access content'),
-      'type' => MENU_LOCAL_TASK,
-    );
-  
-  $items['user/%user/mclasses'] = array( 
-      'title' => t('Master-classes'),
-      'page callback' => 'park_pages_getUserContent',
-      'page arguments' => array(1, 'master_class', 'master-classes', 'master-classes', array('t','mini'), 'park_pages_buildMiniTeasersSet'),
-      'access arguments' => array('access content'),
-      'type' => MENU_LOCAL_TASK,
-    );      
-      
-    $items['user/%user/gallery'] = array( 
-      'title' => t('Gallery'),
-      'page callback' => 'park_pages_getUserContent',
-      'page arguments' => array(1, 'album', 'album', 'albums', array('t','mini'), 'park_pages_buildMiniTeasersSet'),
-      'access arguments' => array('access content'),
-      'type' => MENU_LOCAL_TASK,
-    ); 
-    */
 
   return $items;
+}
+
+
+/**
+ * Returns home page.
+ */
+function park_pages_getHomePage() {
+  
+  $out = '';
+  
+  $front_preface_node = gcb_misc_getPrefaceByKey('front');
+  $front_preface_node->title_no_link = TRUE;
+  $front_preface_node_view = node_view($front_preface_node, 'full');
+
+  $out .= render($front_preface_node_view);
+  
+  /*
+  // Get block for Top pick business providers.
+  $block_data = array('module' => 'views', 'delta' => 'providers-block', 'shadow' => FALSE);
+  $out .= gcb_blocks_getBlockThemed($block_data);
+  */
+  
+  $out .= render($front_preface_node_view['field_preface_bottom']);
+ 
+  return $out;
 }
 
 
