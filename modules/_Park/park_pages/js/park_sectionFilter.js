@@ -78,11 +78,7 @@
         tagsDisabled = ''; 
         
         if (jQuery(".chzn-select").find(':not(:selected)[value!=""]')) {
-          //tags_object = jQuery(".chzn-select").find(':not(:selected)[value!=""]');
-          
-          
           jQuery(".chzn-select").find(':not(:selected)[value!=""]').each(function(){
-            //console.log(jQuery(this).val())
             tags = tags + (tags ? ',' : '') + jQuery(this).val();
           })
         }
@@ -98,8 +94,8 @@
 
         tags = (tags ? (tags + (tagsDisabled ? ',' : '')) : '') + tagsDisabled;
         */
-        console.log('current selected tags (with disabled) = ' + tags);
-        console.log('among them -> tagsDisabled = ' + tagsDisabled);
+        console.log('current not selected tags = ' + tags);
+        //console.log('among them -> tagsDisabled = ' + tagsDisabled);
         
         if (tags) {
           tagsQueryPart = 'tags-exclude=' + encodeURIComponent(tags);
