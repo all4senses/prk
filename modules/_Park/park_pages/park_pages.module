@@ -89,7 +89,7 @@ function park_pages_getSectionBlocks($node) {
     $allTags[$term['taxonomy_term']->name] = $term['taxonomy_term'];
   }
 
-  dpm($allTags);
+  
   
   
   
@@ -100,6 +100,10 @@ function park_pages_getSectionBlocks($node) {
   foreach ($url_tags as $tag_name) {
     unset($selectedTags[$tag_name]);
   }
+  
+  dpm($allTags);
+  dpm($selectedTags);
+  
   $selectTags = park_pages_themeTagsSelect($allTags, $selectedTags);
   
   $node->sectionBlocks['selectTags'] = $selectTags;
