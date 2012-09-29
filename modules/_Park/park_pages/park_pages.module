@@ -83,7 +83,7 @@ function park_pages_getSectionBlocks($node) {
   $node->sectionBlocks = array();
   $tids = NULL;
   
-  dpm($node->field_tags['und']);
+  //dpm($node->field_tags['und']);
   foreach($node->field_tags['und'] as $term) {
     $tids[$term['tid']] = $term['tid'];
     $allTags[$term['taxonomy_term']->name] = $term['taxonomy_term'];
@@ -105,11 +105,11 @@ function park_pages_getSectionBlocks($node) {
     }
   }
   
-  dpm($allTags);
-  dpm($selectedTags);
+  //dpm($allTags);
+  //dpm($selectedTags);
   
   $selectTags = park_pages_themeTagsSelect($allTags, $selectedTags);
-  dpm($selectTags);
+  //dpm($selectTags);
   
   $node->sectionBlocks['selectTags'] = $selectTags;
           
