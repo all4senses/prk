@@ -336,7 +336,8 @@ function park_pages_node_view($node) {
       break;
     
     case 'preface':
-      switch($_SERVER['REDIRECT_URL']) {
+      dpm($_SERVER);
+      switch(@$_SERVER['REDIRECT_URL']) {
         case '/master-classes':
           $type = 'master_class';
           break;
