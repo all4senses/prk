@@ -12,7 +12,7 @@ console.log('a-3');
   console.log('a-4');
   $.fn.adGallery = function(options) {
     console.log('a-5');
-    var defaults = { loader_image: '/sites/all/libraries/jquery.plugins/Ad-gallery/css/loader.gif',
+    var defaults = { loader_image: '/sites/all/libraries/jquery.plugins/ad_gallery/css/loader.gif',
                      start_at_index: 0,
                      description_wrapper: false,
                      thumb_opacity: 0.7,
