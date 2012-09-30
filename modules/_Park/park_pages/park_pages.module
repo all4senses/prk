@@ -170,20 +170,19 @@ function park_pages_getSectionBlocks($node) {
     //$node->sectionBlocks[$display] = $view->render($display);
   }
   
-
-  
-  
 }
 
 
-
+/**
+ * Returns themed TagsSelect blocks.
+ */
 function park_pages_themeTagsSelect($tags = NULL, $selected_terms = array(), $disabled_terms = array()) {
   
   if (empty($tags)) {
     return;
   }
   
-  dpm($tags);
+  //dpm($tags);
   
   $selectTags = '<select id="select-tags" data-placeholder="' . t('Select tags') . '" style="width:350px;" multiple class="chzn-select" tabindex="8">
           <option value=""></option>';
@@ -196,6 +195,9 @@ function park_pages_themeTagsSelect($tags = NULL, $selected_terms = array(), $di
 }
 
 
+/**
+ * Returns themed AuthorSelect blocks.
+ */
 function park_pages_themeAuthorsSelect($selected_username = NULL, $all_authors = array(), $eligible_authors = array()) {
   
   if (empty($all_authors)) {

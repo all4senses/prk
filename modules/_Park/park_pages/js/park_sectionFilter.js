@@ -106,7 +106,8 @@
 
         tags = (tags ? (tags + (tagsDisabled ? ',' : '')) : '') + tagsDisabled;
         */
-        console.log('current not selected tags = ' + tags);
+       
+        //console.log('current not selected tags = ' + tags);
         //console.log('among them -> tagsDisabled = ' + tagsDisabled);
         
         if (tags) {
