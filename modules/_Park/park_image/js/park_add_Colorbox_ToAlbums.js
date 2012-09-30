@@ -2,7 +2,7 @@
 
   Drupal.behaviors.park_addColorboxToAlbums = {
     attach: function (context, settings) {
-       
+       console.log('a-10');
        //console.log(Drupal.settings.park_image);
        
        for (group_class in Drupal.settings.park_image) {
