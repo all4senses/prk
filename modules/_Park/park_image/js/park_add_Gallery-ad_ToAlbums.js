@@ -1,6 +1,9 @@
+console.log('i-01');
 (function ($) {
 
+console.log('i-02');
   Drupal.behaviors.park_add_GalleryAd_ToAlbums = {
+    
     attach: function (context, settings) {
           
           console.log('i-1');
