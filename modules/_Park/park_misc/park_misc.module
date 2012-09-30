@@ -1,9 +1,58 @@
 <?php
 
-function park_misc_getCurrentUrl()
-{
+function park_misc_getCurrentUrl() {
     $my_url = explode('?', $_SERVER['REQUEST_URI']);
     $my_url = $my_url[0];
     $my_url = "http://".$_SERVER['SERVER_NAME'].$my_url;
     return $my_url;
 }
+
+
+/**
+ * Simple theming of nested submenu.
+ */
+function theme_gcb_misc_submenuSimple($vars) {
+  if(empty($vars['submenu']['below'])) {
+    return NULL;
+  }
+  $level = isset($vars['level']) ? $vars['level'] : 0;
+  $class = isset($vars['class']) ? $vars['class'] : 'om-links';
+  $delimiter = isset($vars['delimiter']) ? $vars['delimiter'] : '';
+  $out = '<ul class="gcb ' . $class . ' lvl-' . $level . '">';
+  $count = 0;
+  foreach ($vars['submenu']['below'] as $submenu) {
+    if (is_object($submenu)) {
+      $submenu = (array) $submenu;
+    }
+    if (isset($submenu['link']['hidden']) && $submenu['link']['hidden']) {
+      continue;
+    }
+    $out .= ($count ? $delimiter : '') . '<li>';
+    if($level) {
+      for ($i = 0; $i < $level; $i++ ) {
+        $out .= '--';
+      }
+    }
+    $title = t($submenu['link']['link_title']);
+    if(isset($submenu['count']) && $submenu['count']) {
+      $title .= ' (' . $submenu['count'] . ')';
+    }
+    // If the field Description has '<nolink>' don't show link for this item
+    if(isset($submenu['link']['localized_options']['attributes']['title']) && strtolower($submenu['link']['localized_options']['attributes']['title']) == '<nolink>') {
+      $out .= $title;
+    }
+    else {
+      $out .= l($title, $submenu['link']['href']);
+    }
+    $out .= '</li>';
+    if (!empty($submenu['below'])) {
+      // Recursion call.
+      $out .= '<li>' . theme('gcb_misc_submenuSimple', array('submenu' => $submenu, 'level' => ($level + 1), 'class' => $class, 'delimiter' => $delimiter )) . '</li>';
+    }
+    $count++;
+  }
+  $out .= '</ul>';
+  return $out;
+}
+
+

@@ -1,0 +1,262 @@
+<?php
+
+/**
+ * @file
+ * Module for building and managing site's blocks.
+ */
+
+
+//module_load_include('inc', 'park_blocks', 'inc/constants');
+
+
+/**
+ * Implements hook_block_info().
+ */
+function park_blocks_block_info() {
+  
+  $blocks['main_menu_om_sections'] = array(
+    'info' => t('OM Sections'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+  $blocks['main_menu_om_aboutus'] = array(
+    'info' => t('OM About Us'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+//  $blocks['b_provider_p_bottom'] = array(
+//    'info' => t('Bottom section of Business providers page preface'),
+//    'cache' => DRUPAL_CACHE_GLOBAL,
+//  );
+    
+  
+  $blocks['footer_menu'] = array(
+    'info' => t('Footer menu (park)'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['header_links'] = array(
+    'info' => t('Header links'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
+    
+  $blocks['news_tags'] = array(
+    'info' => t('Shows a tag cloud for news tags'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['blog_tags'] = array(
+    'info' => t('Shows a tag cloud for blog tags'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['articles_tags'] = array(
+    'info' => t('Shows a tag cloud for Library tags'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+    
+  
+  
+  // Topics block for different content types.
+  /*
+  $content_types = array('blog_post' => 'blog', 'news_post' => 'news', 'article' => 'articles');
+  foreach ($content_types as $content_type => $label) {
+    
+    $blocks[$content_type . '_topics'] = array(
+      'info' => t(drupal_ucfirst($label) . ' topics'),
+      'cache' => DRUPAL_CACHE_GLOBAL,
+    );
+  }
+  */
+  
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function park_blocks_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {      
+    case 'main_menu_om_sections':
+      $block['subject'] = t('OM Sections');
+      $block['content'] = park_blocks_get_omMenuBlock_byTitle('Разделы', 'park_blocks_get_omMenuBlock_Sections');
+      break;
+    case 'main_menu_om_aboutus':
+      $block['subject'] = t('OM About Us');
+      $block['content'] = park_blocks_get_omMenuBlock_byTitle('О нас', 'park_blocks_get_omMenuBlock_AboutUs');
+      break;
+    
+    case 'footer_menu':
+      $block['subject'] = t('Footer menu');
+      $block['content'] = park_blocks_get_footerMenu();
+      break; 
+    case 'header_links':
+      $block['subject'] = t('Header links');
+      $block['content'] = park_blocks_get_headerLinks();
+      break; 
+    
+     
+//    case 'b_provider_p_bottom':
+//      $block['subject'] = t('Bottom section of Business providers page preface');
+//      $block['content'] = park_misc_getPrefaceBottomSection('page-compare-business-gcb-providers');
+//      break;
+    
+    
+    
+    case 'news_tags':
+      $block['subject'] = t('Shows a tag cloud for news tags');
+      $block['content'] = park_pages_buildTagsPage('news');
+      break;
+    case 'blog_tags':
+      $block['subject'] = t('Shows a tag cloud for blog tags');
+      $block['content'] = park_pages_buildTagsPage('blog');
+      break;
+    case 'articles_tags':
+      $block['subject'] = t('Shows a tag cloud for Library tags');
+      $block['content'] = park_pages_buildTagsPage('articles');
+      break;
+    
+    /*
+    default:
+      // Get blocks for topics for a specific content type.
+      if (strpos($delta, '_topics')) {
+        $content_types = array('blog_post' => 'blog', 'news_post' => 'news', 'article' => 'articles');
+        $content_type = str_replace('_topics', '', $delta);
+        if(!isset($content_types[$content_type])) {
+          continue;
+        }
+        $block['subject'] = t(drupal_ucfirst($content_types[$content_type]) . ' topics');
+        $block['content'] = park_blocks_get_tagsBlock($content_type);
+      }
+      break;
+    */
+  }
+
+  return $block;
+}
+
+
+/**
+ * Returns a themed Header links block.
+ */
+function park_blocks_get_headerLinks() {
+  $menu = menu_build_tree('menu-header-links');
+  return theme('park_misc_headerLinks', array('submenu' => array('below' => $menu)));
+}
+
+
+/**
+ * Returns a themed Footer menu.
+ */
+function park_blocks_get_footerMenu() {
+  $menu = menu_build_tree('menu-footer-menu');
+  return theme('park_misc_submenuSimple', array('submenu' => array('below' => $menu), 'class' => 'menu', 'delimiter' => '<li> | </li>'));
+}
+
+
+/**
+ * Dispatcher for getting themed block for MegaMenu by a block title.
+ */
+function park_blocks_get_omMenuBlock_byTitle($title, $function) {
+
+  /*
+  global $language;
+  $types = cache_get('types_' . $language->language);
+  Expire = current time + 2 hours.
+  cache_set('types_' . $language->language, $types, 'cache', time() + 7200);
+  */
+  
+  // Get main menu wireframe menu.
+  $submenu = park_blocks_getSubmenuByTitle('main-menu', $title);
+  return $function($submenu);
+}
+
+
+/**
+ * Returns a themed GoCloudBackup Providers block content for MegaMenu.
+ */
+function park_blocks_get_omMenuBlock_Sections($submenu) {
+  return theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
+}
+
+
+/**
+ * Returns a themed GoCloudBackup Blog block content for MegaMenu.
+ */
+function park_blocks_get_omMenuBlock_AboutUs($submenu) {
+  return theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
+}
+
+
+/**
+ * Returns a submenu from a menu.
+ */
+function park_blocks_getSubmenuByTitle($menu_name, $submenu_title) {
+  $menu = menu_build_tree($menu_name);
+  if(!$menu) {
+    return NULL;
+  }
+  foreach ($menu as $submenu) {
+    if ($submenu['link']['link_title'] == $submenu_title) {
+      return $submenu;
+    }
+  }
+  return NULL;
+}
+
+
+/**
+ * Wrap a block content in proper block's divs.
+ */
+function park_blocks_wrapInBlockThemed($block_data, $block)
+{
+  if(!isset($block['content']) || !$block['content']) {
+      return null;
+  }
+  if (is_array($block['content'])) {
+    $block['content'] = render($block);
+  }
+  
+  if (isset($block_data['shadow']) && $block_data['shadow']) {
+    return 
+      '<section id="block-' . $block_data['module'] . '-' . $block_data['delta'] . '" class="block gcb block-' . $block_data['module'] . '">' 
+        . '<div class="inside">'
+            . ( ($block['subject'] && (!isset($block_data['subject_visible']) || $block_data['subject_visible']) )
+                ? 
+                '<div class="block-icon pngfix"></div><h2 class="block-title">' . $block['subject'] . '</h2>'
+                :
+                '') 
+            . '<div class="content">' . $block['content'] . '</div>
+          </div> <!-- /.inside -->
+          <div class="shadow"></div>
+      </section>';
+  }
+  else {
+    return 
+      '<section id="block-' . $block_data['module'] . '-' . $block_data['delta'] . '" class="block gcb block-' . $block_data['module'] . '">' 
+         . ( ($block['subject'] && (!isset($block_data['subject_visible']) || $block_data['subject_visible']) )
+            ? 
+            '<div class="block-icon pngfix"></div><h2 class="block-title">' . $block['subject'] . '</h2>'
+            :
+            '') 
+         . '<div class="content">' . $block['content'] . '</div>
+      </section>';
+  }
+}
+
+
+/**
+ * Returns a content of a block wrapped in proper divs.
+ */
+function park_blocks_getBlockThemed($block_data)
+{
+  $block = module_invoke($block_data['module'], 'block_view', $block_data['delta']);
+  if ($block) {
+    if (isset($block_data['subject'])) {
+      $block['subject'] = $block_data['subject'];
+    }
+    return park_blocks_wrapInBlockThemed($block_data, $block);
+  }
+  return NULL;
+}
+

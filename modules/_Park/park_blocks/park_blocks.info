@@ -1,0 +1,6 @@
+name = Park Blocks
+package = Park
+description = "Defines different blocks for the site including ones for side bars and MegaMenu"
+core = 7.x
+tags[] = Park
+files[] = park_blocks.module
