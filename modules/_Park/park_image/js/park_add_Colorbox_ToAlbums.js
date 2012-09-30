@@ -1,5 +1,6 @@
+console.log('a-0');
 (function ($) {
-
+console.log('a-2');
   Drupal.behaviors.park_addColorboxToAlbums = {
     attach: function (context, settings) {
        console.log('a-10');
