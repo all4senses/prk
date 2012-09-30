@@ -521,14 +521,11 @@ function logintoboggan_user_register_submit($form, &$form_state) {
     $message = t('Thank you for applying for an account. Your account is currently pending approval by the site administrator.<br />Once it has been approved, you will receive an e-mail containing further instructions.');
   }
 
-  if(isset($mailkey)) {
-    // Mail the user.
-    _user_mail_notify($mailkey, $account);
-  }
-  
+  // Mail the user.
+  _user_mail_notify($mailkey, $account);
+
   drupal_set_message($message);
-  
-  
+
   // where do we need to redirect after registration?
   $redirect = _logintoboggan_process_redirect(variable_get('logintoboggan_redirect_on_register', ''), $account);
 
