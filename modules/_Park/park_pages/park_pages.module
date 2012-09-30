@@ -227,6 +227,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   $terms = NULL;
   $allTags = NULL;
   $url_tags = NULL;
+  $selectTags = NULL;
   
   $query = db_select('taxonomy_term_data', 'td')
         ->fields('td', array('name', 'tid'));
