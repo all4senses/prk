@@ -121,7 +121,6 @@
       
       function getTagsQueryPart() {
         
-        param_string = source_param_string;
         tags = '';
         tagsDisabled = ''; 
         

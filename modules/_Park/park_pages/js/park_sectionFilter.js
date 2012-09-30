@@ -81,9 +81,8 @@
       
       function getTagsQueryPart() {
         
-        param_string = source_param_string;
         tags = '';
-        tagsDisabled = ''; 
+        //tagsDisabled = ''; 
         
         if (jQuery("#select-tags.chzn-select").find(':not(:selected)[value!=""]')) {
           jQuery("#select-tags.chzn-select").find(':not(:selected)[value!=""]').each(function(){
