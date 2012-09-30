@@ -48,6 +48,11 @@
         
         var final_param_string = source_param_string;
         
+        if (!jQuery("#select-tags.chzn-select").val()) {
+          alert(Drupal.t('Set at least one tag to filter.'));
+          return;
+        }
+        
         final_param_string = addParamToQuery(final_param_string, getTagsQueryPart());
 
         final_url = location.origin + location.pathname + final_param_string;
