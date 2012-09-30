@@ -21,7 +21,7 @@
       // 'onChange' => "top.location.href='http://getvoip.com/" . $_GET['q'] . "?provider=' + encodeURIComponent(document.getElementById('select_provider').options[document.getElementById('select_provider').selectedIndex].value) + '$url'"),
 
       current_query = location.search;
-      console.log('current_query = ' + current_query);
+      //console.log('current_query = ' + current_query);
       
       if (current_query) {
           var parts = current_query.substring(1).split('&');
@@ -43,7 +43,7 @@
       }
 
       //console.log(params);
-      console.log('source query (without "tags" and "author" params) = ' + source_param_string);
+      //console.log('source query (without "tags" and "author" params) = ' + source_param_string);
 
        
       
@@ -58,7 +58,7 @@
 
         final_url = location.origin + location.pathname + final_param_string;
         
-        console.log('final url with selected tags (if selected) and author (if selected) = ' + final_url);
+        //console.log('final url with selected tags (if selected) and author (if selected) = ' + final_url);
         
         top.location.href = final_url;
       }
@@ -83,7 +83,7 @@
       
       $("#goToAuthorPage").click(function(){
         var author = $("#select-authors").val();
-        console.log('author = ' + author);
+        //console.log('author = ' + author);
         if (author) {
           top.location.href = location.origin + '/u/' + encodeURIComponent(author);
         }
@@ -112,7 +112,7 @@
         if (author) {
           authorQueryPart = 'author=' + encodeURIComponent(author);
         }
-        console.log('authorQueryPart = ' + authorQueryPart);
+        //console.log('authorQueryPart = ' + authorQueryPart);
         return authorQueryPart;
       }
 
@@ -134,16 +134,16 @@
 
         tags = (tags ? (tags + (tagsDisabled ? ',' : '')) : '') + tagsDisabled;
 
-        console.log('current selected tags (with disabled) = ' + tags);
-        console.log('among them -> tagsDisabled = ' + tagsDisabled);
+        //console.log('current selected tags (with disabled) = ' + tags);
+        //console.log('among them -> tagsDisabled = ' + tagsDisabled);
         
         if (tags) {
           tagsQueryPart = 'tags=' + encodeURIComponent(tags);
-          console.log('tagsQueryPart = ' + tagsQueryPart);
+          //console.log('tagsQueryPart = ' + tagsQueryPart);
           return tagsQueryPart;
         }
         
-        console.log('tagsQueryPart = -----');
+        //console.log('tagsQueryPart = -----');
         return false;
       }
       

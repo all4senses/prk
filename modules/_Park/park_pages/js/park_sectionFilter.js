@@ -3,7 +3,7 @@
   Drupal.behaviors.park_sectionFilter = {
     attach: function (context, settings) {
        
-      $(".chzn-select").chosen();
+      $("#select-tags.chzn-select").chosen();
        
       refineTagsExcludedStatus();
       
@@ -16,7 +16,7 @@
       var params = {};
       
       current_query = location.search;
-      console.log('current_query = ' + current_query);
+      //console.log('current_query = ' + current_query);
       
       if (current_query) {
           var parts = current_query.substring(1).split('&');
@@ -38,7 +38,7 @@
       }
 
       //console.log(params);
-      console.log('source query (without "tags-exclude" params) = ' + source_param_string);
+      //console.log('source query (without "tags-exclude" params) = ' + source_param_string);
 
        
       
@@ -52,9 +52,9 @@
 
         final_url = location.origin + location.pathname + final_param_string;
         
-        console.log('final url with selected tags-exclude (if selected) = ' + final_url);
+        //console.log('final url with selected tags-exclude (if selected) = ' + final_url);
         
-        //top.location.href = final_url;
+        top.location.href = final_url;
       }
       
       
@@ -89,7 +89,7 @@
             tags = tags + (tags ? ',' : '') + jQuery(this).val();
           })
         }
-        console.log(tags);
+        //console.log(tags);
         /*
         if (jQuery('#select-tags.chzn-select').val()) {
           tags = jQuery('#select-tags.chzn-select').val().toString();
@@ -106,11 +106,11 @@
         
         if (tags) {
           tagsQueryPart = 'tags-exclude=' + encodeURIComponent(tags);
-          console.log('tagsQueryPart = ' + tagsQueryPart);
+          //console.log('tagsQueryPart = ' + tagsQueryPart);
           return tagsQueryPart;
         }
         
-        console.log('tagsQueryPart = -----');
+        //console.log('tagsQueryPart = -----');
         return false;
       }
       
