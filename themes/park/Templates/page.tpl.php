@@ -1,4 +1,5 @@
-<div id="container" class="clearfix">
+<div id="bshadow" class="clearfix">
+
   
   <div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
@@ -23,7 +24,7 @@
         </div>
       </div>
       
-      <?php echo '<div id="block-gv-blocks-header-links"><div class="follow-us">Follow Us</div>', /*gv_blocks_get_headerLinks(),*/ '</div>', render($page['header']); ?>
+      <?php echo /*'<div id="block-gv-blocks-header-links"><div class="follow-us">Follow Us</div>', gv_blocks_get_headerLinks(), '</div>',*/ render($page['header']); ?>
     </nav>
 
     <?php ////if ($breadcrumb): print $breadcrumb; endif;?>
@@ -68,11 +69,11 @@
       <?php endif; ?>
 
   </div> <!-- /#all-content -->
-
+  
+</div> <!-- /#container -->  
   
   <footer id="footer" role="contentinfo" class="clearfix">
     <?php echo render($page['footer']); ?>
     <div class="c">© 2012 Park.all4senses.com | All Rights Reserved</div>
   </footer>
   
-</div> <!-- /#container -->  

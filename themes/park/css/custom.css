@@ -2,3 +2,519 @@
 #all-content {min-height: 300px;}
 
 .node-unpublished {background: none;}
+
+
+
+/* Main layout */
+/*#all-content {min-height: 300px;}*/
+
+
+
+/* General structue */
+body{background: url("images/header-back.png") repeat-x right top #e7e7e7;}
+
+/* Three columns layout */
+body.two-sidebars #sidebar-first {float: left; margin: 0 0 0 -857px; padding: 0; width: 180px;}
+body.two-sidebars #main {float: left; margin: 0 0 0 195px; padding: 0; width: 663px;}
+/* Two columns layout */
+body.one-sidebar.sidebar-second #main {background: white; padding: 10px; width: 825px; min-height: 400px;}
+
+
+#bshadow{margin: auto; position: relative; width: 1120px;}
+/*
+#bshadow #bs1{background: url("images/bshadow.png") no-repeat scroll -4px 0 transparent; height: 700px; left: 3px; position: absolute; top: 130px; width: 7px;}
+#bshadow #bs2{background: url("images/bshadow.png") no-repeat scroll -8px 0 transparent; height: 700px; position: absolute; right: 3px; top: 130px; width: 7px;}
+*/
+#bshadow #bs1{background: url("images/bshadow.png") no-repeat -4px -20px; height: 700px; left: 7px; position: absolute; top: 130px; width: 3px;}
+#bshadow #bs2{background: url("images/bshadow.png") no-repeat -32px -20px; height: 700px; position: absolute; right: 7px; top: 130px; width: 3px;}
+
+
+
+/* Make captiona narrower */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {font-family: Georgia,"Bitstream Charter",serif;}
+h1{margin-top: 5px; margin-bottom: 5px; line-height: 40px;}
+
+
+strong{font-weight: bold;}
+em, p em{font-style: italic;}
+
+h2, .h2 {line-height: 25px;}
+
+a{color: #478AFD;}
+a:visited{color: #478AFD;}
+
+
+ul{list-style: none;}
+.field-name-body ul{list-style-type: disc;}
+
+.delim{margin: 0 5px 0 5px; /*color: #275FA6;*/}
+
+
+/* Login/register page */
+.toboggan-unified #login-links a{background-color: #478AFD; border: medium none; border-radius: 3px 3px 3px 3px; color: white; font-size: 20px; padding: 5px;}
+.toboggan-unified #login-links a.lt-active, .toboggan-unified #login-links a.lt-active:hover{background-color: #478AFD; border: medium none; color: white; font-size: 20px; padding: 5px;}
+.toboggan-unified #login-message{color: #478AFD;}
+.toboggan-unified{padding: 20px; text-align: center; width: 810px;}
+.toboggan-unified input{text-align: center;}
+
+form#user-login, form#user-login input{text-align: center;}
+
+
+
+
+.form-item .description{color: gray; font-size: 12px;}
+
+/* Fields hints */
+input.blur,
+.ui-state-default.blur, .ui-widget-content .ui-state-default.blur, .ui-widget-header .ui-state-default.blur{color: lightgray;}
+
+
+
+
+#header, #navigation, #all-content, #footer-inside{width: 1100px; margin: auto;}
+
+#header{padding-top: 85px; z-index: 4;}
+
+
+/* Header */
+/*#header #header-menu-back{background: url("images/menu-main-back.png") repeat-x scroll 0 0 transparent; border-radius: 6px 6px 0 0; min-height: 45px;}*/
+#header #header-menu-back{background: url("images/sprite-2.png") repeat-x scroll 0 -58px #F3F3F3; border-radius: 6px 6px 0 0; min-height: 45px;}
+
+/* Search block */
+/*#header*/ .region-sidebar-second #block-search-form{position: static; color: lightgray; padding-bottom: 0;/*position: absolute; right: 10px; top: 95px;*/}
+.region-sidebar-second #block-search-form .contextual-links-wrapper{display: none;}
+.region-sidebar-second form#search-block-form{margin-bottom: 0;}
+/*.region-sidebar-second #block-search-form input.form-text{height: 20px; width: 175px; padding-right: 30px; padding-left: 5px; -webkit-appearance: none; outline: none; border: none; background: none;}*/
+.region-sidebar-second #block-search-form input.form-text{-webkit-appearance: textfield; background: transparent; border: none; height: 20px; outline: medium none; padding-left: 5px; width: 175px; color: gray;}
+.region-sidebar-second #block-search-form input.form-text:focus{ -webkit-appearance: none; outline: none; border: none;}
+
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button{-webkit-appearance: none;}
+
+.region-sidebar-second #block-search-form .form-type-textfield{float: left; margin: 0; position: static;}
+/*.region-sidebar-second #block-search-form .form-actions{position: absolute; right: 4px; top: 2px; height: 20px;}*/
+.region-sidebar-second #block-search-form .form-actions{display: block; height: 20px; float: left;}
+/*.region-sidebar-second #block-search-form input.form-submit{background: url("images/search.png") no-repeat scroll 0 0 transparent; text-indent: -9999px; width: 20px; height: 16px; border: none;}*/
+.region-sidebar-second #block-search-form input.form-submit{background: url("images/sprite-2.png") no-repeat scroll 0 -150px white; color: white; border: none; font-size: 0px; text-indent: -90px; height: 21px; display: block; margin: 6px 0 0 6px; width: 18px; cursor: pointer;}
+
+
+
+#header #logo-block{color: #C5C5C5; font-family: arial; left: 0; position: absolute; top: 0; width: 500px;}
+#header #logo{float: left; margin-right: 20px;}
+#header #logo-block .descr{float: left;}
+#header #logo-block .title{font-size: 26px; font-weight: bold; margin-top: 10px;}
+#header #logo-block .subtitle{font-size: 15px; float: left;}
+
+
+#header #block-gcb-blocks-header-links{color: white; margin: 0; padding: 0; position: absolute; right: 33px; top: 5px;}
+#header #block-gcb-blocks-header-links .follow-us{color: #C5C5C5; font-size: 14px;}
+ul.header-links{margin: 5px 0 0; padding: 0;}
+ul.header-links li{float: left;}
+ul.header-links a{display: block; text-indent: -9999px; width: 35px; height: 42px; margin-right: 7px;}
+ul.header-links a.Twitter{background: url("images/sprite-2.png") no-repeat scroll 0 -199px transparent;}
+ul.header-links a.Facebook{background: url("images/sprite-2.png") no-repeat scroll 0 -239px transparent;}
+ul.header-links a.GooglePlus{background: url("images/sprite-2.png") no-repeat scroll 0 -322px transparent;}
+ul.header-links a.LinkedIn{background: url("images/sprite-2.png") no-repeat scroll 0 -282px transparent;}
+
+
+
+/* Footer */
+#footer {background: black; color: white; height: 210px; padding: 5px 0; text-align: center;}
+#footer .region-footer{width: 1000px; margin: auto; font-family: Georgia,"Bitstream Charter",serif;}
+#footer .block{margin-bottom: 0;}
+#footer .menu a{color: white; font-size: 14px;}
+#footer .menu li{margin: 2px 2px 0 2px;}
+#footer .c{clear: both; margin: auto; color: gray; font-size: 12px; width: 290px; padding: 10px 0 20px;}
+#footer #sitelock img{margin-right: 5px; width: 82px;}
+
+/* System Messages */
+/*
+.messages{overflow-x: scroll;}
+.krumo-root, .krumo-child, .krumo-element, .krumo-nest, .krumo-node{width: 100%; overflow-x: scroll;}
+*/
+div.messages,
+div.error{border: none;}
+
+
+/* OM MegaMenu styles */
+ul.gcb{margin-left: 0px; padding-left: 10px;}
+.block.block-om-maximenu{width: 1090px; left: 11px; position: absolute; top: 87px; font-family: Georgia,"Bitstream Charter",serif; z-index: 10; /*height: 42px; overflow: hidden;*/}
+
+
+.om-btitle {float: left; position: absolute; left: -180px;}
+.om-maximenu-content .block{float:left; margin-bottom: 5px;}
+.om-maximenu-content .block .block{margin-left: 0;}
+.om-maximenu-content h3, .om-maximenu-content h2{margin-top:0}
+
+
+/* set constant position for om submenu block*/
+.om-maximenu.om-maximenu-block ul.om-menu {width: 1089px;}
+
+.om-maximenu ul.om-menu li.om-leaf{top: -2px;}
+
+#om-menu-main-om-menu li.om-leaf{position: relative; background: url("images/sprite-2.png") no-repeat scroll right -107px transparent; height: 40px; z-index: 400;}
+
+#om-menu-main-om-menu li.om-leaf.leaf-about-us .om-maximenu-middle{width: 120px;}
+  
+#om-menu-main-om-menu li.om-leaf.last,
+body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: none;}
+
+
+.om-maximenu ul.om-menu li.om-leaf .om-link{line-height: 36px; color: #868686; font-weight: bold; padding: 4px 14px 8px 14px;}
+.om-maximenu ul.om-menu li.om-leaf .om-link.link-e{padding: 4px 0 8px 8px;}
+.om-maximenu ul.om-menu li.om-leaf:hover om-link, .om-maximenu ul.om-menu li.om-leaf:hover a.om-link{background: #478afd; color: white;  /*border-radius: 10px 10px 0 0;*/}
+
+/*Make screen wide width for om submenu block */
+.om-maximenu .om-maximenu-content{top: 40px; padding-top: 4px; min-width: 180px;}
+.om-maximenu-simple .om-maximenu-middle{background: #478afd; color: white; padding: 10px 15px 0 10px; border-radius: 0 0 8px 8px; box-shadow: 3px 7px 7px -7px #000000; width: auto;}
+
+.om-maximenu-simple .om-maximenu-middle a{color: white;}
+.om-maximenu-simple .om-maximenu-middle a:hover{text-decoration: underline;}
+
+.leaf-business-voip .om-maximenu-content{width: 200px;}
+.leaf-residential-voip .om-maximenu-content{width: 220px;}
+
+/* Submenu items - smaller */
+.om-leaf .content a{font-size: 13px;}
+
+
+/* Menu*/
+.menu-preface{float: left; margin-right: 20px;}
+/* Footer and header menu */ 
+.region-header ul.gcb.menu li, .region-footer ul.gcb.menu li{float: left;}
+
+
+
+
+
+.block .inside,
+.node .inside{border: 1px solid gray; background: white; position: relative;}
+
+/* Home page main content */
+
+/* Views block with charts on some pages */
+
+.front #main .block{position: relative; margin-bottom: 15px;}
+
+
+.front #main .node h2{color: black; margin: 0; padding: 10px; font-size: 18px; font-weight: bold;}
+.front #main .node h2 a{color: #275FA6;}
+
+
+
+.front #main .block .content{padding: 0; font-size: 13px;}
+
+.front #main .node .content{padding: 10px; font-size: 13px;}
+
+.front p{line-height: 25px; color: #777777;}
+
+/* Shadows */
+/*.front .block .shadow,
+.node*/ .shadow{background: url("images/shadow-bottom-right-t.png") no-repeat scroll 105% 2px transparent; height: 15px; margin-bottom: -15px; width: 100%;}
+
+/* Blocks */
+
+
+body.sidebar-second #sidebar-second{float: right; margin-right: 18px; padding: 18px 0 0; width: 220px;}
+.sidebar .top-line{background: url("images/sprite-0.png") no-repeat scroll 0 -2px transparent; height: 5px; margin: 12px 0 10px; width: 100%;}
+.sidebar .block{overflow: hidden; background: white; border-radius: 5px; margin-bottom: 12px; position: relative; padding-bottom: 10px; z-index: 5;}
+.sidebar .block-title{margin: 0; padding: 15px 7px 15px 10px; font-size: 16px; font-weight: bold; text-transform: capitalize; line-height: 18px;}
+
+
+/*.sidebar .block .content{padding: 10px;}*/
+.sidebar #block-views-articles-block-1 .content{padding: 0;}
+
+.sidebar #block-system-user-menu .content{padding: 10px 0 10px 0;}
+.sidebar #block-system-user-menu .content a{font-size: 18px; padding: 0 0 0 10px; color: gray;}
+
+.sidebar #block-user-login .content{padding: 10px;}
+.sidebar #block-user-login .content a{padding: 0;}
+.sidebar #block-user-login label{font-size: 14px;}
+
+.sidebar .block .content ul{list-style: none; padding: 0; margin: 0;}
+.sidebar .block .content a{color: #777777; font-family: sans-serif; font-size: 12px; padding: 4px 10px; display: block;}
+.sidebar .block .content .view-id-reviews .views-row a{background: url("images/sprite-2.png") no-repeat scroll 5px -796px transparent; padding: 7px 10px 10px 34px;}
+.sidebar .block .content a:hover{color: #478AFD; text-decoration: underline;}
+
+
+
+.sidebar #block-views-articles-block-1 .views-row-last a{border: none;}
+
+/*.sidebar #block-views-articles-block-1 .more-link a{background: none; line-height: 10px; padding: 11px;}*/
+.sidebar .block .more-link a {background: url("images/sprite-2.png") no-repeat scroll 0 -720px transparent; left: 155px; line-height: 10px; padding: 11px; position: absolute; text-align: left; text-indent: -9999px; top: 8px; width: 30px;}
+
+/* Clear ui-widget-content form settings */
+.block form{background: none; border: none;}
+/* Blocks icons */
+.block-icon{position: absolute; right: 2px; top: -7px; height: 44px; width: 50px;}
+#block-views-articles-block-1 .block-icon{background: url("images/sprite-2.png") no-repeat scroll 0 -826px transparent;}
+#block-views-news-block .block-icon{background: url("images/sprite-2.png") no-repeat scroll 0 -780px transparent;}
+#block-views-blog-block .block-icon{background: url("images/sprite-2.png") no-repeat scroll 2px -702px transparent;}
+
+
+
+
+.sidebar .block li{list-style: none;}
+
+/* Characters counter */
+.form-item{position: relative;}
+form .counter{color: #CCCCCC; position: absolute; right: 0; top: 0;}
+form .counter.warning{color: lightcoral;}
+form .counter.exceeded{color: red;}
+
+
+
+/* Node page, including Article */
+
+
+.page-node #main .main-content{border: 1px solid lightgray; padding: 0 40px 10px; clear: both;}
+
+.page-node #main .main-content .content h2{color: #275FA6; border: none; font-size: 35px; padding: 0; width: 200px; min-height: 80px;}
+.page-node #main .main-content .content h2.not-published{color: red;}
+
+.page-node #main .main-content h1{color: #478AFD; font-family: Georgia,"Bitstream Charter",serif; font-size: 28px;}
+.page-node #main .main-content h1.not-published{color: red;}
+
+.node-type-admin-page h1{margin-top: 13px;}
+  
+.page-node #main .submitted{font-family: Georgia,"Bitstream Charter",serif; font-size: 17px;}
+
+.page-node .submitted .delim{font-weight: bold; margin-right: 5px;}
+
+.node-teaser .submitted a{margin: 0 0 0 3px;}
+.page-node .submitted a{margin: 0 0 0 5px;}
+
+.node-teaser .submitted .gplus{background: url("images/gplus16.jpg") no-repeat scroll 0 0 transparent; text-indent: -9999px; display: inline-block; width: 20px;}
+.page-node .submitted .gplus{background: url("images/gplus16.jpg") no-repeat scroll 0 5px transparent; text-indent: -9999px; display: inline-block; width: 20px;}
+
+.page-node #main .main-content .content{font-family: Georgia,"Bitstream Charter",serif; border-top: 1px dotted #C4C4C4; margin-top: 12px; padding-top: 20px;}
+.page-node #main .main-content .block-views .content{border: none;}
+
+.page-node #main #comments{margin: 30px;}
+
+/* Article node page */
+
+/*.page-node #main*/ .share{font-size: 16px; border-top: 1px solid lightgray; margin-top: 20px; padding: 10px 0 30px 0;}
+
+.front .share, .preface .share{border: none; margin-top: -15px; /*padding: 0 0 40px 0;*/ padding: 3px 0 3px 10px; position: absolute; top: 20px; right: 210px; height: 20px; z-index: 100;}
+
+.share .main{width: 410px; float: right;}
+.IN-widget{float: left; margin-right: 13px;}
+#___plusone_0{float: left !important; width: 75px !important;}
+.fb-like{float: left; top: -2px;}
+.twitter-share-button{width: 95px !important;}
+
+.share .others{float: left; padding-top: 3px;}
+.share .others .addthis_toolbox a{margin-right: 5px}
+.share .others .addthis_button_email{position: relative; top: -4px;}
+.share .others .at15t_email{margin-right: 4px; position: relative; top: 3px;}
+
+
+
+.page-node #main .topics{border-top: 1px solid lightgray; font-family: Georgia,"Bitstream Charter",serif; font-size: 13px; font-weight: bold; padding-top: 10px; /*padding-bottom: 20px;*/}
+.page-node #main .topics .title{margin-right: 10px; float: left;}
+.page-node #main .topics a{float: left;}
+.page-node #main .topics .delim{margin: 0 5px 0 5px; float: left; color: #478AFD;}
+
+ 
+
+/* Article list and teasers */
+#main .view-taxonomy-term .views-row,
+#main .view-articles .views-row,
+#main .view-news .views-row,
+#main .view-blog .views-row{border: 1px solid lightgray; height: 195px; padding: 5px 10px; margin-bottom: 12px; overflow: hidden; width: 382px;}
+
+#main .view-taxonomy-term .views-row-odd,
+#main .view-articles .views-row-odd,
+#main .view-news .views-row-odd,
+#main .view-blog .views-row-odd{float: left; margin-right: 10px;}
+
+#main .view-taxonomy-term h2,
+#main .view-articles h2,
+#main .view-news h2,
+#main .view-blog h2{margin-top: 0;}
+
+
+/* Prefaces */
+/* Front prefaces */
+
+
+.front #main .node-admin-page, 
+.front #main .node-admin-page h2{font-family: Georgia,"Bitstream Charter",serif;}
+.front #main .node-admin-page h2{padding: 10px 10px 0 5px; border: none;}
+.front .node-admin-page .shadow{display: none; background: none; margin-bottom: 0;}
+
+.front #main .node-admin-page .inside{border: none;}
+.front #main .node-admin-page .content{text-align: justify; font-size: 16px; padding: 10px 5px 10px 5px;}
+.front .node-admin-page p{margin: 0 0 10px;}
+
+/* Other prefaces */
+.front h1, .attachment-before h1{line-height: 18px; color: black; font-size: 18px; font-weight: bold; margin: 0; border: medium none; padding: 0 10px 0 5px; font-family: Georgia,"Bitstream Charter",serif;}
+.front .content.page, .attachment-before .content.page{font-family: Georgia,"Bitstream Charter",serif; font-size: 16px; padding: 10px 5px 0; text-align: justify;}
+
+.front .content.page{/*border-bottom: 1px dashed lightgray;*/ font-size: 13px; margin-bottom: 5px;}
+.front .content.page p{margin-bottom: 0px;}
+
+h1.preface,
+h2.preface{border: none; color: black; font-family: Georgia,"Bitstream Charter",serif; font-size: 18px; font-weight: bold; line-height: 18px; margin: 0; padding: 10px 0 0 0;}
+
+.content.page.preface,
+.front .content.page.preface, 
+.attachment-before .content.page.preface,
+.field-name-field-preface-b-body{font-family: Georgia,"Bitstream Charter",serif; font-size: 13px; padding: 5px 0 0 0; text-align: justify;}
+
+.preface p,
+.field-name-field-preface-b-body p{color: #777777; line-height: 22px; margin-bottom: 10px;}
+
+.field-name-field-preface-b-body p{margin-bottom: 7px;}
+
+
+
+/* Articles teasers */
+.node-teaser{font-family: Georgia,"Bitstream Charter",serif; margin-bottom: 0;}
+.node-teaser h2{display: block; max-height: 50px; overflow: hidden;}
+.node-teaser h2 a{font-family: Georgia,"Bitstream Charter",serif; color: #478AFD; font-size: 18px; line-height: 20px; font-weight: bold; margin: 0; border: medium none; padding: 0 10px 0 0;}    
+
+.node-teaser .submitted{border-bottom: 1px dotted lightgray; display: block; font-size: 12px; margin: 7px 0; padding-bottom: 5px;}
+
+.content.teaser{font-size: 14px; margin: 5px 0 5px 0; text-align: left; /*-webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;*/}
+
+.content.teaser .thumb{width: 150px; height: 98px; float: left; margin: 5px 10px 5px 0; text-align: center;}
+
+.content.teaser .more{float: right; color: #478AFD;}
+
+
+
+/* Bodies on node pages */
+/*.page-node .field-name-body{font-size: 12px; max-width: 740px; overflow-x: auto;}*/
+
+/* Tables in bodies */
+.field-name-body table{}
+.field-name-body table tbody{}
+.field-name-body table th{}
+.field-name-body table tr{}
+
+.field-name-body table td, #main .block table td{border: 1px solid lightgray; padding: 5px;}
+
+/* Body content for admin pages */
+.node-type-admin-page .field-name-body table{margin: 0;}
+.node-type-admin-page .field-name-body table td{vertical-align: top;}
+
+
+
+
+
+#all-content, #highlighted{background: white /*#F3F3F3*/; margin: auto; padding: 0 0 0/*10px*/ 0; width: 1100px; box-shadow: 0 0 5px #DDDDDD, 0 /*0*/20px 7px #000000;}
+
+
+/* Experimental - set white for all-content and gray for the side*/
+/*
+#all-content, #highlighted {background: white; margin: auto; padding: 0 0 10px; width: 1100px;}
+body.one-sidebar.sidebar-second #main{background: white; padding: 10px; width: 825px;}
+body.sidebar-second #sidebar-second {background: #F3F3F3; float: right; margin-right: 0; padding: 20px; width: 215px;}
+*/
+
+
+/* Experimental - with the image as a background */
+/* image with shadows */
+#bshadow #bs1,
+#bshadow #bs2{background: none;}
+/*
+#all-content, #highlighted {background: url("images/main-back.png") repeat-y scroll 0 0 transparent; margin: auto; padding: 0; width: 1110px;}
+body.one-sidebar.sidebar-second #main {background: none; margin-left: 10px;}
+body.one-sidebar.sidebar-second #sidebar-second {background: none;}
+*/
+ 
+
+/* image withOUT shadows, and shadow as a browser effect */
+
+#all-content{background: url("images/main-back.png") repeat-y scroll -5px 0 white;}
+
+body.one-sidebar.sidebar-second #main {background: none repeat scroll 0 0 white; padding: 10px; margin-left: 6px; width: 820px;}
+body.one-sidebar.sidebar-second #sidebar-second {background: none #F3F3F3; float: right; margin-right: 0; padding: 14px 18px 20px 20px; width: 210px;}
+
+/* Reset those data for separate quote pages */
+body.sidebar-second.node-type-quote #main{margin: 0; padding: 0;}
+
+
+/* Sitemap page */
+.view-sitemap .views-row{margin-bottom: 15px;}
+.view-sitemap .views-field-title{clear: both; float: left; margin-right: 10px;}
+.view-sitemap .views-field-created{color: gray; font-size: 12px; padding-top: 4px;}
+
+
+
+/* User profile */
+
+/*
+.page-user .ui-tabs .ui-tabs-panel{padding: 15px 0 0 0;}
+.page-user #main .view-articles .views-row-odd, .page-user #main .view-news .views-row-odd, .page-user #main .view-blog .views-row-odd{margin-right: 3px;}
+*/
+
+.profile{margin-top: 5px; font-family: Georgia,"Bitstream Charter",serif;}
+.profile #user-caption{border-bottom: 1.5px dotted lightgray; color: #478AFD; font-size: 25px; font-style: italic; margin-bottom: 20px; text-align: center;}
+.profile .field-name-field-u-bio,
+.profile .field-name-field-u-bio p{text-align: left;}
+
+.profile .user-picture{float: none; text-align: center;}
+.profile #articles-caption{font-style: italic; margin: 20px 0 20px; text-align: center;}
+
+
+/* Tags page */
+.tags{text-align: center;}
+.tags a:hover{background: #3399FF; color: white;}
+.tags .more-link a{color: gray;}
+.tags .more-link a:hover{background: transparent; color: black;}
+
+
+/* Time stamp */
+.ts{float: right; color: black; font-size: 12px; margin-top: 10px; clear: both;}
+
+
+/* Socialite */
+.cf:after{visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
+* html .cf{zoom: 1;}
+*:first-child+html .cf{zoom: 1;}
+
+.social-buttons .vhidden{border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px;}
+
+/*
+ * Socialite Look-a-like defaults
+ */
+
+.social-buttons{display: block; list-style: none; padding: 0; margin: 0;}
+.social-buttons > li{display: block; margin: 0; float: left;}
+
+.social-buttons .socialite{display: block; position: relative; height: 25px;}
+.social-buttons div.socialite{display: block; position: relative; height: 25px; padding-right: 20px;}
+.social-buttons a.socialite{padding-right: 10px; /*background: url('images/social-sprite-right5.png') 0 0 no-repeat;*/}
+
+.social-buttons .socialite-loaded{background: none !important;}
+
+.social-buttons div.twitter-share{width: 85px;}
+.social-buttons a.twitter-share{width: 95px; background-position: 0 30px; padding-right: 10px;}
+
+.social-buttons div.googleplus-one{width: 60px;}
+.social-buttons a.googleplus-one{width: 67px; background-position: -114px 30px; padding-right: 10px;}
+
+.social-buttons div.facebook-like{width: 65px;}
+.social-buttons a.facebook-like{width: 82px; background-position: -202px 30px; padding-right: 10px;}
+
+.social-buttons div.linkedin-share{width: 125px; padding-right: 0;}
+.social-buttons a.linkedin-share{width: 95px; background-position: -294px 30px; padding-right: 10px;}
+
+a.yt-direct{background: url("images/video-link.jpg") no-repeat 31px 0; display: block; margin-top: 10px; padding-top: 35px; font-size: 12px; outline: none;}
+a.yt-direct:hover{background: url('images/video-link.jpg') no-repeat 31px 4px; outline: none;}
+a.yt-direct:active{outline: none;}
+
+/* Search results page */
+.search-results .search-snippet-info{font-family: Georgia,"Bitstream Charter",serif;}
+.search-results p.search-info{font-size: 12px; font-style: italic; margin-bottom: 6px;}
+.search-results p.search-snippet{margin-bottom: 0;}
+.search-results .title{margin-top: 10px;}
+.search-results li{margin-bottom: 5px;}
+
+
+
+
+
+
