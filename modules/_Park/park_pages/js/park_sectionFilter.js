@@ -5,7 +5,11 @@
        
       $(".chzn-select").chosen();
        
-       
+      refineTagsExcludedStatus();
+      
+      
+      
+      
       query_opened = false;
       source_param_string = '';
       final_param_string = '';
@@ -54,6 +58,10 @@
       }
       
       
+      $("#select-tags.chzn-select").change(function(){
+        refineTagsExcludedStatus();
+      });
+      
       
       $("#doFilter").click(function(){
         doFilter();
@@ -77,8 +85,8 @@
         tags = '';
         tagsDisabled = ''; 
         
-        if (jQuery(".chzn-select").find(':not(:selected)[value!=""]')) {
-          jQuery(".chzn-select").find(':not(:selected)[value!=""]').each(function(){
+        if (jQuery("#select-tags.chzn-select").find(':not(:selected)[value!=""]')) {
+          jQuery("#select-tags.chzn-select").find(':not(:selected)[value!=""]').each(function(){
             tags = tags + (tags ? ',' : '') + jQuery(this).val();
           })
         }
@@ -105,6 +113,19 @@
         
         console.log('tagsQueryPart = -----');
         return false;
+      }
+      
+      
+      
+      
+      
+      function refineTagsExcludedStatus() {
+        if (getTagsQueryPart()) {
+          $("#sectionIsFiltered").show();
+        }
+        else {
+          $("#sectionIsFiltered").hide();
+        }
       }
       
       

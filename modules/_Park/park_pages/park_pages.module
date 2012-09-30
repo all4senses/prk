@@ -111,7 +111,7 @@ function park_pages_getSectionBlocks($node) {
   $selectTags = park_pages_themeTagsSelect($allTags, $selectedTags);
   //dpm($selectTags);
   
-  $node->sectionBlocks['selectTags'] = $selectTags;
+  $node->sectionBlocks['selectTags'] = $selectTags . '<div id="sectionIsFiltered">' . t('The section is filtered, some content is excluded by the tags filter. You may include it back by selecting excluded tags.') . '</div>';
           
   drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
   drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)

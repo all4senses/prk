@@ -6,10 +6,10 @@
       $(".chzn-select").chosen({allow_single_deselect:true});
        
       if (!$("#select-authors").val()) {
-        $("#goToAuthorPage ").hide();
+        $("#goToAuthorPage").hide();
       }
       else {
-        $("#goToAuthorPage ").show();
+        $("#goToAuthorPage").show();
       }
        
       query_opened = false;
