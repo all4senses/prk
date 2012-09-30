@@ -373,7 +373,8 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     $results = '<div class="results">' . t('No content found.') . '</div>';
   }
   
-  $viewStyle = '<div class="view-style"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>';
+  
+  $viewStyle = !@$currentViewStyleTitle ? '' : '<div class="view-style"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>';
   $controlBlock = '<div class="feed-control">' . $viewStyle . $users_select . $selectTags . '</div>';
   
   return $controlBlock . $results;
