@@ -225,6 +225,8 @@ function park_pages_themeAuthorsSelect($selected_username = NULL, $all_authors =
 function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   $terms = NULL;
+  $allTags = NULL;
+  $url_tags = NULL;
   
   $query = db_select('taxonomy_term_data', 'td')
         ->fields('td', array('name', 'tid'));
@@ -241,16 +243,16 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   
   
   // Build a tags block.
- 
-  $url_tags = explode(',', @$_GET['tags']);
-  $selectTags = park_pages_themeTagsSelect($allTags, $url_tags);
-  
-  drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
-  drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  if ($allTags) {
+    $url_tags = explode(',', @$_GET['tags']);
+    $selectTags = park_pages_themeTagsSelect($allTags, $url_tags);
 
-  $path_to_module = drupal_get_path('module', 'park_pages');
-  drupal_add_js($path_to_module . '/js/park_contentFilter.js');
-  
+    drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
+    drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+
+    $path_to_module = drupal_get_path('module', 'park_pages');
+    drupal_add_js($path_to_module . '/js/park_contentFilter.js');
+  }
   
   
   $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers' : 'titles';
@@ -271,8 +273,8 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     $tids = $query->distinct()
     ->execute()->fetchCol();
     
-    dpm($url_tags);
-    dpm($tids);
+    //dpm($url_tags);
+    //dpm($tids);
     
     if ($tids) {
       foreach ($tids as $tid) {
@@ -367,9 +369,12 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
     }
     
   }
+  else {
+    $results = '<div class="results">' . t('No content found.') . '</div>';
+  }
   
-  $controlBlock = '<div class="feed-control"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>' 
-                  . $users_select . $selectTags;
+  $viewStyle = '<div class="view-style"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>';
+  $controlBlock = '<div class="feed-control">' . $viewStyle . $users_select . $selectTags . '</div>';
   
   return $controlBlock . $results;
 }
