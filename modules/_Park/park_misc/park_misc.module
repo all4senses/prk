@@ -1,17 +1,103 @@
 <?php
 
+
+/**
+ * Returns a current url.
+ */
 function park_misc_getCurrentUrl() {
-    $my_url = explode('?', $_SERVER['REQUEST_URI']);
-    $my_url = $my_url[0];
-    $my_url = "http://".$_SERVER['SERVER_NAME'].$my_url;
-    return $my_url;
+    if (isset($_SERVER['REDIRECT_URL']) && $_SERVER['REDIRECT_URL']) {
+      $url = $_SERVER['REDIRECT_URL'];
+    }
+    else {
+      $url = explode('?', $_SERVER['REQUEST_URI']);
+      $url = $url[0];
+    }
+    
+    $url = "http://" . $_SERVER['SERVER_NAME'] . $url;
+    return $url;
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function park_misc_theme($existing, $type, $theme, $path) {
+  return array(
+    'gcb_misc_submenuSimple' => array(
+      'variables' => array('vars' => null),
+    ),
+    'gcb_misc_headerLinks' => array(
+      'variables' => array('vars' => null),
+    ),
+     
+    // Altered Tagadelic weighted tag cloud.
+    'gcb_misc_tagadelicWeighted_acceptPredefinedTermsPaths' => array(
+      'variables' => array('terms' => array())
+    ),
+
+  );
+}
+
+
+/**
+ * Theme function that renders the HTML for the tags.
+ *
+ * @ingroup themable
+ */
+function theme_park_misc_tagadelicWeighted_acceptPredefinedTermsPaths(array $vars) {
+  $terms = $vars['terms'];
+  $output = '';
+
+  foreach ($terms as $term) {
+    $output .= l($term->name, isset($term->link['href']) ? $term->link['href'] : 'taxonomy/term/' . $term->tid, array(
+      'attributes' => array(
+        'class' => array("tagadelic", "level" . $term->weight),
+        'rel' => 'tag',
+        'title'  => $term->description,
+        )
+      )
+    ) . " \n";
+  }
+  
+  
+  if(isset($vars['voc'])){
+    if (count($terms) >= variable_get('tagadelic_block_tags_' . $vars['voc']->vid, 12)) {
+      $output .= theme('more_link', array('title' => t('more tags'), 'url' => "tagadelic/chunk/{$vars['voc']->vid}"));
+    }
+  }
+
+  return $output;
+}
+  
+
+/**
+ * Simple theming of nested submenu.
+ */
+function theme_park_misc_headerLinks($vars) {
+  if(empty($vars['submenu']['below'])) {
+    return NULL;
+  }
+
+  $class = isset($vars['class']) ? $vars['class'] : 'header-links';
+  $delimiter = isset($vars['delimiter']) ? $vars['delimiter'] : '';
+  $out = '<ul class="' . $class . '">';
+  $count = 0;
+  foreach ($vars['submenu']['below'] as $submenu) {
+    if (isset($submenu['link']['hidden']) && $submenu['link']['hidden']) {
+      continue;
+    }
+    $out .= ($count ? $delimiter : '') . '<li>' . l(t($submenu['link']['link_title']), $submenu['link']['href'], array('attributes' => array('class' => array($submenu['link']['link_title']), 'title' => $submenu['link']['options']['attributes']['title'], 'target' => '_blank' ))) . '</li>';
+    $count++;
+  }
+  $out .= '</ul>';
+  return $out;
 }
 
 
 /**
  * Simple theming of nested submenu.
  */
-function theme_gcb_misc_submenuSimple($vars) {
+function theme_park_misc_submenuSimple($vars) {
   if(empty($vars['submenu']['below'])) {
     return NULL;
   }
@@ -47,7 +133,7 @@ function theme_gcb_misc_submenuSimple($vars) {
     $out .= '</li>';
     if (!empty($submenu['below'])) {
       // Recursion call.
-      $out .= '<li>' . theme('gcb_misc_submenuSimple', array('submenu' => $submenu, 'level' => ($level + 1), 'class' => $class, 'delimiter' => $delimiter )) . '</li>';
+      $out .= '<li>' . theme('park_misc_submenuSimple', array('submenu' => $submenu, 'level' => ($level + 1), 'class' => $class, 'delimiter' => $delimiter )) . '</li>';
     }
     $count++;
   }
