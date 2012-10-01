@@ -119,7 +119,7 @@ ul.header-links a.LinkedIn{background: url("images/sprite-2.png") no-repeat scro
 
 /* Footer */
 #footer {background: black; color: white; height: 210px; padding: 5px 0; text-align: center;}
-#footer .region-footer{width: 1000px; margin: auto; font-family: Georgia,"Bitstream Charter",serif;}
+#footer .region-footer{/*width: 1000px;*/ margin: 0 0 0 535px/*auto*/; font-family: Georgia,"Bitstream Charter",serif;}
 #footer .block{margin-bottom: 0;}
 #footer .menu a{color: white; font-size: 14px;}
 #footer .menu li{margin: 2px 2px 0 2px;}
