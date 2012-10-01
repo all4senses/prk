@@ -392,20 +392,13 @@ function park_pages_node_view($node) {
       break;
     
     case 'preface':
-      dpm($node);
-      switch(@$_SERVER['REDIRECT_URL']) {
-        case '/master-classes':
-          $type = 'master_class';
+      $key = @$node->field_preface_key['und'][0]['value'];
+      switch($key) {
+        case 'master-class':
+        case 'article':
+        case 'album':
+          $node->contentFeed = park_pages_getContentFeedWithControls($key);
           break;
-        case '/articles':
-          $type = 'article';
-          break;
-        case '/albums':
-          $type = 'album';
-          break;
-      }
-      if (@$type) {
-        $node->contentFeed = park_pages_getContentFeedWithControls($type);
       }
       break; // End of 'preface'
   } // End of switch ($node->type) {
