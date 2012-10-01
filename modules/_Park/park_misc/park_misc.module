@@ -23,15 +23,15 @@ function park_misc_getCurrentUrl() {
  */
 function park_misc_theme($existing, $type, $theme, $path) {
   return array(
-    'gcb_misc_submenuSimple' => array(
+    'park_misc_submenuSimple' => array(
       'variables' => array('vars' => null),
     ),
-    'gcb_misc_headerLinks' => array(
+    'park_misc_headerLinks' => array(
       'variables' => array('vars' => null),
     ),
      
     // Altered Tagadelic weighted tag cloud.
-    'gcb_misc_tagadelicWeighted_acceptPredefinedTermsPaths' => array(
+    'park_misc_tagadelicWeighted_acceptPredefinedTermsPaths' => array(
       'variables' => array('terms' => array())
     ),
 

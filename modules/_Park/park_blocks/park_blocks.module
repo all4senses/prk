@@ -150,8 +150,7 @@ function park_blocks_get_headerLinks() {
  */
 function park_blocks_get_footerMenu() {
   $menu = menu_build_tree('menu-footer-menu');
-  dpm($menu);
-  return 'test' . theme('park_misc_submenuSimple', array('submenu' => array('below' => $menu), 'class' => 'menu', 'delimiter' => '<li> | </li>'));
+  return theme('park_misc_submenuSimple', array('submenu' => array('below' => $menu), 'class' => 'menu', 'delimiter' => '<li> | </li>'));
 }
 
 
