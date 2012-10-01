@@ -199,6 +199,7 @@ function park_blocks_getSubmenuByTitle($menu_name, $submenu_title) {
   dpm($submenu_title);
   dpm($menu);
   
+  return;
   
   if(!$menu) {
     return NULL;
