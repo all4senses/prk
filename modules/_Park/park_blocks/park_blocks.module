@@ -176,7 +176,7 @@ function park_blocks_get_omMenuBlock_byTitle($title, $function) {
  * Returns a themed GoCloudBackup Providers block content for MegaMenu.
  */
 function park_blocks_get_omMenuBlock_Sections($submenu) {
-  return theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
+  return 'testtt'; //theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
 }
 
 
