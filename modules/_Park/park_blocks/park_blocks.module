@@ -167,9 +167,8 @@ function park_blocks_get_omMenuBlock_byTitle($title, $function) {
   */
   
   // Get main menu wireframe menu.
-  return 'tesssst';
-  
   $submenu = park_blocks_getSubmenuByTitle('main-menu', $title);
+  return 'test';
   return $function($submenu);
 }
 
@@ -195,6 +194,12 @@ function park_blocks_get_omMenuBlock_AboutUs($submenu) {
  */
 function park_blocks_getSubmenuByTitle($menu_name, $submenu_title) {
   $menu = menu_build_tree($menu_name);
+  
+  dpm($menu_name);
+  dpm($submenu_title);
+  dpm($menu);
+  
+  
   if(!$menu) {
     return NULL;
   }
