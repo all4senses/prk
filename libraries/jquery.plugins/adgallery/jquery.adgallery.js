@@ -7,11 +7,8 @@
  *
  * Demo and documentation: http://coffeescripter.com/code/ad-gallery/
  */
-console.log('a-3');
 (function($) {
-  console.log('a-4');
   $.fn.adGallery = function(options) {
-    console.log('a-5');
     var defaults = { loader_image: '/sites/all/libraries/jquery.plugins/adgallery/css/loader.gif',
                      start_at_index: 0,
                      description_wrapper: false,

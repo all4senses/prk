@@ -4,7 +4,6 @@
     
     attach: function (context, settings) {
           
-          console.log('i-1');
           /*
           $('#gallery_0 img.image1').data('ad-desc', 'Whoa! This description is set through elm.data("ad-desc") instead of using the longdesc attribute.<br>And it contains <strong>H</strong>ow <strong>T</strong>o <strong>M</strong>eet <strong>L</strong>adies... <em>What?</em> That aint what HTML stands for? Man...');
           $('#gallery_0 img.image1').data('ad-title', 'Title through $.data');
@@ -14,7 +13,6 @@
 
           var g = new Array(); 
           $('.ad-gallery').each(function(i) {
-                console.log('i-2');
                 var current = $(this).attr('id');
                 // for some browsers (firefox, chrome) there should be set sizes explicitly 
                 // for '<div class="ad-image-wrapper" style="width:600px; height:400px;"></div>' in template
