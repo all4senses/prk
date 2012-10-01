@@ -105,13 +105,9 @@ function park_pages_getSectionBlocks($node) {
     }
   }
   
-  //dpm($allTags);
-  //dpm($selectedTags);
-  
   $selectTags = park_pages_themeTagsSelect($allTags, $selectedTags);
-  //dpm($selectTags);
   
-  $node->sectionBlocks['selectTags'] = $selectTags . '<div id="sectionIsFiltered">' . t('The section is filtered, some content is excluded by the tags filter. You may include it back by selecting excluded tags.') . '</div>';
+  $node->sectionBlocks['selectTags'] = '<div class="filter-block">' . $selectTags . '<div id="sectionIsFiltered">' . t('The section is filtered, some content is excluded by the tags filter. You may include it back by selecting excluded tags.') . '</div></div>';
           
   drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
   drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
@@ -246,7 +242,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   // Build a tags block.
   if ($allTags) {
     $url_tags = explode(',', @$_GET['tags']);
-    $selectTags = park_pages_themeTagsSelect($allTags, $url_tags);
+    $selectTags = '<div class="filter-block">' . park_pages_themeTagsSelect($allTags, $url_tags) . '</div>';
 
     drupal_add_js('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.jquery.js');
     drupal_add_css('sites/all/libraries/jquery.plugins/chosen.jquery/chosen.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
@@ -273,9 +269,6 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
           ->condition('td.name', $url_tags, 'IN');
     $tids = $query->distinct()
     ->execute()->fetchCol();
-    
-    //dpm($url_tags);
-    //dpm($tids);
     
     if ($tids) {
       foreach ($tids as $tid) {
@@ -348,7 +341,7 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
       $eligible_authors[$user->name] = $user->realname;
     }
 
-    $users_select = park_pages_themeAuthorsSelect($url_uid, $all_authors, $eligible_authors);
+    $users_select = '<div class="filter-block">' . park_pages_themeAuthorsSelect($url_uid, $all_authors, $eligible_authors) . '</div>';
   }
       
       
