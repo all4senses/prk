@@ -19,6 +19,11 @@ function park_blocks_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+  $blocks['main_menu_om_content'] = array(
+    'info' => t('OM Content'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
   $blocks['main_menu_om_aboutus'] = array(
     'info' => t('OM About Us'),
     'cache' => DRUPAL_CACHE_GLOBAL,
@@ -80,6 +85,10 @@ function park_blocks_block_view($delta = '') {
     case 'main_menu_om_sections':
       $block['subject'] = t('OM Sections');
       $block['content'] = park_blocks_get_omMenuBlock_byTitle('Разделы', 'park_blocks_get_omMenuBlock_Sections');
+      break;
+    case 'main_menu_om_content':
+      $block['subject'] = t('OM Content');
+      $block['content'] = park_blocks_get_omMenuBlock_byTitle('Материалы', 'park_blocks_get_omMenuBlock_Content');
       break;
     case 'main_menu_om_aboutus':
       $block['subject'] = t('OM About Us');
@@ -168,13 +177,12 @@ function park_blocks_get_omMenuBlock_byTitle($title, $function) {
   
   // Get main menu wireframe menu.
   $submenu = park_blocks_getSubmenuByTitle('main-menu', $title);
-  return 'test';
   return $function($submenu);
 }
 
 
 /**
- * Returns a themed GoCloudBackup Providers block content for MegaMenu.
+ * Returns a themed block OM-Menu.
  */
 function park_blocks_get_omMenuBlock_Sections($submenu) {
   return theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
@@ -182,7 +190,15 @@ function park_blocks_get_omMenuBlock_Sections($submenu) {
 
 
 /**
- * Returns a themed GoCloudBackup Blog block content for MegaMenu.
+ * Returns a themed block OM-Menu.
+ */
+function park_blocks_get_omMenuBlock_Content($submenu) {
+  return theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
+}
+
+
+/**
+ * Returns a themed block OM-Menu.
  */
 function park_blocks_get_omMenuBlock_AboutUs($submenu) {
   return theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
@@ -194,14 +210,6 @@ function park_blocks_get_omMenuBlock_AboutUs($submenu) {
  */
 function park_blocks_getSubmenuByTitle($menu_name, $submenu_title) {
   $menu = menu_build_tree($menu_name);
-  return;
-  
-  dpm($menu_name);
-  dpm($submenu_title);
-  dpm($menu);
-  
-  return;
-  
   if(!$menu) {
     return NULL;
   }
