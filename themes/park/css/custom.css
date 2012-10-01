@@ -105,8 +105,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #header #logo-block .subtitle{font-size: 15px; float: left;}
 
 
-#header #block-gcb-blocks-header-links{color: white; margin: 0; padding: 0; position: absolute; right: 33px; top: 5px;}
-#header #block-gcb-blocks-header-links .follow-us{color: #C5C5C5; font-size: 14px;}
+#header #block-park-blocks-header-links{color: white; margin: 0; padding: 0; position: absolute; right: 33px; top: 5px;}
+#header #block-park-blocks-header-links .follow-us{color: #C5C5C5; font-size: 14px;}
 ul.header-links{margin: 5px 0 0; padding: 0;}
 ul.header-links li{float: left;}
 ul.header-links a{display: block; text-indent: -9999px; width: 35px; height: 42px; margin-right: 7px;}
@@ -136,7 +136,7 @@ div.error{border: none;}
 
 
 /* OM MegaMenu styles */
-ul.gcb{margin-left: 0px; padding-left: 10px;}
+ul.park{margin-left: 0px; padding-left: 10px;}
 .block.block-om-maximenu{width: 1090px; left: 11px; position: absolute; top: 87px; font-family: Georgia,"Bitstream Charter",serif; z-index: 10; /*height: 42px; overflow: hidden;*/}
 
 
@@ -180,7 +180,7 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 /* Menu*/
 .menu-preface{float: left; margin-right: 20px;}
 /* Footer and header menu */ 
-.region-header ul.gcb.menu li, .region-footer ul.gcb.menu li{float: left;}
+.region-header ul.park.menu li, .region-footer ul.park.menu li{float: left;}
 
 
 
