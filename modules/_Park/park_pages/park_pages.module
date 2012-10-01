@@ -394,7 +394,7 @@ function park_pages_node_view($node) {
     case 'preface':
       $key = @$node->field_preface_key['und'][0]['value'];
       switch($key) {
-        case 'master-class':
+        case 'master_class':
         case 'article':
         case 'album':
           $node->contentFeed = park_pages_getContentFeedWithControls($key);
