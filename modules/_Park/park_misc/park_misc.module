@@ -104,7 +104,7 @@ function theme_park_misc_submenuSimple($vars) {
   $level = isset($vars['level']) ? $vars['level'] : 0;
   $class = isset($vars['class']) ? $vars['class'] : 'om-links';
   $delimiter = isset($vars['delimiter']) ? $vars['delimiter'] : '';
-  $out = '<ul class="gcb ' . $class . ' lvl-' . $level . '">';
+  $out = '<ul class="park ' . $class . ' lvl-' . $level . '">';
   $count = 0;
   foreach ($vars['submenu']['below'] as $submenu) {
     if (is_object($submenu)) {
