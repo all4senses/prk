@@ -167,6 +167,8 @@ function park_blocks_get_omMenuBlock_byTitle($title, $function) {
   */
   
   // Get main menu wireframe menu.
+  return 'tesssst';
+  
   $submenu = park_blocks_getSubmenuByTitle('main-menu', $title);
   return $function($submenu);
 }
@@ -176,7 +178,7 @@ function park_blocks_get_omMenuBlock_byTitle($title, $function) {
  * Returns a themed GoCloudBackup Providers block content for MegaMenu.
  */
 function park_blocks_get_omMenuBlock_Sections($submenu) {
-  return 'testtt'; //theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
+  return theme('park_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
 }
 
 
