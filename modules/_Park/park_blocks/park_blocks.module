@@ -194,6 +194,7 @@ function park_blocks_get_omMenuBlock_AboutUs($submenu) {
  */
 function park_blocks_getSubmenuByTitle($menu_name, $submenu_title) {
   $menu = menu_build_tree($menu_name);
+  return;
   
   dpm($menu_name);
   dpm($submenu_title);
