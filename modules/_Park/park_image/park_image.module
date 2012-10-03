@@ -208,3 +208,33 @@ function park_image_addSlideShowJs() {
   drupal_add_js($path_to_module . '/js/park_add_GalleryAd_ToAlbums.js');
   drupal_add_css($path_to_module . '/css/park_add_GalleryAd_ToAlbums.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
 }
+
+
+/**
+ * Implements hook node_view.
+ */
+function park_pages_node_view($node, $view_mode) {
+  
+  if ($view_mode == 'full') {
+    
+    switch ($node->type) {
+      case 'article':
+      case 'blog_post':
+
+        break;
+
+
+      case 'album':
+        dpm($_GET);
+        dpm($node);
+        break;
+
+
+      case 'master_class':
+        dpm($_GET);
+        dpm($node);
+        break;
+    } // End of switch ($node->type) {
+  }
+  
+}
