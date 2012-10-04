@@ -35,63 +35,20 @@
 <div class="profile"<?php print $attributes; ?>>
   <?php //print render($user_profile); ?>
   
-  <?php //dpm($user_profile); ?>
+  <?php dpm($user_profile); ?>
   
   <?php 
  
-    $user_name = $user_profile['field_u_fname'][0]['#markup'] . ' ' . $user_profile['field_u_lname'][0]['#markup'];
+    //$user_name = $user_profile['field_last_name'][0]['#markup'] . ' ' . $user_profile['field_first_name'][0]['#markup'];
     
-    echo '<div id="user-caption">Meet: ' , $user_name, '</div>', render($user_profile['user_picture']), render($user_profile['field_u_bio']),  '<div class="bottom-clear"></div>';
-    
+    echo '<div id="user-caption">Meet: ' , $user_name, '</div>', render($user_profile['user_picture']), render($user_profile['field_bio']),  '<div class="bottom-clear"></div>';
+    /*
     $articles = views_embed_view('articles','block_all_by_author');
     if ($articles) {
       echo '<div id="articles-caption">', t('Read some of !author\'s latest articles below:', array('!author' => $user_profile['field_u_fname'][0]['#markup'])), '</div>', $articles;
     }
-    /*
-    $articles = views_embed_view('articles','block_by_author');
-    $blog_posts = views_embed_view('blog','block_by_author');
-    $news_posts = views_embed_view('news','block_by_author');
-  
-  ?>
-  <?php if ($articles || $blog_posts || $news_posts): ?>
-  
-    <?php // Add tabs js.
-      $module_path = drupal_get_path('module', 'gv_pages');
-      drupal_add_library('system', 'ui.tabs');
-      drupal_add_js( $module_path . '/js/gv_provider_tabs.js'); 
-    ?>
-    <div class="data tabs">
-
-      <ul>
-        <?php echo ($articles ? '<li><a href="#tabs-1">' . t('Articles') . '</a></li>' : ''); ?>
-        <?php echo ($blog_posts ? '<li><a href="#tabs-2">' . t('Blog posts') . '</a></li>' : ''); ?>
-        <?php echo ($news_posts ? '<li><a href="#tabs-3">' . t('News posts') . '</a></li>' : ''); ?>
-      </ul>
-
-      <?php if ($articles): ?>
-        <div id="tabs-1">
-          <?php echo $articles; ?>
-          <div class="bottom-clear"></div>
-        </div>
-      <?php endif; ?>
-      
-      <?php if ($blog_posts): ?>
-        <div id="tabs-2">
-          <?php echo $blog_posts; ?>
-          <div class="bottom-clear"></div>
-        </div>
-      <?php endif; ?>
-      
-      <?php if ($news_posts): ?>
-        <div id="tabs-3">
-          <?php echo $news_posts; ?>
-          <div class="bottom-clear"></div>
-        </div>
-      <?php endif; ?>
-
-    </div>
-  <?php endif; ?>
-  <?php */?>
+    */
+   ?>
   
   
  </div>
