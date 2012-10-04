@@ -33,6 +33,27 @@ if ($content['links'])
 
 //print render($content['comments']);
 
+
+
+
+
+global $user;
+
+$user_auth = array(
+'nick' => $user->name,
+//'avatar' => 'http://graph.facebook.com/412831238798731/picture',
+'id' => $user->uid,
+'email' => $user->mail,
+);
+
+$time = time();
+$secret = "123321";
+$user_base64 = base64_encode( json_encode($user_auth) );
+$sign = md5($secret . $user_base64 . $time);
+$auth = $user_base64 . "_" . $time . "_" . $sign;
+
+
+
 ?>
 
 <!--
@@ -51,7 +72,7 @@ var mcSite = '10053';
 -->
 
 <script type="text/javascript">
-var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream";
+var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream"; _hcp.auth = "<?php echo $auth; ?>";
 (function() { 
 var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
 hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://widget.hypercomments.com/apps/js/hc.js";
