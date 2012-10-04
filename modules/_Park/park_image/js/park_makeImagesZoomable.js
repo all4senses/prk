@@ -7,6 +7,8 @@
        //$(".full-content img").colorbox({rel:"gallery"});
        $(".full-content img").colorbox({
          //href: this.src
+         width:"80%", 
+         height:"80%",
          href: function() {
            console.log(this.src);
            return this.src;
