@@ -24,7 +24,7 @@ echo '</div>';
 
 echo '<div class="content"' , $content_attributes. '>';
 
-    
+    /*
     if(isset($_GET['t']) AND $_GET['t'] == 'full') {
         $show_slideshow = false;
         //echo render($content['body']);
@@ -45,7 +45,12 @@ echo '<div class="content"' , $content_attributes. '>';
     if(!$show_slideshow AND $view_mode == 'teaser') {
       echo $content['body']['#items'][0]['value']; 
     }
+    */
     
+    if ($page) {
+      hide($content['body']);
+      echo $node->main_content;
+    }
     print render($content);
 
 echo '</div>';

@@ -235,11 +235,16 @@ function park_image_node_view($node, $view_mode) {
       }
       
       if ($show_type == 'slideshow') {
-        $node->main_content = $node->field_body_to_gallery['und'][0]['value'];
+        
+        $change_show_type = '<div class="mode"><a href="' . url('node/' . $node->nid ) . (in_array($node->type, $content_with_default_slideshow) ? '?t=full' : '' ) . '" title="' . t('View in full') . '">View in full</a></div>';
+        
+        $node->main_content = $change_show_type . $node->field_body_to_gallery['und'][0]['value'];
+        drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
         park_image_addSlideShowJs();
       }
       else {
-        $node->main_content = '<div class="full-content">' . $node->body['und'][0]['value'] . '</div>';
+        $change_show_type = '<div class="mode"><a href="' . url('node/' . $node->nid ) . (!in_array($node->type, $content_with_default_slideshow) ? '?t=slideshow' : '' ) . '" title="' . t('View as slideshow') . '">View in full</a></div>';
+        $node->main_content = $change_show_type . '<div class="full-content">' . $node->body['und'][0]['value'] . '</div>';
       }
       
     }
