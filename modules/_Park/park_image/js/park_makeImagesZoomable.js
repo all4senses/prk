@@ -5,7 +5,13 @@
        
        //$(".full-content img").colorbox({iframe:true, innerWidth:425, innerHeight:344});
        //$(".full-content img").colorbox({rel:"gallery"});
-       $(".full-content img").colorbox({href: this.src});
+       $(".full-content img").colorbox({
+         //href: this.src
+         href: function() {
+           console.log(this.src);
+           return this.src;
+         }
+       });
        console.log('full content!');
        
     }
