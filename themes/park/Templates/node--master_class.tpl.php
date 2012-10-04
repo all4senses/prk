@@ -47,3 +47,14 @@ var mcSite = '10053';
 })();
 </script>
 <a href="http://cackle.me" id="mc-link">система комментирования <b style="color:#4FA3DA">CACKL</b><b style="color:#F65077">E</b></a>
+
+
+<script type="text/javascript">
+var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream";
+(function() { 
+var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://widget.hypercomments.com/apps/js/hc.js";
+var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling); 
+})();
+</script>
+<div id="hypercomments_widget"></div>
