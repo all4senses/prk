@@ -39,7 +39,7 @@
   
   <?php 
  
-    $user_name = $user_profile['field_last_name'][0]['#markup'] . ' ' . $user_profile['field_first_name'][0]['#markup'];
+    $user_name = $user_profile['field_first_name'][0]['#markup'] . ' ' . $user_profile['field_last_name'][0]['#markup'];
     
     echo '<div id="user-caption">Meet: ' , $user_name, '</div>', render($user_profile['user_picture']), render($user_profile['field_bio']),  '<div class="bottom-clear"></div>';
     
