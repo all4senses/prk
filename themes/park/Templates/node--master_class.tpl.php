@@ -35,6 +35,7 @@ if ($content['links'])
 
 ?>
 
+<!--
 <div id="mc-container"></div>
 <script type="text/javascript">
 var mcSite = '10053';
@@ -47,7 +48,7 @@ var mcSite = '10053';
 })();
 </script>
 <a href="http://cackle.me" id="mc-link">система комментирования <b style="color:#4FA3DA">CACKL</b><b style="color:#F65077">E</b></a>
-
+-->
 
 <script type="text/javascript">
 var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream";
