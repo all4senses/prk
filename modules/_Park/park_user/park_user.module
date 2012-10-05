@@ -81,20 +81,21 @@ function park_user_mail($key, &$message, $params) {
       $string = 'HC notify data:
 
 ';
+      
  foreach ($params['hcNotify_data'] as $key2 => $value2) {
-   if ($key == 'data') {
-     $string .= "$key2 = $value2
+   
+   $string .= "$key2 = $value2
 ";
+   if ($key2 == 'data') {
+  
      $data = json_decode($value2);
      foreach ($data as $key3 => $value3) {
               $string .= "$key3 = $value3
           ";
      }
    }
-   elseif ($value) {
-    $string .= "$key2 = $value2
-";
-   }
+   
+   
  }
  
       $message['subject'] = t('HC comments notify');
