@@ -97,17 +97,10 @@ function park_user_mail($key, &$message, $params) {
 $string = str_replace('
 ', '', $string);
 
-$encoded = urlencode($string);
-$decoded = urldecode($encoded);
-$encoded2 = str_replace('+', ' ', $encoded);
-$decoded2 = urldecode($encoded2);
 
 
 
-
-
-
-$json_data = park_misc_jsonToArray($json);
+$json_data = park_misc_jsonToArray($string);
 
 $string .= '
   
