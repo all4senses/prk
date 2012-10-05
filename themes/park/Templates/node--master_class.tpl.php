@@ -36,20 +36,22 @@ if ($content['links'])
 
 
 global $user;
-$user = user_load($user->uid);
+if ($user->uid) {
+  $user = user_load($user->uid);
 
-$user_auth = array(
-  'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
-  'avatar' => isset($user->picture->uri) ? 'http://' . $_SERVER['SERVER_NAME'] . '/' . park_misc_getPathFromStreamUri($user->picture->uri) : '',
-  'id' => $user->uid,
-  'email' => $user->mail,
-);
+  $user_auth = array(
+    'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
+    'avatar' => isset($user->picture->uri) ? 'http://' . $_SERVER['SERVER_NAME'] . '/' . park_misc_getPathFromStreamUri($user->picture->uri) : '',
+    'id' => $user->uid,
+    'email' => $user->mail,
+  );
 
-$time = time();
-$secret = "123321";
-$user_base64 = base64_encode( json_encode($user_auth) );
-$sign = md5($secret . $user_base64 . $time);
-$auth = $user_base64 . "_" . $time . "_" . $sign;
+  $time = time();
+  $secret = "123321";
+  $user_base64 = base64_encode( json_encode($user_auth) );
+  $sign = md5($secret . $user_base64 . $time);
+  $auth = $user_base64 . "_" . $time . "_" . $sign;
+}
 
 ?>
 
@@ -69,7 +71,7 @@ var mcSite = '10053';
 -->
 
 <script type="text/javascript">
-var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream"; _hcp.auth = "<?php echo $auth; ?>";
+var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream"; <?php echo ($user->uid ? '_hcp.auth = "' . $auth . '"' : ''); ?>;
 (function() { 
 var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
 hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://widget.hypercomments.com/apps/js/hc.js";
