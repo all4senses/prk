@@ -38,9 +38,12 @@ if ($content['links'])
 
 
 global $user;
+$user = user_load($user->uid);
+
 dpm($user);
+
 $user_auth = array(
-'nick' => $user->name,
+'nick' => '<div class="u">' . $user->name . '</div>',
 //'avatar' => 'http://graph.facebook.com/412831238798731/picture',
 'id' => $user->uid,
 'email' => $user->mail,
