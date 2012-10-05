@@ -30,9 +30,9 @@ function park_misc_testPage() {
 /**
  * Convert json to array;
  */
-function park_misc_jsonToArray($json) {
+function park_misc_jsonToArray($string) {
 
-  $json = preg_replace('/.*\[(.*)\].*/i', '$1', $json);
+  $json = preg_replace('/.*\[(.*)\].*/i', '$1', $string);
   $json = ltrim(rtrim($json, '}'), '{');
 
   
@@ -40,7 +40,9 @@ function park_misc_jsonToArray($json) {
   //$json = explode(',"', $json);
   
   $json = explode(',', $json);
-  return serialize($json);
+  
+  $string = urlencode($string);
+  return $string . ' ----- ' . serialize($json);
   
   foreach ($json as $pair) {
     $pair = explode('":', $pair);
