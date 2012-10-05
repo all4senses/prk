@@ -153,20 +153,21 @@ $string = ltrim($string, '{');
 $string = rtrim($string, '}');
 
 
-$json_data = array();
+//$json_data = array();
 $json = explode(',"', $string);
 foreach ($json as $pair) {
   $pair = explode('":', $pair);
   $key = trim($pair[0], '"');
   $value = trim($pair[1], '"');
   $json_data[$key] = $value;
+  //$json_data .= ',' . $key . ':' . $value;
 }
 
 
 $string .= '
   
 
-' . serialize(json_decode($string));
+' . serialize($json_data);
 
 //dpm($res);
 
