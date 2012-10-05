@@ -93,9 +93,11 @@ function park_user_mail($key, &$message, $params) {
      $string .= "$key2 = $value2
 ";
      $data = json_decode($value2);
-     foreach ($data as $key3 => $value3) {
-              $string .= "$key3 = $value3
-          ";
+     if (is_array($data)) {
+          foreach ($data as $key3 => $value3) {
+                    $string .= "$key3 = $value3
+                ";
+          }
      }
    }
    
