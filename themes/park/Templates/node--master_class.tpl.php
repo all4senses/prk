@@ -55,12 +55,7 @@ Boss","id":"1349405543346162","ip":"91.200.156.93","user_id":"1","category":0,"l
 
 $user_auth = array(
 'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
-'avatar' => 'http://' . $_SERVER['SERVER_NAME'] . '/' . park_misc_getPathFromStreamUri($user->picture->uri),
-'url' => 'http://park.all4senses.com',
-'href' => 'http://park.all4senses.com',
-'link' => 'http://park.all4senses.com',
-'home' => 'http://park.all4senses.com',
-'uri' => 'http://park.all4senses.com',
+'avatar' => isset($user->picture->uri) ? 'http://' . $_SERVER['SERVER_NAME'] . '/' . park_misc_getPathFromStreamUri($user->picture->uri) : '',
 'id' => $user->uid,
 'email' => $user->mail,
 );
