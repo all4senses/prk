@@ -2,6 +2,17 @@
 
 
 /**
+ * Convert path from Drupal stream uri.
+ */
+function park_misc_getPathFromStreamUri($uri) {
+  $file_default_scheme = file_default_scheme();
+  $default_file_path = variable_get('file_' . $file_default_scheme . '_path', '/f');
+  
+  return $default_file_path . str_replace($file_default_scheme . ':/', '', $uri);
+}
+
+
+/**
  * Returns a current url.
  */
 function park_misc_getCurrentUrl() {

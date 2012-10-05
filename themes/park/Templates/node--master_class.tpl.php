@@ -42,6 +42,8 @@ $user = user_load($user->uid);
 
 dpm($user);
 
+dpm(park_misc_getPathFromStreamUri($user->picture->uri));
+
 $user_auth = array(
 'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
 //'avatar' => 'http://graph.facebook.com/412831238798731/picture',
