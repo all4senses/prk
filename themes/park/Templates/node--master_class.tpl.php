@@ -76,7 +76,7 @@ dpm(serialize($json_data));
 
 
 //$a = 'a:11:{s:3:"cmd";s:13:"streamMessage";s:9:"stream_id";s:24:"506df91b6bf6ab2311003736";s:9:"widget_id";s:4:"3235";s:4:"text";s:11:"Comment 100";s:6:"acc_id";s:5:"31552";s:4:"nick";s:9:"Park Boss";s:2:"id";s:16:"1349434032747332";s:2:"ip";s:13:"91.200.156.93";s:7:"user_id";s:1:"1";s:8:"category";s:1:"0";s:4:"link";s:79:"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny";}';
-$a = 'a:1:{i:0;O:8:"stdClass":11:{s:3:"cmd";s:13:"streamMessage";s:9:"stream_id";s:24:"506df91b6bf6ab2311003736";s:9:"widget_id";i:3235;s:4:"text";s:11:"Comment 101";s:6:"acc_id";i:31552;s:4:"nick";s:9:"Park Boss";s:2:"id";s:16:"1349434865253101";s:2:"ip";s:13:"91.200.156.93";s:7:"user_id";s:1:"1";s:8:"category";i:0;s:4:"link";s:75:"park.all4senses.com/u/marliti/master-classes/mk-po-pleteniyu-vetochki-sosny";}}';
+$a = 'a:3:{s:4:"data";a:1:{i:0;O:8:"stdClass":11:{s:3:"cmd";s:13:"streamMessage";s:9:"stream_id";s:24:"506df91b6bf6ab2311003736";s:9:"widget_id";i:3235;s:4:"text";s:11:"comment 102";s:6:"acc_id";i:31552;s:4:"nick";s:9:"Park Boss";s:2:"id";s:16:"1349435462471789";s:2:"ip";s:13:"91.200.156.93";s:7:"user_id";s:1:"1";s:8:"category";i:0;s:4:"link";s:75:"park.all4senses.com/u/marliti/master-classes/mk-po-pleteniyu-vetochki-sosny";}}s:4:"time";s:10:"1349435462";s:9:"signature";s:32:"cfe9e368ac350bf0b82007c44fa00c2b";}';
 dpm($a);
 dpm(unserialize($a));
 
