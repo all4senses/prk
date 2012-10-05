@@ -83,16 +83,17 @@ function park_user_mail($key, &$message, $params) {
 ';
 
       
-      $string .= $params['hcNotify_data']['data'];
-/*      
+      //$string .= $params['hcNotify_data']['data'];
+      
  foreach ($params['hcNotify_data'] as $key2 => $value2) {
-   if ($key2 == 'data') {
+   if ($key2 != 'data') {
+     continue;
      $data = $value2;
    }
    $string .= "$key2 = $value2
 ";
 }
- */
+ 
  
  /*
  $string .= "data_orig = $data
