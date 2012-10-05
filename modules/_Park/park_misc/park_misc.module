@@ -23,7 +23,29 @@ function park_misc_menu() {
  * Convert path from Drupal stream uri.
  */
 function park_misc_testPage() {
+  return 'test page';
+}
+
+
+/**
+ * Convert json to array;
+ */
+function park_misc_jsonToArray($json) {
+
+  $json = preg_replace('/.*\[(.*)\].*/i', '$1', $json);
+  $json = ltrim(rtrim($json, '}'), '{');
+
+  //$json_data = array();
+  $json = explode(',"', $json);
+  foreach ($json as $pair) {
+    $pair = explode('":', $pair);
+    $key = trim($pair[0], '"');
+    $value = trim($pair[1], '"');
+    $json_data[$key] = $value;
+    //$json_data .= ',' . $key . ':' . $value;
+  }
   
+  return $json_data;
 }
 
 

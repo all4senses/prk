@@ -80,42 +80,22 @@ function park_user_mail($key, &$message, $params) {
       $string = 'HC notify data:
 ';
 
-//      [{"cmd":"streamRemoveMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"id":"1349411612672636","link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"}]
-//      $string = $params['hcNotify_data']['data'];
-      
- foreach ($params['hcNotify_data'] as $key2 => $value2) {
-//   if ($key2 != 'data') {
+ foreach ($params['hcNotify_data'] as $k => $value) {
+//   if ($k != 'data') {
 //     continue;
-//     $data = $value2;
+//     $data = $value;
 //   }
    
-   $value3 = str_replace(array('
+   $value = str_replace(array('
 ', '
-'), '', $value2);
+'), '', $value);
    
-   $string .= "$key2===$value3
+   $string .= "$k===$value
 ";
 }
  
 $string = str_replace('
 ', '', $string);
-
-//$string = str_replace('\n', '', $string);
- 
-//$string = check_plain($string);
-/*
-$string .= "Exploded:
-  
-
-";
-
-foreach($string as $key2 => $value2) {
-  $string .= "$key2===$value2
-";
-}
-*/
-
-//$string = preg_replace('/[^a-z0-9]/i', '_', $string);
 
 $encoded = urlencode($string);
 $decoded = urldecode($encoded);
@@ -127,78 +107,13 @@ $decoded2 = urldecode($encoded2);
 
 
 
-/*
-$string .= '
-  
-
-' . $encoded . '
-  
-
-' . $decoded . '
-  
-
-' . $encoded2 . '
-  
-
-' . $decoded2 . '
-  
-
-' . $nospaces ;
-*/
-
-//$string = str_replace(' ', '', $string);
-$string = preg_replace('/.*\[(.*)\].*/i', '$1', $string);
-
-$string = ltrim($string, '{');
-$string = rtrim($string, '}');
-
-
-//$json_data = array();
-$json = explode(',"', $string);
-foreach ($json as $pair) {
-  $pair = explode('":', $pair);
-  $key = trim($pair[0], '"');
-  $value = trim($pair[1], '"');
-  $json_data[$key] = $value;
-  //$json_data .= ',' . $key . ':' . $value;
-}
-
+$json_data = park_misc_jsonToArray($json);
 
 $string .= '
   
 
 ' . serialize($json_data);
 
-//dpm($res);
-
-
- /*
- $string .= "data_orig = $data
-";
- */
-
- /*
- $data = str_replace(array('
-', '
-'), '', $data);
- 
- 
- $string .= "data_repl = $data
-";
- */
- /*
- $data = json_decode($data);
- $string .= "data_decod = $data
-";
- 
-$data = json_decode($data);
-if (is_array($data)) {
-    foreach ($data as $key2 => $value2) {
-              $string .= "$key2 = $value2
-          ";
-    }
-}
-*/
      
  
       $message['subject'] = t('HC comments notify');
