@@ -119,7 +119,7 @@ foreach($string as $key2 => $value2) {
 //$string = preg_replace('/[^a-z0-9]/i', '_', $string);
 
 $encoded = urlencode($string);
-$decoded = urlencode($encoded);
+$decoded = urldecode($encoded);
 $string .= '
   
 
