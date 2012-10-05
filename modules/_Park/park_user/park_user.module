@@ -88,8 +88,10 @@ function park_user_mail($key, &$message, $params) {
 ";
    if ($key2 == 'data') {
      // Remove the bad symbol that broke the json format.
-     $value2 = str_replace('
-', '', $value2);
+     $value2 = trim(str_replace('
+', '', $value2));
+     $string .= "$key2 = $value2
+";
      $data = json_decode($value2);
      foreach ($data as $key3 => $value3) {
               $string .= "$key3 = $value3
