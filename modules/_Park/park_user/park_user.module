@@ -81,28 +81,37 @@ function park_user_mail($key, &$message, $params) {
       $string = 'HC notify data:
 
 ';
+
+      
       
  foreach ($params['hcNotify_data'] as $key2 => $value2) {
-   
    $string .= "$key2 = $value2
 ";
-   if ($key2 == 'data') {
-     // Remove the bad symbol that broke the json format.
-     $value2 = trim(str_replace('
-', '', $value2));
-     $string .= "$key2 = $value2
+}
+ 
+ 
+ $data = $params['hcNotify_data']['data'];
+ $string .= "data_orig = $data
 ";
-     $data = json_decode($value2);
-     if (is_array($data)) {
-          foreach ($data as $key3 => $value3) {
-                    $string .= "$key3 = $value3
-                ";
-          }
-     }
-   }
-   
-   
- }
+ $data = trim(str_replace('
+', '', $data));
+ 
+ 
+ $string .= "data_trim = $data
+";
+ $data = json_decode($data);
+ $string .= "data_decod = $data
+";
+ 
+$data = json_decode($data);
+if (is_array($data)) {
+    foreach ($data as $key2 => $value2) {
+              $string .= "$key2 = $value2
+          ";
+    }
+}
+
+     
  
       $message['subject'] = t('HC comments notify');
       $message['body'][] = $string;
