@@ -38,7 +38,7 @@ if ($content['links'])
 
 
 global $user;
-
+dpm($user);
 $user_auth = array(
 'nick' => $user->name,
 //'avatar' => 'http://graph.facebook.com/412831238798731/picture',
