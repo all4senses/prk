@@ -123,7 +123,10 @@ $encoded2 = str_replace('+', ' ', $encoded);
 $decoded2 = urldecode($encoded2);
 
 
-$nospaces = str_replace(' ', '', $string);
+
+
+
+
 /*
 $string .= '
   
@@ -144,15 +147,22 @@ $string .= '
 */
 
 $string = str_replace(' ', '', $string);
-$string = preg_replace('/.*(\[.*\]).*/i', '$1', $string);
+$string = preg_replace('/.*(\[\{(.*)\}\].*/i', '$1', $string);
 
-$string = ltrim($string, '[');
-$string = rtrim($string, ']');
+$json_data = array();
+$json = explode(',"', $string);
+foreach ($json as $pair) {
+  $pair = explode('":', $pair);
+  $key = trim($pair[0], '"');
+  $value = trim($pair[1], '"');
+  $json_data[$key] = $value;
+}
+
 
 $string .= '
   
 
-' . serialize(json_decode($string));
+' . serialize($json_data);
 
 //dpm($res);
 

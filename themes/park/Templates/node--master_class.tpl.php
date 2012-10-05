@@ -63,20 +63,12 @@ $jso = 'HC notify data:data===[{"cmd":"streamMessage","stream_id":"506df91b6bf6a
 $jso = '"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент59","acc_id":31552,"nick":"ParkBoss","id":"1349412545670099","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"';
 
 $json_data = array();
-$jso = explode(',"', $jso);
-foreach ($jso as $js) {
-  $j = explode('":', $js);
-  dpm($j);
-  $key = trim($j[0], '"');
-  dpm($key);
-  $value = trim($j[1], '"');
-  dpm($value);
+$json = explode(',"', $json);
+foreach ($json as $pair) {
+  $pair = explode('":', $pair);
+  $key = trim($pair[0], '"');
+  $value = trim($pair[1], '"');
   $json_data[$key] = $value;
-  
-//  foreach($j as $subj) {
-//    $subj = trim($subj, '"');
-//    dpm($subj);
-//  }
 }
 
 dpm($json_data);
@@ -84,10 +76,10 @@ dpm($json_data);
 //dpm(json_decode($jso));
 
 $user_auth = array(
-'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
-'avatar' => isset($user->picture->uri) ? 'http://' . $_SERVER['SERVER_NAME'] . '/' . park_misc_getPathFromStreamUri($user->picture->uri) : '',
-'id' => $user->uid,
-'email' => $user->mail,
+  'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
+  'avatar' => isset($user->picture->uri) ? 'http://' . $_SERVER['SERVER_NAME'] . '/' . park_misc_getPathFromStreamUri($user->picture->uri) : '',
+  'id' => $user->uid,
+  'email' => $user->mail,
 );
 
 $time = time();
