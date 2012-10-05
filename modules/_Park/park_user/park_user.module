@@ -89,16 +89,20 @@ function park_user_mail($key, &$message, $params) {
 ";
 }
  
- /*
+ 
  $data = $params['hcNotify_data']['data'];
  $string .= "data_orig = $data
 ";
- $data = trim(str_replace('
-', '', $data));
+ 
+ $data = str_replace(array('
+', '
+'), '', $data);
  
  
- $string .= "data_trim = $data
+ $string .= "data_repl = $data
 ";
+ 
+ /*
  $data = json_decode($data);
  $string .= "data_decod = $data
 ";
