@@ -89,7 +89,7 @@ function park_user_mail($key, &$message, $params) {
 ";
 }
  
- 
+ /*
  $data = $params['hcNotify_data']['data'];
  $string .= "data_orig = $data
 ";
@@ -110,7 +110,7 @@ if (is_array($data)) {
           ";
     }
 }
-
+*/
      
  
       $message['subject'] = t('HC comments notify');
