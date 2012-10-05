@@ -72,6 +72,7 @@ foreach ($json as $pair) {
 }
 
 dpm($json_data);
+dpm(serialize($json_data));
 
 //dpm(json_decode($jso));
 
