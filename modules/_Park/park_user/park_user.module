@@ -78,22 +78,26 @@ function park_user_mail($key, &$message, $params) {
   switch ($key) {
     case 'hcNotify_data':
       
-//      $string = 'HC notify data:
-//
-//';
+      $string = 'HC notify data:
+';
 
+//      [{"cmd":"streamRemoveMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"id":"1349411612672636","link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"}]
+//      $string = $params['hcNotify_data']['data'];
       
-      $string = $params['hcNotify_data']['data'];
-/*      
  foreach ($params['hcNotify_data'] as $key2 => $value2) {
-   if ($key2 != 'data') {
-     continue;
-     $data = $value2;
-   }
-   $string .= "$key2 = $value2
+//   if ($key2 != 'data') {
+//     continue;
+//     $data = $value2;
+//   }
+   
+   $value3 = str_replace(array('
+', '
+'), '', $value2);
+   
+   $string .= "$key2===$value3
 ";
 }
- */
+ 
  
  /*
  $string .= "data_orig = $data
