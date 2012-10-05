@@ -104,6 +104,7 @@ $string = str_replace('
 //$string = str_replace('\n', '', $string);
  
 //$string = check_plain($string);
+/*
 $string .= "Exploded:
   
 
@@ -113,6 +114,9 @@ foreach($string as $key2 => $value2) {
   $string .= "$key2===$value2
 ";
 }
+*/
+
+//$string = preg_replace('/[^a-z0-9]/i', '_', $string);
 
  /*
  $string .= "data_orig = $data
