@@ -40,9 +40,9 @@ if ($content['links'])
 global $user;
 $user = user_load($user->uid);
 
-dpm($user);
-dpm($_SERVER['SERVER_NAME']);
-dpm(park_misc_getPathFromStreamUri($user->picture->uri));
+//dpm($user);
+//dpm($_SERVER['SERVER_NAME']);
+//dpm(park_misc_getPathFromStreamUri($user->picture->uri));
 
 $jso = '[{"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент
 45","acc_id":31552,"nick":"Park
