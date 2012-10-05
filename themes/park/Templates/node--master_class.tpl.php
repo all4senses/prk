@@ -44,12 +44,7 @@ $user = user_load($user->uid);
 //dpm($_SERVER['SERVER_NAME']);
 //dpm(park_misc_getPathFromStreamUri($user->picture->uri));
 
-$jso = 'HC notify data:
-data===[{"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент
-59","acc_id":31552,"nick":"Park
-Boss","id":"1349412545670099","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"}]
-time===1349412545
-signature===09706eca39e6a67314b8230142c223a1';
+$jso = 'HC notify data:data===[{"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент59","acc_id":31552,"nick":"ParkBoss","id":"1349412545670099","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"}]time===1349412545signature===09706eca39e6a67314b8230142c223a1';
 
 dpm($jso);
 dpm('xxx');
@@ -61,7 +56,7 @@ dpm('xxx');
 preg_match('/.*(\[.*\]).*/i', $jso, $match);
 dpm($match);
 
-$res = preg_replace('/.*(\[.*\]).*/i', 'test:$1', $jso);
+$res = preg_replace('/.*(\[.*\]).*/i', '$1', $jso);
 dpm($res);
 
 //dpm(json_decode($jso));
