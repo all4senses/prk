@@ -41,9 +41,8 @@ function park_misc_jsonToArray($string) {
   
   $json = urldecode($json_encoded);
   
-  //$json = explode(',"', $json);
-  
-  $json = explode(',', $json);
+  $json = explode(',"', $json);
+  //$json = explode(',', $json);
   
   $string = urlencode($json[0]);
   return urlencode('"') . ' ----- ' . $string . ' ----- ' . serialize($json);
