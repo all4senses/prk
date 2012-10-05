@@ -44,10 +44,9 @@ dpm($user);
 dpm($_SERVER['SERVER_NAME']);
 dpm(park_misc_getPathFromStreamUri($user->picture->uri));
 
-$jso = '[{"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент
-45","acc_id":31552,"nick":"Park
-Boss","id":"1349405543346162","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"}]';
+$jso = '[{"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент45","acc_id":31552,"nick":"ParkBoss","id":"1349405543346162","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"}]';
 dpm($jso);
+dpm('xxx');
 dpm(json_decode($jso));
 
 $user_auth = array(
