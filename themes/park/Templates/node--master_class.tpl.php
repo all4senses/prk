@@ -46,18 +46,32 @@ $user = user_load($user->uid);
 
 $jso = 'HC notify data:data===[{"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент59","acc_id":31552,"nick":"ParkBoss","id":"1349412545670099","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"}]time===1349412545signature===09706eca39e6a67314b8230142c223a1';
 
-dpm($jso);
-dpm('xxx');
+//dpm($jso);
+//dpm('xxx');
 //$jso = str_replace('
 //', '', $jso);
 //dpm($jso);
 
 
-preg_match('/.*(\[.*\]).*/i', $jso, $match);
-dpm($match);
+//preg_match('/.*(\[.*\]).*/i', $jso, $match);
+//dpm($match);
 
-$res = preg_replace('/.*(\[.*\]).*/i', '$1', $jso);
-dpm($res);
+//$res = preg_replace('/.*(\[.*\]).*/i', '$1', $jso);
+//dpm($res);
+
+
+$jso = '"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент59","acc_id":31552,"nick":"ParkBoss","id":"1349412545670099","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"';
+
+$jso = explode(',"', $jso);
+foreach ($jso as $js) {
+  $j = explode('":', $js);
+  dpm($j);
+  foreach($j as $subj) {
+    $subj = trim($subj, '"');
+    dpm($subj);
+  }
+}
+
 
 //dpm(json_decode($jso));
 
