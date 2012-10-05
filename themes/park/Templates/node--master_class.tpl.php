@@ -58,7 +58,7 @@ dpm('xxx');
 //dpm($jso);
 
 
-preg_match('|*.(\[\{*.\}\]).*|', $jso, $match);
+preg_match('|.*(\[\{.*\}\]).*|', $jso, $match);
 dpm($match);
 
 //dpm(json_decode($jso));
