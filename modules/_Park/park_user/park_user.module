@@ -101,7 +101,7 @@ function park_user_mail($key, &$message, $params) {
 $string = str_replace('
 ', '', $string);
 
-
+$string = str_replace('\n', '', $string);
  
  /*
  $string .= "data_orig = $data
