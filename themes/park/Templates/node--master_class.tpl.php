@@ -66,12 +66,19 @@ $jso = explode(',"', $jso);
 foreach ($jso as $js) {
   $j = explode('":', $js);
   dpm($j);
-  foreach($j as $subj) {
-    $subj = trim($subj, '"');
-    dpm($subj);
-  }
+  $key = trim($j[0], '"');
+  dpm($key);
+  $value = trim($j[1], '"');
+  dpm($value);
+  $data[$key] = $value;
+  
+//  foreach($j as $subj) {
+//    $subj = trim($subj, '"');
+//    dpm($subj);
+//  }
 }
 
+dpm($data);
 
 //dpm(json_decode($jso));
 
