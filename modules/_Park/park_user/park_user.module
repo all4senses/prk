@@ -147,10 +147,14 @@ $string .= '
 */
 
 $string = str_replace(' ', '', $string);
-$string = preg_replace('/.*(\[\{(.*)\}\].*/i', '$1', $string);
+$string = preg_replace('/.*\[(.*)\].*/i', '$1', $string);
+
+$string = ltrim($string, '{');
+$string = rtrim($string, '}');
+
 
 $json_data = array();
-$json = explode(',"', $string);
+$json = explode(',"', $nospaces);
 foreach ($json as $pair) {
   $pair = explode('":', $pair);
   $key = trim($pair[0], '"');
@@ -162,7 +166,7 @@ foreach ($json as $pair) {
 $string .= '
   
 
-' . serialize($json_data);
+' . serialize(json_decode($string));
 
 //dpm($res);
 
