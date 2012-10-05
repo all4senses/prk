@@ -154,7 +154,7 @@ $string = rtrim($string, '}');
 
 
 $json_data = array();
-$json = explode(',"', $nospaces);
+$json = explode(',"', $string);
 foreach ($json as $pair) {
   $pair = explode('":', $pair);
   $key = trim($pair[0], '"');
