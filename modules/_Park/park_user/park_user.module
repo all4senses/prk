@@ -103,7 +103,7 @@ $string = str_replace('
 
 //$string = str_replace('\n', '', $string);
  
-$string = check_plain($string);
+//$string = check_plain($string);
 
  /*
  $string .= "data_orig = $data
