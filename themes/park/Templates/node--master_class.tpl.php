@@ -41,12 +41,17 @@ global $user;
 $user = user_load($user->uid);
 
 dpm($user);
-dpm($_SERVER);
+dpm($_SERVER['SERVER_NAME']);
 dpm(park_misc_getPathFromStreamUri($user->picture->uri));
 
 $user_auth = array(
 'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
-'avatar' => 'http://park.all4senses.com/' . park_misc_getPathFromStreamUri($user->picture->uri),
+'avatar' => 'http://' . $_SERVER['SERVER_NAME'] . '/' . park_misc_getPathFromStreamUri($user->picture->uri),
+'url' => 'http://park.all4senses.com',
+'href' => 'http://park.all4senses.com',
+'link' => 'http://park.all4senses.com',
+'home' => 'http://park.all4senses.com',
+'uri' => 'http://park.all4senses.com',
 'id' => $user->uid,
 'email' => $user->mail,
 );
