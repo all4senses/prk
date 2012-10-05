@@ -122,6 +122,10 @@ $encoded = urlencode($string);
 $decoded = urldecode($encoded);
 $encoded2 = str_replace('+', ' ', $encoded);
 $decoded2 = urldecode($encoded2);
+
+
+$nospaces = str_replace(' ', '', $string);
+
 $string .= '
   
 
@@ -134,7 +138,13 @@ $string .= '
 ' . $encoded2 . '
   
 
-' . $decoded2;
+' . $decoded2 . '
+  
+
+' . $nospaces ;
+
+
+
 
  /*
  $string .= "data_orig = $data

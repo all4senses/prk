@@ -53,9 +53,14 @@ signature===09706eca39e6a67314b8230142c223a1';
 
 dpm($jso);
 dpm('xxx');
-$jso = str_replace('
-', '', $jso);
-dpm($jso);
+//$jso = str_replace('
+//', '', $jso);
+//dpm($jso);
+
+
+preg_match('|*.(\[\{*.\}\]).*|', $jso, $match);
+dpm($match);
+
 //dpm(json_decode($jso));
 
 $user_auth = array(
