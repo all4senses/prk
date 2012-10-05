@@ -43,7 +43,7 @@ $user = user_load($user->uid);
 dpm($user);
 
 $user_auth = array(
-'nick' => '<div class="u">' . $user->name . '</div>',
+'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
 //'avatar' => 'http://graph.facebook.com/412831238798731/picture',
 'id' => $user->uid,
 'email' => $user->mail,

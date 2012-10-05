@@ -84,7 +84,7 @@ function park_user_mail($key, &$message, $params) {
  foreach ($params['hcNotify_data'] as $key => $value) {
    if ($key == 'data') {
      $data = json_decode($value);
-     foreach ($params['hcNotify_data'] as $key2 => $value2) {
+     foreach ($data as $key2 => $value2) {
               $string .= "$key2 = $value2
           ";
      }
