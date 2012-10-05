@@ -81,25 +81,33 @@ function park_user_mail($key, &$message, $params) {
 ';
 
  foreach ($params['hcNotify_data'] as $k => $value) {
-   if ($k == 'data') {
-     $string .= "dataX => " . park_misc_jsonToArray($value) . "
+//   if ($k != 'data') {
+//     continue;
+//     $data = $value;
+//   }
+   
+   $value = str_replace(array('
+', '
+'), '', $value);
+   
+   $string .= "$k===$value
 ";
-   }
-   else {
-    $string .= "$k => $value
-";
-   }
 }
  
+$string = str_replace('
+', '', $string);
 
-//$json_data = park_misc_jsonToArray($string);
-/*
+
+
+
+$json_data = park_misc_jsonToArray($string);
+
 $string .= '
   
 
 ' . serialize($json_data);
 
-*/     
+     
  
       $message['subject'] = t('HC comments notify');
       $message['body'][] = $string;
