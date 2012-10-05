@@ -150,7 +150,7 @@ $string = preg_replace('/.*(\[.*\]).*/i', '$1', $string);
 $string .= '
   
 
-' . serialize(json_decode($string));
+' . serialize(json_decode($string, true));
 
 //dpm($res);
 
