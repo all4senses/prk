@@ -104,6 +104,15 @@ $string = str_replace('
 //$string = str_replace('\n', '', $string);
  
 //$string = check_plain($string);
+$string .= "Exploded:
+  
+
+";
+
+foreach($string as $key2 => $value2) {
+  $string .= "$key2===$value2
+";
+}
 
  /*
  $string .= "data_orig = $data
