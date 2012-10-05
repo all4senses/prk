@@ -35,10 +35,12 @@ function park_misc_jsonToArray($json) {
   $json = preg_replace('/.*\[(.*)\].*/i', '$1', $json);
   $json = ltrim(rtrim($json, '}'), '{');
 
-  return $json;
+  
   
   //$json_data = array();
   $json = explode(',"', $json);
+  return serialize($json);
+  
   foreach ($json as $pair) {
     $pair = explode('":', $pair);
     $key = trim($pair[0], '"');
