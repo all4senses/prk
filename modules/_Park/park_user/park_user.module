@@ -120,13 +120,21 @@ foreach($string as $key2 => $value2) {
 
 $encoded = urlencode($string);
 $decoded = urldecode($encoded);
+$encoded2 = str_replace('+', ' ', $encoded);
+$decoded2 = urldecode($encoded2);
 $string .= '
   
 
 ' . $encoded . '
   
 
-' . $decoded;
+' . $decoded . '
+  
+
+' . $encoded2 . '
+  
+
+' . $decoded2;
 
  /*
  $string .= "data_orig = $data
