@@ -37,9 +37,10 @@ function park_misc_jsonToArray($json) {
 
   
   
-  //$json_data = array();
-  $json = explode(',"', $json);
-  //return serialize($json);
+  //$json = explode(',"', $json);
+  
+  $json = explode(',', $json);
+  return serialize($json);
   
   foreach ($json as $pair) {
     $pair = explode('":', $pair);
