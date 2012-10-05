@@ -47,11 +47,11 @@ $user = user_load($user->uid);
 $jso = '[{"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент
 45","acc_id":31552,"nick":"Park
 Boss","id":"1349405543346162","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"}]';
-dpm($jso);
-dpm('xxx');
-$jso = str_replace('
-', '', $jso);
-dpm(json_decode($jso));
+//dpm($jso);
+//dpm('xxx');
+//$jso = str_replace('
+//', '', $jso);
+//dpm(json_decode($jso));
 
 $user_auth = array(
 'nick' => $user->field_first_name['und'][0]['value']  . ' ' . $user->field_last_name['und'][0]['value'],
