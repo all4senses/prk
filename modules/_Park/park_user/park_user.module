@@ -82,7 +82,7 @@ function park_user_mail($key, &$message, $params) {
 
  foreach ($params['hcNotify_data'] as $k => $value) {
    if ($k == 'data') {
-     $string .= "$k => " . serialize(park_misc_jsonToArray($value)) . "
+     $string .= "dataX => " . park_misc_jsonToArray($value) . "
 ";
    }
    else {

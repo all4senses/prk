@@ -60,7 +60,7 @@ $jso = 'HC notify data:data===[{"cmd":"streamMessage","stream_id":"506df91b6bf6a
 //dpm($res);
 
 
-$jso = '"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент59","acc_id":31552,"nick":"ParkBoss","id":"1349412545670099","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"';
+$json = '"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент59","acc_id":31552,"nick":"ParkBoss","id":"1349412545670099","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"';
 
 $json_data = array();
 $json = explode(',"', $json);
