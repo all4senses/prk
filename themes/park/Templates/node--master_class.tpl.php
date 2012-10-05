@@ -61,6 +61,9 @@ dpm('xxx');
 preg_match('|.*(\[\{.*\}\]).*|', $jso, $match);
 dpm($match);
 
+$res = preg_replace('/.*(\[\{.*\}\]).*/i', "test:$1", $jso);
+dpm($res);
+
 //dpm(json_decode($jso));
 
 $user_auth = array(
