@@ -4,7 +4,7 @@
  * Implementation of hook_menu().
  */
 
-function park_user_menu() {
+function park_misc_menu() {
   
   $items = array();
   
