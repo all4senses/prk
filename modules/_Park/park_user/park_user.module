@@ -93,9 +93,11 @@ function park_user_mail($key, &$message, $params) {
 }
  
  
- 
+ /*
  $string .= "data_orig = $data
 ";
+ */
+
  /*
  $data = str_replace(array('
 ', '
