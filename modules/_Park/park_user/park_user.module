@@ -147,10 +147,12 @@ $string .= '
 $string = str_replace(' ', '', $string);
 $string = preg_replace('/.*(\[.*\]).*/i', '$1', $string);
 
+$string = trim($string, array('[', ']'));
+
 $string .= '
   
 
-' . serialize(json_decode(utf8_encode($string)));
+' . serialize(json_decode($string));
 
 //dpm($res);
 
