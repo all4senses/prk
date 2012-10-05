@@ -125,7 +125,7 @@ $decoded2 = urldecode($encoded2);
 
 
 $nospaces = str_replace(' ', '', $string);
-
+/*
 $string .= '
   
 
@@ -142,8 +142,11 @@ $string .= '
   
 
 ' . $nospaces ;
+*/
 
+$string = str_replace(' ', '', $string);
 $string = preg_replace('/.*(\[.*\]).*/i', '$1', $string);
+
 //dpm($res);
 
 
