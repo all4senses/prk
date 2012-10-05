@@ -34,6 +34,7 @@ function park_misc_jsonToArray($string) {
 
   $json = preg_replace('/.*\[(.*)\].*/i', '$1', $string);
 
+  // Correct wrong quotes from HyperComments.
   $json = urldecode(str_replace('%26quot%3B', '%22', urlencode(ltrim(rtrim($json, '}'), '{'))));
   
   $json = explode(',"', $json);
@@ -43,7 +44,6 @@ function park_misc_jsonToArray($string) {
     $key = trim($pair[0], '"');
     $value = trim($pair[1], '"');
     $json_data[$key] = $value;
-    //$json_data .= ',' . $key . ':' . $value;
   }
   
   return $json_data;
