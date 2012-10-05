@@ -62,6 +62,7 @@ $jso = 'HC notify data:data===[{"cmd":"streamMessage","stream_id":"506df91b6bf6a
 
 $jso = '"cmd":"streamMessage","stream_id":"506df91b6bf6ab2311003736","widget_id":3235,"text":"Коммент59","acc_id":31552,"nick":"ParkBoss","id":"1349412545670099","ip":"91.200.156.93","user_id":"1","category":0,"link":"park.all4senses.com\/u\/marliti\/master-classes\/mk-po-pleteniyu-vetochki-sosny"';
 
+$json_data = array();
 $jso = explode(',"', $jso);
 foreach ($jso as $js) {
   $j = explode('":', $js);
@@ -70,7 +71,7 @@ foreach ($jso as $js) {
   dpm($key);
   $value = trim($j[1], '"');
   dpm($value);
-  $data[$key] = $value;
+  $json_data[$key] = $value;
   
 //  foreach($j as $subj) {
 //    $subj = trim($subj, '"');
@@ -78,7 +79,7 @@ foreach ($jso as $js) {
 //  }
 }
 
-dpm($data);
+dpm($json_data);
 
 //dpm(json_decode($jso));
 
