@@ -115,10 +115,19 @@ function park_social_hcBlocks($block_type) {
   switch ($block_type) {
     
     case 'recent_comments':
-      $path_to_module = drupal_get_path('module', 'park_social');
-      drupal_add_js($path_to_module . '/js/park_hcRecentComments.js');
-      return '<div id="hypercomments_mix"></div>';
-    
+      //$path_to_module = drupal_get_path('module', 'park_social');
+      //drupal_add_js($path_to_module . '/js/park_hcRecentComments.js');
+      //return '<div id="hypercomments_mix"></div>';
+    return '<div id="hypercomments_mix"></div>
+            <script type="text/javascript">
+            var _hcwp = _hcwp || [];
+            _hcwp.push({widget_id : 3235, widget : "Mixstream",filter:"last",limit:5 });
+            (function() {
+            var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+            hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://widget.hypercomments.com/apps/js/hc.dev.js";
+            var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling);
+            })();
+            </script>';
     
     case 'popular_articles':
       $path_to_module = drupal_get_path('module', 'park_social');
