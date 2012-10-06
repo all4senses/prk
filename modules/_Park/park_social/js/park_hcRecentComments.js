@@ -8,7 +8,11 @@
       (function() {
       var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
       hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://widget.hypercomments.com/apps/js/hc.dev.js";
-      var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling);
+      
+      //var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling);
+      
+      document.getElementById("hypercomments_recent").insertBefore(hcc);
+      
       })();
 
     }
