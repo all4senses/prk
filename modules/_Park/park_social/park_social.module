@@ -128,7 +128,10 @@ function park_social_hcBlocks($block_type) {
             var s = document.getElementsByTagName("script")[0]; 
             //s.parentNode.insertBefore(hcc, s.nextSibling);
             
-            document.getElementById("hypercomments_mix0").insertBefore(hcc);
+            //document.getElementById("hypercomments_mix0").insertBefore(hcc);
+            
+            var ddd = document.getElementById("hypercomments_mix0");
+            document.insertBefore(hcc, ddd);
 
             })();
             </script>';
@@ -147,7 +150,8 @@ function park_social_hcBlocks($block_type) {
               var s = document.getElementsByTagName("script")[0]; 
               //s.parentNode.insertBefore(hcc, s.nextSibling);
               
-              document.getElementById("hypercomments_mix2").insertBefore(hcc);
+              var ddd = document.getElementById("hypercomments_mix2");
+              document.insertBefore(hcc, ddd);
 
               })();
               </script>';
