@@ -72,7 +72,7 @@ var mcSite = '10053';
 
 <!--
 <script type="text/javascript">
-var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream"; <?php echo ($user->uid ? '_hcp.auth = "' . $auth . '"' : ''); ?>;
+var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream"; <?php //echo ($user->uid ? '_hcp.auth = "' . $auth . '"' : ''); ?>;
 (function() { 
 var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
 hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://widget.hypercomments.com/apps/js/hc.js";
