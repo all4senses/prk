@@ -110,6 +110,8 @@ function park_user_getUserContent($account, $content_title, $content_type){
   $ac = user_load($account->uid);
   dpm($ac);
   
+  dpm($account->field_prefaces_collection);
+  
   
   
   drupal_set_title($title = t("@name's " . $content_title, array('@name' => format_username($account))), PASS_THROUGH);
