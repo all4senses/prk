@@ -151,9 +151,9 @@ function park_social_hcBlocks($block_type) {
       //drupal_add_js($path_to_module . '/js/park_hcMainComments.js');
       
       
-      return '<div id="hypercomments_main"></div>';
+      //return '<div id="hypercomments_main"></div>';
       
-      /*
+      
       return '<script type="text/javascript">
               var _hcp = _hcp || {}; _hcp.widget_id = 3235; _hcp.widget = "Stream"; _hcp.append = "#hypercomments_main"; ' . ($user->uid ? '_hcp.auth = "' . $auth . '";' : '') . '
               (function() { 
@@ -163,7 +163,7 @@ function park_social_hcBlocks($block_type) {
               })();
               </script>
               <div id="hypercomments_widget"></div>';
-      */
+      
 
 
     
