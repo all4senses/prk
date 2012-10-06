@@ -118,14 +118,18 @@ function park_social_hcBlocks($block_type) {
       //$path_to_module = drupal_get_path('module', 'park_social');
       //drupal_add_js($path_to_module . '/js/park_hcRecentComments.js');
       //return '<div id="hypercomments_mix"></div>';
-    return '<div id="hypercomments_mix"></div>
+    return '<div id="hypercomments_mix0"></div>
             <script type="text/javascript">
             var _hcwp = _hcwp || [];
             _hcwp.push({widget_id : 3235, widget : "Mixstream",filter:"last",limit:5 });
             (function() {
             var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
             hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://widget.hypercomments.com/apps/js/hc.dev.js";
-            var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling);
+            var s = document.getElementsByTagName("script")[0]; 
+            //s.parentNode.insertBefore(hcc, s.nextSibling);
+            
+            document.getElementById("hypercomments_mix0").insertBefore(hcc);
+
             })();
             </script>';
     
