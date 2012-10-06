@@ -1,6 +1,6 @@
-(function ($) {
+//(function ($) {
 
-  //$(document).ready(function() {
+  jQuery(document).ready(function() {
   
  
  
@@ -18,6 +18,6 @@
 //    }
 //  };
 
-  //});
+  });
 
-}(jQuery));
+//}(jQuery));
