@@ -8,10 +8,10 @@
       _hcp.widget = "Stream"; 
       _hcp.append = "#hypercomments_main";
       
-      //if (Drupal.settings.park_social.uid) {
+      if (Drupal.settings.park_social.uid) {
         _hcp.auth = Drupal.settings.park_social.auth;
-        console.log('xxx');
-      //}
+        console.log(Drupal.settings.park_social);
+      }
       //console.log('uid = ' + Drupal.settings.park_social.uid);
       //console.log('auth = ' + Drupal.settings.park_social.auth);
       

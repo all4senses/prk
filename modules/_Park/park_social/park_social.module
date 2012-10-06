@@ -146,9 +146,9 @@ function park_social_hcBlocks($block_type) {
         $auth = NULL;
       }
 
-      $path_to_module = drupal_get_path('module', 'park_social');
-      drupal_add_js(array('park_social' => array('auth' => $auth, 'uid' => $user->uid)), 'setting');
-      drupal_add_js($path_to_module . '/js/park_hcMainComments.js');
+      //$path_to_module = drupal_get_path('module', 'park_social');
+      //drupal_add_js(array('park_social' => array('auth' => $auth, 'uid' => $user->uid)), 'setting');
+      //drupal_add_js($path_to_module . '/js/park_hcMainComments.js');
       
       
       return '<div id="hypercomments_main"></div>';
