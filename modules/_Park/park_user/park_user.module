@@ -110,7 +110,7 @@ function park_user_getUserContent($account, $content_title, $content_type){
   $ac = user_load($account->uid);
   dpm($ac);
   
-  dpm($account->field_prefaces_collection);
+  dpm(render($account->field_prefaces_collection));
   
   
   
