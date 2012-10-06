@@ -3,7 +3,7 @@
 hide($content['comments']);
 hide($content['links']);
 
-dpm($node);
+//dpm($node);
 
 if (!$page) {
   echo '<h2 class="title"' , $title_attributes , '><a href="' , $node_url, '" title="' , $title , '">' , $title , '</a></h2>';

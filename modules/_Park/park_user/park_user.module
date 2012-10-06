@@ -107,7 +107,8 @@ function park_user_getUserTabTitle($account, $content_title){
  */
 function park_user_getUserContent($account, $content_title, $content_type){
   
-  dpm($account);
+  $ac = user_load($account->uid);
+  dpm($ac);
   
   
   
