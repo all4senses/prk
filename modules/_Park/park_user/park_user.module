@@ -112,6 +112,11 @@ function park_user_getUserContent($account, $content_title, $content_type){
   
   dpm(render($account->field_prefaces_collection));
   
+  $wrapper = entity_metadata_wrapper('user', $account);
+// In case of a non-multiple collection and an example text field, you could get the text via
+  dpm($wrapper);
+  //$wrapper->field_collection->field_example->value();
+  
   
   
   drupal_set_title($title = t("@name's " . $content_title, array('@name' => format_username($account))), PASS_THROUGH);
