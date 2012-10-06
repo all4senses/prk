@@ -11,11 +11,11 @@
          width:"80%", 
          height:"80%",
          href: function() {
-           console.log(this.src);
+           //console.log(this.src);
            return this.src;
          }
        });
-       console.log('full content!');
+       //console.log('full content!');
        
     }
   };
