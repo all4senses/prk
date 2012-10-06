@@ -162,7 +162,7 @@ function park_social_hcBlocks($block_type) {
               var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling); 
               })();
               </script>
-              <div id="hypercomments_widget"></div>';
+              <div id="hypercomments_main"></div>';
       
 
 
