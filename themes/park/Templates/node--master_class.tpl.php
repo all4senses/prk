@@ -70,6 +70,7 @@ var mcSite = '10053';
 <a href="http://cackle.me" id="mc-link">система комментирования <b style="color:#4FA3DA">CACKL</b><b style="color:#F65077">E</b></a>
 -->
 
+<!--
 <script type="text/javascript">
 var _hcp = _hcp || {};_hcp.widget_id = 3235;_hcp.widget = "Stream"; <?php echo ($user->uid ? '_hcp.auth = "' . $auth . '"' : ''); ?>;
 (function() { 
@@ -79,3 +80,4 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hc
 })();
 </script>
 <div id="hypercomments_widget"></div>
+-->
