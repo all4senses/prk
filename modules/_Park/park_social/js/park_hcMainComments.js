@@ -1,7 +1,7 @@
 //(function ($) {
 
- // Drupal.behaviors.park_hcRecentComments = {
- //   attach: function (context, settings) {
+  Drupal.behaviors.park_hcRecentComments = {
+    attach: function (context, settings) {
 
       var _hcp = _hcp || {};
       _hcp.widget_id = 3235;
@@ -23,7 +23,7 @@
       var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling); 
       })();
 
-//    }
-//  };
+    }
+  };
 
 //}(jQuery));
