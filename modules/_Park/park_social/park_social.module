@@ -115,13 +115,14 @@ function park_social_hcBlocks($block_type) {
   switch ($block_type) {
     
     case 'recent_comments':
-      //$path_to_module = drupal_get_path('module', 'park_social');
-      //drupal_add_js($path_to_module . '/js/park_hcRecentComments.js');
-      //return '<div id="hypercomments_mix"></div>';
-    return '<div id="hypercomments_mix0"></div>
+      $path_to_module = drupal_get_path('module', 'park_social');
+      drupal_add_js($path_to_module . '/js/park_hcRecentComments.js');
+      return '<div id="hypercomments_recent"></div>';
+    /* 
+    return '<div id="hypercomments_recent"></div>
             <script type="text/javascript">
             var _hcwp = _hcwp || [];
-            _hcwp.push({widget_id : 3235, widget : "Mixstream", filter:"last", limit:5, append:"#hypercomments_mix0" });
+            _hcwp.push({widget_id : 3235, widget : "Mixstream", filter:"last", limit:5, append:"#hypercomments_recent" });
             //_hcwp.append = "#hypercomments_mix0";
             (function() {
             var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
@@ -136,12 +137,13 @@ function park_social_hcBlocks($block_type) {
 
             })();
             </script>';
-    
+    */
     case 'popular_articles':
-      //$path_to_module = drupal_get_path('module', 'park_social');
-      //drupal_add_js($path_to_module . '/js/park_hcPopularArticles.js');
-      //return '<div id="hypercomments_mix"></div>';
-      return '<div id="hypercomments_mix2"></div>
+      $path_to_module = drupal_get_path('module', 'park_social');
+      drupal_add_js($path_to_module . '/js/park_hcPopularArticles.js');
+      return '<div id="hypercomments_popular"></div>';
+      /*
+      return '<div id="hypercomments_popular"></div>
               <script type="text/javascript">
               var _hcwp = _hcwp || [];
               _hcwp.push({widget_id : 3235, widget : "Mixstream",filter:"popular",limit:5, append:"#hypercomments_mix2" });
@@ -155,6 +157,7 @@ function park_social_hcBlocks($block_type) {
 
               })();
               </script>';
+      */
           
   }
 }
