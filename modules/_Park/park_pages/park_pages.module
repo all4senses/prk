@@ -218,7 +218,7 @@ function park_pages_themeAuthorsSelect($selected_username = NULL, $all_authors =
 /**
  * Returns content feed for a specific content type.
  */
-function park_pages_getContentFeedWithControls($type, $uid = NULL) {
+function park_pages_getContentFeedWithControls($type, $uid = NULL, $default_list_view_style = 'teaser') {
   
   $terms = NULL;
   $allTags = NULL;
@@ -252,8 +252,16 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL) {
   }
   
   
-  $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers' : 'titles';
   $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
+  
+  // Teasers by default
+  if ($default_list_view_style == 'teaser') {
+    $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'titles') ? 'titles' : 'teasers';
+  }
+  else {
+    $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers': 'titles';
+  }
+  
 
   $view_name = 'content_feeds';
   $display_name = ($currentViewStyle == 'teasers') ? 'content_feed_teasers_block' : 'content_feed_titles_block';
