@@ -1,4 +1,4 @@
-//(function ($) {
+(function ($) {
 
   Drupal.behaviors.park_hcRecentComments = {
     attach: function (context, settings) {
@@ -26,4 +26,4 @@
     }
   };
 
-//}(jQuery));
+}(jQuery));
