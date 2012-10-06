@@ -1,16 +1,17 @@
-(function ($) {
+//(function ($) {
 
-  Drupal.behaviors.park_hcRecentComments = {
-    attach: function (context, settings) {
+//  Drupal.behaviors.park_hcRecentComments = {
+//    attach: function (context, settings) {
 
       var _hcp = _hcp || {};
       _hcp.widget_id = 3235;
       _hcp.widget = "Stream"; 
       _hcp.append = "#hypercomments_main";
       
+      // Passing Drupal.settings.park_social doesn't work such way!!!
       if (Drupal.settings.park_social.uid) {
         _hcp.auth = Drupal.settings.park_social.auth;
-        console.log(Drupal.settings.park_social);
+        //console.log(Drupal.settings.park_social);
       }
       //console.log('uid = ' + Drupal.settings.park_social.uid);
       //console.log('auth = ' + Drupal.settings.park_social.auth);
@@ -23,7 +24,7 @@
       var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling); 
       })();
 
-    }
-  };
+//    }
+//  };
 
-}(jQuery));
+//}(jQuery));
