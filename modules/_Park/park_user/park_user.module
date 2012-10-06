@@ -119,8 +119,8 @@ function park_user_getUserContent($account, $content_title, $content_type){
     //$title = $i->field_preface_b_title->value();
     //$body = $i->field_preface_b_body->value();
     
-    $title = $i->field_preface_b_title->view();
-    $body = $i->field_preface_b_body->view();
+    $title = $i->view();
+    $body = '';//$i->field_preface_b_body->view();
     
     $prefaces[] = array('title' => $title, 'body' => $body);
   }
