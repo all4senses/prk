@@ -532,3 +532,127 @@ function park_pages_theme($existing, $type, $theme, $path) {
             
   );
 }
+
+
+/**
+ * Implements hook node_presave.
+ */
+function park_pages_node_presave($node) {
+  
+    // Build teaser, gallery, find images (main, sharing, etc).
+  
+    $content_with_teaser = array('article', 'master_class', 'album', 'blog_post');
+    $content_with_teaser_and_slideshow = array('master_class', 'album');
+    
+    if (in_array($node->type, $content_with_teaser)) {
+      
+      // If this is a new node, yet without nid, let's find out supposed its id
+      if(!$nid = $node->nid) {
+        $nid = db_next_id(db_query('SELECT MAX(nid) FROM {node}')->fetchField());
+      }
+
+      $extra_data = park_pages_getExtraDataFromBody($node->body['und'][0]['value'], $nid, $node->type);
+         
+      if(in_array($node->type, $content_with_teaser_and_slideshow) && $body_images = park_image_findImages($node->body['und'][0]['value'], $nid)) {
+        //$node->field_main_image['und'][0]['value'] = serialize($body_images[0]);
+        //$node->field_body_to_gallery['und'][0]['value'] = park_image_prepareBodyToSlideshow($nid, $gallery);
+        $extra_data['slideshow_themed'] = park_image_prepareBodyToSlideshow($nid, $body_images);
+      }
+      
+      $node->field_extra_data['und'][0]['value'] = serialize($extra_data);
+      
+      
+    } // End of if (in_array($node->type, $content_with_teaser)) {
+}
+
+
+/**
+ * Build a trimmed teaser, a main image, a sharing image, etc from a source body.
+ */
+function park_pages_getExtraDataFromBody($body, $nid, $content_type = NULL, $characters_num = NULL, $only_teaser = FALSE) {
+ 
+  $main_image_html = NULL;
+  $main_image = NULL;
+  $matches = NULL;
+
+  // Get the main image for a teaser and for sharing
+  // and then clear img tags from the body.
+  if (preg_match('/<img[^>]+>/i', $body, $matches)) {
+    
+    preg_match_all('/(alt|title|src)="([^"]*)"/i', $matches[0], $matches);
+    foreach ($matches[1] as $index => $key) {
+      $main_image[$key] = $matches[2][$index];
+    }
+    $main_image['src'] = str_replace('%20', ' ', $main_image['src']);
+    $stream_path = park_misc_getStreamUriFromRelativePath($main_image['src']);
+    $main_image['uri'] = $stream_path;
+    
+    $image_size = getimagesize(ltrim($main_image['src'], '/'));
+
+    // Scale and cut.
+    /*
+    if ($image_size[0] / $image_size[1] > 1.5) {
+      $main_image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => 'article_thumbnail_h'));
+    }
+    else {
+      $main_image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => 'article_thumbnail_v'));
+    }
+    */
+
+    // Scale only.
+    if ($image_size[0] / $image_size[1] > 1) {
+      $style_name = 'teaser_thumbnail_h';
+      $main_image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => $style_name));
+    }
+    else {
+      $style_name = 'teaser_thumbnail_v';
+      $main_image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => $style_name));
+    }
+    
+    // Image for sharing.
+    if ($image_size[0] / $image_size[1] > 1) {
+      // Too wide. will not be cutted.
+      $main_image['share_themed'] = image_style_url('share_wide', $stream_path);
+    }
+    elseif ($image_size[1] / $image_size[0] < 1) {
+      // Too tall. will not be cutted.
+      $main_image['share_themed'] = image_style_url('share_tall', $stream_path);
+    }
+    else {
+      //Normal image, will not be cutted.
+      $main_image['share_themed'] = image_style_url('share', $stream_path);
+    }
+    
+    $main_image_html = '<div class="thumb">' . $main_image_html . '</div>';
+    
+    // Clear img tags out of a body.
+    $body = preg_replace('/<img[^>]+>/i', '', $body);
+  }
+
+  if (!$characters_num) {
+    if ($main_image_html) {
+      $characters_num = 130;
+    }
+    else {
+      $characters_num = 250;
+    }
+  }
+  
+  // $teaser = text_summary($body_full_markup, 'full_html', $characters_num);
+  $teaser = strip_tags($body);
+  $teaser = trim(drupal_substr($teaser, 0, $characters_num));
+  
+  // Replace the last word with ...
+  // preg_match('/^.*\s(.*)$/i', trim(strip_tags($teaser)), $matches);
+  // $last_pos = strrpos($teaser, $matches[1]);
+  $last_pos = strrpos($teaser, ' ');
+  $teaser = substr_replace($teaser, '... ' . l(t('Read More'), 'node/' . $nid, array('attributes' => array('class' => array('more')))), $last_pos);
+
+  if ($only_teaser) {
+    return $main_image_html . $teaser;
+  }
+  else {
+    return array('teaser' => $main_image_html . $teaser, 'main_image' => $main_image);
+  }
+  
+}

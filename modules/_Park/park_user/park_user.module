@@ -144,8 +144,6 @@ function park_user_getUserContent($account, $content_title, $content_type){
 }
 
 
-
-
 /**
  * Implements hook_user_view().
  */

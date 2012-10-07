@@ -27,6 +27,74 @@ function park_misc_testPage() {
 }
 
 
+
+
+/**
+ * Convert a relative or absolute path to Drupal stream uri.
+ */
+function park_misc_getStreamUriFromRelativePath($path) {
+  $file_default_scheme = file_default_scheme();
+  $default_file_path = variable_get('file_' . $file_default_scheme . '_path', ($file_default_scheme == 'public' ? 'f' : 'pf'));
+
+  $stream_path = str_replace('http://' . $_SERVER['SERVER_NAME'], '', $path);
+  $stream_path = ltrim($stream_path, '/');
+  return $file_default_scheme . ':/' . str_replace($default_file_path, '', $stream_path);
+}
+
+
+/**
+ * Push field tags to metatags in the Head.
+ */
+function park_misc_pushTagsToMetatags($name, $value, $weight = 'NA') {
+  switch ($name) {
+    case 'keywords':
+    case 'news_keywords':
+      $t = '';
+      $tags = element_children($value);
+      foreach ($tags as $tag) {
+        $t .= $t ? ', ' . $value[$tag]['#title'] : $value[$tag]['#title'];
+      }
+      if ($t) {
+        gv_misc_addMetatag($name, $t, NULL, $weight);
+      }
+      break;
+  }
+}
+
+
+/**
+ * Helper function to add metatag to a current page.
+ */
+function park_misc_addMetatag($name, $content, $href = NULL) {
+  if ($content) {
+    if ($name == 'title') {
+      drupal_set_title($content);
+    }
+    else {
+      $meta = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+            'name' => $name,
+            'content' => $content,
+        )
+      );
+      drupal_add_html_head($meta, $name);
+    }
+  } // End of if ($content) {
+  elseif($href) {
+    $meta = array(
+      '#tag' => 'link',
+      '#attributes' => array(
+          'rel' => $name,
+          'href' => $href,
+      )
+    );
+    drupal_add_html_head($meta, $name);
+  } // End of elseif($href) {
+}
+
+
 /**
  * Form with a fieldset of Add content section for Admin Content GoCloudBackup page (by Views).
  */
