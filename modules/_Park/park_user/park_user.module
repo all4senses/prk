@@ -134,6 +134,8 @@ function park_user_getUserContent($account, $content_title, $content_type){
   }
   */
   
+  
+  
   drupal_set_title($title = t("@name's " . $content_title, array('@name' => format_username($account))), PASS_THROUGH);
   $user_content = park_pages_getContentFeedWithControls($content_type, $account->uid);
   

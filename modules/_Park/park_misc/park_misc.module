@@ -28,6 +28,41 @@ function park_misc_testPage() {
 
 
 /**
+ * Form with a fieldset of Add content section for Admin Content GoCloudBackup page (by Views).
+ */
+function park_misc_AddContentSection_form() {
+  
+  global $user;
+  
+  $types = node_type_get_types();
+  
+  // Hide some content tupes if not a root.
+  if ($user->uid != 1) {
+    unset($types['admin_page'], $types['preface'], $types['webform']);
+  }
+  
+  $options = array('' => '- Select a content type -');
+  foreach ($types as $type => $value) {
+    $options[str_replace('_', '-', $type)] = $value->name;
+  }
+  
+  $form['add_content'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Add a new content'),
+    '#collapsible' => TRUE,
+  );
+  $form['add_content']['select_type'] = array(
+    '#type' => 'select',
+    //'#title' => 'Select content type',
+    '#options' => $options,
+    '#attributes' => array('id' => 'select_type',  'onChange' => "top.location.href='http://" . $_SERVER['SERVER_NAME'] . "/node/add/" . "' + document.getElementById('select_type').options[document.getElementById('select_type').selectedIndex].value"),
+  );
+  
+  return $form;
+}
+
+
+/**
  * Convert json to array;
  */
 function park_misc_jsonToArray($string) {
