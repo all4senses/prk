@@ -338,9 +338,8 @@ function park_misc_getTags($limit = NULL) {
     // $result->name = i18n_string_translate(array('taxonomy', 'term', $result->tid, 'name'), $result->name);
 
     //$result->link = array('link_title' => $result->name, 'href' => $base_url . '/tags/' . pathauto_cleanstring($result->name));
-    $result->link = array('link_title' => $result->name, 'href' => url('/taxonomy/term/' . $result->tid));
+    $result->link = array('link_title' => $result->name, 'href' => 'taxonomy/term/' . $result->tid);
     $tags[$result->tid] = $result;
   }
-  dpm($tags);
   return $tags;
 }
