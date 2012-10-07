@@ -288,7 +288,7 @@ form .counter.exceeded{color: red;}
 
 .page-node #main .main-content .content{font-family: Georgia,"Bitstream Charter",serif; border-top: 1px dotted #C4C4C4; margin-top: 12px; padding-top: 20px;}
 
-.page-node #main .block .content{border-top: none;}
+.page-node #main .block .content{border-top: none; margin-top: 50px;}
 
 .page-node #main .main-content .block-views .content{border: none;}
 
