@@ -55,7 +55,7 @@ function park_misc_pushTagsToMetatags($name, $value, $weight = 'NA') {
         $t .= $t ? ', ' . $value[$tag]['#title'] : $value[$tag]['#title'];
       }
       if ($t) {
-        gv_misc_addMetatag($name, $t, NULL, $weight);
+        park_misc_addMetatag($name, $t, NULL, $weight);
       }
       break;
   }
