@@ -26,7 +26,6 @@ function park_social_menu() {
 }
 
 
-
 /**
  * Socialite social buttons.
  */
