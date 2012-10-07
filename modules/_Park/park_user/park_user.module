@@ -115,7 +115,11 @@ function park_user_getUserContent($account, $content_title, $content_type){
   
   $user_fields = field_get_items('user', $account, 'field_prefaces_collection');
   
+  
   dpm($user_fields);
+  
+  $ite = field_collection_field_get_entity(2);
+  dpm($ite);
   
   $wrapper = entity_metadata_wrapper('user', $account);
 // In case of a non-multiple collection and an example text field, you could get the text via
