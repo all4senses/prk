@@ -51,10 +51,17 @@
               global $language;
               
               if ($page) {
-                dpm($author);
-                //$gplus_profiles = 
-                $gplus_profile = '';//(isset($author->field_u_social_profiles['und'][0]['safe_value']) && $author->field_social_profiles['und'][0]['safe_value']) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $author->field_u_gplus_profile['und'][0]['safe_value'] . '?rel=author">(G+)</a>' : '';
                 
+                if (isset($author->field_u_social_profiles['und'])) {
+                  foreach ($author->field_u_social_profiles['und'] as $value) {
+                    $value = explode(':', $value);
+                    if (@$value[0] && @$value[1]) {
+                      $user_social_profiles[$value[0]] = $value[1];
+                    }
+                  }
+                }
+                
+                $gplus_profile = (isset($user_social_profiles['gplus'])) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $user_social_profiles['gplus'] . '?rel=author">(G+)</a>' : '';
                
                 $submitted = '<span property="dc:date dc:created" content="' . $created_rdf . '" datatype="xsd:dateTime" rel="sioc:has_creator">' .
                                 t('By') . ':' .
