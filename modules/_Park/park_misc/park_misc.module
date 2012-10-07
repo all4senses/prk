@@ -331,9 +331,9 @@ function park_misc_getTags($limit = NULL) {
 
   // Necessary for pathauto_cleanstring().
   module_load_include('inc', 'pathauto');
-dpm($results);
+
   foreach($results as $result) {
-    dpm($result);
+
     // Translate terms to the current language.
     // $result->name = i18n_string_translate(array('taxonomy', 'term', $result->tid, 'name'), $result->name);
 
