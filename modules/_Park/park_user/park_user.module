@@ -113,7 +113,7 @@ function park_user_getUserContent($account, $content_title, $content_type){
   //dpm(render($account->field_prefaces_collection));
   
   
-  $user_fields = field_get_items('field_collection_item', $account, 'field_prefaces_collection');
+  $user_fields = field_get_items('user', $account, 'field_prefaces_collection');
   
   dpm($user_fields);
   
