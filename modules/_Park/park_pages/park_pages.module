@@ -551,7 +551,7 @@ function park_pages_node_presave($node) {
         $nid = db_next_id(db_query('SELECT MAX(nid) FROM {node}')->fetchField());
       }
 
-      $extra_data = park_pages_getExtraDataFromBody($node->body['und'][0]['value'], $nid, $node->type);
+      $extra_data = park_pages_getExtraDataFromBody($node->body, $nid, $node->type);
          
       if(in_array($node->type, $content_with_teaser_and_slideshow) && $body_images = park_image_findImages($node->body['und'][0]['value'], $nid)) {
         //$node->field_main_image['und'][0]['value'] = serialize($body_images[0]);
@@ -569,8 +569,11 @@ function park_pages_node_presave($node) {
 /**
  * Build a trimmed teaser, a main image, a sharing image, etc from a source body.
  */
-function park_pages_getExtraDataFromBody($body, $nid, $content_type = NULL, $characters_num = NULL, $only_teaser = FALSE) {
+function park_pages_getExtraDataFromBody($node_field_body, $nid, $content_type = NULL, $characters_num = NULL, $only_teaser = FALSE) {
  
+  $body = $node_field_body['und'][0]['value'];
+  $summary = $node_field_body['und'][0]['summary'];
+  
   $main_image_html = NULL;
   $main_image = NULL;
   $matches = NULL;
@@ -639,9 +642,13 @@ function park_pages_getExtraDataFromBody($body, $nid, $content_type = NULL, $cha
   }
   
   // $teaser = text_summary($body_full_markup, 'full_html', $characters_num);
-  $teaser = strip_tags($body);
-  $teaser = trim(drupal_substr($teaser, 0, $characters_num));
-  
+  if ($summary) {
+    $teaser = trim(drupal_substr(strip_tags($summary), 0, $characters_num));
+  }
+  else {
+    $teaser = trim(drupal_substr(strip_tags($body), 0, $characters_num));
+  }
+    
   // Replace the last word with ...
   // preg_match('/^.*\s(.*)$/i', trim(strip_tags($teaser)), $matches);
   // $last_pos = strrpos($teaser, $matches[1]);
