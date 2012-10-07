@@ -601,11 +601,11 @@ function park_pages_getExtraDataFromBody($body, $nid, $content_type = NULL, $cha
 
     // Scale only.
     if ($image_size[0] / $image_size[1] > 1) {
-      $style_name = 'teaser_thumbnail_h';
+      $style_name = 'teaser_thumb_h';
       $main_image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => $style_name));
     }
     else {
-      $style_name = 'teaser_thumbnail_v';
+      $style_name = 'teaser_thumb_v';
       $main_image_html = theme('image_style', array( 'path' => $stream_path, 'style_name' => $style_name));
     }
     
