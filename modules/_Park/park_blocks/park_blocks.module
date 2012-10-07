@@ -260,7 +260,6 @@ function park_blocks_buildTagsCloudBlock() {
     $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
     $tags = theme('park_misc_tagadelicWeighted_acceptPredefinedTagsPaths', array('tags' => $tags_array));
   
-    $tags = $tags . $show_all_url;
     // Expire = current time + 4 hours.
    
     // Uncomment to use a cache.
