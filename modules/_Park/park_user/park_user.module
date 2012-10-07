@@ -117,8 +117,8 @@ function park_user_getUserContent($account, $content_title, $content_type){
   
   
   dpm($user_fields);
-  
-  $ite = field_collection_field_get_entity(2);
+  $itemid = 2;
+  $ite = field_collection_field_get_entity($itemid);
   dpm($ite);
   
   $wrapper = entity_metadata_wrapper('user', $account);
