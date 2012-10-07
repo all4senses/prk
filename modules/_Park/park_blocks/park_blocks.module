@@ -284,5 +284,6 @@ function park_blocks_buildTagsCloudBlock($side_block = NULL) {
     $tags = $tags->data;
   }
   
-  return '<div class="tags-cloud">' . $tags . '</div>'; 
+  $out = $side_block ? '<div class="tags">' . $tags . '<div class="more">' . l('Облако тегов', 'tags') . '</div></div>' : '<div class="tags-cloud">' . $tags . '</div>';
+  return $out;
 }
