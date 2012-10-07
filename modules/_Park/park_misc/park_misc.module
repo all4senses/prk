@@ -326,6 +326,8 @@ function park_misc_getTags($limit = NULL) {
   //$query->condition('td.vid', $voc->vid);
   if ($limit) {
     $query->range(0, $limit);
+    // a4s Random only if the limit is set.
+    $query->orderRandom();
   }
   $query->orderRandom();
   $results = $query->execute();
