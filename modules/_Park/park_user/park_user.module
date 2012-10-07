@@ -113,9 +113,9 @@ function park_user_getUserContent($account, $content_title, $content_type){
     // Almost the same.
     //$field_collection = field_collection_item_load($field_prefaces_id['value']);
     $prefaces[] = $field_collection;
-    dpm($field_collection->view());
+    //dpm($field_collection->view());
     if ($field_collection->field_preface_key_user['und'][0]['value'] == $content_type) {
-      $preface = render($field_collection);
+      $preface = render($field_collection->view());
     }
   }
   
