@@ -360,6 +360,9 @@ form .counter.exceeded{color: red;}
 h1.preface,
 h2.preface{border: none; color: black; font-family: Georgia,"Bitstream Charter",serif; font-size: 18px; font-weight: bold; line-height: 18px; margin: 0; padding: 10px 0 0 0;}
 
+/* Tags cloud page */
+.page-node-13 h1.preface{text-align: center; color: gray;}
+
 .content.page.preface,
 .front .content.page.preface, 
 .attachment-before .content.page.preface,
