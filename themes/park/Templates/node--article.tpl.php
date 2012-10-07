@@ -167,7 +167,7 @@
                       
 
                       <div class="main">
-                          <?php echo gcb_blocks_getSocialiteButtons($url, $title); ?> 
+                          <?php echo park_social_getSocialiteButtons($url, $title); ?> 
                       </div> <!-- main share buttons -->
 
                     </div> <!-- all share buttons -->
