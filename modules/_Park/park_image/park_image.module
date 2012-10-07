@@ -254,7 +254,7 @@ function park_image_node_view($node, $view_mode) {
     
   } // End of if ($view_mode == 'full') {
   else {
-    // Teaser.
+    // Teaser. 
     if (in_array($node->type, $content_with_zoomable_pictures)) {
       $extra_data = unserialize(@$node->field_extra_data['und'][0]['value']);
       if (@$extra_data['teaser']) {
