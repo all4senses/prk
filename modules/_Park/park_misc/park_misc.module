@@ -327,6 +327,7 @@ function park_misc_getTags($limit = NULL) {
   if ($limit) {
     $query->range(0, $limit);
   }
+  $query->orderRandom();
   $results = $query->execute();
 
   // Necessary for pathauto_cleanstring().
