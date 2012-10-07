@@ -107,43 +107,33 @@ function park_user_getUserTabTitle($account, $content_title){
  */
 function park_user_getUserContent($account, $content_title, $content_type){
   
-  $ac = user_load($account->uid);
-  //dpm($ac);
+  $field_prefaces_ids = field_get_items('user', $account, 'field_prefaces_collection');
+  foreach ($field_prefaces_ids as $field_prefaces_id) {
+    $field_collection = field_collection_field_get_entity($field_prefaces_id);
+    // Almost the same.
+    //$field_collection = field_collection_item_load($field_prefaces_id['value']);
+    $prefaces[] = $field_collection;
+    if ($field->field_preface_key_user['und'][0]['value'] == $content_type) {
+      $preface = render($field_collection);
+    }
+  }
   
-  //dpm(render($account->field_prefaces_collection));
-  
-  
-  $user_fields = field_get_items('user', $account, 'field_prefaces_collection');
-  
-  
-  dpm($user_fields);
-  $itemid = 2;
-  $ite = field_collection_item_load($itemid); //field_collection_field_get_entity($user_field);
-  dpm($ite);
+  dpm($prefaces);
+  dpm($preface);
   
   $wrapper = entity_metadata_wrapper('user', $account);
-// In case of a non-multiple collection and an example text field, you could get the text via
-  
   foreach ($wrapper->field_prefaces_collection as $i){
-    $title = $i->field_preface_b_title->value();
-    $body = $i->field_preface_b_body->value();
-    //$body_rendered = render($body);
-    $key = $i->field_preface_key_user->value();
     
     $field = $i->view();
     $field_rendered = render($field);
     
-    $prefaces[] = array('field' => $field, 'field_rendered' => $field_rendered, 'title' => $title, 'body' => $body, 'key' => $key);
+    $prefaces[] = array('field' => $field, 'field_rendered' => $field_rendered, 'key' => $i->field_preface_key_user->value());
+    if ($i->field_preface_key_user->value() == $content_type) {
+      $preface = render($i->view());
+    }
   }
   dpm($prefaces);
-    
-  //dpm(render($wrapper->field_prefaces_collection[0]->field_preface_b_title));
-  //dpm(render($wrapper->field_prefaces_collection[0]->field_preface_b_title->value()));
-  //dpm(render($wrapper->field_prefaces_collection[0]->field_preface_b_body));
-  //dpm(render($wrapper->field_prefaces_collection[0]->field_preface_b_body->value()));
-  //$wrapper->field_collection->field_example->value();
-  
-  
+  dpm($preface);
   
   drupal_set_title($title = t("@name's " . $content_title, array('@name' => format_username($account))), PASS_THROUGH);
   $user_content = park_pages_getContentFeedWithControls($content_type, $account->uid);
