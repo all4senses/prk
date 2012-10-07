@@ -74,11 +74,11 @@
                 echo $submitted;
               }
               else {
-                if ($node->type == 'article') {
-                  echo t('By') , ': ' , $author_name;
+                if ($node->type == 'news_post') {
+                  echo $created_str;
                 }
                 else {
-                  echo $created_str;
+                  echo t('By') , ': ' , $author_name;
                 }
               }
               
