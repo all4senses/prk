@@ -113,7 +113,7 @@ function park_user_getUserContent($account, $content_title, $content_type){
   //dpm(render($account->field_prefaces_collection));
   
   
-  $track_1 = entity_load('field_collection_item', $account->field_prefaces_collection[LANGUAGE_NONE][0]['value']);
+  $track_1 = entity_load('field_collection_item', $account->field_prefaces_collection['und'][0]['value']);
   dpm($track_1);
   
   $wrapper = entity_metadata_wrapper('user', $account);
