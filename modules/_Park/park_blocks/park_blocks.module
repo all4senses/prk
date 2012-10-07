@@ -271,7 +271,7 @@ function park_blocks_buildTagsCloudBlock($side_block = NULL) {
     // Tag cloud.
     
     if ($side_block) {
-      $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 6));
+      $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
     }
     else {
       $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
