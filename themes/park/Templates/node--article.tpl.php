@@ -51,8 +51,9 @@
               global $language;
               
               if ($page) {
-              
-                $gplus_profile = (isset($author->field_u_gplus_profile['und'][0]['safe_value']) && $author->field_u_gplus_profile['und'][0]['safe_value']) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $author->field_u_gplus_profile['und'][0]['safe_value'] . '?rel=author">(G+)</a>' : '';
+                dpm($author);
+                //$gplus_profiles = 
+                $gplus_profile = '';//(isset($author->field_u_social_profiles['und'][0]['safe_value']) && $author->field_social_profiles['und'][0]['safe_value']) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $author->field_u_gplus_profile['und'][0]['safe_value'] . '?rel=author">(G+)</a>' : '';
                 
                
                 $submitted = '<span property="dc:date dc:created" content="' . $created_rdf . '" datatype="xsd:dateTime" rel="sioc:has_creator">' .
@@ -132,7 +133,7 @@
 
                     <div class="share">
 
-                      <?php $url = 'http://gocloudbackup.com'. url('node/' . $node->nid); ?>
+                      <?php $url = 'http://' . $_SERVER['SERVER_NAME'] . url('node/' . $node->nid); ?>
 
                       <div class="others">
                         <!-- ADDTHIS BUTTON BEGIN -->
