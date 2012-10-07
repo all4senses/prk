@@ -46,10 +46,13 @@ function park_blocks_block_info() {
   
     
   $blocks['tags'] = array(
-    'info' => t('Shows a tag cloud'),
+    'info' => t('Shows a tag cloud page'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
-
+  $blocks['tags_block'] = array(
+    'info' => t('Shows a tag cloud block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
   return $blocks;
 }
 
@@ -90,8 +93,12 @@ function park_blocks_block_view($delta = '') {
     
     
     case 'tags':
-      $block['subject'] = t('Shows a tag cloud');
+      $block['subject'] = t('Shows a tag cloud page');
       $block['content'] = park_blocks_buildTagsCloudBlock();
+      break;
+    case 'tags_block':
+      $block['subject'] = t('Shows a tag cloud block');
+      $block['content'] = park_blocks_buildTagsCloudBlock(TRUE);
       break;
     
   }
@@ -236,7 +243,7 @@ function park_blocks_getBlockThemed($block_data)
 /**
  * Returns a tag cloud block.
  */
-function park_blocks_buildTagsCloudBlock() {
+function park_blocks_buildTagsCloudBlock($side_block = NULL) {
   
   // Uncomment to use a cache.
   // global $language;
@@ -248,7 +255,12 @@ function park_blocks_buildTagsCloudBlock() {
   // Uncomment to use a cache.
   //if (!$tags || empty($tags->data) || $tags->expire < time()) {
     
-    $tags_array = park_misc_getTags();
+    if ($side_block) {
+      $tags_array = park_misc_getTags(10);
+    }
+    else {
+      $tags_array = park_misc_getTags();
+    }
 
     if (!$tags_array) {
       return NULL;
@@ -257,7 +269,14 @@ function park_blocks_buildTagsCloudBlock() {
     // Simple List.
     // $tags = theme('gcb_misc_submenuSimple', array('submenu' => array('below' => $tags_array), 'class' => 'tags'));
     // Tag cloud.
-    ////$tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
+    
+    if ($side_block) {
+      $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
+    }
+    else {
+      $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 8));
+    }
+    
     $tags = theme('park_misc_tagadelicWeighted_acceptPredefinedTagsPaths', array('tags' => $tags_array));
   
     // Expire = current time + 4 hours.
