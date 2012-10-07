@@ -100,22 +100,7 @@
           hide($content['field_tags']);
           hide($content['body']);
           
-          
-          if ($page) {
-            echo $node->main_content;
-          }
-          else {
-            // TODO: Temporary check. Should be removed after all articles resave.
-            $extra_data = unserialize(@$node->field_extra_data['und'][0]['value']);
-            $extra_data_teaser = @$extra_data['teaser'];
-            if ($extra_data_teaser) {
-              echo $extra_data_teaser;
-            }
-            else {
-              $extra_data = park_pages_getExtraDataFromBody($content['body'][0]['#markup'], $node->nid, $node->type);
-              echo $extra_data['teaser'];
-            }
-          }
+          echo $node->main_content;
           
           $keyword_metatag_name = 'keywords';
           
