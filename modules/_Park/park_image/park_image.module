@@ -243,7 +243,9 @@ function park_image_node_view($node, $view_mode) {
       }
       
     } // End of if (in_array($node->type, $content_with_slideshow)) {
-    
+    else {
+      $node->main_content = '<div class="full-content">' . $node->body['und'][0]['value'] . '</div>';
+    }
     
       
     // Make zoomable picture in a normal full content for specific content types.
