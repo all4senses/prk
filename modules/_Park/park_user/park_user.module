@@ -122,7 +122,7 @@ function park_user_getUserContent($account, $content_title, $content_type){
     $key = $i->field_preface_key->value();
     
     $field = $i->view();
-    $field_rendered = render($field);
+    $field_rendered = ''; //render($field);
     
     $prefaces[] = array('field' => $field, 'field_rendered' => $field_rendered, 'title' => $title, 'body' => $body, 'body_rendered' => $body_rendered, 'key' => $key);
   }
