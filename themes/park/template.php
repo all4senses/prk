@@ -69,7 +69,7 @@ function park_preprocess_node(&$variables) {
   }
   if(isset($variables['node'])) {
     
-    if($variables['node']->type == 'blog_post' || $variables['node']->type == 'news_post') {
+    if($variables['node']->type == 'blog_post' || $variables['node']->type == 'master_class' || $variables['node']->type == 'album' || $variables['node']->type == 'news_post') {
       $variables['theme_hook_suggestions'][] = 'node__article';
     }
     elseif($variables['node']->type == 'webform') {
