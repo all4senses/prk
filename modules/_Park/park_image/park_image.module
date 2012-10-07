@@ -196,9 +196,6 @@ function park_image_node_view($node, $view_mode) {
       
       $extra_data = unserialize(@$node->field_extra_data['und'][0]['value']);
       $slideshow_themed = @$extra_data['slideshow_themed'];
-      
-      dpm($extra_data);
-      
       //$slideshow_themed = @$node->field_body_to_gallery['und'][0]['value'];
       
       $show_type_url = @$_GET['t'];
