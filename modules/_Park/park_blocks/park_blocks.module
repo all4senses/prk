@@ -248,7 +248,8 @@ function park_blocks_buildTagsCloudBlock() {
   // Uncomment to use a cache.
   //if (!$tags || empty($tags->data) || $tags->expire < time()) {
     
-    $tags_array = park_misc_getTags($content_type, $content_type_label);
+    $tags_array = park_misc_getTags();
+    dpm($tags_array);
 
     if (!$tags_array) {
       return NULL;
