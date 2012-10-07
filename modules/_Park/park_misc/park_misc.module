@@ -194,8 +194,8 @@ function park_misc_theme($existing, $type, $theme, $path) {
     ),
      
     // Altered Tagadelic weighted tag cloud.
-    'park_misc_tagadelicWeighted_acceptPredefinedTermsPaths' => array(
-      'variables' => array('terms' => array())
+    'park_misc_tagadelicWeighted_acceptPredefinedTagsPaths' => array(
+      'variables' => array('tags' => array())
     ),
 
   );
@@ -207,16 +207,16 @@ function park_misc_theme($existing, $type, $theme, $path) {
  *
  * @ingroup themable
  */
-function theme_park_misc_tagadelicWeighted_acceptPredefinedTermsPaths(array $vars) {
-  $terms = $vars['terms'];
+function theme_park_misc_tagadelicWeighted_acceptPredefinedTagsPaths(array $vars) {
+  $tags = $vars['tags'];
   $output = '';
 
-  foreach ($terms as $term) {
-    $output .= l($term->name, isset($term->link['href']) ? $term->link['href'] : 'taxonomy/term/' . $term->tid, array(
+  foreach ($tags as $tag) {
+    $output .= l($tag->name, isset($tag->link['href']) ? $tag->link['href'] : 'taxonomy/term/' . $tag->tid, array(
       'attributes' => array(
-        'class' => array("tagadelic", "level" . $term->weight),
+        'class' => array("tagadelic", "level" . $tag->weight),
         'rel' => 'tag',
-        'title'  => $term->description,
+        'title'  => $tag->description,
         )
       )
     ) . " \n";
@@ -224,7 +224,7 @@ function theme_park_misc_tagadelicWeighted_acceptPredefinedTermsPaths(array $var
   
   
   if(isset($vars['voc'])){
-    if (count($terms) >= variable_get('tagadelic_block_tags_' . $vars['voc']->vid, 12)) {
+    if (count($tags) >= variable_get('tagadelic_block_tags_' . $vars['voc']->vid, 12)) {
       $output .= theme('more_link', array('title' => t('more tags'), 'url' => "tagadelic/chunk/{$vars['voc']->vid}"));
     }
   }
@@ -305,3 +305,40 @@ function theme_park_misc_submenuSimple($vars) {
 }
 
 
+/**
+ * Returns tags list. 
+ */
+function park_misc_getTags($limit = NULL) {
+  
+  $tags = NULL;
+  $voc = taxonomy_vocabulary_machine_name_load('tags');
+    
+  $types = array();
+
+  $query = db_select('taxonomy_term_data', 'td')
+        ->fields('td', array('name', 'tid', 'description'));
+  $query->leftJoin('taxonomy_index', 'ti', 'ti.tid = td.tid');
+  $query->leftJoin('node', 'n', 'n.nid = ti.nid');
+  //$query->where('n.nid = ti.nid AND n.type = :type', array(':type' => $content_type))
+  $query->where('n.nid = ti.nid')
+        ->addExpression('COUNT(n.nid)', 'count');
+  $query->groupBy('td.name');
+  //$query->condition('td.vid', $voc->vid);
+  if ($limit) {
+    $query->range(0, $limit);
+  }
+  $results = $query->execute();
+
+  // Necessary for pathauto_cleanstring().
+  module_load_include('inc', 'pathauto');
+
+  foreach($results as $result) {
+    // Translate terms to the current language.
+    // $result->name = i18n_string_translate(array('taxonomy', 'term', $result->tid, 'name'), $result->name);
+
+    //$result->link = array('link_title' => $result->name, 'href' => $base_url . '/tags/' . pathauto_cleanstring($result->name));
+    $result->link = array('link_title' => $result->name, 'href' => url('taxonomy/term/' . $result->tid));
+    $tags[$result->tid] = $result;
+  }
+  return $tags;
+}

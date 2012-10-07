@@ -45,33 +45,11 @@ function park_blocks_block_info() {
   );
   
     
-  $blocks['news_tags'] = array(
-    'info' => t('Shows a tag cloud for news tags'),
+  $blocks['tags'] = array(
+    'info' => t('Shows a tag cloud'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
-  $blocks['blog_tags'] = array(
-    'info' => t('Shows a tag cloud for blog tags'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
-  );
-  $blocks['articles_tags'] = array(
-    'info' => t('Shows a tag cloud for Library tags'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
-  );
-    
-  
-  
-  // Topics block for different content types.
-  /*
-  $content_types = array('blog_post' => 'blog', 'news_post' => 'news', 'article' => 'articles');
-  foreach ($content_types as $content_type => $label) {
-    
-    $blocks[$content_type . '_topics'] = array(
-      'info' => t(drupal_ucfirst($label) . ' topics'),
-      'cache' => DRUPAL_CACHE_GLOBAL,
-    );
-  }
-  */
-  
+
   return $blocks;
 }
 
@@ -111,34 +89,11 @@ function park_blocks_block_view($delta = '') {
 //      break;
     
     
-    
-    case 'news_tags':
-      $block['subject'] = t('Shows a tag cloud for news tags');
-      $block['content'] = park_pages_buildTagsPage('news');
-      break;
-    case 'blog_tags':
-      $block['subject'] = t('Shows a tag cloud for blog tags');
-      $block['content'] = park_pages_buildTagsPage('blog');
-      break;
-    case 'articles_tags':
-      $block['subject'] = t('Shows a tag cloud for Library tags');
-      $block['content'] = park_pages_buildTagsPage('articles');
+    case 'tags':
+      $block['subject'] = t('Shows a tag cloud');
+      $block['content'] = park_blocks_buildTagsBlock();
       break;
     
-    /*
-    default:
-      // Get blocks for topics for a specific content type.
-      if (strpos($delta, '_topics')) {
-        $content_types = array('blog_post' => 'blog', 'news_post' => 'news', 'article' => 'articles');
-        $content_type = str_replace('_topics', '', $delta);
-        if(!isset($content_types[$content_type])) {
-          continue;
-        }
-        $block['subject'] = t(drupal_ucfirst($content_types[$content_type]) . ' topics');
-        $block['content'] = park_blocks_get_tagsBlock($content_type);
-      }
-      break;
-    */
   }
 
   return $block;
@@ -277,3 +232,47 @@ function park_blocks_getBlockThemed($block_data)
   return NULL;
 }
 
+
+/**
+ * Returns a tag cloud block.
+ */
+function park_blocks_buildTagsCloudBlock() {
+  
+  // Uncomment to use a cache.
+  // global $language;
+  // $tags = cache_get('tags_page_block' . $language->language);
+  
+  // Comment to use a cache.
+  if (1) { 
+    
+  // Uncomment to use a cache.
+  //if (!$tags || empty($tags->data) || $tags->expire < time()) {
+    
+    $tags_array = park_misc_getTags($content_type, $content_type_label);
+
+    if (!$tags_array) {
+      return NULL;
+    }
+    
+    // Simple List.
+    // $tags = theme('gcb_misc_submenuSimple', array('submenu' => array('below' => $tags_array), 'class' => 'tags'));
+    // Tag cloud.
+    $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
+    $tags = theme('park_misc_tagadelicWeighted_acceptPredefinedTagsPaths', array('tags' => $tags_array));
+  
+
+    //$page_title = '<h1 id="page-title" class="title">' . drupal_ucfirst($content_type_label) . ' tags</h1>';
+    $show_all_url = '<div class="more-link">' . l(t('Show all content'), $content_type_label) . '</div>';
+    $tags = /*$page_title .*/ $tags . $show_all_url;
+    // Expire = current time + 4 hours.
+   
+    // Uncomment to use a cache.
+    // cache_set('tags_page_block' . $language->language, $tags, 'cache', time() + 14400);
+    
+  }
+  else {
+    $tags = $tags->data;
+  }
+  
+  return '<div class="tags-cloud">' . $tags . '</div>'; 
+}
