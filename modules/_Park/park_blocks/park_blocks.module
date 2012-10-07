@@ -97,7 +97,7 @@ function park_blocks_block_view($delta = '') {
       $block['content'] = park_blocks_buildTagsCloudBlock();
       break;
     case 'tags_block':
-      $block['subject'] = t('Shows a tag cloud block');
+      $block['subject'] = t('Случайные теги');
       $block['content'] = park_blocks_buildTagsCloudBlock(TRUE);
       break;
     
