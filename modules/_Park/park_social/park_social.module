@@ -32,6 +32,34 @@ function park_social_menu() {
 
 
 /**
+ * Socialite social buttons.
+ */
+function park_social_getSocialiteButtons($url = NULL, $title = NULL) {
+
+  if (!$url) {
+    $url = 'http://' . $_SERVER['SERVER_NAME'] . ($_GET['q'] == 'home' ? '' : $_SERVER['REQUEST_URI']);
+  }
+  
+  drupal_add_js('sites/all/libraries/jquery.plugins/socialite/socialite.min.js');
+  //drupal_add_js('sites/all/libraries/jquery.plugins/socialite/socialite.js');
+  
+  $path_to_custom_js = drupal_get_path('module', 'park_social') . '/js/';
+  drupal_add_js($path_to_custom_js . 'addSocialite.js');
+  
+  $out = '
+  <ul class="social-buttons cf">
+			<li><a href="http://twitter.com/share" class="socialite twitter-share" data-text="' . $title . '" data-url="' . $url . '" data-count="horizontal" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a></li>
+			<li><a href="https://plus.google.com/share?url=' . $url . '" class="socialite googleplus-one" data-size="medium" data-href="' . $url . '" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a></li>
+			<li><a href="http://www.facebook.com/sharer.php?u=' . $url . '&amp;t=' . $title . '" class="socialite facebook-like" data-href="' . $url . '" data-send="false" data-layout="button_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a></li>
+			<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=' . $url . '&amp;title=' . $title . '" class="socialite linkedin-share" data-url="' . $url . '" data-counter="right" rel="nofollow" target="_blank"><span class="vhidden">Share on LinkedIn</span></a></li>
+		</ul>
+  ';
+  
+  return $out;
+}
+
+
+/**
  * Redirect different app types auths to appropriate calling paths.
  */
 function park_social_authsub_redirect()
