@@ -116,12 +116,13 @@ function park_user_getUserContent($account, $content_title, $content_type){
 // In case of a non-multiple collection and an example text field, you could get the text via
   
   foreach ($wrapper->field_prefaces_collection as $i){
-    $field = $i->view();
-    $field_rendered = render($field);
     $title = $i->field_preface_b_title->value();
     $body = $i->field_preface_b_body->value();
     $body_rendered = render($body);
     $key = $i->field_preface_key->value();
+    
+    $field = $i->view();
+    $field_rendered = render($field);
     
     $prefaces[] = array('field' => $field, 'field_rendered' => $field_rendered, 'title' => $title, 'body' => $body, 'body_rendered' => $body_rendered, 'key' => $key);
   }
