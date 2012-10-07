@@ -114,7 +114,7 @@ function park_user_getUserContent($account, $content_title, $content_type){
     //$field_collection = field_collection_item_load($field_prefaces_id['value']);
     $prefaces[] = $field_collection;
     if ($field_collection->field_preface_key_user['und'][0]['value'] == $content_type) {
-      $preface = 'xxx'; //render($field_collection);
+      $preface = render($field_collection);
     }
   }
   
@@ -129,7 +129,7 @@ function park_user_getUserContent($account, $content_title, $content_type){
     
     $prefaces[] = array('field' => $field, 'field_rendered' => $field_rendered, 'key' => $i->field_preface_key_user->value());
     if ($i->field_preface_key_user->value() == $content_type) {
-      $preface = 'yyy'; //render($i->view());
+      $preface = render($i->view());
     }
   }
   dpm($prefaces);
