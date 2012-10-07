@@ -257,7 +257,7 @@ function park_blocks_buildTagsCloudBlock() {
     // Simple List.
     // $tags = theme('gcb_misc_submenuSimple', array('submenu' => array('below' => $tags_array), 'class' => 'tags'));
     // Tag cloud.
-    $tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
+    ////$tags_array = tagadelic_sort_tags(tagadelic_build_weighted_tags($tags_array, 12));
     $tags = theme('park_misc_tagadelicWeighted_acceptPredefinedTagsPaths', array('tags' => $tags_array));
   
     // Expire = current time + 4 hours.
