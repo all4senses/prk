@@ -107,39 +107,38 @@ function park_user_getUserTabTitle($account, $content_title){
  */
 function park_user_getUserContent($account, $content_title, $content_type){
   
+  $preface = NULL;
+  
+  // Get specific user page preface by a preface key.
   $field_prefaces_ids = field_get_items('user', $account, 'field_prefaces_collection');
   foreach ($field_prefaces_ids as $field_prefaces_id) {
     $field_collection = field_collection_field_get_entity($field_prefaces_id);
     // Almost the same.
     //$field_collection = field_collection_item_load($field_prefaces_id['value']);
-    $prefaces[] = $field_collection;
-    //dpm($field_collection->view());
+    //$prefaces[] = $field_collection->view();
     if ($field_collection->field_preface_key_user['und'][0]['value'] == $content_type) {
       $preface = render($field_collection->view());
+      break;
     }
   }
   
-  dpm($prefaces);
-  dpm($preface);
-  
+  // An other method, does the same.
+  /*
   $wrapper = entity_metadata_wrapper('user', $account);
-  foreach ($wrapper->field_prefaces_collection as $i){
-    
-    $field = $i->view();
-    $field_rendered = render($field);
-    
-    $prefaces[] = array('field' => $field, 'field_rendered' => $field_rendered, 'key' => $i->field_preface_key_user->value());
+  foreach ($wrapper->field_prefaces_collection as $field_collection){
+    //$prefaces[] = array('field_collection' => $field_collection->view(), 'field_collection_rendered' => render($field_collection), 'key' => $field_collection->field_preface_key_user->value());
     if ($i->field_preface_key_user->value() == $content_type) {
-      $preface = render($i->view());
+      $preface = render($field_collection->view());
+      break;
     }
   }
-  dpm($prefaces);
-  dpm($preface);
-  dpm($content_type);
+  */
   
   drupal_set_title($title = t("@name's " . $content_title, array('@name' => format_username($account))), PASS_THROUGH);
   $user_content = park_pages_getContentFeedWithControls($content_type, $account->uid);
-  return '<h1>' . $title . '</h1>' . $user_content;
+  
+  // It a preface is defined, don't show the title (using preface's one).
+  return ($preface ? $preface : '<h1>' . $title . '</h1>') . $user_content;
 }
 
 
