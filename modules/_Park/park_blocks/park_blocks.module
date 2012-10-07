@@ -91,7 +91,7 @@ function park_blocks_block_view($delta = '') {
     
     case 'tags':
       $block['subject'] = t('Shows a tag cloud');
-      $block['content'] = park_blocks_buildTagsBlock();
+      $block['content'] = park_blocks_buildTagsCloudBlock();
       break;
     
   }
