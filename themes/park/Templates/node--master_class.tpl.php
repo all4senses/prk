@@ -169,6 +169,7 @@
 
                     <?php 
                       if (isset($field_tags['und'])) {
+                        dpm($field_tags['und']);
                         $tags = NULL;
                         foreach ($field_tags['und'] as $key => $value) {
                           $tags .= ($tags ? '<div class="delim">|</div>' : '') . l(t($content['field_tags'][$key]['#title']), 'taxonomy/term/' . $value['tid']);
