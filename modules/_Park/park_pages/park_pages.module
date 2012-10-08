@@ -662,6 +662,8 @@ function park_pages_getExtraDataFromBody($node_field_body, $nid, $content_type =
           $characters_num = 350;
           $teaser = trim(drupal_substr(strip_tags($body), 0, $characters_num));
         }
+        
+        $teaser = $teaser . '... ' . l(t('Read More'), 'node/' . $nid, array('attributes' => array('class' => array('more'))));
         break;
         
         
@@ -683,17 +685,19 @@ function park_pages_getExtraDataFromBody($node_field_body, $nid, $content_type =
         else {
           $teaser = trim(drupal_substr(strip_tags($body), 0, $characters_num));
         }
+        
+        // Replace the last word with ...
+        // preg_match('/^.*\s(.*)$/i', trim(strip_tags($teaser)), $matches);
+        // $last_pos = strrpos($teaser, $matches[1]);
+        $last_pos = strrpos($teaser, ' ');
+        $teaser = substr_replace($teaser, '... ' . l(t('Read More'), 'node/' . $nid, array('attributes' => array('class' => array('more')))), $last_pos);
+
         break;
   }
   
   
   
-  // Replace the last word with ...
-  // preg_match('/^.*\s(.*)$/i', trim(strip_tags($teaser)), $matches);
-  // $last_pos = strrpos($teaser, $matches[1]);
-  $last_pos = strrpos($teaser, ' ');
-  $teaser = substr_replace($teaser, '... ' . l(t('Read More'), 'node/' . $nid, array('attributes' => array('class' => array('more')))), $last_pos);
-
+  
   if ($only_teaser) {
     return $main_image_html . $teaser;
   }
