@@ -120,7 +120,7 @@ ul.header-links a.LinkedIn{background: url("images/sprite-2.png") no-repeat scro
 /* Footer */
 
 /* Article footer*/
-footer{margin-bottom: 50px;}
+footer#footer-content{margin-bottom: 50px;}
 
 /* Page footer*/
 #footer {background: black; color: white; height: 130px; padding: 5px 0; text-align: center;}
