@@ -346,3 +346,103 @@ function park_misc_getTags($limit = NULL) {
   }
   return $tags;
 }
+
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function park_misc_views_pre_render(&$view) {
+  
+  // Add a prefaces for the some views pages.
+  // Also adds metatags for Tags pages.
+  
+  //dpm($view->name); dpm($view->current_display);
+  
+  $key = 'view-' . $view->name . '-' . $view->current_display;
+  $do_attach_preface = FALSE;
+  
+  switch($key) {
+    
+    default:
+      $do_attach_preface = FALSE;
+      break;
+      
+    case 'view-taxonomy_term-page_by_tag':
+      $do_attach_preface = TRUE;
+      break;
+  }
+  
+  // Redefine the $key if on the specific content type.
+  if ($key == 'view-taxonomy_term-page_by_tag') {
+    $args = arg();
+    $term = taxonomy_term_load($args[2]);
+  }
+  
+  if ($do_attach_preface && $preface_node = park_misc_getPrefaceByKey($key)) {
+   
+    if ($view->current_display == 'page_by_tag') {
+
+      // add metatags for the specific term.
+      if (isset($term->metatags['keywords']['value']) && $term->metatags['keywords']['value']) {
+        park_misc_addMetatag('keywords', $term->metatags['keywords']['value']);
+      }
+      if (isset($term->description) && $term->description) {
+        park_misc_addMetatag('description', $term->description);
+      }
+      
+      // add metatag title for the specific term, if it's set in the Metatags block and not equal to defaults.
+      if (isset($term->metatags['title']['value']) && $term->metatags['title']['value']) {
+        $metatag_title = token_replace($term->metatags['title']['value']);
+        park_misc_addMetatag('title', $metatag_title);
+        // Set the title (not only a metatag title) as well.
+        $preface_node->title = htmlspecialchars_decode($metatag_title);
+        $view->build_info['title'] = $preface_node->title;
+      }
+      else {
+        //$preface_node->title = $view->get_title();//$view->build_info['title'];
+        $preface_node->title .= ' "' . htmlspecialchars_decode($view->build_info['substitutions']['%1']) . '"';
+        $view->build_info['title'] = $preface_node->title;
+      }
+    }
+    else {
+      // Change the title of the view (main page title actually)
+      if (isset($preface_node->metatags['title']['value'])) {
+        $view->build_info['title'] = $preface_node->metatags['title']['value'];
+      }
+      else{
+        $view->build_info['title'] = $preface_node->title;
+      }
+    }
+    
+    
+    // Show plain caption, not a link for a full node as a full node itself will be unpublished and unreachable.
+    $preface_node->title_no_link = TRUE;
+    // Hide the title of the preface.
+    // $preface_node->title = '';
+    // Works, but it's shown after exposed filters.
+    $view->attachment_before = render(node_view($preface_node, 'full'));
+    
+  } // End of if ($do_attach_preface && $preface_node = park_misc_getPrefaceByKey($key)) {
+   
+} 
+
+
+/**
+ * Returns preface node by key.
+ */
+function park_misc_getPrefaceByKey($key) {
+    
+    $preface_node = NULL;
+    
+    $query = db_select('node', 'n');
+    $query->join('field_data_field_preface_key', 'pk', "pk.entity_id = n.nid"); 
+    $query->fields('n', array('nid'))  
+          //->fields('pn', array('field_preface_key_value')) 
+          ->condition('n.type', 'preface')
+          ->condition('pk.field_preface_key_value', $key); 
+    $preface_nid = $query->execute()->fetchField(); 
+    if ($preface_nid) {
+      $preface_node = node_load($preface_nid);
+    }
+    return $preface_node;
+}
