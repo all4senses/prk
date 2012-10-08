@@ -367,6 +367,7 @@ function park_misc_views_pre_render(&$view) {
       $do_attach_preface = FALSE;
       break;
       
+    case 'view-content_feeds-sections_page':
     case 'view-taxonomy_term-page_by_tag':
       $do_attach_preface = TRUE;
       break;
