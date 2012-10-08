@@ -150,6 +150,7 @@ function park_pages_getSectionBlocks($node, $default_list_view_style = 'teaser')
     $newViewStyleTitle = t('View Teasers');
     $currentViewStyleTitle = t('View Titles');
   }
+  $currentUrl = ltrim($_SERVER['REDIRECT_URL'], '/');
   $viewStyle = !@$currentViewStyleTitle ? '' : '<div class="view-style"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>';
   $node->sectionBlocks['viewStyle'] = $viewStyle;
   
