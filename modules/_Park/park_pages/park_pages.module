@@ -146,6 +146,7 @@ function park_pages_getSectionBlocks($node, $default_list_view_style = 'teaser')
     $view->add_item($display_name, 'filter', 'node', 'type', $viewsFilterOptions_nodeType);
 
     $results = $view->preview($display_name);
+    dpm($results);
     //if ($view->total_rows) {
     if ($results) {
       $node->sectionBlocks[$type] = '<h3>' . $title . '</h3>' . $results;
