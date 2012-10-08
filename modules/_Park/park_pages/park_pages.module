@@ -668,12 +668,14 @@ function park_pages_getExtraDataFromBody($node_field_body, $nid, $content_type =
         
    default:
         if (!$characters_num) {
+          
           if ($main_image_html) {
             $characters_num = 130;
           }
           else {
             $characters_num = 250;
           }
+          
         }
 
         // $teaser = text_summary($body_full_markup, 'full_html', $characters_num);
