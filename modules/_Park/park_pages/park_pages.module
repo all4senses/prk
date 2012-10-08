@@ -123,6 +123,11 @@ function park_pages_getSectionBlocks($node, $default_list_view_style = 'teaser')
   
   
   // Add content blocks.
+  
+  
+  
+  
+  
 
   // Teasers by default
   if ($default_list_view_style == 'teaser') {
@@ -131,6 +136,22 @@ function park_pages_getSectionBlocks($node, $default_list_view_style = 'teaser')
   else {
     $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers': 'titles';
   }
+  
+  
+  $get = $_GET;
+  unset($get['q']);
+  if ($currentViewStyle == 'teasers') {
+    $get['view'] = 'titles';
+    $newViewStyleTitle = t('View Titles');
+    $currentViewStyleTitle = t('View Teasers');
+  }
+  else {
+    $get['view'] = 'teasers';
+    $newViewStyleTitle = t('View Teasers');
+    $currentViewStyleTitle = t('View Titles');
+  }
+  $viewStyle = !@$currentViewStyleTitle ? '' : '<div class="view-style"><span>' . $currentViewStyleTitle . '</span>  | ' . l($newViewStyleTitle, $currentUrl, array('query' => $get)) . '</div>';
+  $node->sectionBlocks['viewStyle'] = $viewStyle;
   
   $view_name = 'section_blocks';
   //$display_name = 'section_titles_block';
