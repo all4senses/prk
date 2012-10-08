@@ -315,7 +315,7 @@ form .counter.exceeded{color: red;}
 
 .page-node #main .tags{border-top: 1px solid lightgray; font-family: Georgia,"Bitstream Charter",serif; font-size: 13px; font-weight: bold; padding-top: 10px; /*padding-bottom: 20px;*/}
 .page-node #main .tags .title{margin-right: 10px; float: left;}
-.page-node #main .tags a{float: left;}
+.page-node #main .tags a{float: left; margin: 0 5px;}
 .page-node #main .tags .delim{margin: 0 5px 0 5px; float: left; color: #478AFD;}
 
  
