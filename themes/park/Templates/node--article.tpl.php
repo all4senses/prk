@@ -192,3 +192,13 @@
 <?php if (!$page): ?>
   </article> <!-- /.node -->
 <?php endif; ?>
+
+  
+<?php 
+  // Used only for sections.
+  if (isset($node->sectionBlocks)) {
+    foreach ($node->sectionBlocks as $sectionBlock) {
+      echo $sectionBlock;
+    }
+  }
+?>
