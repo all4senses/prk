@@ -555,7 +555,7 @@ function park_pages_node_presave($node) {
   
     // Build teaser, gallery, find images (main, sharing, etc).
   
-    $content_with_teaser = array('article', 'master_class', 'album', 'blog_post');
+    $content_with_teaser = array('article', 'master_class', 'album', 'blog_post', 'section');
     $content_with_teaser_and_slideshow = array('master_class', 'album');
     
     if (in_array($node->type, $content_with_teaser)) {
@@ -646,23 +646,46 @@ function park_pages_getExtraDataFromBody($node_field_body, $nid, $content_type =
     $body = preg_replace('/<img[^>]+>/i', '', $body);
   }
 
-  if (!$characters_num) {
-    if ($main_image_html) {
-      $characters_num = 130;
-    }
-    else {
-      $characters_num = 250;
-    }
+  
+  
+  // Define a text for a teaser.
+  switch ($content_type) {
+    
+    case 'section':
+        // A Section has a full summary or a longer teaser.
+        if ($summary) {
+          $teaser = strip_tags($summary);
+        }
+        else {
+          $characters_num = 350;
+          $teaser = trim(drupal_substr(strip_tags($body), 0, $characters_num));
+        }
+        break;
+        
+        
+        
+   default:
+        if (!$characters_num) {
+          if ($main_image_html) {
+            $characters_num = 130;
+          }
+          else {
+            $characters_num = 250;
+          }
+        }
+
+        // $teaser = text_summary($body_full_markup, 'full_html', $characters_num);
+        if ($summary) {
+          $teaser = trim(drupal_substr(strip_tags($summary), 0, $characters_num));
+        }
+        else {
+          $teaser = trim(drupal_substr(strip_tags($body), 0, $characters_num));
+        }
+        break;
   }
   
-  // $teaser = text_summary($body_full_markup, 'full_html', $characters_num);
-  if ($summary) {
-    $teaser = trim(drupal_substr(strip_tags($summary), 0, $characters_num));
-  }
-  else {
-    $teaser = trim(drupal_substr(strip_tags($body), 0, $characters_num));
-  }
-    
+  
+  
   // Replace the last word with ...
   // preg_match('/^.*\s(.*)$/i', trim(strip_tags($teaser)), $matches);
   // $last_pos = strrpos($teaser, $matches[1]);
