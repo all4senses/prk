@@ -122,7 +122,7 @@
 
       <?php if ($page): ?>
     
-                  <footer>
+                  <footer id="footer-content">
 
                     <div class="share">
 
