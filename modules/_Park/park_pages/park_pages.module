@@ -738,7 +738,7 @@ function park_pages_form_alter(&$form, &$form_state, $form_id) {
   //dpm($form_id); dpm($form);
 
   if (isset($form['field_extra_data'])) {
-    $form['field_extra_data']['#type'] = 'hidden';
+    $form['field_extra_data']['#access'] = FALSE;
   }
   
   /*
