@@ -654,7 +654,9 @@ function park_pages_getExtraDataFromBody($node_field_body, $nid, $content_type =
     case 'section':
         // A Section has a full summary or a longer teaser.
         if ($summary) {
+          dpm($summary);
           $teaser = strip_tags($summary);
+          dpm($teaser);
         }
         else {
           $characters_num = 350;
