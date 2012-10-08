@@ -74,7 +74,7 @@ function park_pages_getPrefaceByKey($key) {
 /**
  * Returns section's blocks.
  */
-function park_pages_getSectionBlocks($node) {
+function park_pages_getSectionBlocks($node, $default_list_view_style = 'teaser') {
   
   if (!isset($node->field_tags['und']) || empty($node->field_tags['und'])) {
     return;
@@ -123,9 +123,19 @@ function park_pages_getSectionBlocks($node) {
   
   
   // Add content blocks.
+
+  // Teasers by default
+  if ($default_list_view_style == 'teaser') {
+    $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'titles') ? 'titles' : 'teasers';
+  }
+  else {
+    $currentViewStyle = (isset($_GET['view']) && $_GET['view'] == 'teasers') ? 'teasers': 'titles';
+  }
   
   $view_name = 'section_blocks';
-  $display_name = 'section_titles_block';
+  //$display_name = 'section_titles_block';
+  $display_name = ($currentViewStyle == 'teasers') ? 'section_teasers_block' : 'section_titles_block';
+  
   $viewsFilterOptions_tid = array('id' => 'tid', 'value' => $tids, 'type' => 'select', 'vid' =>  'tags', 'hierarchy' => 1, 'reduce_duplicates' => 1, 'group' => 0);
   $nodeTypesToShow = array('article' => 'Статьи', 'album' => 'Альбомы', 'master_class' => 'Мастер-классы', 'blog_post' => 'Посты в Блогах');
   
