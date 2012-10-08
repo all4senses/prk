@@ -183,7 +183,7 @@ function park_image_preprocess_page(&$vars) {
  */
 function park_image_node_view($node, $view_mode) {
   
-  $content_with_zoomable_pictures = array('article', 'blog_post', 'album', 'master_class');
+  $content_with_zoomable_pictures = array('article', 'blog_post', 'album', 'master_class', 'section');
   
   if ($view_mode == 'full') {
         

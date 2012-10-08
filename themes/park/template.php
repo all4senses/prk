@@ -69,7 +69,9 @@ function park_preprocess_node(&$variables) {
   }
   if(isset($variables['node'])) {
     
-    if($variables['node']->type == 'blog_post' || $variables['node']->type == 'master_class' || $variables['node']->type == 'album' || $variables['node']->type == 'news_post') {
+    $use_article_template = array('blog_post', 'master_class', 'album', 'news_post', 'section');
+    //if($variables['node']->type == 'blog_post' || $variables['node']->type == 'master_class' || $variables['node']->type == 'album' || $variables['node']->type == 'news_post') {
+    if( in_array($variables['node']->type, $use_article_template)) {
       $variables['theme_hook_suggestions'][] = 'node__article';
     }
     elseif($variables['node']->type == 'webform') {
