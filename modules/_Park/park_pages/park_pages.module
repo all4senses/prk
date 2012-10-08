@@ -399,13 +399,12 @@ function park_pages_getContentFeedWithControls($type, $uid = NULL, $default_list
 function park_pages_node_view($node, $view_mode) {
   switch ($node->type) {
     case 'section':
-      park_pages_getSectionBlocks($node);
+      if ($view_mode == 'full') {
+        park_pages_getSectionBlocks($node);
+      }
       break;
     
     case 'preface':
-      if ($view_mode != 'full') {
-        break;
-      }
       $key = @$node->field_preface_key['und'][0]['value'];
       switch($key) {
         case 'master_class':
