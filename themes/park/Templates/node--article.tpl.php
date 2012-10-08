@@ -48,39 +48,45 @@
               $author_url = url('user/' . $node->uid);
               $author_title = t('!author\'s profile', array('!author' => $author_name));
 
-              global $language;
               
-              if ($page) {
+              
+              if ($node->type != 'section') {
                 
-                if (isset($author->field_u_social_profiles['und'])) {
-                  foreach ($author->field_u_social_profiles['und'] as $value) {
-                    $value = explode(':', $value['value']);
-                    if (@$value[0] && @$value[1]) {
-                      $user_social_profiles[$value[0]] = $value[1];
+                  global $language;
+
+                  if ($page) {
+
+                    if (isset($author->field_u_social_profiles['und'])) {
+                      foreach ($author->field_u_social_profiles['und'] as $value) {
+                        $value = explode(':', $value['value']);
+                        if (@$value[0] && @$value[1]) {
+                          $user_social_profiles[$value[0]] = $value[1];
+                        }
+                      }
+                    }
+
+                    $gplus_profile = (isset($user_social_profiles['gplus'])) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $user_social_profiles['gplus'] . '?rel=author">(G+)</a>' : '';
+
+                    $submitted = '<span property="dc:date dc:created" content="' . $created_rdf . '" datatype="xsd:dateTime" rel="sioc:has_creator">' .
+                                    t('By') . ':' .
+                                    '<a href="' . $author_url . '" title="' . $author_title . '" class="username" lang="' . $language->language . '" xml:lang="' . $language->language . '" about="' . $author_url . '" typeof="sioc:UserAccount" property="foaf:name">' .
+                                      $author_name .
+                                    '</a>' . $gplus_profile .
+                                    ($node->type == 'article' ? '' : '<span class="delim">|</span>' . $created_str) .
+                                  '</span>';
+
+                    echo $submitted;
+                  }
+                  else {
+                    if ($node->type == 'news_post') {
+                      echo $created_str;
+                    }
+                    else {
+                      echo t('By') , ': ' , $author_name;
                     }
                   }
-                }
-                
-                $gplus_profile = (isset($user_social_profiles['gplus'])) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $user_social_profiles['gplus'] . '?rel=author">(G+)</a>' : '';
-               
-                $submitted = '<span property="dc:date dc:created" content="' . $created_rdf . '" datatype="xsd:dateTime" rel="sioc:has_creator">' .
-                                t('By') . ':' .
-                                '<a href="' . $author_url . '" title="' . $author_title . '" class="username" lang="' . $language->language . '" xml:lang="' . $language->language . '" about="' . $author_url . '" typeof="sioc:UserAccount" property="foaf:name">' .
-                                  $author_name .
-                                '</a>' . $gplus_profile .
-                                ($node->type == 'article' ? '' : '<span class="delim">|</span>' . $created_str) .
-                              '</span>';
-                
-                echo $submitted;
-              }
-              else {
-                if ($node->type == 'news_post') {
-                  echo $created_str;
-                }
-                else {
-                  echo t('By') , ': ' , $author_name;
-                }
-              }
+                  
+              } // End of if ($node->type != 'section') {
               
             ?>
           </span> <?php // End of <span class="submitted"> ?>
