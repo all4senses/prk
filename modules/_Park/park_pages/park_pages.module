@@ -49,7 +49,6 @@ function park_pages_getHomePage() {
 }
 
 
-
 /**
  * Returns preface node by key.
  */

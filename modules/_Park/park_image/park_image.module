@@ -14,6 +14,31 @@ function park_image_menu() {
 */
 
 
+
+/**
+ * Launch a slider.
+ */
+function park_image_getSlideshow($type = NULL, $id = NULL) {
+
+  
+  
+  //drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
+  
+  drupal_add_js('sites/all/libraries/jquery.plugins/sequence/sequence.jquery-min.js');
+  drupal_add_css('sites/all/libraries/jquery.plugins/sequence/css/sequencejs-theme.dev.how-it-works.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+
+  $path_to_module = drupal_get_path('module', 'park_image');
+  drupal_add_js($path_to_module . '/js/park_add_sequenceSlideshow.js');
+  //drupal_add_css($path_to_module . '/css/park_add_sequenceSlideshow.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+
+  
+  
+  
+  $out = 'Slider';
+  return $out;
+}
+
+
 /**
  * Implements hook form_alter.
  */

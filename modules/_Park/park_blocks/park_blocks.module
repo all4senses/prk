@@ -53,6 +53,12 @@ function park_blocks_block_info() {
     'info' => t('Shows a tag cloud block'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  
+  $blocks['slideshow_one'] = array(
+    'info' => t('Slideshow one'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  
   return $blocks;
 }
 
@@ -99,6 +105,12 @@ function park_blocks_block_view($delta = '') {
     case 'tags_block':
       $block['subject'] = t('Случайные теги');
       $block['content'] = park_blocks_buildTagsCloudBlock(TRUE);
+      break;
+    
+    
+    case 'slideshow_one':
+      $block['subject'] = t('Slideshow one');
+      $block['content'] = park_image_getSlideshow();
       break;
     
   }
