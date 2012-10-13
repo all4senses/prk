@@ -27,7 +27,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
   drupal_add_js('sites/all/libraries/jquery.plugins/sequence/sequence.jquery-min.js');
   //drupal_add_css('sites/all/libraries/jquery.plugins/sequence/css/sequencejs-theme.dev.how-it-works.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
   
-  ////drupal_add_css('sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/css/sequencejs-theme.modern-slide-in.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  drupal_add_css('sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/css/sequencejs-theme.modern-slide-in.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
   
 //drupal_add_css('sites/all/libraries/jquery.plugins/sequence/demo-assets/css/demo-styles.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
 
