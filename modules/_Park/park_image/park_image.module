@@ -26,7 +26,9 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
   
   drupal_add_js('sites/all/libraries/jquery.plugins/sequence/sequence.jquery-min.js');
   drupal_add_css('sites/all/libraries/jquery.plugins/sequence/css/sequencejs-theme.dev.how-it-works.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-
+  drupal_add_css('sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/css/sequencejs-theme.modern-slide-in.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  drupal_add_css('sites/all/libraries/jquery.plugins/sequence/demo-assets/css/demo-styles.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  
   $path_to_module = drupal_get_path('module', 'park_image');
   drupal_add_js($path_to_module . '/js/park_add_sequenceSlideshow.js');
   //drupal_add_css($path_to_module . '/css/park_add_sequenceSlideshow.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
@@ -34,7 +36,28 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
   
   
   
-  $out = 'Slider';
+  $out = '
+    <div id="sequence">
+      <ul>
+          <li>
+              <div class="info1">
+                  <p>Frame 1</p>
+              </div>
+          </li>
+          <li>
+              <div class="info2">
+                  <p>Frame 2</p>
+              </div>
+          </li>
+          <li>
+              <div class="info3">
+                  <p>Frame 3</p>
+              </div>
+          </li>
+      </ul>
+    </div>
+  ';
+  
   return $out;
 }
 
