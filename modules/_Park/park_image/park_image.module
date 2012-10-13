@@ -45,7 +45,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
     
     <img class="prev" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/bt-prev.png" alt="Previous Frame" />
     <img class="next" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/bt-next.png" alt="Next Frame" />
-    <div id="sequence">
+    <div id="sequence" style="height: 600px;">
 				<ul>
 					<li id="intro">
 						<h2 class="title animate-in">Built using Sequence.js</h2>

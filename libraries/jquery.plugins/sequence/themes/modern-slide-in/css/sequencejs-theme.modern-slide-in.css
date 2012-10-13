@@ -122,7 +122,7 @@ Aside from these comments, you may modify and distribute this file as you please
 	display: block;
 	height: 100%;
 	margin: 0;
-	position: absolute;
+	position: relative;
 	max-width: 1280px;
 	width: 100%;
 	
