@@ -9,9 +9,9 @@
           transitionThreshold: 250,
           preloadTheseFrames: [1],
           preloadTheseImages: [
-            "images/tn-model1.png",
-            "images/tn-model2.png",
-            "images/tn-model3.png"
+            "sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model1.png",
+            "sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model2.png",
+            "sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model3.png"
           ]
         };
 

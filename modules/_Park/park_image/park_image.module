@@ -43,8 +43,8 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
   
   $out = '
     
-    <img class="prev" src="images/bt-prev.png" alt="Previous Frame" />
-    <img class="next" src="images/bt-next.png" alt="Next Frame" />
+    <img class="prev" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/bt-prev.png" alt="Previous Frame" />
+    <img class="next" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/bt-next.png" alt="Next Frame" />
     <div id="sequence">
 				<ul>
 					<li id="intro">
