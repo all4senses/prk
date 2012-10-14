@@ -48,7 +48,7 @@
                           console.log('previous_slide', previous_slide);
                           
                           previous_slide.html.each(function(){
-                            //this.removeClass('in');
+                            $(this).removeClass('in');
                             console.log('in previous', this);
                           });
                           /*
