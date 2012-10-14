@@ -5,7 +5,7 @@
         var options = {
           nextButton: true,
           prevButton: true,
-          animateStartingFrameIn: true,
+          //animateStartingFrameIn: true,
           transitionThreshold: 250,
           //preloadTheseFrames: [1],
           preloadTheseImages: [
