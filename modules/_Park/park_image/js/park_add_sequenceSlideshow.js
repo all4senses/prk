@@ -9,6 +9,10 @@
           startingFrameID: 3,
           transitionThreshold: 250,
           preloadTheseFrames: [1],
+          fallback: {
+                theme: "fade",
+                speed: 500
+            },
           preloadTheseImages: [
             "sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model1.png",
             "sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model2.png",
