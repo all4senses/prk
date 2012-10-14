@@ -147,7 +147,7 @@ function park_image_addAdvancedSliderJs() {
   
   
   //drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/excanvas.compiled.js');
-  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.transition.min.js');
+  //drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.transition.min.js');
   drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.touchSwipe.min.js');
   drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.advancedSlider.min.js');
   
