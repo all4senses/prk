@@ -243,11 +243,23 @@ Aside from these comments, you may modify and distribute this file as you please
 .model.animate-in {
 	left: 15%;
 	opacity: 1;
+
+	-webkit-transition-duration: 1s;
+	-moz-transition-duration: 1s;
+	-o-transition-duration: 1s;
+	-ms-transition-duration: 1s;
+	transition-duration: 1s;
 }
 
 .model.animate-out {
 	left: 15%;
 	opacity: 0;
+
+	-webkit-transition-duration: .5s;
+	-moz-transition-duration: .5s;
+	-o-transition-duration: .5s;
+	-ms-transition-duration: .5s;
+	transition-duration: .5s;
 }
 
 @media only screen and (min-width : 992px) {
