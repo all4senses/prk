@@ -37,6 +37,9 @@
                         
                         transitionStart: function(event){
                           console.log('start', event);
+                          if (event.index == 1) {
+                            $('.content-box .title').addClass('in');
+                          }
                         },
                         transitionComplete: function(event){
                           console.log('completed', event);

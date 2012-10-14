@@ -541,3 +541,16 @@ a.yt-direct:active{outline: none;}
 #main .block#block-park-blocks-slideshow-two{height: 420px;}
 /*.advanced-slider .slide-wrapper{height: 300px;}*/
 /*.glossy-square-blue*/ /*.advanced-slider .thumbnail-scroller.horizontal{bottom: -160%;}*/
+.content-box .title{
+  opacity: 0;
+}
+
+.content-box .title.in{
+  opacity: 1;
+  
+  -webkit-transition-duration: 5s;
+	-moz-transition-duration: 5s;
+	-o-transition-duration: 5s;
+	-ms-transition-duration: 5s;
+	transition-duration: 5s;
+}
