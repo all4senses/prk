@@ -50,7 +50,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
 					<li id="intro">
 						<h2 class="title animate-in">Built using Sequence.js</h2>
 						<h3 class="subtitle animate-in">The Responsive Slider with Advanced CSS3 Transitions</h3>
-						<img class="model" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/model1.png" alt="Model 1" />
+						<img class="model animate-in" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/model1.png" alt="Model 1" />
 					</li>
 					<li id="creative">
 						<h2 class="title">Creative Control</h2>
