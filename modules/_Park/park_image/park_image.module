@@ -82,7 +82,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               </li>
 
               <li class="slide rounded-caption">
-              <div class="html" style="position: absolute; z-index: 10;">
+              <div class="html" style="/*position: absolute; z-index: 10;*/">
                 <div class="images-box">
                     <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
                     <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>

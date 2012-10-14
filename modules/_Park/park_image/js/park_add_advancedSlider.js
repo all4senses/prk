@@ -7,7 +7,7 @@
 												height: '60%',
 												scaleType: 'insideFit',
 												skin: 'glossy-square-blue',
-												effectType: 'random',//'swipe',
+												effectType: 'slice',//'swipe',
 												pauseSlideshowOnHover: true,
 												swipeThreshold: 50,
                         
