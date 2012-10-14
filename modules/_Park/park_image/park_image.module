@@ -154,6 +154,8 @@ function park_image_addAdvancedSliderJs() {
   drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.touchSwipe.min.js');
   drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.advancedSlider.min.js');
   
+  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.prettyPhoto.custom.min.js');
+  
   drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/css/base/advanced-slider-base.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
   drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/responsive-proportional/css/glossy-square/blue/glossy-square-blue.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
   ////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/responsive-proportional/css/responsive-proportional-slider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
