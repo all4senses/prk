@@ -5,7 +5,7 @@
 
                $('#responsive-slider').advancedSlider({width: '80%',
 												height: '60%',
-												scaleType: 'outsideFit',
+												scaleType: 'insideFit',
 												skin: 'glossy-square-blue',
 												effectType: 'fade',//'swipe',
 												pauseSlideshowOnHover: true,
