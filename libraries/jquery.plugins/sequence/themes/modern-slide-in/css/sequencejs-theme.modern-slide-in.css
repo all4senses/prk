@@ -231,7 +231,7 @@ Aside from these comments, you may modify and distribute this file as you please
 .model {
 	left: 30%;
 	bottom: -48%;
-	opacity: 0;
+	/*opacity: 0;*/
 	position: relative;
 	height: auto !important;
 	max-height: 568px !important;
