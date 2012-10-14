@@ -43,7 +43,10 @@
                         },
                         transitionComplete: function(event){
                           console.log('completed', event);
+                          current_slide = getSlideAt(event.index);
+                          dpm(current_slide);
                           if (event.index == 1) {
+                            
                             $('.content-box .title').addClass('in');
                             event.data.html.each(function(){
                               console.log(this);
