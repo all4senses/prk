@@ -187,6 +187,11 @@ function park_image_addAdvancedSliderJs() {
   drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox/prettyPhoto.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
   drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox-slider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
   
+
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/minimal/css/minimal-small/minimal-small.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/css/scrollbar-skins/scrollbar-3-light/scrollbar-3-light.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
+  
+  
   $path_to_module = drupal_get_path('module', 'park_image');
   drupal_add_js($path_to_module . '/js/park_add_advancedSlider.js');
   //drupal_add_css($path_to_module . '/css/park_add_advancedSlider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
