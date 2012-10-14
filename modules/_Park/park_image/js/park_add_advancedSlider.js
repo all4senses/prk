@@ -44,7 +44,7 @@
                         transitionComplete: function(event){
                           console.log('completed', event);
                           current_slide = sl.getSlideAt(event.index);
-                          dpm(current_slide);
+                          console.log('current_slide', current_slide);
                           if (event.index == 1) {
                             
                             $('.content-box .title').addClass('in');
