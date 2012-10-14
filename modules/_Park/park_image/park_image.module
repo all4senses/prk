@@ -104,7 +104,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
 
               <li class="slide">
                 <div class="html">
-                  <iframe class="video" src="http://www.youtube.com/embed/msIjWthwWwI?rel=0&enablejsapi=1&wmode=transparent" width="580" height="380" frameborder="0"></iframe>
+                  <iframe class="video" src="http://player.vimeo.com/video/3116167?api=1" width="580" height="380" frameborder="0"></iframe>
                 </div>
               </li>
 
@@ -117,36 +117,11 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               </li>
 
               <li class="slide">
-                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image5.jpg" alt=""/>
-                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image5.jpg" alt="Slide 5"/>
-              </li>
-
-              <li class="slide">
                 <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image6.jpg" alt=""/>
                   <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image6.jpg" alt="Slide 6"/>
                 <div class="caption"><u>Title</u><br/><br/>This is a list of items:<ul><li>first item</li><li>second item</li><li>third item</li></ul></div>
               </li>
 
-              <li class="slide">
-                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image7.jpg" alt=""/>
-                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image7.jpg" alt="Slide 7"/>
-              </li>
-
-              <li class="slide">
-                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image8.jpg" alt=""/>
-                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image8.jpg" alt="Slide 8"/>
-                <div class="caption"><u>Title</u><br/><br/><br/>List of items:<ul><li>first item</li><li>second item</li><li>third item</li></ul></div>
-              </li>
-
-              <li class="slide">
-                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image9.jpg" alt=""/>
-                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image9.jpg" alt="Slide 9"/>
-              </li>
-
-              <li class="slide">
-                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image10.jpg" alt=""/>
-                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image10.jpg" alt="Slide 10"/>
-              </li>
             </ul>
           </div>
 
