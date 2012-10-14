@@ -73,7 +73,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
           <div class="advanced-slider glossy-square-blue" id="responsive-slider">
             <ul class="slides">
               <li class="slide">
-                <a rel="slider-lightbox[g]" href="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image1.jpg" title="Some lightbox description">
+                <a rel="slider-lightbox" href="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image1.jpg" title="Some lightbox description">
                   <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image1.jpg" alt=""/>
                 </a>
                 
