@@ -36,63 +36,37 @@
 												},
                         
                         transitionStart: function(event){
-                          console.log('start', event);
                           if (event.index == 0) {
                             previous_slide_index = total_slides - 1;
                           }
                           else {
                             previous_slide_index = event.index - 1;
                           }
-                          //console.log('previous_slide_index = ' + previous_slide_index);
                           previous_slide = sl.getSlideAt(previous_slide_index);
-                          console.log('previous_slide', previous_slide);
-                          
                           (previous_slide.html).removeClass('in');
 
+                          // Doesn't work
                           /*
                           previous_slide.html.each(function(){
                             $(this).removeClass('in');
-                            console.log('in previous', this);
                           });
-                          */
-                          /*
-                          if (event.index == 2) {
-                            $('.content-box .title').removeClass('in');
-                          }
                           */
                         },
                         transitionComplete: function(event){
-                          //console.log('completed', event);
                           current_slide = sl.getSlideAt(event.index);
-                          console.log('current_slide', current_slide);
-                          
                           $(current_slide.html).addClass('in');
-
+                          
+                          // Doesn't work
                           /*
                           current_slide.html.each(function(){
                             $(this).addClass('in');
-                            //console.log('in current', this);
                           });
-                          */
-                         
-                          /*
-                          if (event.index == 1) {
-                            
-                            $('.content-box .title').addClass('in');
-                            event.data.html.each(function(){
-                              console.log(this);
-                            });
-                          }
                           */
                           
                         }
             		});
 
                 var total_slides = sl.totalSlides();
-                console.log('total_slides = ', total_slides);
-                
-                console.log('sl = ', sl);
-
 
                 // set the initial height of the slider to 50% from the width
                 $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
@@ -102,10 +76,7 @@
                 $(window).resize(function() {
                   $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
                 });
-
-        
-        console.log('in park_add_advancedSlider...');
-       
+      
        
 //       for (group_class in Drupal.settings.park_image) {
 //         
