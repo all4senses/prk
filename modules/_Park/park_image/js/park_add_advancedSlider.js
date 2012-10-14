@@ -65,8 +65,8 @@
                         }
             		});
 
-                //var total_slides = sl.getTotalSlides();
-                //console.log('total_slides = ', total_slides);
+                var total_slides = sl.totalSlides();
+                console.log('total_slides = ', total_slides);
                 
                 console.log('sl = ', sl);
 
