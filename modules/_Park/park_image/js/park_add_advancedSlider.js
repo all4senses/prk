@@ -40,6 +40,9 @@
                           if (event.index == 1) {
                             $('.content-box .title').addClass('in');
                           }
+                          else if (event.index == 2) {
+                            $('.content-box .title').removeClass('in');
+                          }
                         },
                         transitionComplete: function(event){
                           console.log('completed', event);

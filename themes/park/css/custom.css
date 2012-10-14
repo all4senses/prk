@@ -543,6 +543,12 @@ a.yt-direct:active{outline: none;}
 /*.glossy-square-blue*/ /*.advanced-slider .thumbnail-scroller.horizontal{bottom: -160%;}*/
 .content-box .title{
   opacity: 0;
+  
+  -webkit-transition-duration: 1s;
+	-moz-transition-duration: 1s;
+	-o-transition-duration: 1s;
+	-ms-transition-duration: 1s;
+	transition-duration: 1s;
 }
 
 .content-box .title.in{
