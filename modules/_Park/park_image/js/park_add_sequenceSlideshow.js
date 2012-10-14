@@ -5,9 +5,10 @@
         var options = {
           nextButton: true,
           prevButton: true,
-          //animateStartingFrameIn: true,
+          animateStartingFrameIn: true,
+          startingFrameID: 3,
           transitionThreshold: 250,
-          //preloadTheseFrames: [1],
+          preloadTheseFrames: [1],
           preloadTheseImages: [
             "sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model1.png",
             "sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model2.png",
