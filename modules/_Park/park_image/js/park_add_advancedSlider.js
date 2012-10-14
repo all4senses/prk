@@ -11,9 +11,9 @@
 												pauseSlideshowOnHover: true,
 												swipeThreshold: 50,
                         
-                        slideButtons: false,
+                        //slideButtons: false,
 												//thumbnailType: 'scroller',
-												thumbnailButtons: true,
+												//thumbnailButtons: true,
 												thumbnailScrollerResponsive: true,
 												minimumVisibleThumbnails: 2,
                         
