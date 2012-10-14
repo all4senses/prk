@@ -10,6 +10,13 @@
 												effectType: 'fade',//'swipe',
 												pauseSlideshowOnHover: true,
 												swipeThreshold: 50,
+                        
+                        slideButtons: false,
+												thumbnailType: 'scroller',
+												thumbnailButtons: true,
+												thumbnailScrollerResponsive: true,
+												minimumVisibleThumbnails: 2,
+                        
 												slideArrowsToggle: false,
 												slideProperties:{
 													0:{captionSize: 35, captionHideEffect: 'slide'},
@@ -19,6 +26,8 @@
 													7:{captionPosition: 'right', captionSize: 150, captionHideEffect: 'slide'}
 												}
             		});
+
+
 
 
                 // set the initial height of the slider to 50% from the width
