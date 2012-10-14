@@ -542,7 +542,7 @@ a.yt-direct:active{outline: none;}
 /*.advanced-slider .slide-wrapper{height: 300px;}*/
 /*.glossy-square-blue*/ /*.advanced-slider .thumbnail-scroller.horizontal{bottom: -160%;}*/
 .content-box .title{
-  color: white;
+  color: lightgray;
   opacity: 0;
   position: relative;
   top: 50px;
