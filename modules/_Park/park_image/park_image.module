@@ -82,24 +82,24 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               </li>
 
               <li class="slide rounded-caption">
-              <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;>
-                <div class="images-box">
-                    <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
-                    <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
-                    <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
-                    <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+              
+                <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
+                  <div class="images-box">
+                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+                  </div>
+
+                  <div class="content-box">
+                      <p class="title">Inline HTML content</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <a class="button" href="#">Read More</a>
+                  </div>
                 </div>
-					
-                <div class="content-box">
-                    <p class="title">Inline HTML content</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <a class="button" href="#">Read More</a>
-                </div>
-            </div>
             
-                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image2.jpg" alt=""/>
-                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt="Slide 2"/>
-                <div class="caption"><b><i>Custom size and position</i></b> <br/><br/> You can set the caption\'s position to left, right, top or bottom, but you can also give it a custom position and size, as you can see in this example. Also, you can choose from 2 caption effects: slide and fade.</div>
+                <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt="Slide 2"/>
+
               </li>
 
               <li class="slide">
