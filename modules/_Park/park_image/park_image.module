@@ -72,7 +72,8 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
     
           <div class="advanced-slider glossy-square-blue" id="responsive-slider">
             <ul class="slides">
-              <li class="slide">
+            
+              <li class="slide" id="s-1">
                 <a rel="slider-lightbox[]" href="http://www.youtube.com/watch?v=JVuUwvUUPro?width=700&height=400" title="Some lightbox description">
                   <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image1.jpg" alt=""/>
                 </a>
@@ -81,7 +82,8 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
                 <div class="caption">This is just a simple caption.</div>
               </li>
 
-              <li class="slide rounded-caption">
+
+              <li class="slide rounded-caption" id="s-2">
               
                 <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
                   <div class="images-box">
@@ -102,7 +104,9 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
 
               </li>
 
-              <li class="slide">
+
+
+              <li class="slide" id="s-3">
                 <a rel="slider-lightbox[g]" href="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" title="Some lightbox description FOR PICTURE">
                   <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" alt=""/>
                 </a>
@@ -110,11 +114,15 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
                 <div class="caption">You can also add <b>HTML</b> elements like <a href="http://codecanyon.net">links</a> or <input type="button" value="Buttons"/></div>
               </li>
 
-              <li class="slide">
+
+
+              <li class="slide" id="s-4">
                 <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image6.jpg" alt=""/>
                   <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image6.jpg" alt="Slide 6"/>
                 <div class="caption"><u>Title</u><br/><br/>This is a list of items:<ul><li>first item</li><li>second item</li><li>third item</li></ul></div>
               </li>
+
+
 
             </ul>
           </div>
