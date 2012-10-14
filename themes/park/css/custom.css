@@ -538,4 +538,4 @@ a.yt-direct:active{outline: none;}
 
 /* Slideshows */
 
-#main .block#block-park-blocks-slideshow-two{height: 300px;}
+#main .block#block-park-blocks-slideshow-two .content{height: 300px;}
