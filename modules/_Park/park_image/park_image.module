@@ -24,6 +24,145 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
   
   //drupal_add_js(array('park_image' => array('group_' . $node->nid => 1)), 'setting');
   
+  switch ($type) {
+    
+    case 'Sequense':
+      
+      park_image_addSequenceSlideshowJs();
+      
+      $out = '
+    
+          <img class="prev" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/bt-prev.png" alt="Previous Frame" />
+          <img class="next" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/bt-next.png" alt="Next Frame" />
+          <div id="sequence" style="height: 600px;">
+              <ul>
+                <li id="intro">
+                  <h2 class="title animate-in">Built using Sequence.js</h2>
+                  <h3 class="subtitle animate-in">The Responsive Slider with Advanced CSS3 Transitions</h3>
+                  <img class="model animate-in" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/model1.png" alt="Model 1" />
+                </li>
+                <li id="creative">
+                  <h2 class="title">Creative Control</h2>
+                  <h3 class="subtitle">Create unique sliders using CSS3 transitions</h3>
+                  <img class="model" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/model2.png" alt="Model 2" />
+                </li>
+                <li id="support" class="frame3">
+                  <h2 class="title">Cutting Edge</h2>
+                  <h3 class="subtitle">Supports modern browsers, old browsers (IE7+), touch devices and responsive designs</h3>
+                  <img class="model" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/model3.png" alt="Model 3" />
+                </li>
+              </ul>
+            </div>
+            <ul id="nav">
+              <li><img src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model1.png" alt="Model 1" /></li>
+              <li><img src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model2.png" alt="Model 2" /></li>
+              <li><img src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model3.png" alt="Model 3" /></li>
+            </ul>
+        ';
+      
+      break;
+    
+    
+    
+    case 'AdvancedSlider':
+      
+      park_image_addAdvancedSliderJs();
+      
+      $out = '
+    
+          <div class="advanced-slider" id="responsive-slider">
+            <ul class="slides">
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image1.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image1.jpg" alt="Slide 1"/>
+                <div class="caption">This is just a simple caption.</div>
+              </li>
+
+              <li class="slide rounded-caption">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image2.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt="Slide 2"/>
+                <div class="caption"><b><i>Custom size and position</i></b> <br/><br/> You can set the caption\'s position to left, right, top or bottom, but you can also give it a custom position and size, as you can see in this example. Also, you can choose from 2 caption effects: slide and fade.</div>
+              </li>
+
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image3.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image3.jpg" alt="Slide 3"/>
+              </li>
+
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image4.jpg" alt="Slide 4"/>
+                <div class="caption">You can also add <b>HTML</b> elements like <a href="http://codecanyon.net">links</a> or <input type="button" value="Buttons"/></div>
+              </li>
+
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image5.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image5.jpg" alt="Slide 5"/>
+              </li>
+
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image6.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image6.jpg" alt="Slide 6"/>
+                <div class="caption"><u>Title</u><br/><br/>This is a list of items:<ul><li>first item</li><li>second item</li><li>third item</li></ul></div>
+              </li>
+
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image7.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image7.jpg" alt="Slide 7"/>
+              </li>
+
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image8.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image8.jpg" alt="Slide 8"/>
+                <div class="caption"><u>Title</u><br/><br/><br/>List of items:<ul><li>first item</li><li>second item</li><li>third item</li></ul></div>
+              </li>
+
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image9.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image9.jpg" alt="Slide 9"/>
+              </li>
+
+              <li class="slide">
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image10.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image10.jpg" alt="Slide 10"/>
+              </li>
+            </ul>
+          </div>
+
+        ';
+      
+      break;
+  }
+  
+  
+  return $out;
+}
+
+
+/**
+ * Adds js to a page for a AdvancedSlider slideshow.
+ */
+function park_image_addAdvancedSliderJs() {
+  
+  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.advancedSlider.min.js');
+  
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/css/base/advanced-slider-base.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/basic/css/pixel/pixel.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  
+  drupal_add_css('http://fonts.googleapis.com/css?family=Ruluko|Sirin+Stencil', array('preprocess' => FALSE, 'external' => TRUE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  
+  
+  $path_to_module = drupal_get_path('module', 'park_image');
+  drupal_add_js($path_to_module . '/js/park_add_advancedSlider.js');
+  //drupal_add_css($path_to_module . '/css/park_add_advancedSlider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+}
+
+
+/**
+ * Adds js to a page for a Sequence slideshow.
+ */
+function park_image_addSequenceSlideshowJs() {
+  
   drupal_add_js('sites/all/libraries/jquery.plugins/sequence/sequence.jquery-min.js');
   //drupal_add_css('sites/all/libraries/jquery.plugins/sequence/css/sequencejs-theme.dev.how-it-works.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
   
@@ -37,41 +176,6 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
   $path_to_module = drupal_get_path('module', 'park_image');
   drupal_add_js($path_to_module . '/js/park_add_sequenceSlideshow.js');
   //drupal_add_css($path_to_module . '/css/park_add_sequenceSlideshow.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
-
-  
-  
-  
-  $out = '
-    
-    <img class="prev" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/bt-prev.png" alt="Previous Frame" />
-    <img class="next" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/bt-next.png" alt="Next Frame" />
-    <div id="sequence" style="height: 600px;">
-				<ul>
-					<li id="intro">
-						<h2 class="title animate-in">Built using Sequence.js</h2>
-						<h3 class="subtitle animate-in">The Responsive Slider with Advanced CSS3 Transitions</h3>
-						<img class="model animate-in" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/model1.png" alt="Model 1" />
-					</li>
-					<li id="creative">
-						<h2 class="title">Creative Control</h2>
-						<h3 class="subtitle">Create unique sliders using CSS3 transitions</h3>
-						<img class="model" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/model2.png" alt="Model 2" />
-					</li>
-					<li id="support" class="frame3">
-						<h2 class="title">Cutting Edge</h2>
-						<h3 class="subtitle">Supports modern browsers, old browsers (IE7+), touch devices and responsive designs</h3>
-						<img class="model" src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/model3.png" alt="Model 3" />
-					</li>
-				</ul>
-			</div>
-			<ul id="nav">
-				<li><img src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model1.png" alt="Model 1" /></li>
-				<li><img src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model2.png" alt="Model 2" /></li>
-				<li><img src="sites/all/libraries/jquery.plugins/sequence/themes/modern-slide-in/images/tn-model3.png" alt="Model 3" /></li>
-			</ul>
-  ';
-  
-  return $out;
 }
 
 

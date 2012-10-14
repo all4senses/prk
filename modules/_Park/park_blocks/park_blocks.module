@@ -55,10 +55,15 @@ function park_blocks_block_info() {
   );
   
   $blocks['slideshow_one'] = array(
-    'info' => t('Slideshow one'),
+    'info' => t('Slideshow one (Sequense)'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['slideshow_two'] = array(
+    'info' => t('Slideshow two (AdvancedSlider)'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   
+   
   return $blocks;
 }
 
@@ -109,8 +114,12 @@ function park_blocks_block_view($delta = '') {
     
     
     case 'slideshow_one':
-      $block['subject'] = t('Slideshow one');
-      $block['content'] = park_image_getSlideshow();
+      $block['subject'] = t('Slideshow one (Sequense)');
+      $block['content'] = park_image_getSlideshow('Sequense');
+      break;
+    case 'slideshow_two':
+      $block['subject'] = t('Slideshow two (AdvancedSlider)');
+      $block['content'] = park_image_getSlideshow('AdvancedSlider');
       break;
     
   }
