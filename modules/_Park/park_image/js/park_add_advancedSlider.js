@@ -43,6 +43,7 @@
                           else {
                             previous_slide_index = event.index - 1;
                           }
+                          console.log('previous_slide_index = ' + previous_slide_index);
                           previous_slide = sl.getSlideAt(previous_slide_index);
                           console.log('previous_slide', previous_slide);
                           if (event.index == 2) {
