@@ -6,7 +6,13 @@
                $('#responsive-slider').advancedSlider({width: '80%',
 												height: '60%',
 												scaleType: 'insideFit',
-												skin: 'glossy-square-blue',
+                        
+                        skin:'minimal-small', // 'glossy-square-blue',
+                        scrollbarSkin:'scrollbar-3-light', 
+                        thumbnailsType:'navigation', 
+                        thumbnailScrollbar:true,
+                        
+                        
 												effectType: 'slice',//'swipe',
 												pauseSlideshowOnHover: true,
 												swipeThreshold: 50,
