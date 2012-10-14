@@ -24,6 +24,15 @@
 												}
                 });
 
+                // set the initial height of the slider to 50% from the width
+                $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
+                $('#responsive-slider').advancedSlider().doSliderLayout();
+
+                // as the window resizes, maintain the slider's height at 50% from the width
+                $(window).resize(function() {
+                  $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
+                });
+
         
         console.log('in park_add_advancedSlider...');
        
