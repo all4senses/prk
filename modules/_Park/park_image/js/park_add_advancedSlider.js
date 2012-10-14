@@ -37,7 +37,7 @@
                         
                         transitionStart: function(event){
                           console.log('start', event);
-                          if (event.index = 0) {
+                          if (event.index == 0) {
                             previous_slide_index = sl.getTotalSlides() - 1;
                           }
                           else {
