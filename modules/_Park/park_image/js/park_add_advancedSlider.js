@@ -33,7 +33,14 @@
 													3:{captionSize: 40},
 													5:{captionPosition: 'left', captionSize: 150, captionHideEffect: 'slide'},
 													7:{captionPosition: 'right', captionSize: 150, captionHideEffect: 'slide'}
-												}
+												},
+                        
+                        transitionStart: function(event){
+                          console.log('start', event);
+                        },
+                        transitionComplete: function(event){
+                          console.log('completed', event);
+                        }
             		});
 
 
