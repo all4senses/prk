@@ -47,7 +47,7 @@
                           previous_slide = sl.getSlideAt(previous_slide_index);
                           console.log('previous_slide', previous_slide);
                           
-                          previous_slide.html.html.each(function(){
+                          previous_slide.html.each(function(){
                             $(this).removeClass('in');
                             console.log('in previous', this);
                           });
@@ -62,9 +62,9 @@
                           current_slide = sl.getSlideAt(event.index);
                           console.log('current_slide', current_slide);
                           
-                          current_slide.html.html.each(function(){
+                          current_slide.html.each(function(){
                             $(this).addClass('in');
-                            console.log(this);
+                            console.log('in current', this);
                           });
                             
                           /*
