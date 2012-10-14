@@ -146,10 +146,21 @@ function park_image_addAdvancedSliderJs() {
   
   drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.advancedSlider.min.js');
   
+  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/excanvas.compiled.js');
+  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.transition.min.js');
+  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.touchSwipe.min.js');
+  
+  
   drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/css/base/advanced-slider-base.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
   drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/basic/css/pixel/pixel.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
   
-  drupal_add_css('http://fonts.googleapis.com/css?family=Ruluko|Sirin+Stencil', array('preprocess' => FALSE, 'external' => TRUE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  //drupal_add_css('http://fonts.googleapis.com/css?family=Ruluko|Sirin+Stencil', array('preprocess' => FALSE, 'external' => TRUE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
+  
+  
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/responsive-proportional/css/glossy-square/blue/glossy-square-blue.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/responsive-proportional/css/responsive-proportional-slider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
+  
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/presentation.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
   
   
   $path_to_module = drupal_get_path('module', 'park_image');
