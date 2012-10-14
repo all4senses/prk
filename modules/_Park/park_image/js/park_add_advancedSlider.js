@@ -12,6 +12,8 @@
 												swipeThreshold: 50,
                         
                         lightbox: true,
+                        shadow: false,
+                        
                         //slideButtons: false,
 												//thumbnailType: 'scroller',
 												//thumbnailButtons: true,
