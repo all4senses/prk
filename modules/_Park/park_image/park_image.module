@@ -82,7 +82,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               </li>
 
               <li class="slide rounded-caption">
-              <div class="html">
+              <div class="html" style="position: absolute; z-index: 10;">
                 <div class="images-box">
                     <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
                     <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
@@ -103,8 +103,9 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               </li>
 
               <li class="slide">
-                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image3.jpg" alt=""/>
-                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image3.jpg" alt="Slide 3"/>
+                <div class="html">
+                  <iframe class="video" src="http://www.youtube.com/embed/msIjWthwWwI?rel=0&enablejsapi=1&wmode=transparent" width="580" height="380" frameborder="0"></iframe>
+                </div>
               </li>
 
               <li class="slide">
