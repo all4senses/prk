@@ -11,6 +11,7 @@
 												pauseSlideshowOnHover: true,
 												swipeThreshold: 50,
                         
+                        lightbox: true,
                         //slideButtons: false,
 												//thumbnailType: 'scroller',
 												//thumbnailButtons: true,
