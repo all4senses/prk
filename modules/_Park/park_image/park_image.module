@@ -109,7 +109,9 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               </li>
 
               <li class="slide">
-                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" alt=""/>
+                <a rel="slider-lightbox[g]" href="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" title="Some lightbox description FOR PICTURE">
+                  <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" alt=""/>
+                </a>
                   <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image4.jpg" alt="Slide 4"/>
                 <div class="caption">You can also add <b>HTML</b> elements like <a href="http://codecanyon.net">links</a> or <input type="button" value="Buttons"/></div>
               </li>
