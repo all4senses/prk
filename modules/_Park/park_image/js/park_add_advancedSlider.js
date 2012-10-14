@@ -7,7 +7,7 @@
 												height: '60%',
 												scaleType: 'outsideFit',
 												skin: 'glossy-square-blue',
-												effectType: 'swipe',
+												effectType: 'fade',//'swipe',
 												pauseSlideshowOnHover: true,
 												swipeThreshold: 50,
 												slideArrowsToggle: false,
