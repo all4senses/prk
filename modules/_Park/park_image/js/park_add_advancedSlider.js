@@ -66,7 +66,7 @@
             		});
 
                 var total_slides = sl.getTotalSlides();
-                console.log('total_slides = ', total_slides);
+                //console.log('total_slides = ', total_slides);
                 
                 console.log('sl = ', sl);
 
