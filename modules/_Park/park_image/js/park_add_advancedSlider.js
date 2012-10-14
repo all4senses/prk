@@ -48,8 +48,8 @@
                           console.log('previous_slide', previous_slide);
                           
                           previous_slide.html.each(function(){
-                            this.removeClass('in');
-                            console.log(this);
+                            //this.removeClass('in');
+                            console.log('in previous', this);
                           });
                           /*
                           if (event.index == 2) {
