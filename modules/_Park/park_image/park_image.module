@@ -103,12 +103,6 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               </li>
 
               <li class="slide">
-                <div class="html">
-                  <iframe class="video" src="http://player.vimeo.com/video/3116167?api=1" width="580" height="380" frameborder="0"></iframe>
-                </div>
-              </li>
-
-              <li class="slide">
                 <a rel="slider-lightbox[g]" href="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" title="Some lightbox description FOR PICTURE">
                   <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" alt=""/>
                 </a>
