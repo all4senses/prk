@@ -70,7 +70,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
       
       $out = '
     
-          <div class="advanced-slider" id="responsive-slider">
+          <div class="advanced-slider glossy-square-blue" id="responsive-slider">
             <ul class="slides">
               <li class="slide">
                 <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image1.jpg" alt=""/>
