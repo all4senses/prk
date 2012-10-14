@@ -74,6 +74,15 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
             <ul class="slides">
             
               <li class="slide" id="s-1">
+              
+                <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
+                  <div class="content-box">
+                      <p class="title">Inline HTML content</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <a class="button" href="#">Read More</a>
+                  </div>
+                </div>
+
                 <a rel="slider-lightbox[]" href="http://www.youtube.com/watch?v=JVuUwvUUPro?width=700&height=400" title="Some lightbox description">
                   <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image1.jpg" alt=""/>
                 </a>
@@ -86,18 +95,20 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               <li class="slide rounded-caption" id="s-2">
               
                 <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
-                  <div class="images-box">
-                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
-                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
-                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
-                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
-                  </div>
 
                   <div class="content-box">
                       <p class="title">Inline HTML content</p>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                       <a class="button" href="#">Read More</a>
                   </div>
+                  
+                  <div class="images-box">
+                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+                      <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
+                  </div>
+                  
                 </div>
             
                 <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt="Slide 2"/>
@@ -107,6 +118,15 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
 
 
               <li class="slide" id="s-3">
+              
+                <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
+                  <div class="content-box">
+                      <p class="title">Inline HTML content</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <a class="button" href="#">Read More</a>
+                  </div>
+                </div>
+                
                 <a rel="slider-lightbox[g]" href="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" title="Some lightbox description FOR PICTURE">
                   <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" alt=""/>
                 </a>
@@ -117,6 +137,15 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
 
 
               <li class="slide" id="s-4">
+              
+                <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
+                  <div class="content-box">
+                      <p class="title">Inline HTML content</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <a class="button" href="#">Read More</a>
+                  </div>
+                </div>
+                
                 <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image6.jpg" alt=""/>
                   <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image6.jpg" alt="Slide 6"/>
                 <div class="caption"><u>Title</u><br/><br/>This is a list of items:<ul><li>first item</li><li>second item</li><li>third item</li></ul></div>

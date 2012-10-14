@@ -46,14 +46,28 @@
                           console.log('previous_slide_index = ' + previous_slide_index);
                           previous_slide = sl.getSlideAt(previous_slide_index);
                           console.log('previous_slide', previous_slide);
+                          
+                          current_slide.html.each(function(){
+                            this.removeClass('in');
+                            console.log(this);
+                          });
+                          /*
                           if (event.index == 2) {
                             $('.content-box .title').removeClass('in');
                           }
+                          */
                         },
                         transitionComplete: function(event){
                           console.log('completed', event);
                           current_slide = sl.getSlideAt(event.index);
                           console.log('current_slide', current_slide);
+                          
+                          current_slide.html.each(function(){
+                            this.addClass('in');
+                            console.log(this);
+                          });
+                            
+                          /*
                           if (event.index == 1) {
                             
                             $('.content-box .title').addClass('in');
@@ -61,6 +75,7 @@
                               console.log(this);
                             });
                           }
+                          */
                           
                         }
             		});
