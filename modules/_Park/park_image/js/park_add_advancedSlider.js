@@ -63,7 +63,7 @@
                           console.log('current_slide', current_slide);
                           
                           current_slide.html.each(function(){
-                            this.addClass('in');
+                            $(this).addClass('in');
                             console.log(this);
                           });
                             
