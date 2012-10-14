@@ -96,11 +96,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
               
                 <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
 
-                  <div class="content-box">
-                      <p class="title">Inline HTML content</p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <a class="button" href="#">Read More</a>
-                  </div>
+                  
                   
                   <div class="images-box">
                       <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
@@ -108,6 +104,13 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
                       <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
                       <img src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image2.jpg" alt=""/>
                   </div>
+                  
+                  <div class="content-box">
+                      <p class="title">Inline HTML content</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <a class="button" href="#">Read More</a>
+                  </div>
+                  
                   
                 </div>
             
