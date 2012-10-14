@@ -12,7 +12,7 @@
 												swipeThreshold: 50,
                         
                         slideButtons: false,
-												thumbnailType: 'scroller',
+												//thumbnailType: 'scroller',
 												thumbnailButtons: true,
 												thumbnailScrollerResponsive: true,
 												minimumVisibleThumbnails: 2,
