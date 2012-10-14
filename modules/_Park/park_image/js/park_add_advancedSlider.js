@@ -38,12 +38,12 @@
                         transitionStart: function(event){
                           console.log('start', event);
                           if (event.index = 0) {
-                            previous_slide_index = getTotalSlides() - 1;
+                            previous_slide_index = sl.getTotalSlides() - 1;
                           }
                           else {
                             previous_slide_index = event.index - 1;
                           }
-                          previous_slide = sl.getSlideAt(event.index - 1);
+                          previous_slide = sl.getSlideAt(previous_slide_index);
                           console.log('previous_slide', previous_slide);
                           if (event.index == 2) {
                             $('.content-box .title').removeClass('in');
