@@ -2,8 +2,8 @@
   Drupal.behaviors.park_add_advancedSlider = {
     attach: function (context, settings) {
 
-
-               $('#responsive-slider').advancedSlider({width: '80%',
+                var sl;
+               sl = $('#responsive-slider').advancedSlider({width: '80%',
 												height: '60%',
 												scaleType: 'proportionalFit', //'insideFit',
                         
@@ -53,7 +53,8 @@
                         }
             		});
 
-
+                
+                console.log('sl = ', sl);
 
 
                 // set the initial height of the slider to 50% from the width
