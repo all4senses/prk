@@ -27,25 +27,7 @@
             src     : '//cdn.connect.mail.ru/js/loader.js',
             charset : 'utf-8'
         }
-        /**
-         * (optional) Called before `Socialite.load()` appends the network script via `Socialite.appendNetwork()`
-         */
         
-        ,append: function(network)
-        {
-            // return false to cancel the append and activate all instances immedicately
-            console.log('in append');
-        }
-        
-        /**
-         * (optional) called after an appended network script has loaded
-         */
-        /*
-        ,onload: function(network)
-        {
-            // return false to cancel automatically activation of all instances
-        }
-        */
     });
 
     /**
@@ -53,33 +35,28 @@
      * Socialite will activate elements with a class name of `network_name-widget_name`, e.g. `twitter-share`
      */
     Socialite.widget('mailru', 'like', {
-        /**
-         * (optional) Called after a new instance has been created but before it is initialised
-         */
-        process: function(instance)
-        {
-           console.log('in process');
-            return false; // return false or replace function with `null` to cancel the default processing of `Socialite.processInstance()`
-        },
-        /**
-         * Called when an instance is loaded
-         */
+        reappend: null,
         init: function(instance)
         {
-          console.log('in init');
-            // After this function that instance should resemble the suggested implementation by the social network
-            Socialite.processInstance(instance);
-            Socialite.activateInstance(instance);
-        }
-        /**
-         * (optional) Called by `Socialite.activateInstance()` when the network has loaded and the final widget is ready to display
-         */
-        /*
-        ,activate: function(instance)
+            var el = document.createElement('a');
+            el.className = 'mailru-like';
+            Socialite.copyDataAttributes(instance.el, el);
+            el.setAttribute('href', instance.el.getAttribute('data-href'));
+            instance.el.appendChild(el);
+        },
+        activate: function(instance)
         {
-            // 
+            var w = instance.widget,
+                n = w.network.name;
+            if (Socialite.networkReady(n)) {
+                if (w.reappend) {
+                    clearTimeout(w.reappend);
+                }
+                w.reappend = setTimeout(function() {
+                    Socialite.reloadNetwork(n);
+                }, 50);
+            }
         }
-        */
     });
 
 })(window, window.document, window.Socialite);
