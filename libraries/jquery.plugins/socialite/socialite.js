@@ -699,7 +699,7 @@ window.Socialite = (function(window, document, undefined)
 
     Socialite.setup({
         vkontakte: {
-            apiId: 111,
+            apiId: 6756,
             group: {
               id: 0,
               mode: 0,
