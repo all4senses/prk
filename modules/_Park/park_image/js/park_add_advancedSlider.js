@@ -2,7 +2,9 @@
   Drupal.behaviors.park_add_advancedSlider = {
     attach: function (context, settings) {
 
-                var sl;
+               var sl;
+               var current_slide_index = 0;
+               
                sl = $('#responsive-slider').advancedSlider({width: '80%',
 												height: '60%',
 												scaleType: 'proportionalFit', //'insideFit',
@@ -36,14 +38,18 @@
 												},
                         
                         transitionStart: function(event){
+                          /*
                           if (event.index == 0) {
                             previous_slide_index = total_slides - 1;
                           }
                           else {
                             previous_slide_index = event.index - 1;
                           }
+                          */
+                          previous_slide_index = current_slide_index;
+                          
                           previous_slide = sl.getSlideAt(previous_slide_index);
-                          (previous_slide.html).removeClass('in');
+                          $(previous_slide.html).removeClass('in');
 
                           // Doesn't work
                           /*
@@ -55,6 +61,7 @@
                         transitionComplete: function(event){
                           current_slide = sl.getSlideAt(event.index);
                           $(current_slide.html).addClass('in');
+                          current_slide_index = event.index;
                           
                           // Doesn't work
                           /*
@@ -67,6 +74,7 @@
             		});
 
                 var total_slides = sl.totalSlides();
+                
 
                 // set the initial height of the slider to 50% from the width
                 $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
