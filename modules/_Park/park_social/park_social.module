@@ -40,8 +40,8 @@ function park_social_getSocialiteButtons($url = NULL, $title = NULL) {
     $url = 'http://' . $_SERVER['SERVER_NAME'] . ($_GET['q'] == 'home' ? '' : $_SERVER['REQUEST_URI']);
   }
   
-  drupal_add_js('sites/all/libraries/jquery.plugins/socialite/socialite.min.js');
-  //drupal_add_js('sites/all/libraries/jquery.plugins/socialite/socialite.js');
+  //drupal_add_js('sites/all/libraries/jquery.plugins/socialite/socialite.min.js');
+  drupal_add_js('sites/all/libraries/jquery.plugins/socialite/socialite.js');
   
   $path_to_custom_js = drupal_get_path('module', 'park_social') . '/js/';
   drupal_add_js($path_to_custom_js . 'addSocialite.js');
