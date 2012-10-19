@@ -30,17 +30,18 @@
         /**
          * (optional) Called before `Socialite.load()` appends the network script via `Socialite.appendNetwork()`
          */
-        /*
+        
         ,append: function(network)
         {
             // return false to cancel the append and activate all instances immedicately
-        },
-        */
+            console.log('in append');
+        }
+        
         /**
          * (optional) called after an appended network script has loaded
          */
         /*
-        onload: function(network)
+        ,onload: function(network)
         {
             // return false to cancel automatically activation of all instances
         }
@@ -57,6 +58,7 @@
          */
         process: function(instance)
         {
+           console.log('in process');
             return false; // return false or replace function with `null` to cancel the default processing of `Socialite.processInstance()`
         },
         /**
@@ -64,6 +66,7 @@
          */
         init: function(instance)
         {
+          console.log('in init');
             // After this function that instance should resemble the suggested implementation by the social network
             Socialite.processInstance(instance);
             Socialite.activateInstance(instance);

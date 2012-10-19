@@ -53,6 +53,7 @@ function park_social_getSocialiteButtons($url = NULL, $title = NULL) {
 			<li><a href="http://www.facebook.com/sharer.php?u=' . $url . '&amp;t=' . $title . '" class="socialite facebook-like" data-href="' . $url . '" data-send="false" data-layout="button_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a></li>
 			<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=' . $url . '&amp;title=' . $title . '" class="socialite linkedin-share" data-url="' . $url . '" data-counter="right" rel="nofollow" target="_blank"><span class="vhidden">Share on LinkedIn</span></a></li>
       <li><a href="http://connect.mail.ru/share?url=' . $url . '" class="socialite mailru-like mrc__plugin_like_button" data-mrc-config=' . '"' . "{'type': 'micro'}" . '"' .  ' data-href="' . $url . '" rel="nofollow" target="_blank"><span class="vhidden">Share on Mail.ru</span></a></li>
+      <li><a href="http://connect.mail.ru/share?url=' . $url . '" class="socialite mailru-like mrc__plugin_like_button" data-mrc-config=' . '"' . "{'type': 'micro'}" . '"' .  ' data-href="' . $url . '" rel="nofollow" target="_blank"><span class="vhidden">Share on Mail.ru</span></a></li>
 		</ul>
   ';
   
