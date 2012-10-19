@@ -26,21 +26,25 @@
         script: {
             src     : '//cdn.connect.mail.ru/js/loader.js',
             charset : 'utf-8'
-        },
+        }
         /**
          * (optional) Called before `Socialite.load()` appends the network script via `Socialite.appendNetwork()`
          */
-        append: function(network)
+        /*
+        ,append: function(network)
         {
             // return false to cancel the append and activate all instances immedicately
         },
+        */
         /**
          * (optional) called after an appended network script has loaded
          */
+        /*
         onload: function(network)
         {
             // return false to cancel automatically activation of all instances
         }
+        */
     });
 
     /**
@@ -53,7 +57,7 @@
          */
         process: function(instance)
         {
-            // return false or replace function with `null` to cancel the default processing of `Socialite.processInstance()`
+            return false; // return false or replace function with `null` to cancel the default processing of `Socialite.processInstance()`
         },
         /**
          * Called when an instance is loaded
@@ -61,14 +65,18 @@
         init: function(instance)
         {
             // After this function that instance should resemble the suggested implementation by the social network
-        },
+            Socialite.processInstance(instance);
+            Socialite.activateInstance(instance);
+        }
         /**
          * (optional) Called by `Socialite.activateInstance()` when the network has loaded and the final widget is ready to display
          */
-        activate: function(instance)
+        /*
+        ,activate: function(instance)
         {
             // 
         }
+        */
     });
 
 })(window, window.document, window.Socialite);
