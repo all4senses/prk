@@ -28,7 +28,7 @@
 
     Socialite.network('vkontakte', {
         script: {
-            src : '//userapi.com/js/api/openapi.js?49',
+            src : '//vk.com/js/api/openapi.js?60',
             id  : 'vk-jsapi'
         },
         onload: function(network) {
