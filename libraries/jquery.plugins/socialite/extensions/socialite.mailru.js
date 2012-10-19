@@ -6,22 +6,10 @@
  */
 (function(window, document, Socialite, undefined)
 {
-    // External documentation URLs
-
-    // add required default settings
-    /*
-    Socialite.setup({
-        'mailru': {
-            lang: 'ru'
-        }
-    });
-    */
-   
-    /**
-     * One network can cater for multiple widgets
-     * Check the extensions repository to make sure it doesn't already exist
-     * The script object is optional for extentions that require simple images or iframes
-     */
+  
+    //http://api.mail.ru/sites/plugins/share/
+    
+    
     Socialite.network('mailru', {
         script: {
             src     : '//cdn.connect.mail.ru/js/loader.js',
@@ -39,7 +27,7 @@
         init: function(instance)
         {
             var el = document.createElement('a');
-            el.className = 'mailru-like';
+            el.className = 'mrc__plugin_uber_like_button';
             Socialite.copyDataAttributes(instance.el, el);
             el.setAttribute('href', instance.el.getAttribute('data-href'));
             instance.el.appendChild(el);
@@ -58,5 +46,6 @@
             }
         }
     });
+    
 
 })(window, window.document, window.Socialite);

@@ -694,12 +694,13 @@ window.Socialite = (function(window, document, undefined)
     
     
     
+    //http://vk.com/developers.php?oid=-1&p=Like
     
     var VKCallbacks = [];
 
     Socialite.setup({
         vkontakte: {
-            apiId: 3186958,
+            apiId: 3186958, // park.all4senses.com
             group: {
               id: 0,
               mode: 0,
@@ -809,6 +810,7 @@ window.Socialite = (function(window, document, undefined)
     
     
     
+    // http://api.mail.ru/sites/plugins/share/
     
     Socialite.network('mailru', {
         script: {
