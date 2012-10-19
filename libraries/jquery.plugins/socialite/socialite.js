@@ -699,7 +699,7 @@ window.Socialite = (function(window, document, undefined)
 
     Socialite.setup({
         vkontakte: {
-            apiId: 6756,
+            apiId: 3186958,
             group: {
               id: 0,
               mode: 0,
@@ -714,7 +714,7 @@ window.Socialite = (function(window, document, undefined)
 
     Socialite.network('vkontakte', {
         script: {
-            src : '//userapi.com/js/api/openapi.js?49',
+            src : '//vk.com/js/api/openapi.js?60', //'//userapi.com/js/api/openapi.js?49',
             id  : 'vk-jsapi'
         },
         onload: function(network) {
