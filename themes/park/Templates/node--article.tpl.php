@@ -149,13 +149,8 @@
 
                         <div class="addthis_toolbox addthis_default_style" addthis:url="<?php echo $url?>">
                           <a href="http://addthis.com/bookmark.php?v=250&amp;pub=all4senses"></a>
-                          <a class="addthis_button_email" title="E-mail this page link"><?php echo t('Email This Post'); ?></a>
+                          <a class="addthis_button_email" title="E-mail this page link"><?php echo t('Email This'); ?></a>
                           <a class="addthis_button_tumblr"></a>
-                          <a class="addthis_button_hackernews"></a>
-                          <a class="addthis_button_digg"></a>
-                          <a class="addthis_button_reddit"></a>
-                          <a class="addthis_button_stumbleupon"></a>
-
                           <a class="addthis_button_compact"></a>
                         </div>
                         <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pub=all4senses"></script>
