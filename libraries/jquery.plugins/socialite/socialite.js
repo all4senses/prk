@@ -823,28 +823,7 @@ window.Socialite = (function(window, document, undefined)
      * Socialite will activate elements with a class name of `network_name-widget_name`, e.g. `twitter-share`
      */
     Socialite.widget('mailru', 'like', {
-        reappend: null,
-        init: function(instance)
-        {
-            var el = document.createElement('a');
-            el.className = 'mailru-like';
-            Socialite.copyDataAttributes(instance.el, el);
-            el.setAttribute('href', instance.el.getAttribute('data-href'));
-            instance.el.appendChild(el);
-        },
-        activate: function(instance)
-        {
-            var w = instance.widget,
-                n = w.network.name;
-            if (Socialite.networkReady(n)) {
-                if (w.reappend) {
-                    clearTimeout(w.reappend);
-                }
-                w.reappend = setTimeout(function() {
-                    Socialite.reloadNetwork(n);
-                }, 50);
-            }
-        }
+        
     });
     
 
