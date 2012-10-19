@@ -827,7 +827,7 @@ window.Socialite = (function(window, document, undefined)
         init: function(instance)
         {
             var el = document.createElement('a');
-            el.className = 'mrc__plugin_like_button';
+            el.className = 'mrc__plugin_uber_like_button';
             Socialite.copyDataAttributes(instance.el, el);
             el.setAttribute('href', instance.el.getAttribute('data-href'));
             instance.el.appendChild(el);
