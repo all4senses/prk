@@ -5,17 +5,16 @@
                var sl;
                var current_slide_index = 0;
                
-               console.log('start 1');
-               
+              
                sl = $('#responsive-slider').advancedSlider({
                         //width: '80%',
 												//height: '70%',
                         
                         width: '90%',
-                        height: '80%',
-                        scaleType: 'exactFit',//'insideFit',
+                        height: '200',
+                        scaleType: 'insideFit',
                         
-												//scaleType: 'proportionalFit', //'insideFit',
+												//scaleType: 'proportionalFit', //'insideFit', 'exactFit',
                         
                         skin:'glossy-curved-rounded-violet', //minimal-small', // 'glossy-square-blue',
                         //scrollbarSkin:'scrollbar-3-light', 
