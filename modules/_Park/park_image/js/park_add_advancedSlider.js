@@ -9,8 +9,12 @@
                
                sl = $('#responsive-slider').advancedSlider({
                         //width: '80%',
-												height: '70%',
-												scaleType: 'proportionalFit', //'insideFit',
+												//height: '70%',
+                        
+                        height: '70%',
+                        scaleType: 'insideFit',
+                        
+												//scaleType: 'proportionalFit', //'insideFit',
                         
                         skin:'glossy-curved-rounded-violet', //minimal-small', // 'glossy-square-blue',
                         //scrollbarSkin:'scrollbar-3-light', 
