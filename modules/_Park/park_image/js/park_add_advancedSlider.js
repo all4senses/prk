@@ -16,6 +16,7 @@
                         thumbnailsType:'navigation', 
                         thumbnailScrollbar:true,
                         
+                        captionToggle: true,
                         
 												effectType: 'slice',//'swipe',
 												pauseSlideshowOnHover: true,
