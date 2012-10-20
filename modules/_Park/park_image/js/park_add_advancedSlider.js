@@ -37,43 +37,8 @@
 													7:{captionPosition: 'right', captionSize: 150, captionHideEffect: 'slide'}
 												},
                         
-                        transitionStart: function(event){
-                          /*
-                          if (event.index == 0) {
-                            previous_slide_index = total_slides - 1;
-                          }
-                          else {
-                            previous_slide_index = event.index - 1;
-                          }
-                          */
-                          previous_slide_index = current_slide_index;
-                          
-                          //previous_slide = sl.getSlideAt(previous_slide_index);
-                          previous_slide = this.getSlideAt(previous_slide_index);
-                          
-                          $(previous_slide.html).removeClass('in');
-
-                          // Doesn't work
-                          /*
-                          previous_slide.html.each(function(){
-                            $(this).removeClass('in');
-                          });
-                          */
-                        },
-                        transitionComplete: function(event){
-                          //current_slide = sl.getSlideAt(event.index);
-                          current_slide = this.getSlideAt(event.index);
-                          $(current_slide.html).addClass('in');
-                          current_slide_index = event.index;
-                          
-                          // Doesn't work
-                          /*
-                          current_slide.html.each(function(){
-                            $(this).addClass('in');
-                          });
-                          */
-                          
-                        }
+                        transitionStart: removeClassIn,
+                        transitionComplete: addClassIn
             		});
 
                 var total_slides = sl.totalSlides();
@@ -88,13 +53,48 @@
                   $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
                 });
       
-       
-//       for (group_class in Drupal.settings.park_image) {
-//         
-//          //console.log(group_class);
-//
-//       }
+      
+      
+                function addClassIn(event) {
+                  current_slide = sl.getSlideAt(event.index);
+                  //current_slide = this.getSlideAt(event.index);
+                  $(current_slide.html).addClass('in');
+                  current_slide_index = event.index;
 
+                  // Doesn't work
+                  /*
+                  current_slide.html.each(function(){
+                    $(this).addClass('in');
+                  });
+                  */
+                }
+                
+                
+                function removeClassIn(event) {
+                  /*
+                  if (event.index == 0) {
+                    previous_slide_index = total_slides - 1;
+                  }
+                  else {
+                    previous_slide_index = event.index - 1;
+                  }
+                  */
+                  previous_slide_index = current_slide_index;
+
+                  previous_slide = sl.getSlideAt(previous_slide_index);
+                  //previous_slide = this.getSlideAt(previous_slide_index);
+
+                  $(previous_slide.html).removeClass('in');
+
+                  // Doesn't work
+                  /*
+                  previous_slide.html.each(function(){
+                    $(this).removeClass('in');
+                  });
+                  */
+                }
+                        
+        
     }
   };
   
