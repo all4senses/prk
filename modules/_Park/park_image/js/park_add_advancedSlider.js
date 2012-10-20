@@ -88,12 +88,14 @@
                   console.log(event);
                   
                   previous_slide_index = current_slide_index;
+                  
+                  if (sl) {
+                    previous_slide = sl.getSlideAt(previous_slide_index);
+                    //previous_slide = this.getSlideAt(previous_slide_index);
 
-                  previous_slide = sl.getSlideAt(previous_slide_index);
-                  //previous_slide = this.getSlideAt(previous_slide_index);
-
-                  $(previous_slide.html).removeClass('in');
-
+                    $(previous_slide.html).removeClass('in');
+                  }
+                  
                   // Doesn't work
                   /*
                   previous_slide.html.each(function(){
