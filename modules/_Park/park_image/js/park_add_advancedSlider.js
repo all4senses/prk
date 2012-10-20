@@ -48,7 +48,9 @@
                           */
                           previous_slide_index = current_slide_index;
                           
-                          previous_slide = sl.getSlideAt(previous_slide_index);
+                          //previous_slide = sl.getSlideAt(previous_slide_index);
+                          previous_slide = this.getSlideAt(previous_slide_index);
+                          
                           $(previous_slide.html).removeClass('in');
 
                           // Doesn't work
@@ -59,7 +61,8 @@
                           */
                         },
                         transitionComplete: function(event){
-                          current_slide = sl.getSlideAt(event.index);
+                          //current_slide = sl.getSlideAt(event.index);
+                          current_slide = this.getSlideAt(event.index);
                           $(current_slide.html).addClass('in');
                           current_slide_index = event.index;
                           
