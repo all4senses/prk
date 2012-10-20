@@ -189,7 +189,7 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 
 
 
-
+.block{z-index: 1;}
 
 .block .inside,
 .node .inside{border: 1px solid gray; background: white; position: relative;}
