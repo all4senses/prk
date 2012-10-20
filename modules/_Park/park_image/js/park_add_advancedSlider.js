@@ -10,7 +10,7 @@
                         //width: '80%',
 												//height: '70%',
                         
-                        //width: '80%',
+                        width: '700',
                         height: '100',
                         scaleType: 'insideFit',
                         
