@@ -307,7 +307,7 @@ form .counter.exceeded{color: red;}
 
 .front .share, .preface .share{border: none; margin-top: -15px; /*padding: 0 0 40px 0;*/ padding: 3px 0 3px 10px; position: absolute; top: 20px; right: 210px; height: 20px; z-index: 100;}
 
-.share .main{width: 730px; float: left;}
+.share .main{float: left;}
 
 .IN-widget{float: left; margin-right: 13px;}
 #___plusone_0{float: left !important; width: 75px !important;}
@@ -527,7 +527,7 @@ body.sidebar-second.node-type-quote #main{margin: 0; padding: 0;}
 .social-buttons div.pinterest-pinit{width: 80px; padding-right: 0;}
 .social-buttons div.vkontakte-like{float: left; width: 90px; padding-right: 0;}
 
-.social-buttons div.mailru-like{width: 170px;}
+.social-buttons div.mailru-like{width: 170px; padding-right: 0;}
 
 
 
