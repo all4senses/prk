@@ -314,7 +314,7 @@ form .counter.exceeded{color: red;}
 .fb-like{float: left; top: -2px;}
 .twitter-share-button{width: 95px !important;}
 
-.share .others{float: left; padding-top: 3px;}
+.share .others{float: right; padding-top: 3px;}
 .share .others .addthis_toolbox a{margin-right: 5px; float: left;}
 .share .others .addthis_button_email{position: relative; top: -4px;}
 .share .others .at15t_email{margin-right: 4px; position: relative; top: 3px;}
