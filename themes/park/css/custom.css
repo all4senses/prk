@@ -191,7 +191,7 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 
 .block{z-index: 1;}
 
-.front .block#block-park-blocks-slideshow-two .content{height: 300px;}
+.front .block#block-park-blocks-slideshow-two .content{height: 200px; position: relative;}
 
 .block .inside,
 .node .inside{border: 1px solid gray; background: white; position: relative;}
