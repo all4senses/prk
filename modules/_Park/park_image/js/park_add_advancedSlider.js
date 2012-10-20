@@ -13,7 +13,7 @@
                         
                         width: '900',
                         height: '80%',
-                        scaleType: 'insideFit',
+                        scaleType: 'exactFit',//'insideFit',
                         
 												//scaleType: 'proportionalFit', //'insideFit',
                         
