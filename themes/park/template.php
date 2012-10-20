@@ -198,7 +198,7 @@ function park_preprocess_views_view_row_rss(&$vars) {
     $rss_teaser = preg_replace('|href="/|', 'href="http://park.all4senses.com/', $rss_teaser);
     // Restore a normal state of a YouTube url from a token.
     // [video: http://www.youtube.com/watch?v=SoMS77zE7iE]
-    $rss_teaser =   preg_replace('|\[video:.*(http://.*)\]|', '<a href="$1"> [Watch a video] </a>', $rss_teaser);
+    $rss_teaser =   preg_replace('|\[video:.*(http.*)\]|', '<a href="$1"> [Watch a video] </a>', $rss_teaser);
     $vars['description'] = check_plain(htmlspecialchars_decode($rss_teaser));
   }
   
