@@ -307,7 +307,8 @@ form .counter.exceeded{color: red;}
 
 .front .share, .preface .share{border: none; margin-top: -15px; /*padding: 0 0 40px 0;*/ padding: 3px 0 3px 10px; position: absolute; top: 20px; right: 210px; height: 20px; z-index: 100;}
 
-.share .main{width: 410px; float: right;}
+.share .main{width: 730px; float: left;}
+
 .IN-widget{float: left; margin-right: 13px;}
 #___plusone_0{float: left !important; width: 75px !important;}
 .fb-like{float: left; top: -2px;}
@@ -520,8 +521,15 @@ body.sidebar-second.node-type-quote #main{margin: 0; padding: 0;}
 .social-buttons div.facebook-like{width: 65px;}
 .social-buttons a.facebook-like{width: 82px; background-position: -202px 30px; padding-right: 10px;}
 
-.social-buttons div.linkedin-share{width: 125px; padding-right: 0;}
+.social-buttons div.linkedin-share{width: 100px; padding-right: 0;}
 .social-buttons a.linkedin-share{width: 95px; background-position: -294px 30px; padding-right: 10px;}
+
+.social-buttons div.pinterest-pinit{width: 80px; padding-right: 0;}
+.social-buttons div.vkontakte-like{float: left; width: 90px; padding-right: 0;}
+
+.social-buttons div.mailru-like{width: 170px;}
+
+
 
 a.yt-direct{background: url("images/video-link.jpg") no-repeat 31px 0; display: block; margin-top: 10px; padding-top: 35px; font-size: 12px; outline: none;}
 a.yt-direct:hover{background: url('images/video-link.jpg') no-repeat 31px 4px; outline: none;}
