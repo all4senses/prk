@@ -315,7 +315,7 @@ form .counter.exceeded{color: red;}
 .twitter-share-button{width: 95px !important;}
 
 .share .others{float: left; padding-top: 3px;}
-.share .others .addthis_toolbox a{margin-right: 5px}
+.share .others .addthis_toolbox a{margin-right: 5px; float: left;}
 .share .others .addthis_button_email{position: relative; top: -4px;}
 .share .others .at15t_email{margin-right: 4px; position: relative; top: 3px;}
 
@@ -527,7 +527,7 @@ body.sidebar-second.node-type-quote #main{margin: 0; padding: 0;}
 .social-buttons div.pinterest-pinit{width: 80px; padding-right: 0;}
 .social-buttons div.vkontakte-like{float: left; width: 90px; padding-right: 0;}
 
-.social-buttons div.mailru-like{width: 170px; padding-right: 0;}
+.social-buttons div.mailru-like{width: 165px; padding-right: 0;}
 
 
 
