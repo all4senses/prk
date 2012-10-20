@@ -11,8 +11,8 @@
                         //width: '80%',
 												//height: '70%',
                         
-                        width: '900px',
-                        height: '100px',
+                        width: '900',
+                        height: '200',
                         scaleType: 'insideFit',
                         
 												//scaleType: 'proportionalFit', //'insideFit',
