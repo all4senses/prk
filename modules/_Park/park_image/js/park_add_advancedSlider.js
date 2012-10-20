@@ -11,7 +11,7 @@
 												//height: '70%',
                         
                         //width: '80%',
-                        height: '25%',
+                        height: '100',
                         scaleType: 'insideFit',
                         
 												//scaleType: 'proportionalFit', //'insideFit', 'exactFit',
