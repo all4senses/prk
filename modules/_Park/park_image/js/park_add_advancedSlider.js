@@ -12,7 +12,7 @@
 												//height: '70%',
                         
                         width: '900px',
-                        height: '200px',
+                        height: '100px',
                         scaleType: 'insideFit',
                         
 												//scaleType: 'proportionalFit', //'insideFit',
