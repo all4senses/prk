@@ -7,8 +7,9 @@
                
                console.log('start 1');
                
-               sl = $('#responsive-slider').advancedSlider({width: '80%',
-												height: '60%',
+               sl = $('#responsive-slider').advancedSlider({
+                        //width: '80%',
+												height: '70%',
 												scaleType: 'proportionalFit', //'insideFit',
                         
                         skin:'glossy-curved-rounded-violet', //minimal-small', // 'glossy-square-blue',
