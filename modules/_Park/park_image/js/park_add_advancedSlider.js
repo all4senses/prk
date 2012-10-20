@@ -44,7 +44,6 @@
             		});
 
                 var total_slides = sl.totalSlides();
-                console.log('start 2');
 
                 // set the initial height of the slider to 50% from the width
                 $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
@@ -58,10 +57,9 @@
       
       
                 function completeTransition(event) {
-                  console.log('complete trans');
-                  console.log(event);
+                 
                   current_slide = sl.getSlideAt(event.index);
-                  //current_slide = this.getSlideAt(event.index);
+                 
                   $(current_slide.html).addClass('in');
                   current_slide_index = event.index;
 
@@ -75,33 +73,15 @@
                 
                 
                 function startTransition(event) {
-                  /*
-                  if (event.index == 0) {
-                    previous_slide_index = total_slides - 1;
-                  }
-                  else {
-                    previous_slide_index = event.index - 1;
-                  }
-                  */
                  
-                  console.log('start trans');
-                  console.log(event);
-                  
                   previous_slide_index = current_slide_index;
                   
                   if (sl) {
                     previous_slide = sl.getSlideAt(previous_slide_index);
-                    //previous_slide = this.getSlideAt(previous_slide_index);
-
+                 
                     $(previous_slide.html).removeClass('in');
                   }
-                  
-                  // Doesn't work
-                  /*
-                  previous_slide.html.each(function(){
-                    $(this).removeClass('in');
-                  });
-                  */
+                 
                 }
                         
         
