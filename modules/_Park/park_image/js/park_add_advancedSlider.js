@@ -27,7 +27,7 @@
 												pauseSlideshowOnHover: true,
 												swipeThreshold: 50,
                         
-                        lightbox: true,
+                        ////lightbox: true,
                         //shadow: false,
                         
                         //slideButtons: false,
