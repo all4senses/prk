@@ -36,11 +36,13 @@
                         
                         //slideButtons: false,
 												//thumbnailType: 'scroller',
+                        //
 												//thumbnailButtons: true,
+                        thumbnailScrollerToggle: true,
 												thumbnailScrollerResponsive: true,
 												minimumVisibleThumbnails: 2,
                         
-												slideArrowsToggle: false,
+												//slideArrowsToggle: false,
 												slideProperties:{
 													0:{captionSize: 35, captionHideEffect: 'slide'},
 													1:{captionPosition: 'custom', captionShowEffect: 'fade', captionHeight: 160, captionLeft: 70, slideshowDelay: 10000},
