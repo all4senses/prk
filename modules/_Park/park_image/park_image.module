@@ -70,6 +70,40 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
       
       $out = '
     
+         <div class="advanced-slider" id="minimal-slider">
+            <ul class="slides">
+
+              <li class="slide" id="s-3">
+              
+                
+
+                  <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" alt=""/>
+
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image4.jpg" alt="Slide 4"/>
+                <div class="caption">You can also add <b>HTML</b> elements like <a href="http://codecanyon.net">links</a> or <input type="button" value="Buttons"/></div>
+              </li>
+
+
+
+              <li class="slide" id="s-4">
+              
+                
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image6.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image6.jpg" alt="Slide 6"/>
+                <div class="caption"><u>Title</u><br/><br/>This is a list of items:<ul><li>first item</li><li>second item</li><li>third item</li></ul></div>
+              </li>
+
+
+
+            </ul>
+          </div>
+
+        ';
+      
+      
+      /*
+      $out = '
+    
           <div class="advanced-slider glossy-square-blue" id="responsive-slider">
             <ul class="slides">
             
@@ -160,7 +194,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
           </div>
 
         ';
-      
+      */
       break;
   }
   
