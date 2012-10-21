@@ -10,7 +10,7 @@
                  
                  
                         width: '100%', 
-									 		 height: '20%', 
+									 		 height: '10%', 
 											 skin: 'minimal-small', 
 										   	 shuffle: true, 
 										   	 slideshowControls: true, 
