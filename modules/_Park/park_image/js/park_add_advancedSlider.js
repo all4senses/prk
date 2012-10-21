@@ -7,6 +7,31 @@
                
               
                sl = $('#responsive-slider').advancedSlider({
+                 
+                 
+                        width: '100%', 
+									 		 height: '20%', 
+											 skin: 'minimal-small', 
+										   	 shuffle: true, 
+										   	 slideshowControls: true, 
+										   	 slideshowControlsToggle: false, 
+										   	 pauseSlideshowOnHover: true, 
+										   	 slideArrowsToggle: false, 
+										   	 slideButtonsNumber: true,
+										   	 timerAnimationControls: false,
+										   	 timerRadius: 20, 
+											 timerStrokeColor1: '#ffffff', 
+											 timerStrokeColor2: '#000000', 
+											 timerStrokeOpacity1: 0.8, 
+											 timerStrokeWidth1: 6, 
+											 timerStrokeWidth2: 3, 
+										   	 effectType: 'slide',
+										   	 slideLoop: true,
+										   	 overrideTransition: true,
+
+                      
+                      
+                        /*
                         //width: '80%',
 												//height: '70%',
                         
@@ -20,7 +45,7 @@
                         slideMask: true,
                         //alignType: 'rightTop',
                         
-                        skin:'glossy-curved-rounded-violet', //minimal-small', // 'glossy-square-blue',
+                        skin: 'minimal-small', //'glossy-curved-rounded-violet', // 'glossy-square-blue',
                         //scrollbarSkin:'scrollbar-3-light', 
                         thumbnailsType:'navigation', 
                         thumbnailScrollbar:true,
@@ -50,6 +75,7 @@
 													5:{captionPosition: 'left', captionSize: 150, captionHideEffect: 'slide'},
 													7:{captionPosition: 'right', captionSize: 150, captionHideEffect: 'slide'}
 												},
+                        */
                         
                         transitionStart: startTransition,
                         transitionComplete: completeTransition
