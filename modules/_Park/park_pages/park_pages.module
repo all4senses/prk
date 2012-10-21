@@ -40,11 +40,11 @@ function park_pages_getHomePage() {
 
   $out .= render($front_preface_node_view);
   
-  /*
-  // Get block for Top pick business providers.
-  $block_data = array('module' => 'views', 'delta' => 'providers-block', 'shadow' => FALSE);
+  
+  // Get block Home teasers.
+  $block_data = array('module' => 'views', 'delta' => 'content_feeds-home_teasers_block', 'shadow' => FALSE);
   $out .= gcb_blocks_getBlockThemed($block_data);
-  */
+  
   
   $out .= render($front_preface_node_view['field_preface_bottom']);
  
