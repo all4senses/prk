@@ -154,7 +154,7 @@ function park_image_addAdvancedSliderJs() {
   
   
   //drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/excanvas.compiled.js');
-  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.transition.min.js');
+  /////drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.transition.min.js');
   drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.touchSwipe.min.js');
   
   drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.advancedSlider.js');
@@ -173,7 +173,7 @@ function park_image_addAdvancedSliderJs() {
   /////////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/presentation.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
   
   ////////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox/prettyPhoto.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
-  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox-slider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
+  //////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox-slider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
   
 
   //drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/minimal/css/minimal-small/minimal-small.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
