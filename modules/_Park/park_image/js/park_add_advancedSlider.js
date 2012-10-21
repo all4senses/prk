@@ -10,8 +10,8 @@
                         //width: '80%',
 												//height: '70%',
                         
-                        //width: '99%',
-                        //height: '99%',
+                        width: '99%',
+                        height: '99%',
                         scaleType: 'insideFit',
                         
 												//scaleType: 'proportionalFit', //'insideFit', 'exactFit',
