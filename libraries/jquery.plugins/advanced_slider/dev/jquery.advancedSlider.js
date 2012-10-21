@@ -446,10 +446,11 @@
 					      slider.removeClass('focus');
 				  });
 				  
-				
+				/*
         console.log('self.settings.width = ' + self.settings.width);
         console.log('self.settings.height = ' + self.settings.height);
-        
+        */
+       
 			sliderMain = $('<div class="slider-main"></div>').appendTo(slider)					
 				
 			if ($.browser.mozilla)
