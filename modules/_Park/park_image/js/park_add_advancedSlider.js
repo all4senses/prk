@@ -25,10 +25,16 @@
 											 timerStrokeOpacity1: 0.8, 
 											 timerStrokeWidth1: 6, 
 											 timerStrokeWidth2: 3, 
-										   	 effectType: 'slide',
+
 										   	 slideLoop: true,
 										   	 overrideTransition: true,
 
+                        effectType: 'slice',//'swipe',
+												pauseSlideshowOnHover: true,
+												swipeThreshold: 50,
+                        
+                        lightbox: true,
+                        shadow: false,
                       
                       
                         /*
