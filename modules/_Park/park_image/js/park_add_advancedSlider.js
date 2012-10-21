@@ -16,6 +16,8 @@
                         
 												//scaleType: 'proportionalFit', //'insideFit', 'exactFit',
                         
+                        shadow: false,
+                        
                         skin:'glossy-curved-rounded-violet', //minimal-small', // 'glossy-square-blue',
                         //scrollbarSkin:'scrollbar-3-light', 
                         thumbnailsType:'navigation', 
