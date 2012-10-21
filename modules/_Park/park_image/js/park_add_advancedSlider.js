@@ -6,7 +6,7 @@
                var current_slide_index = 0;
                
               
-               sl = $('#responsive-slider').advancedSlider({
+               sl = $('.advanced-slider').advancedSlider({
                  
                  
                         width: '100%', 
