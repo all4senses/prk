@@ -198,7 +198,7 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 
 /* Views block with charts on some pages */
 
-.front #main .block{position: relative; margin-bottom: 15px;}
+.front #main .block{position: static; margin-bottom: 15px;}
 
 
 .front #main .node h2{color: black; margin: 0; padding: 10px; font-size: 18px; font-weight: bold;}
