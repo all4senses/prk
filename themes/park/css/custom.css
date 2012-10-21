@@ -577,8 +577,9 @@ a.yt-direct:active{outline: none;}
 
 .front .block#block-park-blocks-slideshow-two .content{height: 200px; width: 100%;}
 
-.slide-buttons {
-margin-top: -52px;
+.glossy-curved-rounded-violet .slide-buttons {
+/*margin-top: -52px;*/
+top: 190px;
 right: 113px !important;
 left: auto !important;
 }
