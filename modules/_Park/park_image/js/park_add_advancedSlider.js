@@ -84,12 +84,14 @@
                 var total_slides = sl.totalSlides();
 
                 // set the initial height of the slider to 50% from the width
-                $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
-                $('#responsive-slider').advancedSlider().doSliderLayout();
+                $('.advanced-slider').css('height', $('.advanced-slider').width() * 0.20);
+                
+                
+                $('.advanced-slider').advancedSlider().doSliderLayout();
 
-                // as the window resizes, maintain the slider's height at 50% from the width
+                // as the window resizes, maintain the slider's height at 20% from the width
                 $(window).resize(function() {
-                  $('#responsive-slider').css('height', $('#responsive-slider').width() * 0.50);
+                  $('.advanced-slider').css('height', $('.advanced-slider').width() * 0.20);
                 });
       
       
