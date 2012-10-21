@@ -67,7 +67,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
     case 'AdvancedSlider':
       
       park_image_addAdvancedSliderJs();
-      
+      /*
       $out = '
     
          <div class="advanced-slider" id="minimal-slider">
@@ -99,9 +99,9 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
           </div>
 
         ';
+      */
       
       
-      /*
       $out = '
     
           <div class="advanced-slider glossy-square-blue" id="responsive-slider">
@@ -194,7 +194,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
           </div>
 
         ';
-      */
+      
       break;
   }
   

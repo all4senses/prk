@@ -31,7 +31,7 @@ function park_pages_getHomePage() {
     $out .= '<div id="mws"></div><script type="text/javascript" src="http://mws.all4senses.com/mws.js"></script>';
   }
   else {
-    $out .= '<div class="sliderHome">' . park_image_getSlideshow('AdvancedSlider') . '</div>';
+    //$out .= '<div class="sliderHome">' . park_image_getSlideshow('AdvancedSlider') . '</div>';
   }
   
   $front_preface_node = park_pages_getPrefaceByKey('front');
