@@ -42,7 +42,7 @@ function park_pages_getHomePage() {
   
   
   // Get block Home teasers.
-  $block_data = array('module' => 'views', 'delta' => 'content_feeds-home_teasers_block', 'shadow' => FALSE);
+  $block_data = array('module' => 'views', 'delta' => 'content_feeds-home_teasers_block', 'shadow' => FALSE, 'no_title' => TRUE);
   $out .= park_blocks_getBlockThemed($block_data);
   
   
