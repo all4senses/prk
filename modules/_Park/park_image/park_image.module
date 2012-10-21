@@ -75,14 +75,17 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
             
               <li class="slide" id="s-1">
               
-                <div class="html" style="position: absolute; z-index: 10; top: 10px; left: 40px;">
+                <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
                   <div class="content-box">
                       <p class="title">Inline HTML content</p>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                       <a class="button" href="#">Read More</a>
                   </div>
                 </div>
-                
+
+                <a rel="slider-lightbox[]" href="http://www.youtube.com/watch?v=JVuUwvUUPro?width=700&height=400" title="Some lightbox description">
+                  <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image1.jpg" alt=""/>
+                </a>
                 
                   <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image1.jpg" alt="Slide 1"/>
                 <div class="caption">This is just a simple caption.</div>
@@ -91,7 +94,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
 
               <li class="slide rounded-caption" id="s-2">
               
-                <div class="html" style="position: absolute; z-index: 10; top: 10px; left: 40px;">
+                <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
 
                   
                   
@@ -119,7 +122,7 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
 
               <li class="slide" id="s-3">
               
-                <div class="html" style="position: absolute; z-index: 10; top: 10px; left: 40px;">
+                <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
                   <div class="content-box">
                       <p class="title">Inline HTML content</p>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -127,8 +130,28 @@ function park_image_getSlideshow($type = NULL, $id = NULL) {
                   </div>
                 </div>
                 
+                <a rel="slider-lightbox[g]" href="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" title="Some lightbox description FOR PICTURE">
+                  <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image4.jpg" alt=""/>
+                </a>
                   <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image4.jpg" alt="Slide 4"/>
                 <div class="caption">You can also add <b>HTML</b> elements like <a href="http://codecanyon.net">links</a> or <input type="button" value="Buttons"/></div>
+              </li>
+
+
+
+              <li class="slide" id="s-4">
+              
+                <div class="html" style="position: absolute; z-index: 10; top: 100px; left: 300px;">
+                  <div class="content-box">
+                      <p class="title">Inline HTML content</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <a class="button" href="#">Read More</a>
+                  </div>
+                </div>
+                
+                <img class="image" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/slides/image6.jpg" alt=""/>
+                  <img class="thumbnail" src="sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/images/thumbnails/image6.jpg" alt="Slide 6"/>
+                <div class="caption"><u>Title</u><br/><br/>This is a list of items:<ul><li>first item</li><li>second item</li><li>third item</li></ul></div>
               </li>
 
 
@@ -154,13 +177,11 @@ function park_image_addAdvancedSliderJs() {
   
   
   //drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/excanvas.compiled.js');
-  /////drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.transition.min.js');
+  //////drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.transition.min.js');
   drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.touchSwipe.min.js');
+  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.advancedSlider.min.js');
   
-  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.advancedSlider.js');
-  //drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.advancedSlider.min.js');
-  
-  ////drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.prettyPhoto.custom.min.js');
+  drupal_add_js('sites/all/libraries/jquery.plugins/advanced_slider/jquery.prettyPhoto.custom.min.js');
   
   drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/css/base/advanced-slider-base.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
   //////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/responsive-proportional/css/glossy-square/blue/glossy-square-blue.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
@@ -170,10 +191,10 @@ function park_image_addAdvancedSliderJs() {
   
   //drupal_add_css('http://fonts.googleapis.com/css?family=Ruluko|Sirin+Stencil', array('preprocess' => FALSE, 'external' => TRUE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)
   
-  /////////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/presentation.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/presentation-assets/presentation.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
   
-  ////////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox/prettyPhoto.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
-  //////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox-slider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
+  drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox/prettyPhoto.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
+  ////////drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/lightbox/css/lightbox-slider.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
   
 
   //drupal_add_css('sites/all/libraries/jquery.plugins/advanced_slider/examples/minimal/css/minimal-small/minimal-small.css', array('preprocess' => FALSE)); // array('group' => CSS_THEME, 'preprocess' => FALSE)  
