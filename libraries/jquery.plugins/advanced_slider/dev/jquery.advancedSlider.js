@@ -4739,8 +4739,8 @@
 	// default settings
 	$.fn.advancedSlider.defaults =  {
 		xmlSource: null,
-		width: 500,
-		height: 300,
+		width: '100%',//500,
+		height: '100%', //300,
 		skin: 'pixel',
 		scrollbarSkin: 'scrollbar-1',
 		shadow: true,
