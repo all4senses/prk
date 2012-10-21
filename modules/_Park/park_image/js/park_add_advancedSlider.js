@@ -10,7 +10,7 @@
                  
                  
                         width: '100%', 
-									 		 height: '20%', 
+									 		 height: '100%', 
 											 skin: 'minimal-small', 
 										   	 shuffle: true, 
 										   	 slideshowControls: true, 
@@ -83,6 +83,7 @@
 
                 var total_slides = sl.totalSlides();
 
+                /*
                 // set the initial height of the slider to 50% from the width
                 $('.advanced-slider').css('height', $('.advanced-slider').width() * 0.20);
                 
@@ -93,6 +94,7 @@
                 $(window).resize(function() {
                   $('.advanced-slider').css('height', $('.advanced-slider').width() * 0.20);
                 });
+                */
       
       
       
