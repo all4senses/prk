@@ -546,6 +546,9 @@ a.yt-direct:active{outline: none;}
 
 /* Slideshows */
 
+/* Advanced slider*/
+.advanced-slider .slider-main{z-index: 1;}
+
 /*#main .block#block-park-blocks-slideshow-two{height: 420px;}*/
 
 /*.advanced-slider .slide-wrapper{height: 300px;}*/
