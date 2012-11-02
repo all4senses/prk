@@ -159,7 +159,8 @@
       instance.source.keypress(event);
     });
     this.jqObject.keyup(function(event) {
-      if (instance.multiple && (event.which == 188 || event.which == 13)) {
+      // a4s fix to make it possible to enter "," and "б"
+      if (instance.multiple && (/*event.which == 188 || */event.which == 13)) {
         instance.jqObject.val('');
         instance.close();
       }
